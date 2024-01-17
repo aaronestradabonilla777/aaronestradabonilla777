@@ -44,6 +44,8 @@
 
 <li>
 <a href="https://www.instagram.com/haluzab/" target="_blank">
+<img src="https://img.shields.io/badge/instagram:  aaronbonilla-%2300acee.svg?color=405DE6&style=for-the-badge&logo=linkedin&logoColor=white" alt=linkedin style="margin-bottom: 5px;"/>	
+<br>	
 <a href="https://www.linkedin.com/in/aaron-bonilla-13014a219/" target="_blank">
 <img src="https://img.shields.io/badge/linkedin:  aaronbonilla-%2300acee.svg?color=405DE6&style=for-the-badge&logo=linkedin&logoColor=white" alt=linkedin style="margin-bottom: 5px;"/>
 </a>
