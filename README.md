@@ -43,7 +43,7 @@
 <ul>
 
 <li>
-<a href="https://www.instagram.com/haluzab/" target="_blank">
+<a href="https://www.instagram.com/" target="_blank">
 <img src="https://img.shields.io/badge/instagram:  aaronbonilla-%2300acee.svg?color=C13584&style=for-the-badge&logo=instagram&logoColor=white" alt=linkedin style="margin-bottom: 5px;"/>	
 <br>	
 <a href="https://www.linkedin.com/in/aaron-bonilla-13014a219/" target="_blank">
