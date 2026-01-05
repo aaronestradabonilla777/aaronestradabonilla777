@@ -1,84 +1,204 @@
-name: Update Uptime
+name: Update Dashboard Stats
 
 on:
   schedule:
-    - cron: '0 */6 * * *'  # Runs every 6 hours
+    - cron: '0 */6 * * *'  # Every 6 hours
   workflow_dispatch:  # Manual trigger
+  push:
+    branches: [main]
 
 jobs:
-  update-uptime:
+  update-stats:
     runs-on: ubuntu-latest
     
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
       
-      - name: Update uptime in SVG
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: pip install requests
+      
+      - name: Fetch GitHub Stats and Update SVGs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          USERNAME: aaronestradabonilla777
         run: |
-          # Start date: April 25, 2022
-          START_DATE="2022-04-25"
-          
-          # Calculate difference
-          START_SECONDS=$(date -d "$START_DATE" +%s)
-          NOW_SECONDS=$(date +%s)
-          DIFF_SECONDS=$((NOW_SECONDS - START_SECONDS))
-          
-          # Calculate years, days, hours
-          YEARS=$((DIFF_SECONDS / 31536000))
-          REMAINING=$((DIFF_SECONDS % 31536000))
-          DAYS=$((REMAINING / 86400))
-          REMAINING=$((REMAINING % 86400))
-          HOURS=$((REMAINING / 3600))
-          REMAINING=$((REMAINING % 3600))
-          MINUTES=$((REMAINING / 60))
-          
-          echo "Uptime: ${YEARS}Y ${DAYS}D ${HOURS}H ${MINUTES}M"
-          
-          # Update header_v3.svg with new values
-          sed -i "s/>${YEARS}Y<\/text>$/<text x=\"17\" y=\"20\" text-anchor=\"middle\" class=\"f-mono c-cyan number-flux\" font-size=\"14\">${YEARS}Y<\/text>/g" header_v3.svg || true
-          sed -i "s/>[0-9]*Y<\/text>/<text>${YEARS}Y<\/text>/g" header_v3.svg 2>/dev/null || true
-          
-          # More precise replacements using perl for complex patterns
-          perl -i -pe "s/(\d+)Y(?=<\/text>)/${YEARS}Y/g" header_v3.svg
-          perl -i -pe "s/(\d+)D(?=<\/text>)/${DAYS}D/g" header_v3.svg  
-          perl -i -pe "s/>(\d+)H</>$HOURS H</g" header_v3.svg 2>/dev/null || true
-          
-          # Direct replacement approach
-          python3 << EOF
+          python3 << 'PYTHON_SCRIPT'
+          import requests
           import re
-          from datetime import datetime
+          import os
+          from datetime import datetime, timezone
+          from collections import defaultdict
+
+          USERNAME = os.environ.get('USERNAME', 'aaronestradabonilla777')
+          TOKEN = os.environ.get('GITHUB_TOKEN', '')
+
+          headers = {
+              'Authorization': f'token {TOKEN}',
+              'Accept': 'application/vnd.github.v3+json'
+          }
+
+          print(f"🔄 Fetching data for {USERNAME}...")
+
+          # === FETCH USER PROFILE ===
+          user_resp = requests.get(f'https://api.github.com/users/{USERNAME}', headers=headers)
+          user_data = user_resp.json() if user_resp.status_code == 200 else {}
+
+          public_repos = user_data.get('public_repos', 0)
+          followers = user_data.get('followers', 0)
+          following = user_data.get('following', 0)
+          created_at = user_data.get('created_at', '2022-04-25T00:00:00Z')
+
+          print(f"📊 Profile: {public_repos} repos, {followers} followers, {following} following")
+
+          # === FETCH ALL REPOS FOR STARS AND LANGUAGES ===
+          repos_resp = requests.get(
+              f'https://api.github.com/users/{USERNAME}/repos?per_page=100&type=owner',
+              headers=headers
+          )
+          repos = repos_resp.json() if repos_resp.status_code == 200 else []
+
+          total_stars = sum(repo.get('stargazers_count', 0) for repo in repos if isinstance(repo, dict))
+          print(f"⭐ Total stars: {total_stars}")
+
+          # === CALCULATE LANGUAGE DISTRIBUTION ===
+          lang_bytes = defaultdict(int)
+          for repo in repos:
+              if isinstance(repo, dict) and not repo.get('fork', False):
+                  lang_url = repo.get('languages_url', '')
+                  if lang_url:
+                      lang_resp = requests.get(lang_url, headers=headers)
+                      if lang_resp.status_code == 200:
+                          for lang, bytes_count in lang_resp.json().items():
+                              lang_bytes[lang] += bytes_count
+
+          # Calculate percentages
+          total_bytes = sum(lang_bytes.values())
+          lang_percentages = {}
+          if total_bytes > 0:
+              for lang, bytes_count in sorted(lang_bytes.items(), key=lambda x: x[1], reverse=True)[:5]:
+                  percentage = round((bytes_count / total_bytes) * 100)
+                  lang_percentages[lang] = percentage
+
+          print(f"💻 Languages: {lang_percentages}")
+
+          # === CALCULATE UPTIME ===
+          try:
+              start_date = datetime.fromisoformat(created_at.replace('Z', '+00:00'))
+          except:
+              start_date = datetime(2022, 4, 25, tzinfo=timezone.utc)
           
-          start_date = datetime(2022, 4, 25)
-          now = datetime.utcnow()
+          now = datetime.now(timezone.utc)
           diff = now - start_date
-          
           total_seconds = int(diff.total_seconds())
+          
           years = total_seconds // 31536000
           remaining = total_seconds % 31536000
           days = remaining // 86400
           remaining = remaining % 86400
           hours = remaining // 3600
           minutes = (remaining % 3600) // 60
+
+          print(f"⏱️ Uptime: {years}Y {days}D {hours}H {minutes}M")
+
+          # === FETCH RECENT ACTIVITY FOR COMMIT HISTORY ===
+          events_resp = requests.get(
+              f'https://api.github.com/users/{USERNAME}/events?per_page=100',
+              headers=headers
+          )
+          events = events_resp.json() if events_resp.status_code == 200 else []
+
+          # Count commits per day for last 52 weeks (simplified to last 30 days)
+          commit_counts = defaultdict(int)
+          for event in events:
+              if isinstance(event, dict) and event.get('type') == 'PushEvent':
+                  commits = event.get('payload', {}).get('commits', [])
+                  date = event.get('created_at', '')[:10]
+                  commit_counts[date] += len(commits)
+
+          total_commits = sum(commit_counts.values())
+          print(f"📝 Recent commits: {total_commits}")
+
+          # === UPDATE header_v3.svg ===
+          print("📝 Updating header_v3.svg...")
           
-          with open('header_v3.svg', 'r') as f:
-              content = f.read()
+          with open('header_v3.svg', 'r', encoding='utf-8') as f:
+              header_content = f.read()
+
+          # Update profile stats
+          header_content = re.sub(r'(PUBLIC_REPOS.*?font-size="28">)\d+(<\/text>)', 
+                                  rf'\g<1>{public_repos}\2', header_content, flags=re.DOTALL)
+          header_content = re.sub(r'(FOLLOWERS.*?font-size="28">)\d+(<\/text>)', 
+                                  rf'\g<1>{followers}\2', header_content, flags=re.DOTALL)
+          header_content = re.sub(r'(FOLLOWING.*?font-size="28">)\d+(<\/text>)', 
+                                  rf'\g<1>{following}\2', header_content, flags=re.DOTALL)
+          header_content = re.sub(r'(TOTAL_STARS.*?font-size="28">)\d+(<\/text>)', 
+                                  rf'\g<1>{total_stars}\2', header_content, flags=re.DOTALL)
+
+          # Update uptime
+          header_content = re.sub(r'>(\d+)Y</text>', f'>{years}Y</text>', header_content)
+          header_content = re.sub(r'>(\d+)D</text>', f'>{days}D</text>', header_content)
+          header_content = re.sub(r'>(\d+)H</text>', f'>{hours}H</text>', header_content)
+          header_content = re.sub(r'anim-blink" font-size="14">(\d+)</text>', 
+                                  f'anim-blink" font-size="14">{minutes}</text>', header_content)
+
+          with open('header_v3.svg', 'w', encoding='utf-8') as f:
+              f.write(header_content)
+
+          # === UPDATE core_v3.svg WITH LANGUAGE DISTRIBUTION ===
+          print("📝 Updating core_v3.svg...")
           
-          # Replace uptime values
-          content = re.sub(r'>(\d+)Y</text>', f'>{years}Y</text>', content)
-          content = re.sub(r'>(\d+)D</text>', f'>{days}D</text>', content)
-          content = re.sub(r'>(\d+)H</text>', f'>{hours}H</text>', content)
-          content = re.sub(r'anim-blink" font-size="14">(\d+)</text>', f'anim-blink" font-size="14">{minutes}</text>', content)
-          
-          with open('header_v3.svg', 'w') as f:
-              f.write(content)
-          
-          print(f"Updated uptime: {years}Y {days}D {hours}H {minutes}M")
-          EOF
+          try:
+              with open('core_v3.svg', 'r', encoding='utf-8') as f:
+                  core_content = f.read()
+
+              # Language colors mapping
+              lang_colors = {
+                  'TypeScript': '#3178c6',
+                  'JavaScript': '#f7df1e',
+                  'Python': '#3572A5',
+                  'Java': '#b07219',
+                  'C++': '#f34b7d',
+                  'C#': '#178600',
+                  'HTML': '#e34c26',
+                  'CSS': '#563d7c',
+                  'Ruby': '#701516',
+                  'Go': '#00ADD8',
+                  'Rust': '#dea584',
+                  'PHP': '#4F5D95',
+                  'Swift': '#ffac45',
+                  'Kotlin': '#A97BFF',
+                  'Dart': '#00B4AB',
+                  'Shell': '#89e051',
+                  'Vue': '#41b883',
+                  'SCSS': '#c6538c',
+              }
+
+              # Update language percentages in core SVG if they exist
+              for lang, pct in lang_percentages.items():
+                  # Try to update existing language entries
+                  pattern = rf'({lang}\s*)\d+%'
+                  core_content = re.sub(pattern, rf'\g<1>{pct}%', core_content)
+
+              with open('core_v3.svg', 'w', encoding='utf-8') as f:
+                  f.write(core_content)
+                  
+          except FileNotFoundError:
+              print("⚠️ core_v3.svg not found, skipping...")
+
+          print("✅ All SVGs updated successfully!")
+
+          PYTHON_SCRIPT
       
       - name: Commit and push changes
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add header_v3.svg
-          git diff --staged --quiet || git commit -m "chore: update uptime counter [skip ci]"
+          git add header_v3.svg core_v3.svg
+          git diff --staged --quiet || git commit -m "chore: update dashboard stats [skip ci]"
           git push
