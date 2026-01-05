@@ -33,7 +33,7 @@
 | 🤖 **PROTOCOL** | **STATUS** |
 | :--- | :--- |
 | 🔭 **Current Objective** | *Developing high-tech web solutions & 3D interactions* |
-| 🌱 **Learning Node** | `AI Integration`, `Advanced Cyber-Security` |
+| 🌱 **Learning Node** | `AI Integration`, ` |
 | ⚡ **Hardware** | `Mainframe Access`, `3D Print Modules`, `Laser Arrays` |
 | 💬 **Communication** | `Encrypted` |
 
