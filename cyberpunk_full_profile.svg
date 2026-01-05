@@ -81,8 +81,8 @@
   <path d="M 790 940 L 700 940" class="border-thick stroke-purple" />
 
   <g transform="translate(40, 80)">
-    <text x="0" y="0" class="title-main neon-cyan glitch-effect">AARONESTRADA</text>
-    <text x="320" y="0" class="title-main neon-purple glitch-effect">BONILLA777</text>
+    <text x="0" y="0" class="title-main neon-cyan glitch-effect">HALUZ</text>
+    <text x="320" y="0" class="title-main neon-purple glitch-effect">CODE #777</text>
     
     <text x="0" y="30" class="title-sub text-light">CLASS: NETRUNNER // OS: LINUX // STATUS: ONLINE</text>
     <line x1="0" y1="45" x2="720" y2="45" stroke="#333" stroke-width="2" />
