@@ -20,14 +20,6 @@
 
 <br>
 
-### 📂 ACTIVE_PROTOCOLS (Proyectos)
-
-| ID | PROYECTO | ESTADO | TECNOLOGÍA |
-| :--- | :--- | :--- | :--- |
-| **01** | **[Beltrán del Río]**<br>Sistema web integral para firma contable. | `COMPILING...` | PHP / HTML5 / SQL |
-| **02** | **[Mapping Meoqui]**<br>Mapa interactivo zonal (14 sectores) con gestión de colonias. | `IN_PROGRESS` | JS / Leaflet / API |
-| **03** | **[Bambu Lab Ops]**<br>Impresión 3D (PLA/PETG) y grabado láser en metal/madera. | `PRODUCTION` | CAD / Bambu Studio |
-| **04** | **[Charity Core]**<br>App de gestión de donaciones y rastreo de efectivo en tránsito. | `PLANNING` | React / Node |
 
 <br>
 
