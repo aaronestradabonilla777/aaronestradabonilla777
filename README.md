@@ -1,10 +1,11 @@
 <div align="center">
+
   <a href="https://git.io/typing-svg">
     <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=35&duration=3000&pause=1000&color=00FFCC&center=true&vCenter=true&width=500&lines=SYSTEM+BOOT...;USER:+AARON_ESTRADA_BONILLA_777;STATUS:+ONLINE;ROLE:+FULL+STACK+CYBER-DEV" alt="Typing SVG" />
   </a>
 
   <img src="https://i.pinimg.com/originals/1c/12/37/1c1237ebabce3087b2e13203c9ebc5fa.gif" width="100%" height="200" style="object-fit: cover; border-radius: 10px; border: 2px solid #00FFCC;" />
-</div>
+
   <br><br>
 
   <a href="https://github.com/aaronestradabonilla777">
@@ -53,33 +54,4 @@
   <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
   <img src="https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white" />
   <img src="https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white" />
-  <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" />
-  <br>
-  <img src="https://img.shields.io/badge/3D_Printing-00FFCC?style=for-the-badge&logo=bambulab&logoColor=black&labelColor=black" />
-  <img src="https://img.shields.io/badge/Laser_Cutting-FF0055?style=for-the-badge&logo=laser&logoColor=white&labelColor=black" />
-</div>
-
-<br>
-
-<h3 align="center" style="color: #00FFCC;">>> ANALYZING USER DATA <<</h3>
-
-<div align="center">
-  <br>
-  <img align="center" src="https://github-readme-stats.vercel.app/api?username=aaronestradabonilla777&show_icons=true&theme=radical&hide_border=true&bg_color=101010&title_color=00FFCC&icon_color=FF0055&text_color=FFFFFF" alt="Estadísticas de Aaron" />
-  
-  <br><br>
-
-  <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=aaronestradabonilla777&layout=compact&theme=radical&hide_border=true&bg_color=101010&title_color=00FFCC&text_color=FFFFFF" alt="Lenguajes de Aaron" />
-</div>
-
-<br>
-
-<div align="center">
-  <img src="https://github.com/aaronestradabonilla777/aaronestradabonilla777/blob/output/github-contribution-grid-snake.svg" alt="Snake Animation" width="100%"/>
-</div>
-
-<br>
-
-<div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,2,3,4,5,10,25&height=100&section=footer&text=END%20OF%20LINE&fontColor=00FFCC&fontSize=20&fontAlign=50" width="100%" />
-</div>
+  <img src="https://
