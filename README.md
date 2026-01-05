@@ -16,13 +16,12 @@
   <img src="https://img.shields.io/badge/DB-MYSQL-blue?style=for-the-badge&logo=mysql&logoColor=white" />
   <img src="https://img.shields.io/badge/OS-LINUX-yellow?style=for-the-badge&logo=linux&logoColor=black" />
 
+  <br><br>
+
+  <img src="./hardware.svg" width="100%" alt="Hardware Manifest">
+
 </div>
 
-<br>
-
-
-<br>
-
-de Engraver (MDF/Metal/Yeti)
-```
-<div align="center"> <img src="./footer.svg" width="100%" alt="End of Line Footer"> </div>
+<div align="center">
+  <img src="./footer.svg" width="100%" alt="End of Line Footer">
+</div>
