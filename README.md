@@ -11,9 +11,7 @@
   <a href="https://github.com/aaronestradabonilla777">
     <img src="https://img.shields.io/badge/GITHUB-Mainframe-000000?style=for-the-badge&logo=github&logoColor=00FFCC&labelColor=1a1a1a" />
   </a>
-  <a href="mailto:tuemail@ejemplo.com">
-    <img src="https://img.shields.io/badge/MAIL-Uplink-000000?style=for-the-badge&logo=gmail&logoColor=FF0055&labelColor=1a1a1a" />
-  </a>
+ 
   <a href="https://linkedin.com/in/tu-perfil">
     <img src="https://img.shields.io/badge/LINKEDIN-Network-000000?style=for-the-badge&logo=linkedin&logoColor=00AAFF&labelColor=1a1a1a" />
   </a>
