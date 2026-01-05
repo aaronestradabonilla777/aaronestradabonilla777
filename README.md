@@ -4,7 +4,7 @@
     <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=35&duration=3000&pause=1000&color=00FFCC&center=true&vCenter=true&width=500&lines=SYSTEM+BOOT...;USER:+AARON_ESTRADA;STATUS:+ONLINE;ROLE:+FULL+STACK+CYBER-DEV" alt="Typing SVG" />
   </a>
 
-  <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3Z5Z3Z5Z3Z5Z3Z5Z3Z5Z3Z5Z3Z5Z3Z5Z3Z5Z3Z5Z3Z5Z3Z5/HuDzCpCWjC2Wd9X9l7/giphy.gif" width="100%" height="200" style="object-fit: cover; border-radius: 10px; border: 2px solid #00FFCC;" />
+  <img src="https://i.pinimg.com/originals/1c/12/37/1c1237ebabce3087b2e13203c9ebc5fa.gif" width="100%" height="200" style="object-fit: cover; border-radius: 10px; border: 2px solid #00FFCC;" />
 
   <br><br>
 
