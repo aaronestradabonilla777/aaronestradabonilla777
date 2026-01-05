@@ -8,3 +8,5 @@
 
   <br><br>
 
+<br>
+<img src="./cyberpunk_footer.svg" width="100%">
