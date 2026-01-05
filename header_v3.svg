@@ -264,7 +264,7 @@
       <text x="82" y="14" text-anchor="middle" class="f-data c-dim data-scan">SYSTEM UPTIME</text>
       <g transform="translate(8, 22)">
         <rect width="34" height="28" fill="#0a1a1a" stroke="#00f3ff" stroke-width="0.5" class="box-glow"/>
-        <text x="17" y="20" text-anchor="middle" class="f-mono c-cyan number-flux" font-size="14"<text>3Y</text>
+        <text x="17" y="20" text-anchor="middle" class="f-mono c-cyan number-flux" font-size="14"<text<text x="17" y="20" text-anchor="middle" class="f-mono c-cyan number-flux" font-size="14"<text>3Y</text>
         <rect x="40" width="42" height="28" fill="#0a1a1a" stroke="#00f3ff" stroke-width="0.5" class="box-glow"/>
         <text x="61" y="20" text-anchor="middle" class="f-mono c-cyan number-flux" font-size="14">256D</text>
         <rect x="88" width="34" height="28" fill="#0a1a1a" stroke="#00f3ff" stroke-width="0.5" class="box-glow"/>
