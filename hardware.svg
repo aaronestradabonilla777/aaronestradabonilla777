@@ -1,0 +1,58 @@
+<svg width="800" height="260" viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Share+Tech+Mono&display=swap');
+    .bg { fill: #0a0f14; stroke: rgba(0, 240, 255, 0.3); stroke-width: 1; }
+    .title { font-family: 'Orbitron', sans-serif; fill: #00f0ff; font-size: 18px; letter-spacing: 2px; }
+    .section-title { font-family: 'Orbitron', sans-serif; fill: #ff0055; font-size: 14px; font-weight: bold; }
+    .label { font-family: 'Share Tech Mono', monospace; fill: #6b7280; font-size: 12px; }
+    .val { font-family: 'Share Tech Mono', monospace; fill: #fff; font-size: 14px; }
+    .val-highlight { font-family: 'Share Tech Mono', monospace; fill: #00ff9f; font-size: 14px; }
+    .box { fill: rgba(255, 255, 255, 0.03); stroke: rgba(255, 255, 255, 0.1); stroke-width: 1; }
+    .line { stroke: #00f0ff; stroke-width: 1; opacity: 0.3; }
+    .dot { fill: #00f0ff; }
+  </style>
+
+  <rect x="1" y="1" width="798" height="258" rx="4" class="bg"/>
+  
+  <rect x="0" y="0" width="800" height="40" fill="rgba(0, 240, 255, 0.1)"/>
+  <text x="20" y="26" class="title">>> SYSTEM_HARDWARE_MANIFEST</text>
+  <circle cx="770" cy="20" r="4" fill="#00ff9f">
+    <animate attributeName="opacity" values="1;0;1" dur="2s" repeatCount="indefinite"/>
+  </circle>
+
+  <g transform="translate(20, 60)">
+    <text x="0" y="0" class="section-title">MAIN_RIG // COMPUTING</text>
+    <path d="M180,-5 L250,-5" stroke="#ff0055" stroke-width="2"/>
+    
+    <rect x="0" y="15" width="370" height="40" class="box" />
+    <text x="10" y="40" class="label">CPU_CORE:</text>
+    <text x="80" y="40" class="val">AMD Ryzen 7 7800X3D</text>
+    
+    <rect x="0" y="65" width="370" height="40" class="box" />
+    <text x="10" y="90" class="label">MAINBOARD:</text>
+    <text x="80" y="90" class="val">ASUS ROG Strix B650-G</text>
+    
+    <rect x="0" y="115" width="370" height="40" class="box" />
+    <text x="10" y="140" class="label">OS_KERNEL:</text>
+    <text x="80" y="140" class="val">Win11 > </text>
+    <text x="145" y="140" class="val-highlight">Migrating to Linux...</text>
+  </g>
+
+  <g transform="translate(410, 60)">
+    <text x="0" y="0" class="section-title">WORKSTATION // FABRICATION</text>
+    <path d="M225,-5 L295,-5" stroke="#ff0055" stroke-width="2"/>
+
+    <rect x="0" y="15" width="370" height="65" class="box" />
+    <text x="10" y="40" class="label">ADDITIVE_MFG:</text>
+    <text x="10" y="60" class="val" font-weight="bold" font-size="16">Bambu Lab P1S</text>
+    <text x="260" y="60" class="label" fill="#00ff9f" text-anchor="end">[STATUS: ONLINE]</text>
+
+    <rect x="0" y="90" width="370" height="65" class="box" />
+    <text x="10" y="115" class="label">SUBTRACTIVE_MFG:</text>
+    <text x="10" y="135" class="val">Diode Laser Engraver</text>
+    <text x="180" y="135" class="label" font-size="10">[MDF / METAL / YETI]</text>
+  </g>
+
+  <line x1="20" y1="230" x2="780" y2="230" class="line" stroke-dasharray="5,5"/>
+  <text x="400" y="245" text-anchor="middle" class="label" opacity="0.5">HARDWARE_ID: AE-777-X // CONFIG_LOADED</text>
+</svg>
