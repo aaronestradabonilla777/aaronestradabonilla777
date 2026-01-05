@@ -1,0 +1,46 @@
+<svg width="800" height="300" viewBox="0 0 800 300" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&amp;family=Share+Tech+Mono&amp;display=swap');
+    .bg { fill: #050505; }
+    .panel { fill: #0a0f14; stroke: #1f2937; stroke-width: 1; }
+    .text-title { font-family: 'Orbitron', sans-serif; fill: #fff; font-size: 24px; font-weight: 900; letter-spacing: 2px; }
+    .text-label { font-family: 'Share Tech Mono', monospace; fill: #6b7280; font-size: 14px; text-transform: uppercase; }
+    .text-val-pink { font-family: 'Orbitron', sans-serif; fill: #ff0055; font-size: 36px; font-weight: bold; filter: drop-shadow(0 0 5px #ff0055); }
+    .text-val-cyan { font-family: 'Orbitron', sans-serif; fill: #00f0ff; font-size: 36px; font-weight: bold; filter: drop-shadow(0 0 5px #00f0ff); }
+    .text-val-white { font-family: 'Orbitron', sans-serif; fill: #fff; font-size: 48px; font-weight: bold; }
+    .scanline { animation: scan 4s linear infinite; stroke: rgba(0, 240, 255, 0.1); stroke-width: 2; }
+    .neon-line { stroke: #00f0ff; stroke-width: 2; opacity: 0.5; }
+    .center-box { fill: #000; stroke: #ff0055; stroke-width: 2; filter: drop-shadow(0 0 10px rgba(255,0,85,0.3)); }
+    
+    @keyframes scan {
+      0% { transform: translateY(0); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateY(300px); opacity: 0; }
+    }
+  </style>
+
+  <rect width="800" height="300" class="bg" />
+  
+  <path d="M0 40 H800" stroke="#1f2937" stroke-width="1" />
+  <rect x="0" y="0" width="800" height="300" fill="url(#grid)" opacity="0.1"/>
+  
+  <text x="400" y="80" text-anchor="middle" class="text-title" filter="drop-shadow(2px 2px 0px #ff0055)">USER_DATA_ANALYSIS</text>
+  <line x1="300" y1="95" x2="500" y2="95" class="neon-line" />
+
+  <rect x="50" y="120" width="200" height="120" rx="4" class="panel" />
+  <text x="150" y="180" text-anchor="middle" class="text-val-pink">164</text>
+  <text x="150" y="210" text-anchor="middle" class="text-label">Total Contribs</text>
+
+  <rect x="300" y="110" width="200" height="140" rx="4" class="center-box" />
+  <circle cx="400" cy="160" r="35" stroke="#ff0055" stroke-width="3" fill="none" />
+  <text x="400" y="175" text-anchor="middle" class="text-val-white">1</text>
+  <text x="400" y="225" text-anchor="middle" class="text-label" fill="#00f0ff" style="fill: #00f0ff;">Current Streak</text>
+
+  <rect x="550" y="120" width="200" height="120" rx="4" class="panel" />
+  <text x="650" y="180" text-anchor="middle" class="text-val-cyan">4</text>
+  <text x="650" y="210" text-anchor="middle" class="text-label">Longest Streak</text>
+
+  <text x="20" y="25" class="text-label" fill="#00f0ff" style="fill: #00f0ff;">ID: AARON_ESTRADA // ONLINE</text>
+
+  <line x1="0" y1="0" x2="800" y2="0" class="scanline" />
+</svg>
