@@ -6,102 +6,139 @@
       
       /* --- VARIABLES & COLORES --- */
       .bg-dark { fill: #020205; }
+      
+      /* NEONES */
       .neon-p { fill: #bd00ff; filter: drop-shadow(0 0 5px #bd00ff); }
       .neon-c { fill: #00f3ff; filter: drop-shadow(0 0 5px #00f3ff); }
       .neon-r { fill: #ff003c; filter: drop-shadow(0 0 5px #ff003c); }
       .neon-y { fill: #fcee0a; filter: drop-shadow(0 0 4px #fcee0a); }
+      .neon-g { fill: #00ff41; filter: drop-shadow(0 0 4px #00ff41); }
       
+      /* TIPOGRAFÍA */
       .text-main { font-family: 'Share Tech Mono', monospace; font-size: 38px; font-weight: bold; letter-spacing: 4px; }
-      .text-jp { font-family: 'Noto Sans JP', sans-serif; font-size: 50px; opacity: 0.15; fill: #bd00ff; font-weight: bold; writing-mode: vertical-rl; }
+      .text-jp { font-family: 'Noto Sans JP', sans-serif; font-size: 50px; opacity: 0.1; fill: #bd00ff; font-weight: bold; writing-mode: vertical-rl; pointer-events: none; }
       .text-sub { font-family: 'Share Tech Mono', monospace; font-size: 14px; fill: #00f3ff; letter-spacing: 1px; }
-      .text-dim { font-family: 'Share Tech Mono', monospace; fill: #4a4a5a; font-size: 12px; }
+      .text-dim { font-family: 'Share Tech Mono', monospace; fill: #5a5a6a; font-size: 12px; }
+      .text-log { font-family: 'Share Tech Mono', monospace; fill: #c9d1d9; font-size: 13px; }
 
-      /* --- ANIMACIONES --- */
-      @keyframes rain { 0% { transform: translateY(-100px); opacity: 0; } 10% { opacity: 0.5; } 100% { transform: translateY(1000px); opacity: 0; } }
-      .rain { fill: #00f3ff; width: 1px; opacity: 0.3; }
+      /* --- ANIMACIONES DE AMBIENTE --- */
       
-      @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+      /* 1. LLUVIA DIGITAL */
+      @keyframes rain { 0% { transform: translateY(-100px); opacity: 0; } 20% { opacity: 0.5; } 100% { transform: translateY(1100px); opacity: 0; } }
+      .rain { fill: #00f3ff; width: 1px; opacity: 0.2; }
       
-      /* HOLOGRAMA CUBO 3D (Simulado) */
+      /* 2. RGB SHIFT (Aberración Cromática) */
+      @keyframes glitch-rgb {
+        0% { transform: translate(0); }
+        20% { transform: translate(-2px, 1px); }
+        40% { transform: translate(2px, -1px); }
+        60% { transform: translate(-1px, 0); }
+        80% { transform: translate(1px, 2px); }
+        100% { transform: translate(0); }
+      }
+      .glitch-red { fill: #ff003c; opacity: 0.7; mix-blend-mode: screen; animation: glitch-rgb 3s infinite alternate-reverse; }
+      .glitch-blue { fill: #00f3ff; opacity: 0.7; mix-blend-mode: screen; animation: glitch-rgb 4s infinite alternate; }
+
+      /* 3. TYPING EFFECT (Escritura secuencial) */
+      @keyframes type-reveal { to { opacity: 1; } }
+      .log-line { opacity: 0; animation: type-reveal 0.1s forwards; }
+      
+      /* 4. HOLOGRAMA CUBO 3D */
       @keyframes spin-3d { from { transform: rotateY(0deg) rotateX(20deg); } to { transform: rotateY(360deg) rotateX(20deg); } }
-      .holo-container { perspective: 1000px; transform-style: preserve-3d; }
       .holo-cube { 
         fill: none; stroke: #00f3ff; stroke-width: 2; vector-effect: non-scaling-stroke;
-        transform-origin: center; animation: spin-3d 8s linear infinite; 
+        transform-origin: center; animation: spin-3d 12s linear infinite; 
       }
       
-      /* HOVER EFFECTS */
+      /* 5. INTERACTIVIDAD (HOVER & TARGET LOCK) */
       .tech-card { transition: all 0.3s ease; cursor: pointer; }
-      .tech-card:hover { stroke: #fff; stroke-width: 2; fill: #1a1a2e; }
-      .tech-card:hover .bar-fill { fill: #fff; }
-      .tech-card:hover .card-text { fill: #fff; filter: drop-shadow(0 0 8px #fff); }
+      .tech-card:hover rect.card-bg { stroke: #fff; stroke-width: 2; fill: #0f0f1a; }
+      .tech-card:hover .card-text { fill: #fff; filter: drop-shadow(0 0 5px #fff); }
+      
+      /* Mira de francotirador (oculta por defecto) */
+      .target-corner { opacity: 0; transition: all 0.2s ease; stroke: #ff003c; stroke-width: 2; fill: none; }
+      .tech-card:hover .target-corner { opacity: 1; }
 
-      /* EQ MUSIC BARS */
-      @keyframes eq { 0%, 100% { height: 5px; } 50% { height: 25px; } }
+      /* 6. EQ MUSIC BARS */
+      @keyframes eq { 0%, 100% { height: 4px; } 50% { height: 20px; } }
       .eq-bar { fill: #ff003c; animation: eq 0.8s infinite ease-in-out; }
 
-      /* BLINKING STATUS */
-      @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-      .status-dot { animation: blink 2s infinite; }
-
+      /* 7. SCANLINES & VIGNETTE */
+      .scanlines { fill: url(#scan-pattern); opacity: 0.15; pointer-events: none; }
+      .vignette { fill: url(#vig-grad); opacity: 0.6; pointer-events: none; }
+      
     </style>
     
+    <pattern id="hex-grid" width="40" height="34.6" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 40 10 L 40 30 L 20 40 L 0 30 L 0 10 Z" fill="none" stroke="#1a1a2e" stroke-width="1" transform="scale(0.5)"/>
+    </pattern>
+    
+    <pattern id="scan-pattern" width="100" height="4" patternUnits="userSpaceOnUse">
+      <rect width="100" height="2" fill="#000" opacity="0.5"/>
+    </pattern>
+
     <linearGradient id="grad-card" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#111" />
-      <stop offset="100%" style="stop-color:#050510" />
+      <stop offset="0%" style="stop-color:#0b0b10" />
+      <stop offset="100%" style="stop-color:#020205" />
     </linearGradient>
+    
+    <radialGradient id="vig-grad" cx="50%" cy="50%" r="70%">
+      <stop offset="60%" stop-color="#000" stop-opacity="0" />
+      <stop offset="100%" stop-color="#000" stop-opacity="1" />
+    </radialGradient>
   </defs>
 
   <rect width="100%" height="100%" class="bg-dark" />
+  <rect width="100%" height="100%" fill="url(#hex-grid)" opacity="0.3" />
+  
   <g>
-    <rect x="100" y="0" height="80" class="rain" style="animation: rain 2s infinite linear;" />
-    <rect x="300" y="0" height="60" class="rain" style="animation: rain 3s infinite linear; animation-delay: 1s;" />
-    <rect x="600" y="0" height="90" class="rain" style="animation: rain 2.5s infinite linear; animation-delay: 0.5s;" />
-    <rect x="750" y="0" height="50" class="rain" style="animation: rain 1.8s infinite linear;" />
+    <rect x="50" y="-100" height="120" class="rain" style="animation: rain 3s infinite linear;" />
+    <rect x="250" y="-100" height="80" class="rain" style="animation: rain 4s infinite linear; animation-delay: 1s;" />
+    <rect x="450" y="-100" height="150" class="rain" style="animation: rain 2.5s infinite linear; animation-delay: 0.5s;" />
+    <rect x="700" y="-100" height="60" class="rain" style="animation: rain 3.5s infinite linear; animation-delay: 2s;" />
   </g>
 
   <path d="M 20 20 L 200 20 L 230 50 L 780 50 L 780 1080 L 20 1080 Z" fill="none" stroke="#333" stroke-width="2"/>
-  <path d="M 20 20 L 20 250" stroke="#ff003c" stroke-width="4" fill="none"/>
-  <path d="M 780 1080 L 600 1080" stroke="#00f3ff" stroke-width="4" fill="none"/>
-
-  <text x="750" y="100" class="text-jp">サイバーパンク</text> <text x="50" y="600" class="text-jp" style="font-size: 80px; opacity: 0.05;">ナイトシティ</text> <g transform="translate(50, 100)">
+  <path d="M 20 20 L 20 300" stroke="#ff003c" stroke-width="4" fill="none"/> <path d="M 780 1080 L 550 1080" stroke="#00f3ff" stroke-width="4" fill="none"/> <text x="740" y="100" class="text-jp">ネットランナー</text> <text x="40" y="650" class="text-jp" style="font-size: 80px; opacity: 0.05;">ナイトシティ</text> <g transform="translate(50, 100)">
+    <text x="-2" y="0" class="text-main glitch-red">AARONESTRADA</text>
+    <text x="2" y="0" class="text-main glitch-blue">AARONESTRADA</text>
     <text x="0" y="0" class="text-main neon-c">AARONESTRADA</text>
+    
     <text x="340" y="0" class="text-main neon-p">BONILLA777</text>
-    <text x="0" y="30" class="text-sub">NETRUNNER // OS: LINUX // <tspan class="neon-r">WANTED: ★★★☆☆</tspan></text>
+    <text x="0" y="30" class="text-sub">NETRUNNER // OS: LINUX // <tspan class="neon-r">STATUS: ROGUE</tspan></text>
   </g>
 
   <g transform="translate(50, 200)">
     
     <g transform="translate(600, 80)">
-       <circle cx="0" cy="0" r="60" stroke="#333" fill="none" stroke-width="1" />
-       <circle cx="0" cy="0" r="50" stroke="#00f3ff" fill="none" stroke-width="1" stroke-dasharray="10 5" style="animation: spin-3d 10s linear infinite reverse"/>
-       
+       <circle cx="0" cy="0" r="70" stroke="#1a1a2e" fill="none" stroke-width="1" />
+       <circle cx="0" cy="0" r="60" stroke="#00f3ff" fill="none" stroke-width="1" stroke-dasharray="2 10" style="animation: spin-3d 20s linear infinite"/>
        <g transform="rotate(15)">
-         <rect x="-25" y="-25" width="50" height="50" fill="none" stroke="#bd00ff" stroke-width="2">
-            <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="6s" repeatCount="indefinite" />
-         </rect>
+         <rect x="-30" y="-30" width="60" height="60" class="holo-cube" />
        </g>
-       <text x="-25" y="85" class="text-sub neon-c" style="font-size: 10px;">DATA_CORE</text>
+       <text x="-35" y="95" class="text-sub neon-c" style="font-size: 10px; letter-spacing: 2px;">SYS_CORE</text>
     </g>
 
     <g transform="translate(0, 20)">
         <text x="0" y="0" class="text-sub neon-p">>> SYSTEM_RESOURCES</text>
         
         <g transform="translate(0, 30)">
-            <text x="0" y="10" class="text-dim">CPU</text>
-            <rect x="40" y="0" width="300" height="12" fill="#111" stroke="#333"/>
-            <rect x="42" y="2" width="100" height="8" fill="#bd00ff" class="bar-fill">
-                <animate attributeName="width" values="100;120;90;130;100" dur="3s" repeatCount="indefinite"/>
+            <text x="0" y="10" class="text-dim">CPU_LOAD</text>
+            <rect x="70" y="0" width="300" height="12" fill="#0b0b10" stroke="#333"/>
+            <rect x="72" y="2" width="100" height="8" fill="#bd00ff">
+                <animate attributeName="width" values="100;140;90;130;100" dur="4s" repeatCount="indefinite"/>
             </rect>
+            <text x="380" y="10" class="text-dim">34%</text>
         </g>
         <g transform="translate(0, 60)">
-            <text x="0" y="10" class="text-dim">RAM</text>
-            <rect x="40" y="0" width="300" height="12" fill="#111" stroke="#333"/>
-            <rect x="42" y="2" width="180" height="8" fill="#00f3ff" class="bar-fill"/>
+            <text x="0" y="10" class="text-dim">RAM_USE</text>
+            <rect x="70" y="0" width="300" height="12" fill="#0b0b10" stroke="#333"/>
+            <rect x="72" y="2" width="180" height="8" fill="#00f3ff" />
+            <text x="380" y="10" class="text-dim">12GB</text>
         </g>
         
         <g transform="translate(0, 110)">
-            <text x="0" y="0" class="text-dim" fill="#fff">♫ NOW PLAYING: <tspan fill="#fcee0a">Cyberpsychosis - OST</tspan></text>
+            <text x="0" y="0" class="text-dim" fill="#fff">♫ AUDIO_FEED: <tspan fill="#fcee0a">Synthwave_Mix_Vol.4</tspan></text>
             <g transform="translate(250, -15)">
                 <rect x="0" y="0" width="4" height="10" class="eq-bar" style="animation-delay: 0.1s" />
                 <rect x="6" y="0" width="4" height="15" class="eq-bar" style="animation-delay: 0.2s" />
@@ -114,65 +151,80 @@
   </g>
 
   <g transform="translate(50, 420)">
-    <text x="0" y="0" class="text-main" font-size="24" fill="#fff">// ARSENAL (HOVER_ME)</text>
-    <line x1="280" y1="-8" x2="700" y2="-8" stroke="#333" stroke-width="2" />
+    <text x="0" y="0" class="text-main" font-size="24" fill="#fff">// ARSENAL_MK.V</text>
+    <line x1="250" y1="-8" x2="700" y2="-8" stroke="#333" stroke-width="2" />
 
     <g transform="translate(0, 40)" class="tech-card">
-        <rect width="220" height="100" fill="url(#grad-card)" stroke="#333" stroke-width="1" rx="5" />
-        <text x="20" y="40" class="text-sub neon-y card-text" font-size="20">JAVASCRIPT</text>
+        <rect class="card-bg" width="220" height="100" fill="url(#grad-card)" stroke="#333" stroke-width="1" />
+        <path class="target-corner" d="M -5 -5 L 10 -5 M -5 -5 L -5 10" /> <path class="target-corner" d="M 225 -5 L 210 -5 M 225 -5 L 225 10" /> <path class="target-corner" d="M -5 105 L 10 105 M -5 105 L -5 90" /> <path class="target-corner" d="M 225 105 L 210 105 M 225 105 L 225 90" /> <text x="20" y="40" class="text-sub neon-y card-text" font-size="20">JAVASCRIPT</text>
         <text x="20" y="65" class="text-dim">Logic / Scripting</text>
-        <rect x="20" y="80" width="180" height="4" fill="#333" />
-        <rect x="20" y="80" width="160" height="4" fill="#fcee0a" class="bar-fill"/>
+        <rect x="20" y="80" width="160" height="4" fill="#fcee0a"/>
     </g>
 
     <g transform="translate(240, 40)" class="tech-card">
-        <rect width="220" height="100" fill="url(#grad-card)" stroke="#333" stroke-width="1" rx="5" />
+        <rect class="card-bg" width="220" height="100" fill="url(#grad-card)" stroke="#333" stroke-width="1" />
+        <path class="target-corner" d="M -5 -5 L 10 -5 M -5 -5 L -5 10" /> 
+        <path class="target-corner" d="M 225 -5 L 210 -5 M 225 -5 L 225 10" /> 
+        <path class="target-corner" d="M -5 105 L 10 105 M -5 105 L -5 90" /> 
+        <path class="target-corner" d="M 225 105 L 210 105 M 225 105 L 225 90" /> 
+
         <text x="20" y="40" class="text-sub neon-c card-text" font-size="20">REACT.JS</text>
         <text x="20" y="65" class="text-dim">UI Library</text>
-        <rect x="20" y="80" width="180" height="4" fill="#333" />
-        <rect x="20" y="80" width="170" height="4" fill="#00f3ff" class="bar-fill"/>
+        <rect x="20" y="80" width="170" height="4" fill="#00f3ff"/>
     </g>
 
     <g transform="translate(480, 40)" class="tech-card">
-        <rect width="220" height="100" fill="url(#grad-card)" stroke="#333" stroke-width="1" rx="5" />
+        <rect class="card-bg" width="220" height="100" fill="url(#grad-card)" stroke="#333" stroke-width="1" />
+        <path class="target-corner" d="M -5 -5 L 10 -5 M -5 -5 L -5 10" /> 
+        <path class="target-corner" d="M 225 -5 L 210 -5 M 225 -5 L 225 10" /> 
+        <path class="target-corner" d="M -5 105 L 10 105 M -5 105 L -5 90" /> 
+        <path class="target-corner" d="M 225 105 L 210 105 M 225 105 L 225 90" /> 
+
         <text x="20" y="40" class="text-sub neon-p card-text" font-size="20">NODE.JS</text>
         <text x="20" y="65" class="text-dim">Server Side</text>
-        <rect x="20" y="80" width="180" height="4" fill="#333" />
-        <rect x="20" y="80" width="140" height="4" fill="#bd00ff" class="bar-fill"/>
+        <rect x="20" y="80" width="140" height="4" fill="#bd00ff"/>
     </g>
     
     <g transform="translate(0, 160)" class="tech-card">
-        <rect width="220" height="100" fill="url(#grad-card)" stroke="#333" stroke-width="1" rx="5" />
+        <rect class="card-bg" width="220" height="100" fill="url(#grad-card)" stroke="#333" stroke-width="1" />
+        <path class="target-corner" d="M -5 -5 L 10 -5 M -5 -5 L -5 10" /> 
+        <path class="target-corner" d="M 225 -5 L 210 -5 M 225 -5 L 225 10" /> 
+        <path class="target-corner" d="M -5 105 L 10 105 M -5 105 L -5 90" /> 
+        <path class="target-corner" d="M 225 105 L 210 105 M 225 105 L 225 90" /> 
+
         <text x="20" y="40" class="text-sub neon-r card-text" font-size="20">LINUX</text>
-        <text x="20" y="65" class="text-dim">System / Kernel</text>
-        <rect x="20" y="80" width="180" height="4" fill="#333" />
-        <rect x="20" y="80" width="175" height="4" fill="#ff003c" class="bar-fill"/>
+        <text x="20" y="65" class="text-dim">Kernel / OS</text>
+        <rect x="20" y="80" width="180" height="4" fill="#ff003c"/>
     </g>
   </g>
 
   <g transform="translate(50, 750)">
-    <rect x="0" y="0" width="700" height="250" fill="#050508" stroke="#333" stroke-width="1" />
-    <text x="20" y="30" class="text-sub neon-c">> TERMINAL_OUTPUT</text>
-    <line x1="20" y1="40" x2="680" y2="40" stroke="#333" />
-
-    <g transform="translate(20, 70)" font-family="'Courier New', monospace" font-size="14" fill="#c9d1d9">
-        <text x="0" y="0">> Initializing neural handshake...</text>
-        <text x="0" y="25">> [SUCCESS] Connection established.</text>
-        <text x="0" y="50" fill="#fcee0a">> WARNING: Unauthorized drone detected in Sector 7.</text>
-        <text x="0" y="75">> Deploying countermeasures... Done.</text>
-        <text x="0" y="100">> Scanning local repositories...</text>
-        <text x="0" y="125" fill="#bd00ff">> Found project: "Cyberpunk_Profile_v3"</text>
-        <text x="0" y="150" fill="#00ff41">> SYSTEM STATUS: 100% OPTIMAL</text>
+    <rect x="0" y="0" width="700" height="250" fill="#020205" stroke="#333" stroke-width="1" />
+    <rect x="0" y="0" width="700" height="30" fill="#111" />
+    <text x="10" y="20" class="text-sub neon-c">> /var/log/syslog</text>
+    
+    <g transform="translate(20, 60)">
+        <text x="0" y="0" class="text-log log-line" style="animation-delay: 0.5s">> Booting kernel... [OK]</text>
+        <text x="0" y="25" class="text-log log-line" style="animation-delay: 1.5s">> Loading user profile 'aaronestradabonilla777'...</text>
+        <text x="0" y="50" class="text-log log-line" style="animation-delay: 2.5s" fill="#fcee0a">> WARNING: Unsecured connection detected. Enabling VPN.</text>
+        <text x="0" y="75" class="text-log log-line" style="animation-delay: 3.5s">> Accessing Night City mainframe...</text>
+        <text x="0" y="100" class="text-log log-line" style="animation-delay: 4.5s" fill="#bd00ff">> Hex-Grid visualizer loaded.</text>
+        <text x="0" y="125" class="text-log log-line" style="animation-delay: 5.5s" fill="#00ff41">> SYSTEM ONLINE. Welcome back, Choom.</text>
         
-        <text x="0" y="190" fill="#ff003c">root@nightcity:~$ <tspan class="status-dot">_</tspan></text>
+        <text x="0" y="165" class="text-log log-line" style="animation-delay: 6.5s" fill="#ff003c">root@nightcity:~$ <tspan style="animation: blink 1s infinite">_</tspan></text>
     </g>
   </g>
+
+  <rect width="100%" height="100%" class="scanlines" />
+  <rect width="100%" height="100%" class="vignette" />
 
   <g transform="translate(50, 1040)">
      <text x="0" y="0" class="text-dim">© 2026 NIGHT CITY NETWORKS</text>
      <g transform="translate(550, 0)">
-        <circle cx="0" cy="-5" r="5" fill="#00ff41" class="status-dot" />
-        <text x="15" y="0" class="text-sub" fill="#00ff41">LIVE FEED ONLINE</text>
+        <circle cx="0" cy="-5" r="4" fill="#00ff41">
+            <animate attributeName="opacity" values="1;0;1" dur="2s" repeatCount="indefinite"/>
+        </circle>
+        <text x="15" y="0" class="text-sub" fill="#00ff41">SECURE CONNECTION</text>
      </g>
   </g>
 
