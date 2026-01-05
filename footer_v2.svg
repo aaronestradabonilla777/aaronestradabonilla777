@@ -1,0 +1,35 @@
+<svg width="900" height="200" viewBox="0 0 900 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .f-mono { font-family: 'Courier New', monospace; }
+      .blink { animation: b 1s infinite; }
+      @keyframes b { 50% { opacity: 0; } }
+    </style>
+  </defs>
+
+  <rect width="100%" height="100%" fill="#050505"/>
+  
+  <g transform="translate(20, 10)">
+    <path d="M 0 0 L 600 0 L 620 20 L 620 120 L 0 120 Z" fill="#0a0a0d" stroke="#333"/>
+    <text x="10" y="20" class="f-mono" fill="#555" font-size="12">> /var/log/syslog</text>
+    
+    <g transform="translate(15, 50)" class="f-mono" font-size="12">
+      <text x="0" y="0" fill="#fff">> Initializing Protocol v4.0...</text>
+      <text x="0" y="15" fill="#00f3ff">> [OK] GitHub API Connected.</text>
+      <text x="0" y="30" fill="#ff003c">> WARNING: Bambu Lab P1S [OFFLINE].</text>
+      <text x="0" y="45" fill="#fff">> Waiting for input... <tspan class="blink">_</tspan></text>
+    </g>
+  </g>
+
+  <g transform="translate(650, 10)">
+    <rect width="230" height="60" fill="#0a0a0d" stroke="#00f3ff"/>
+    <text x="20" y="25" class="f-mono" fill="#00f3ff" font-size="10">CURRENT TASK</text>
+    <text x="20" y="45" class="f-mono" fill="#fff" font-size="14">FULL STACK DEV</text>
+    
+    <rect y="70" width="230" height="50" fill="#111" stroke="#333"/>
+    <text x="115" y="100" text-anchor="middle" class="f-mono" fill="#ff003c" font-size="18" font-weight="bold">EXECUTE</text>
+  </g>
+
+  <text x="20" y="180" class="f-mono" fill="#555" font-size="10">© 2026 NIGHT CITY NETWORKS // AARON ESTRADA</text>
+  <text x="880" y="180" text-anchor="end" class="f-mono" fill="#0aff0a" font-size="10">SYSTEM: ONLINE ●</text>
+</svg>
