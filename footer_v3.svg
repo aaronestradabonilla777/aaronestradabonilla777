@@ -1,0 +1,251 @@
+<svg width="900" height="250" viewBox="0 0 900 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="footer-title footer-desc">
+  <title id="footer-title">HALUZ Footer - System Telemetry</title>
+  <desc id="footer-desc">Cyberpunk FUI footer showing network traffic, server status, terminal logs, and system metrics</desc>
+  
+  <defs>
+    <style>
+      /* === FONTS (Web-Safe) === */
+      .f-title { font-family: Arial, 'Helvetica Neue', sans-serif; font-weight: 900; letter-spacing: 1px; }
+      .f-mono { font-family: 'Courier New', Courier, monospace; font-weight: bold; }
+      .f-data { font-family: 'Courier New', Courier, monospace; font-size: 9px; }
+      .f-term { font-family: 'Courier New', Courier, monospace; font-size: 11px; }
+      
+      /* === COLORS === */
+      .c-cyan { fill: #00f3ff; } .c-red { fill: #ff003c; } .c-green { fill: #0aff0a; }
+      .c-white { fill: #fff; } .c-dim { fill: #778899; } .c-orange { fill: #ff9500; }
+      .c-yellow { fill: #ffff00; }
+      
+      /* === ANIMATIONS === */
+      @keyframes fadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }
+      @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+      @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+      @keyframes sparkline { 0% { stroke-dashoffset: 200; } 100% { stroke-dashoffset: 0; } }
+      @keyframes typewriter1 { 0%, 5% { opacity: 0; } 6%, 100% { opacity: 1; } }
+      @keyframes typewriter2 { 0%, 20% { opacity: 0; } 21%, 100% { opacity: 1; } }
+      @keyframes typewriter3 { 0%, 35% { opacity: 0; } 36%, 100% { opacity: 1; } }
+      @keyframes typewriter4 { 0%, 50% { opacity: 0; } 51%, 100% { opacity: 1; } }
+      @keyframes typewriter5 { 0%, 65% { opacity: 0; } 66%, 100% { opacity: 1; } }
+      @keyframes typewriter6 { 0%, 80% { opacity: 0; } 81%, 100% { opacity: 1; } }
+      @keyframes networkFlow { 0% { stroke-dashoffset: 150; } 100% { stroke-dashoffset: 0; } }
+      @keyframes serverBlink { 0%, 45%, 55%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+      
+      .boot-1 { animation: fadeIn 0.4s ease-out 0.2s forwards; opacity: 0; }
+      .boot-2 { animation: fadeIn 0.4s ease-out 0.4s forwards; opacity: 0; }
+      .boot-3 { animation: fadeIn 0.4s ease-out 0.6s forwards; opacity: 0; }
+      .boot-4 { animation: fadeIn 0.4s ease-out 0.8s forwards; opacity: 0; }
+      
+      .anim-blink { animation: blink 1s steps(1) infinite; }
+      .anim-pulse { animation: pulse 2s ease-in-out infinite; }
+      .anim-spark { animation: sparkline 3s linear infinite; stroke-dasharray: 200; }
+      .anim-network { animation: networkFlow 4s linear infinite; stroke-dasharray: 150; }
+      .server-blink { animation: serverBlink 3s ease-in-out infinite; }
+      
+      .type-1 { animation: typewriter1 6s steps(1) infinite; }
+      .type-2 { animation: typewriter2 6s steps(1) infinite; }
+      .type-3 { animation: typewriter3 6s steps(1) infinite; }
+      .type-4 { animation: typewriter4 6s steps(1) infinite; }
+      .type-5 { animation: typewriter5 6s steps(1) infinite; }
+      .type-6 { animation: typewriter6 6s steps(1) infinite; }
+    </style>
+    
+    <pattern id="footer-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#0a0a0a" stroke-width="0.5"/>
+    </pattern>
+    <filter id="footer-glow">
+      <feGaussianBlur stdDeviation="1" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- BACKGROUND -->
+  <rect width="100%" height="100%" fill="#050505"/>
+  <rect width="100%" height="100%" fill="url(#footer-grid)"/>
+  
+  <!-- TOP BORDER -->
+  <rect x="0" y="0" width="900" height="2" fill="#ff003c" opacity="0.5"/>
+  
+  <!-- CORNER DECORATIONS -->
+  <path d="M 0 250 L 25 250 L 25 245 L 5 245 L 5 225 L 0 225 Z" fill="#ff003c" class="boot-1"/>
+  <path d="M 900 250 L 875 250 L 875 245 L 895 245 L 895 225 L 900 225 Z" fill="#00f3ff" class="boot-1"/>
+  
+  <!-- === NETWORK MONITOR (SPARKLINES) === -->
+  <g transform="translate(15, 12)" class="boot-2">
+    <rect width="290" height="110" fill="#0a0a0d" stroke="#00f3ff" stroke-width="0.5"/>
+    <text x="10" y="18" class="f-title c-cyan" font-size="10">&gt;&gt; NETWORK_TRAFFIC</text>
+    
+    <!-- Inbound traffic -->
+    <g transform="translate(15, 30)">
+      <text x="0" y="0" class="f-data c-dim">INBOUND [Kb/s]</text>
+      <rect x="0" y="5" width="260" height="30" fill="#0a1a1a" stroke="#222"/>
+      
+      <polyline points="5,30 15,25 25,28 35,15 45,20 55,10 65,18 75,12 85,22 95,8 105,15 115,20 125,5 135,18 145,12 155,25 165,10 175,22 185,8 195,20 205,15 215,25 225,10 235,18 245,20 255,15" 
+                fill="none" stroke="#0aff0a" stroke-width="1.5" class="anim-spark" filter="url(#footer-glow)"/>
+    </g>
+    <text x="220" y="35" class="f-mono c-green" font-size="12">847.2</text>
+    
+    <!-- Outbound traffic -->
+    <g transform="translate(15, 70)">
+      <text x="0" y="0" class="f-data c-dim">OUTBOUND [Kb/s]</text>
+      <rect x="0" y="5" width="260" height="25" fill="#0a0a1a" stroke="#222"/>
+      
+      <polyline points="5,20 15,15 25,18 35,12 45,16 55,8 65,14 75,10 85,18 95,6 105,12 115,16 125,4 135,14 145,8 155,18 165,6 175,16 185,4 195,14 205,10 215,18 225,6 235,12 245,14 255,10" 
+                fill="none" stroke="#ff003c" stroke-width="1.5" class="anim-network" filter="url(#footer-glow)"/>
+    </g>
+    <text x="220" y="78" class="f-mono c-red" font-size="12">234.8</text>
+    
+    <!-- Status -->
+    <text x="10" y="105" class="f-data c-dim">SOCKET: ACTIVE | BUFFER: 42%</text>
+    <circle cx="270" cy="100" r="4" fill="#0aff0a" class="anim-pulse"/>
+  </g>
+  
+  <!-- === SERVER RACK STATUS === -->
+  <g transform="translate(320, 12)" class="boot-2">
+    <rect width="260" height="110" fill="#0a0a0d" stroke="#333" stroke-width="0.5"/>
+    <text x="10" y="18" class="f-title" fill="#fff" font-size="10">&gt;&gt; SERVER_RACK</text>
+    
+    <!-- Server indicators row 1 -->
+    <g transform="translate(15, 30)">
+      <!-- API -->
+      <rect width="70" height="30" fill="#0a1a0a" stroke="#0aff0a" stroke-width="0.5"/>
+      <circle cx="12" cy="15" r="4" fill="#0aff0a" class="server-blink"/>
+      <text x="22" y="12" class="f-data c-white">API</text>
+      <text x="22" y="23" class="f-data c-green">ONLINE</text>
+      
+      <!-- DB -->
+      <g transform="translate(78, 0)">
+        <rect width="70" height="30" fill="#0a1a0a" stroke="#0aff0a" stroke-width="0.5"/>
+        <circle cx="12" cy="15" r="4" fill="#0aff0a" class="server-blink"/>
+        <text x="22" y="12" class="f-data c-white">DB</text>
+        <text x="22" y="23" class="f-data c-green">ONLINE</text>
+      </g>
+      
+      <!-- AUTH -->
+      <g transform="translate(156, 0)">
+        <rect width="70" height="30" fill="#0a1a0a" stroke="#0aff0a" stroke-width="0.5"/>
+        <circle cx="12" cy="15" r="4" fill="#0aff0a" class="server-blink"/>
+        <text x="22" y="12" class="f-data c-white">AUTH</text>
+        <text x="22" y="23" class="f-data c-green">ONLINE</text>
+      </g>
+    </g>
+    
+    <!-- Server indicators row 2 -->
+    <g transform="translate(15, 68)">
+      <!-- CDN -->
+      <rect width="70" height="30" fill="#0a1a0a" stroke="#0aff0a" stroke-width="0.5"/>
+      <circle cx="12" cy="15" r="4" fill="#0aff0a" class="server-blink"/>
+      <text x="22" y="12" class="f-data c-white">CDN</text>
+      <text x="22" y="23" class="f-data c-green">ONLINE</text>
+      
+      <!-- BAMBU LAB - OFFLINE -->
+      <g transform="translate(78, 0)">
+        <rect width="70" height="30" fill="#1a0a0a" stroke="#ff003c" stroke-width="0.5"/>
+        <circle cx="12" cy="15" r="4" fill="#ff003c" class="anim-blink"/>
+        <text x="22" y="12" class="f-data c-white">BAMBU</text>
+        <text x="22" y="23" class="f-data c-red">OFFLINE</text>
+      </g>
+      
+      <!-- 3D PRINTER - IDLE -->
+      <g transform="translate(156, 0)">
+        <rect width="70" height="30" fill="#1a1a0a" stroke="#ff9500" stroke-width="0.5"/>
+        <circle cx="12" cy="15" r="4" fill="#ff9500" class="anim-pulse"/>
+        <text x="22" y="12" class="f-data c-white">P1S</text>
+        <text x="22" y="23" class="f-data c-orange">IDLE</text>
+      </g>
+    </g>
+    
+    <text x="10" y="106" class="f-data c-dim">NODES: 6 | HEALTHY: 4 | WARN: 1 | ERR: 1</text>
+  </g>
+  
+  <!-- === TERMINAL WITH TYPEWRITER === -->
+  <g transform="translate(595, 12)" class="boot-3">
+    <path d="M 0 0 L 290 0 L 290 110 L 10 110 L 0 100 Z" fill="#0a0a0d" stroke="#333" stroke-width="0.5"/>
+    <rect x="3" y="3" width="80" height="3" fill="#00f3ff"/>
+    <text x="12" y="18" class="f-data c-cyan">/var/log/haluz.log</text>
+    
+    <!-- Terminal lines with typewriter effect -->
+    <g transform="translate(12, 32)" class="f-term">
+      <text x="0" y="0" fill="#fff" class="type-1">&gt; Initializing HALUZ_PROTOCOL v5.0...</text>
+      <text x="0" y="14" fill="#0aff0a" class="type-2">&gt; [OK] GitHub API Connected [23ms]</text>
+      <text x="0" y="28" fill="#0aff0a" class="type-3">&gt; [OK] Neural Stack Loaded [128MB]</text>
+      <text x="0" y="42" fill="#ff9500" class="type-4">&gt; [WARN] Bambu Lab P1S [OFFLINE]</text>
+      <text x="0" y="56" fill="#0aff0a" class="type-5">&gt; [OK] Skills Matrix Synced</text>
+      <text x="0" y="70" fill="#fff" class="type-6">&gt; Ready for input... <tspan class="anim-blink">_</tspan></text>
+    </g>
+  </g>
+  
+  <!-- === BOTTOM STATUS BAR === -->
+  <g transform="translate(15, 132)" class="boot-4">
+    <rect width="870" height="45" fill="#0a0a0a" stroke="#222"/>
+    
+    <!-- Left section - Current Task -->
+    <g transform="translate(10, 8)">
+      <rect width="200" height="30" fill="#0a0a0d" stroke="#00f3ff" stroke-width="0.5"/>
+      <text x="10" y="12" class="f-data c-cyan">CURRENT_TASK</text>
+      <text x="10" y="25" class="f-mono c-white" font-size="12">FULL STACK DEV</text>
+    </g>
+    
+    <!-- Center section - Session info -->
+    <g transform="translate(225, 8)">
+      <rect width="280" height="30" fill="#0a0a0d" stroke="#333" stroke-width="0.5"/>
+      <text x="10" y="12" class="f-data c-dim">SESSION: #4A7F2B3C</text>
+      <text x="10" y="25" class="f-data c-dim">PROC: 847 | MEM: 64% | CPU: 23% | TEMP: 42C</text>
+    </g>
+    
+    <!-- Right section - Execute button -->
+    <g transform="translate(520, 8)">
+      <rect width="120" height="30" fill="#1a0505" stroke="#ff003c" stroke-width="1"/>
+      <text x="60" y="20" text-anchor="middle" class="f-title c-red" font-size="14">EXECUTE</text>
+    </g>
+    
+    <!-- System time -->
+    <g transform="translate(655, 8)">
+      <rect width="115" height="30" fill="#0a0a0d" stroke="#333" stroke-width="0.5"/>
+      <text x="10" y="12" class="f-data c-dim">SYS_TIME</text>
+      <text x="10" y="25" class="f-mono c-cyan" font-size="11">06:11:38 CST</text>
+    </g>
+    
+    <!-- Status LED -->
+    <g transform="translate(785, 8)">
+      <rect width="75" height="30" fill="#0a1a0a" stroke="#0aff0a" stroke-width="0.5"/>
+      <circle cx="15" cy="15" r="5" fill="#0aff0a" class="anim-pulse"/>
+      <text x="28" y="19" class="f-mono c-green" font-size="10">ONLINE</text>
+    </g>
+  </g>
+  
+  <!-- === FOOTER INFO === -->
+  <g transform="translate(0, 190)" class="boot-4">
+    <!-- Data stream decoration -->
+    <g transform="translate(15, 5)">
+      <text class="f-mono c-dim" font-size="8">
+        0xF3A7 &gt;&gt; [PACKET:OK] [CHECKSUM:VALID] [ENCRYPT:AES256] [COMPRESS:GZIP] [PROTOCOL:HTTPS/2] [CERT:VALID] [HANDSHAKE:OK]
+      </text>
+    </g>
+    
+    <!-- Bottom line with info -->
+    <g transform="translate(15, 25)">
+      <line x1="0" y1="0" x2="870" y2="0" stroke="#222" stroke-width="0.5"/>
+      
+      <!-- Copyright -->
+      <text x="5" y="20" class="f-mono c-dim" font-size="10">2026 NIGHT CITY NETWORKS // HALUZ PROTOCOL</text>
+      
+      <!-- GitHub -->
+      <text x="350" y="20" class="f-data c-cyan">github.com/aaronestradabonilla777</text>
+      
+      <!-- Build info -->
+      <text x="550" y="20" class="f-data c-dim">BUILD: 2026.01.05 | REV: a7f3c2b</text>
+      
+      <!-- System Online indicator -->
+      <g transform="translate(760, 5)">
+        <text x="0" y="15" class="f-mono c-green" font-size="10">SYSTEM: ONLINE</text>
+        <circle cx="95" cy="11" r="4" fill="#0aff0a" class="anim-pulse"/>
+      </g>
+    </g>
+    
+    <!-- Decorative corner elements -->
+    <rect x="15" y="48" width="50" height="2" fill="#ff003c" opacity="0.5"/>
+    <rect x="835" y="48" width="50" height="2" fill="#00f3ff" opacity="0.5"/>
+  </g>
+  
+  <!-- Version Tag -->
+  <text x="885" y="245" text-anchor="end" class="f-data c-dim">HALUZ_FOOTER_v3.1</text>
+</svg>

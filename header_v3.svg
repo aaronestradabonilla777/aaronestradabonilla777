@@ -1,0 +1,346 @@
+<svg width="900" height="280" viewBox="0 0 900 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="header-title header-desc">
+  <title id="header-title">HALUZ - GitHub Profile Header</title>
+  <desc id="header-desc">Cyberpunk FUI dashboard with anime hologram - fully animated</desc>
+  
+  <defs>
+    <style>
+      /* === FONTS === */
+      .f-title { font-family: Arial, 'Helvetica Neue', sans-serif; font-weight: 900; letter-spacing: 2px; }
+      .f-mono { font-family: 'Courier New', Courier, monospace; font-weight: bold; }
+      .f-data { font-family: 'Courier New', Courier, monospace; font-size: 10px; }
+      
+      /* === COLORS === */
+      .c-purple { fill: #bf00ff; } .c-cyan { fill: #00f3ff; } .c-red { fill: #ff003c; } 
+      .c-green { fill: #0aff0a; } .c-white { fill: #fff; } .c-dim { fill: #778899; } 
+      .c-orange { fill: #ff9500; }
+      
+      /* === ANIMATIONS === */
+      @keyframes haluzGlow { 
+        0%, 100% { fill: #bf00ff; filter: drop-shadow(0 0 8px #bf00ff); }
+        25% { fill: #d44fff; filter: drop-shadow(0 0 15px #bf00ff); }
+        50% { fill: #9900cc; filter: drop-shadow(0 0 5px #bf00ff); }
+        75% { fill: #e066ff; filter: drop-shadow(0 0 12px #bf00ff); }
+      }
+      @keyframes glitchShift {
+        0%, 100% { opacity: 1; }
+        10% { opacity: 0.8; }
+        15% { opacity: 1; }
+        45% { opacity: 0.9; }
+        50% { opacity: 0.6; }
+        55% { opacity: 1; }
+        85% { opacity: 0.7; }
+        90% { opacity: 1; }
+      }
+      @keyframes borderPulse { 0%, 100% { stroke-opacity: 1; } 50% { stroke-opacity: 0.5; } }
+      @keyframes dataScan { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+      @keyframes numberFlux { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
+      @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+      @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+      @keyframes fadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }
+      @keyframes holoBreath { 0%, 100% { opacity: 0.85; } 50% { opacity: 1; } }
+      @keyframes holoFlicker { 
+        0%, 100% { opacity: 0.9; } 
+        10% { opacity: 0.75; }
+        20% { opacity: 0.95; }
+        50% { opacity: 0.8; }
+        70% { opacity: 1; }
+        85% { opacity: 0.7; }
+      }
+      @keyframes hairFlow { 0%, 100% { opacity: 0.9; } 50% { opacity: 1; } }
+      @keyframes eyeShine { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
+      @keyframes cornerFlash { 0%, 90%, 100% { opacity: 1; } 95% { opacity: 0.4; } }
+      @keyframes textFlicker { 
+        0%, 100% { opacity: 1; } 
+        2% { opacity: 0.8; }
+        4% { opacity: 1; }
+        92% { opacity: 1; }
+        94% { opacity: 0.6; }
+        96% { opacity: 1; }
+      }
+      @keyframes boxGlow {
+        0%, 100% { stroke: #00f3ff; stroke-opacity: 0.6; }
+        50% { stroke: #00f3ff; stroke-opacity: 1; }
+      }
+      @keyframes barPulse {
+        0%, 100% { opacity: 0.9; }
+        50% { opacity: 1; }
+      }
+      @keyframes scanLine {
+        0% { opacity: 0.3; }
+        50% { opacity: 0.6; }
+        100% { opacity: 0.3; }
+      }
+      
+      .haluz-glow { animation: haluzGlow 3s ease-in-out infinite; }
+      .glitch-shift { animation: glitchShift 4s ease-in-out infinite; }
+      .border-pulse { animation: borderPulse 2s ease-in-out infinite; }
+      .data-scan { animation: dataScan 1.5s ease-in-out infinite; }
+      .number-flux { animation: numberFlux 2s ease-in-out infinite; }
+      .anim-blink { animation: blink 1.5s infinite; }
+      .anim-pulse { animation: pulse 2s infinite; }
+      .boot-1 { animation: fadeIn 0.5s ease-out 0.1s forwards; opacity: 0; }
+      .boot-2 { animation: fadeIn 0.5s ease-out 0.3s forwards; opacity: 0; }
+      .boot-3 { animation: fadeIn 0.5s ease-out 0.5s forwards; opacity: 0; }
+      .boot-4 { animation: fadeIn 0.5s ease-out 0.7s forwards; opacity: 0; }
+      .boot-5 { animation: fadeIn 0.5s ease-out 0.9s forwards; opacity: 0; }
+      .holo-breath { animation: holoBreath 3s ease-in-out infinite; }
+      .holo-flicker { animation: holoFlicker 4s ease-in-out infinite; }
+      .hair-flow { animation: hairFlow 2s ease-in-out infinite; }
+      .eye-shine { animation: eyeShine 2s ease-in-out infinite; }
+      .corner-flash { animation: cornerFlash 5s ease-in-out infinite; }
+      .text-flicker { animation: textFlicker 8s ease-in-out infinite; }
+      .box-glow { animation: boxGlow 3s ease-in-out infinite; }
+      .bar-pulse { animation: barPulse 1.5s ease-in-out infinite; }
+      .scan-line { animation: scanLine 2s linear infinite; }
+    </style>
+    
+    <pattern id="header-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#0a0a0a" stroke-width="1"/>
+    </pattern>
+    <pattern id="header-scanlines" width="4" height="4" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="4" y2="0" stroke="#00f3ff" stroke-width="0.5" opacity="0.1"/>
+    </pattern>
+    <pattern id="holo-lines" width="100%" height="3" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="1.5" x2="200" y2="1.5" stroke="#00f3ff" stroke-width="0.5" opacity="0.15"/>
+    </pattern>
+    <linearGradient id="header-threatGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0aff0a"/>
+      <stop offset="25%" stop-color="#7fff00"/>
+      <stop offset="50%" stop-color="#ff9500"/>
+      <stop offset="75%" stop-color="#ff5500"/>
+      <stop offset="100%" stop-color="#ff003c"/>
+    </linearGradient>
+    <linearGradient id="holo-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#00f3ff" stop-opacity="0.1"/>
+      <stop offset="50%" stop-color="#00f3ff" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#00f3ff" stop-opacity="0.1"/>
+    </linearGradient>
+    <linearGradient id="hair-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#00e5ee"/>
+      <stop offset="100%" stop-color="#00a5b5"/>
+    </linearGradient>
+    <linearGradient id="purple-grad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#9900cc"/>
+      <stop offset="50%" stop-color="#bf00ff"/>
+      <stop offset="100%" stop-color="#d44fff"/>
+    </linearGradient>
+    <filter id="purple-glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="cyan-glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="holo-glow">
+      <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- BACKGROUND -->
+  <rect width="100%" height="100%" fill="#050505"/>
+  <rect width="100%" height="100%" fill="url(#header-grid)"/>
+  <rect width="100%" height="100%" fill="url(#header-scanlines)" class="anim-pulse"/>
+  
+  <!-- Animated scan line across screen -->
+  <rect x="0" y="50" width="900" height="2" fill="#00f3ff" opacity="0.1" class="scan-line"/>
+  <rect x="0" y="150" width="900" height="1" fill="#bf00ff" opacity="0.08" class="scan-line"/>
+  
+  <!-- CORNER DECORATIONS (Animated) -->
+  <path d="M 0 0 L 30 0 L 30 5 L 5 5 L 5 30 L 0 30 Z" fill="#00f3ff" class="boot-1 corner-flash"/>
+  <path d="M 900 0 L 870 0 L 870 5 L 895 5 L 895 30 L 900 30 Z" fill="#00f3ff" class="boot-1 corner-flash"/>
+  <path d="M 0 280 L 30 280 L 30 275 L 5 275 L 5 250 L 0 250 Z" fill="#ff003c" class="boot-1 corner-flash"/>
+  <path d="M 900 280 L 870 280 L 870 275 L 895 275 L 895 250 L 900 250 Z" fill="#ff003c" class="boot-1 corner-flash"/>
+  
+  <!-- === ANIME HOLOGRAM === -->
+  <g transform="translate(10, 10)" class="boot-2">
+    <rect x="0" y="0" width="120" height="200" fill="url(#holo-grad)" stroke="#00f3ff" stroke-width="0.5" class="border-pulse"/>
+    <rect x="0" y="0" width="120" height="200" fill="url(#holo-lines)" class="holo-flicker"/>
+    
+    <ellipse cx="60" cy="195" rx="45" ry="4" fill="#00f3ff" opacity="0.4" class="anim-pulse"/>
+    
+    <g transform="translate(60, 95)" class="holo-breath" filter="url(#holo-glow)">
+      <!-- Twin-tails -->
+      <path d="M -22 -15 Q -35 10 -40 50 Q -42 90 -35 130 Q -30 150 -28 170" 
+            stroke="url(#hair-grad)" stroke-width="8" fill="none" opacity="0.8" class="hair-flow"/>
+      <path d="M -20 -12 Q -32 15 -36 55 Q -38 95 -32 135 Q -28 155 -26 175" 
+            stroke="#00d4e4" stroke-width="5" fill="none" opacity="0.6" class="hair-flow"/>
+      <path d="M 22 -15 Q 35 10 40 50 Q 42 90 35 130 Q 30 150 28 170" 
+            stroke="url(#hair-grad)" stroke-width="8" fill="none" opacity="0.8" class="hair-flow"/>
+      <path d="M 20 -12 Q 32 15 36 55 Q 38 95 32 135 Q 28 155 26 175" 
+            stroke="#00d4e4" stroke-width="5" fill="none" opacity="0.6" class="hair-flow"/>
+      
+      <rect x="-26" y="-18" width="8" height="6" fill="#00f3ff" rx="1" class="anim-pulse"/>
+      <rect x="18" y="-18" width="8" height="6" fill="#00f3ff" rx="1" class="anim-pulse"/>
+      
+      <path d="M -25 -35 Q -30 -50 -15 -55 Q 0 -58 15 -55 Q 30 -50 25 -35" 
+            fill="url(#hair-grad)" stroke="#00d4e4" stroke-width="0.5" opacity="0.9"/>
+      <path d="M -18 -35 L -15 -20 L -8 -28 L 0 -18 L 8 -28 L 15 -20 L 18 -35" 
+            fill="url(#hair-grad)" stroke="#00d4e4" stroke-width="0.3" opacity="0.85"/>
+      
+      <ellipse cx="0" cy="-20" rx="18" ry="20" fill="#0a1520" stroke="#00f3ff" stroke-width="0.6" opacity="0.9"/>
+      
+      <!-- Eyes (animated shine) -->
+      <ellipse cx="-7" cy="-22" rx="5" ry="6" fill="#051015" stroke="#00f3ff" stroke-width="0.4"/>
+      <ellipse cx="-7" cy="-21" rx="3" ry="4" fill="#00d4e4" opacity="0.7"/>
+      <circle cx="-8" cy="-23" r="1.5" fill="#fff" opacity="0.8" class="eye-shine"/>
+      <circle cx="-6" cy="-20" r="0.8" fill="#fff" opacity="0.5"/>
+      
+      <ellipse cx="7" cy="-22" rx="5" ry="6" fill="#051015" stroke="#00f3ff" stroke-width="0.4"/>
+      <ellipse cx="7" cy="-21" rx="3" ry="4" fill="#00d4e4" opacity="0.7"/>
+      <circle cx="6" cy="-23" r="1.5" fill="#fff" opacity="0.8" class="eye-shine"/>
+      <circle cx="8" cy="-20" r="0.8" fill="#fff" opacity="0.5"/>
+      
+      <path d="M 0 -15 L 0 -10" stroke="#00f3ff" stroke-width="0.3" opacity="0.4"/>
+      <path d="M -4 -6 Q 0 -4 4 -6" stroke="#00d4e4" stroke-width="0.6" fill="none" opacity="0.6"/>
+      
+      <path d="M -15 5 L -20 45 L -15 75 L 15 75 L 20 45 L 15 5 Q 0 10 -15 5" 
+            fill="#0a1520" stroke="#00f3ff" stroke-width="0.5" opacity="0.8"/>
+      <path d="M -10 5 Q 0 12 10 5" stroke="#00f3ff" stroke-width="0.8" fill="none"/>
+      <circle cx="0" cy="10" r="3" fill="#00f3ff" opacity="0.5" class="anim-pulse"/>
+      <line x1="0" y1="15" x2="0" y2="70" stroke="#00f3ff" stroke-width="0.3" opacity="0.4"/>
+      <rect x="-22" y="10" width="6" height="12" fill="#00f3ff" opacity="0.3" rx="1" class="data-scan"/>
+      <rect x="16" y="10" width="6" height="12" fill="#00f3ff" opacity="0.3" rx="1" class="data-scan"/>
+    </g>
+    
+    <line x1="5" y1="50" x2="115" y2="50" stroke="#00f3ff" stroke-width="0.5" opacity="0.15" class="scan-line"/>
+    <line x1="5" y1="100" x2="115" y2="100" stroke="#00f3ff" stroke-width="0.5" opacity="0.12" class="scan-line"/>
+    <line x1="5" y1="150" x2="115" y2="150" stroke="#00f3ff" stroke-width="0.5" opacity="0.15" class="scan-line"/>
+    
+    <rect x="0" y="200" width="120" height="18" fill="#0a0a0d" stroke="#00f3ff" stroke-width="0.5" class="border-pulse"/>
+    <circle cx="10" cy="209" r="3" fill="#0aff0a" class="anim-blink"/>
+    <text x="18" y="212" fill="#00f3ff" font-family="Courier New" font-size="9" font-weight="bold" class="text-flicker">MIKU_AI v3.9</text>
+  </g>
+  
+  <!-- === IDENTITY PANEL (HALUZ PURPLE + ANIMATED) === -->
+  <g transform="translate(145, 15)" class="boot-2">
+    <path d="M 0 0 L 280 0 L 300 20 L 300 115 L 20 115 L 0 95 Z" fill="#0a0a0d" stroke="#bf00ff" stroke-width="1.5" class="border-pulse"/>
+    
+    <!-- HALUZ - PURPLE WITH GLOW ANIMATION -->
+    <text x="25" y="48" class="f-title haluz-glow" font-size="42" filter="url(#purple-glow)">HALUZ</text>
+    <!-- Glitch layers -->
+    <text x="23" y="48" class="f-title glitch-shift" font-size="42" fill="#00f3ff" opacity="0.2">HALUZ</text>
+    <text x="27" y="48" class="f-title glitch-shift" font-size="42" fill="#ff003c" opacity="0.15">HALUZ</text>
+    
+    <text x="25" y="68" class="f-mono c-white text-flicker" font-size="11">ID: aaronestradabonilla777</text>
+    
+    <g transform="translate(25, 78)">
+      <rect width="125" height="17" fill="#1a0a0a" stroke="#ff003c" stroke-width="0.5" class="border-pulse"/>
+      <text x="62" y="12" text-anchor="middle" class="f-title c-red text-flicker" font-size="9">NETRUNNER // LVL.50</text>
+    </g>
+    
+    <g transform="translate(160, 78)">
+      <rect width="95" height="17" fill="#0a1a0a" stroke="#0aff0a" stroke-width="0.5" class="border-pulse"/>
+      <text x="47" y="12" text-anchor="middle" class="f-data c-green data-scan">MEXICO</text>
+    </g>
+    
+    <text x="25" y="108" class="f-data c-dim text-flicker">SECTOR: NIGHT_CITY_MX</text>
+  </g>
+  
+  <!-- === QR + UPTIME ROW (ALL ANIMATED) === -->
+  <g transform="translate(145, 140)" class="boot-3">
+    <!-- QR -->
+    <rect width="75" height="65" fill="#0a0a0d" stroke="#00f3ff" stroke-width="0.5" class="box-glow"/>
+    <text x="37" y="12" text-anchor="middle" class="f-data c-cyan data-scan">VERIFIED</text>
+    <g transform="translate(18, 16)" class="data-scan">
+      <rect x="0" y="0" width="6" height="6" fill="#00f3ff"/>
+      <rect x="8" y="0" width="6" height="6" fill="#00f3ff"/>
+      <rect x="24" y="0" width="6" height="6" fill="#00f3ff"/>
+      <rect x="0" y="8" width="6" height="6" fill="#00f3ff"/>
+      <rect x="16" y="8" width="6" height="6" fill="#00f3ff"/>
+      <rect x="24" y="8" width="6" height="6" fill="#00f3ff"/>
+      <rect x="8" y="16" width="6" height="6" fill="#00f3ff"/>
+      <rect x="16" y="16" width="6" height="6" fill="#00f3ff"/>
+      <rect x="0" y="24" width="6" height="6" fill="#00f3ff"/>
+      <rect x="8" y="24" width="6" height="6" fill="#00f3ff"/>
+      <rect x="24" y="24" width="6" height="6" fill="#00f3ff"/>
+    </g>
+    <text x="37" y="58" text-anchor="middle" class="f-data c-dim text-flicker">ID:104384350</text>
+    
+    <!-- Uptime (numbers animated) -->
+    <g transform="translate(85, 0)">
+      <rect width="165" height="65" fill="#0a0a0d" stroke="#333" stroke-width="1" class="border-pulse"/>
+      <text x="82" y="14" text-anchor="middle" class="f-data c-dim data-scan">SYSTEM UPTIME</text>
+      <g transform="translate(8, 22)">
+        <rect width="34" height="28" fill="#0a1a1a" stroke="#00f3ff" stroke-width="0.5" class="box-glow"/>
+        <text x="17" y="20" text-anchor="middle" class="f-mono c-cyan number-flux" font-size="14">2Y</text>
+        <rect x="40" width="42" height="28" fill="#0a1a1a" stroke="#00f3ff" stroke-width="0.5" class="box-glow"/>
+        <text x="61" y="20" text-anchor="middle" class="f-mono c-cyan number-flux" font-size="14">254D</text>
+        <rect x="88" width="34" height="28" fill="#0a1a1a" stroke="#00f3ff" stroke-width="0.5" class="box-glow"/>
+        <text x="105" y="20" text-anchor="middle" class="f-mono c-cyan number-flux" font-size="14">11H</text>
+        <rect x="128" width="28" height="28" fill="#0a1a1a" stroke="#ff9500" stroke-width="0.5" class="box-glow"/>
+        <text x="142" y="20" text-anchor="middle" class="f-mono c-orange anim-blink" font-size="14">32</text>
+      </g>
+    </g>
+    
+    <!-- Threat (bar animated) -->
+    <g transform="translate(260, 0)">
+      <rect width="155" height="65" fill="#0a0a0d" stroke="#ff003c" stroke-width="1" class="border-pulse"/>
+      <text x="77" y="14" text-anchor="middle" class="f-title c-red text-flicker" font-size="9">THREAT ASSESSMENT</text>
+      <g transform="translate(8, 20)">
+        <rect width="139" height="16" fill="#111" stroke="#333"/>
+        <rect width="132" height="14" x="1" y="1" fill="url(#header-threatGrad)" class="bar-pulse"/>
+      </g>
+      <text x="77" y="52" text-anchor="middle" class="f-title c-red anim-blink" font-size="12">LEVEL: EXTREME</text>
+    </g>
+  </g>
+  
+  <!-- === METRICS PANEL (FULLY ANIMATED) === -->
+  <g transform="translate(570, 15)" class="boot-4">
+    <path d="M 0 20 L 20 0 L 315 0 L 315 190 L 295 210 L 0 210 Z" fill="#0a0a0d" stroke="#bf00ff" stroke-width="1" class="border-pulse"/>
+    <text x="30" y="22" class="f-title c-purple text-flicker" font-size="12">&gt;&gt; NETWORK_METRICS</text>
+    
+    <g transform="translate(20, 38)">
+      <text x="0" y="0" class="f-data c-dim data-scan">PUBLIC_REPOS</text>
+      <rect x="0" y="5" width="130" height="45" fill="#0a1a1a" stroke="#00f3ff" stroke-width="0.5" class="box-glow"/>
+      <text x="65" y="38" text-anchor="middle" class="f-mono c-cyan number-flux" font-size="28">13</text>
+    </g>
+    
+    <g transform="translate(165, 38)">
+      <text x="0" y="0" class="f-data c-dim data-scan">FOLLOWERS</text>
+      <rect x="0" y="5" width="130" height="45" fill="#0a0a1a" stroke="#bf00ff" stroke-width="0.5" class="box-glow"/>
+      <text x="65" y="38" text-anchor="middle" class="f-mono c-purple number-flux" font-size="28">5</text>
+    </g>
+    
+    <g transform="translate(20, 100)">
+      <text x="0" y="0" class="f-data c-dim data-scan">FOLLOWING</text>
+      <rect x="0" y="5" width="130" height="45" fill="#0a0a1a" stroke="#bf00ff" stroke-width="0.5" class="box-glow"/>
+      <text x="65" y="38" text-anchor="middle" class="f-mono c-purple number-flux" font-size="28">9</text>
+    </g>
+    
+    <g transform="translate(165, 100)">
+      <text x="0" y="0" class="f-data c-dim data-scan">TOTAL_STARS</text>
+      <rect x="0" y="5" width="130" height="45" fill="#1a1a0a" stroke="#ff9500" stroke-width="0.5" class="box-glow"/>
+      <text x="65" y="38" text-anchor="middle" class="f-mono c-orange number-flux" font-size="28">0</text>
+    </g>
+    
+    <g transform="translate(20, 160)">
+      <circle cx="8" cy="5" r="4" fill="#0aff0a" class="anim-blink"/>
+      <text x="18" y="8" class="f-data c-green data-scan">API_CONNECTED</text>
+      <text x="140" y="8" class="f-data c-dim text-flicker">LATENCY: 23ms</text>
+    </g>
+    
+    <g transform="translate(20, 178)">
+      <rect width="275" height="26" fill="#1a0505" stroke="#ff003c" stroke-width="0.5" class="border-pulse"/>
+      <polygon points="12,13 18,5 24,13" fill="#ff003c" class="anim-pulse"/>
+      <text x="32" y="13" class="f-data c-red text-flicker">INTRUSION DETECTED</text>
+      <text x="32" y="22" class="f-data c-dim data-scan">ORIGIN: [CLASSIFIED]</text>
+      <text x="245" y="17" class="f-data c-red anim-blink">LIVE</text>
+    </g>
+  </g>
+  
+  <!-- === BOTTOM DATA STREAM (ANIMATED) === -->
+  <g transform="translate(15, 235)" class="boot-5">
+    <rect width="870" height="35" fill="#0a0a0a" stroke="#222" class="border-pulse"/>
+    <text x="10" y="14" class="f-mono c-dim text-flicker" font-size="9">
+      0x7F3A &gt;&gt; PACKET_STREAM: [AUTH_OK] [SYNC_OK] [BUFFER_OK] [HANDSHAKE_OK] [ENCRYPT_AES256] [PROTOCOL_V5] [STATUS:NOMINAL]
+    </text>
+    <text x="10" y="28" class="f-mono c-cyan data-scan" font-size="9">
+      SESSION: #4A7F2B3C | SOCKET: ACTIVE | BANDWIDTH: 847.2 Mb/s | PING: 12ms | UPLINK: STABLE
+    </text>
+  </g>
+  
+  <!-- Version Tag -->
+  <text x="885" y="270" text-anchor="end" class="f-data c-dim text-flicker">HALUZ_HEADER_v3.8</text>
+</svg>
