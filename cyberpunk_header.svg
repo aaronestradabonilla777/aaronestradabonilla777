@@ -51,7 +51,7 @@
   
   <path d="M 10 10 L 200 10 L 220 30 L 780 30 L 790 40 L 790 250 L 750 290 L 10 290 Z" fill="none" stroke="#333" stroke-width="2" />
   <path d="M 10 10 L 10 80" stroke="#00f3ff" stroke-width="4" /> <path d="M 10 10 L 80 10" stroke="#00f3ff" stroke-width="4" />
-  <path d="M 750 290 L 790 250" stroke="#fcee0a" stroke-width="4" /> <text x="50" y="100" class="text-main neon-cyan glitch-effect">AARON ESTRADA</text>
+  <path d="M 750 290 L 790 250" stroke="#fcee0a" stroke-width="4" /> <text x="50" y="100" class="text-main neon-cyan glitch-effect">HALUZ</text>
   <text x="50" y="140" class="text-sub">USER ID: 777 // SYSTEM: LINUX // CLASS: NETRUNNER</text>
 
   <rect x="50" y="160" width="100" height="2" fill="#ff003c" />
@@ -59,7 +59,7 @@
   <rect x="180" y="160" width="400" height="1" fill="#333" />
 
   <text x="50" y="200" class="text-stat">CPU: <tspan fill="#fff">34%</tspan></text>
-  <text x="200" y="200" class="text-stat">RAM: <tspan fill="#fff">12GB</tspan></text>
+  <text x="200" y="200" class="text-stat">RAM: <tspan fill="#fff">16GB</tspan></text>
   <text x="350" y="200" class="text-stat">NET: <tspan fill="#00ff00">SECURE</tspan></text>
   
   <rect x="650" y="80" width="100" height="30" stroke="#ff003c" fill="none" />
