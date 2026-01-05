@@ -375,10 +375,10 @@
       <text x="15" y="9" class="f-data c-white">TypeScript 36%</text>
       
       <rect x="0" y="16" width="10" height="10" fill="#0aff0a"/>
-      <text x="15" y="25" class="f-data c-white">JavaScript 23%</text>
+      <text x="15" y="25" class="f-data c-white">JavaScript 15%</text>
       
       <rect x="0" y="32" width="10" height="10" fill="#ff9500"/>
-      <text x="15" y="41" class="f-data c-white">Python 18%</text>
+      <text x="15" y="41" class="f-data c-white">Python 19%</text>
       
       <rect x="0" y="48" width="10" height="10" fill="#ff003c"/>
       <text x="15" y="57" class="f-data c-white">Java 14%</text>
