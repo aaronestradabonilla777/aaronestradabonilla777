@@ -1,12 +1,9 @@
 <div align="center">
 
-  <img src="./cyberpunk_header.svg" width="100%">
+  <img src="./cyberpunk_header.svg" width="100%" alt="Header">
 
-  <br><br>
+  <img src="./cyberpunk_body.svg" width="100%" alt="Body Stats">
 
-  <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
+  <img src="./cyberpunk_footer.svg" width="100%" alt="Footer">
 
-  <br><br>
-
-<br>
-<img src="./cyberpunk_footer.svg" width="100%">
+</div>
