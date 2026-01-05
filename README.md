@@ -1,11 +1,5 @@
 <div align="center">
-  <img src="./haluz_dashboard.svg" width="100%" alt="HALUZ Dashboard System">
-  
-  <br>
-
-  <samp>
-    SYSTEM STATUS: <span style="color: #00f3ff">ONLINE</span> // 
-    USER: <span style="color: #bd00ff">HALUZ</span> // 
-    SECURITY: <span style="color: #ff003c">MAXIMUM</span>
-  </samp>
+  <img src="./header_v2.svg" width="100%" style="display: block; margin-bottom: -5px;">
+  <img src="./core_v2.svg" width="100%" style="display: block; margin-bottom: -5px;">
+  <img src="./footer_v2.svg" width="100%" style="display: block;">
 </div>
