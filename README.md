@@ -4,7 +4,7 @@
     <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=35&duration=3000&pause=1000&color=00FFCC&center=true&vCenter=true&width=500&lines=SYSTEM+BOOT...;USER:+AARON_ESTRADA;STATUS:+ONLINE;ROLE:+FULL+STACK+CYBER-DEV" alt="Typing SVG" />
   </a>
 
-  <img src="https://i.pinimg.com/originals/1c/12/37/1c1237ebabce3087b2e13203c9ebc5fa.gif" width="100%" height="200" style="object-fit: cover; border-radius: 10px; border: 2px solid #00FFCC;" />
+  <img src="https://i.pinimg.com/originals/2b/56/63/2b5663673dfbf8481498b8941783307b.gif" width="100%" height="200" style="object-fit: cover; border-radius: 10px; border: 2px solid #00FFCC;" />
 
   <br><br>
 
@@ -33,7 +33,7 @@
 | 🤖 **PROTOCOL** | **STATUS** |
 | :--- | :--- |
 | 🔭 **Current Objective** | *Developing high-tech web solutions & 3D interactions* |
-| 🌱 **Learning Node** | `AI Integration`, ` |
+| 🌱 **Learning Node** | `AI Integration`, `Advanced Cyber-Security` |
 | ⚡ **Hardware** | `Mainframe Access`, `3D Print Modules`, `Laser Arrays` |
 | 💬 **Communication** | `Encrypted` |
 
@@ -63,16 +63,12 @@
 <h3 align="center" style="color: #00FFCC;">>> ANALYZING USER DATA <<</h3>
 
 <div align="center">
-  <br>
-  <a href="https://github.com/anuraghazra/github-readme-stats">
-    <img align="center" src="https://github-readme-stats.vercel.app/api?username=aaronestradabonilla777&show_icons=true&theme=radical&hide_border=true&bg_color=101010&title_color=00FFCC&icon_color=FF0055&text_color=FFFFFF" />
-  </a>
-  
-  <br><br>
-
-  <a href="https://github.com/anuraghazra/github-readme-stats">
-    <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=aaronestradabonilla777&layout=compact&theme=radical&hide_border=true&bg_color=101010&title_color=00FFCC&text_color=FFFFFF" />
-  </a>
+  <p align="center">
+    <img src="https://github-readme-stats.vercel.app/api?username=aaronestradabonilla777&show_icons=true&theme=radical&hide_border=true&bg_color=101010&title_color=00FFCC&icon_color=FF0055&text_color=FFFFFF" alt="Stats" />
+  </p>
+  <p align="center">
+    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=aaronestradabonilla777&layout=compact&theme=radical&hide_border=true&bg_color=101010&title_color=00FFCC&text_color=FFFFFF" alt="Langs" />
+  </p>
 </div>
 
 <br>
