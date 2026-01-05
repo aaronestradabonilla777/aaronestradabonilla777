@@ -101,7 +101,7 @@
 
     <g transform="translate(0, 70)">
       <text x="0" y="0" class="label text-dim">RAM_USAGE</text>
-      <text x="260" y="0" class="value neon-cyan">12GB</text>
+      <text x="260" y="0" class="value neon-cyan">64GB</text>
       <rect x="0" y="10" width="300" height="8" class="bar-container" />
       <rect x="1" y="11" width="200" height="6" fill="#00f3ff" class="loading" style="animation-duration: 2s;" />
     </g>
