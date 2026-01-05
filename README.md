@@ -1,38 +1,86 @@
 <div align="center">
 
-  <img src="https://readme-typing-svg.herokuapp.com?font=Rubik+Glitch&weight=400&size=50&pause=1000&color=FF0055&center=true&vCenter=true&random=false&width=700&lines=AARON_BONILLA;SYSTEM+BREACH+DETECTED;FULL+STACK+NETRUNNER" alt="Glitch Header" />
-  
-  <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
+  <a href="https://git.io/typing-svg">
+    <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=35&duration=3000&pause=1000&color=00FFCC&center=true&vCenter=true&width=500&lines=SYSTEM+BOOT...;USER:+AARON_ESTRADA_BONILLA_777;STATUS:+ONLINE;ROLE:+FULL+STACK+CYBER-DEV" alt="Typing SVG" />
+  </a>
 
-  <br>
-  <a href="#">
-    <img src="https://img.shields.io/badge/ID-AARONESTRADABONILLA777-000000?style=for-the-badge&logo=github&logoColor=FF0055&labelColor=0d1117" height="25">
+  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3Z5Z3Z5Z3Z5Z3Z5Z3Z5Z3Z5Z3Z5Z3Z5Z3Z5Z3Z5Z3Z5Z3Z5/HuDzCpCWjC2Wd9X9l7/giphy.gif" width="100%" height="200" style="object-fit: cover; border-radius: 10px; border: 2px solid #00FFCC;" />
+
+  <br><br>
+
+  <a href="https://github.com/aaronestradabonilla777">
+    <img src="https://img.shields.io/badge/GITHUB-Mainframe-000000?style=for-the-badge&logo=github&logoColor=00FFCC&labelColor=1a1a1a" />
   </a>
-  <a href="#">
-    <img src="https://img.shields.io/badge/LINK-ESTABLISHED-000000?style=for-the-badge&logo=torproject&logoColor=00ffff&labelColor=0d1117" height="25">
+  <a href="mailto:tuemail@ejemplo.com">
+    <img src="https://img.shields.io/badge/MAIL-Uplink-000000?style=for-the-badge&logo=gmail&logoColor=FF0055&labelColor=1a1a1a" />
   </a>
-    <a href="#">
-    <img src="https://img.shields.io/badge/CLEARANCE-LVL.01-000000?style=for-the-badge&labelColor=FF0055" height="25">
+  <a href="https://linkedin.com/in/tu-perfil">
+    <img src="https://img.shields.io/badge/LINKEDIN-Network-000000?style=for-the-badge&logo=linkedin&logoColor=00AAFF&labelColor=1a1a1a" />
   </a>
 
 </div>
 
-<h3>
-  <img src="https://media.giphy.com/media/LpwBqNBmg9kI/giphy.gif" width="25" height="25"> 
-  // INJECTING_PAYLOAD.js
-</h3>
+<br>
 
-```javascript
-class Netrunner {
-  constructor() {
-    this.user = "Aaron Bonilla";
-    this.location = "Neo-Mexico";
-    this.status = "Online / Compromised";
-    this.stack = ["JS", "React", "PHP", "Python", "Linux"];
-    this.fuel = "Synthetic Caffeine";
-  }
+<div align="center"> 
+  <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Laptop.png" alt="Laptop" width="40" height="40" />
+  <span style="font-family: 'Courier New'; font-size: 20px; font-weight: bold; color: #00FFCC;"> // SYSTEM INFORMATION // </span>
+  <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/High%20Voltage.png" alt="High Voltage" width="40" height="40" />
+</div>
 
-  executeTarget() {
-    return "Hacking the planet, one commit at a time.";
-  }
-}
+---
+
+<div align="center">
+  
+| <img src="https://raw.githubusercontent.com/Tm-V/Tm-V/main/Assets/code.gif" width="40"> **PROTOCOL** | **STATUS** |
+| :--- | :--- |
+| 🔭 **Current Objective** | *Developing high-tech web solutions & 3D interactions* |
+| 🌱 **Learning Node** | `AI Integration`, `Advanced Cyber-Security` |
+| ⚡ **Hardware** | `Mainframe Access`, `3D Print Modules`, `Laser Arrays` |
+| 💬 **Communication** | `Encrypted` |
+
+</div>
+
+<br>
+
+<h3 align="center" style="color: #FF0055;">>> ACCESSING TECH ARSENAL <<</h3>
+
+<div align="center">
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
+  <img src="https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white" />
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" />
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" />
+  <br>
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
+  <img src="https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white" />
+  <img src="https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white" />
+  <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" />
+  <br>
+  <img src="https://img.shields.io/badge/3D_Printing-00FFCC?style=for-the-badge&logo=bambulab&logoColor=black&labelColor=black" />
+  <img src="https://img.shields.io/badge/Laser_Cutting-FF0055?style=for-the-badge&logo=laser&logoColor=white&labelColor=black" />
+</div>
+
+<br>
+
+<h3 align="center" style="color: #00FFCC;">>> ANALYZING USER DATA <<</h3>
+
+<div align="center">
+  <br>
+  <img align="center" src="https://github-readme-stats.vercel.app/api?username=aaronestradabonilla777&show_icons=true&theme=radical&hide_border=true&bg_color=101010&title_color=00FFCC&icon_color=FF0055&text_color=FFFFFF" alt="Estadísticas de Aaron" />
+  
+  <br><br>
+
+  <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=aaronestradabonilla777&layout=compact&theme=radical&hide_border=true&bg_color=101010&title_color=00FFCC&text_color=FFFFFF" alt="Lenguajes de Aaron" />
+</div>
+
+<br>
+
+<div align="center">
+  <img src="https://github.com/aaronestradabonilla777/aaronestradabonilla777/blob/output/github-contribution-grid-snake.svg" alt="Snake Animation" width="100%"/>
+</div>
+
+<br>
+
+<div align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,2,3,4,5,10,25&height=100&section=footer&text=END%20OF%20LINE&fontColor=00FFCC&fontSize=20&fontAlign=50" width="100%" />
+</div>
