@@ -23,16 +23,6 @@
 
 <br>
 
-### ⚙️ HARDWARE_MANIFEST
-```yaml
-User: Aaron Estrada Bonilla
-Role: Full Stack Dev & Maker
-Rig:
-  - CPU: AMD Ryzen 7 7800X3D
-  - MOBO: ASUS ROG Strix B650-G
-  - OS: Windows 11 (Migrating to Linux...)
-Workstation:
-  - 3D Printer: Bambu Lab P1S
-  - Laser: Diode Engraver (MDF/Metal/Yeti)
+de Engraver (MDF/Metal/Yeti)
 ```
 <div align="center"> <img src="./footer.svg" width="100%" alt="End of Line Footer"> </div>
