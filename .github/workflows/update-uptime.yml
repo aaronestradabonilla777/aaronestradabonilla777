@@ -32,7 +32,7 @@ jobs:
           import requests
           import re
           import os
-          from datetime import datetime, timezone
+          from datetime import datetime, timezone, timedelta
           from collections import defaultdict
 
           USERNAME = os.environ.get('USERNAME', 'aaronestradabonilla777')
@@ -106,23 +106,57 @@ jobs:
 
           print(f"⏱️ Uptime: {years}Y {days}D {hours}H {minutes}M")
 
-          # === FETCH RECENT ACTIVITY FOR COMMIT HISTORY ===
+          # === FETCH COMMIT HISTORY FOR 2026 ===
+          print("📝 Fetching commit history...")
+          
+          # Get events for commit activity
           events_resp = requests.get(
               f'https://api.github.com/users/{USERNAME}/events?per_page=100',
               headers=headers
           )
           events = events_resp.json() if events_resp.status_code == 200 else []
 
-          # Count commits per day for last 52 weeks (simplified to last 30 days)
-          commit_counts = defaultdict(int)
+          # Count commits per week (last 25 weeks for heatmap)
+          commit_data = defaultdict(lambda: defaultdict(int))  # week -> day -> count
+          
           for event in events:
               if isinstance(event, dict) and event.get('type') == 'PushEvent':
-                  commits = event.get('payload', {}).get('commits', [])
-                  date = event.get('created_at', '')[:10]
-                  commit_counts[date] += len(commits)
+                  event_date_str = event.get('created_at', '')[:10]
+                  try:
+                      event_date = datetime.strptime(event_date_str, '%Y-%m-%d')
+                      week_num = (now.date() - event_date.date()).days // 7
+                      if week_num < 25:  # Last 25 weeks
+                          day_of_week = event_date.weekday()
+                          commits_in_push = len(event.get('payload', {}).get('commits', []))
+                          commit_data[week_num][day_of_week] += commits_in_push
+                  except:
+                      pass
 
-          total_commits = sum(commit_counts.values())
-          print(f"📝 Recent commits: {total_commits}")
+          total_commits = sum(sum(days.values()) for days in commit_data.values())
+          print(f"📊 Total recent commits: {total_commits}")
+
+          # Generate heatmap SVG
+          def get_color(count):
+              if count == 0:
+                  return '#0e4429'
+              elif count <= 2:
+                  return '#006d32'
+              elif count <= 5:
+                  return '#26a641'
+              else:
+                  return '#39d353'
+
+          heatmap_svg = []
+          # Generate 25 weeks x 7 days heatmap
+          for week in range(25):
+              x = 20 + (week * 10)
+              for day in range(7):
+                  y = 25 + (day * 10)
+                  count = commit_data.get(24 - week, {}).get(day, 0)
+                  color = get_color(count)
+                  heatmap_svg.append(f'      <rect x="{x}" y="{y}" width="8" height="8" fill="{color}" rx="1"/>')
+
+          heatmap_block = '\n'.join(heatmap_svg)
 
           # === UPDATE header_v3.svg ===
           print("📝 Updating header_v3.svg...")
@@ -150,48 +184,52 @@ jobs:
           with open('header_v3.svg', 'w', encoding='utf-8') as f:
               f.write(header_content)
 
-          # === UPDATE core_v3.svg WITH LANGUAGE DISTRIBUTION ===
+          # === UPDATE core_v3.svg WITH LANGUAGES AND COMMIT HISTORY ===
           print("📝 Updating core_v3.svg...")
           
           try:
               with open('core_v3.svg', 'r', encoding='utf-8') as f:
                   core_content = f.read()
 
-              # Language colors mapping
-              lang_colors = {
-                  'TypeScript': '#3178c6',
-                  'JavaScript': '#f7df1e',
-                  'Python': '#3572A5',
-                  'Java': '#b07219',
-                  'C++': '#f34b7d',
-                  'C#': '#178600',
-                  'HTML': '#e34c26',
-                  'CSS': '#563d7c',
-                  'Ruby': '#701516',
-                  'Go': '#00ADD8',
-                  'Rust': '#dea584',
-                  'PHP': '#4F5D95',
-                  'Swift': '#ffac45',
-                  'Kotlin': '#A97BFF',
-                  'Dart': '#00B4AB',
-                  'Shell': '#89e051',
-                  'Vue': '#41b883',
-                  'SCSS': '#c6538c',
-              }
-
-              # Update language percentages in core SVG if they exist
+              # Update language percentages
               for lang, pct in lang_percentages.items():
-                  # Try to update existing language entries
                   pattern = rf'({lang}\s*)\d+%'
                   core_content = re.sub(pattern, rf'\g<1>{pct}%', core_content)
+
+              # Update commit heatmap - replace the existing heatmap section
+              # Find and replace the heatmap rectangles
+              heatmap_pattern = r'(<g transform="translate\(20, 25\)">.*?)(<!-- More rows -->.*?</g>)'
+              
+              new_heatmap = f'''<g transform="translate(8, 25)">
+      <!-- Generated commit heatmap for 2026 -->
+{heatmap_block}
+    </g>
+    
+    <g transform="translate(100, 98)">'''
+
+              # Simple replacement of the heatmap area
+              # Find the section between "translate(20, 25)" and the legend
+              old_heatmap_start = core_content.find('<g transform="translate(20, 25)">')
+              old_heatmap_end = core_content.find('<g transform="translate(100, 98)">')
+              
+              if old_heatmap_start != -1 and old_heatmap_end != -1:
+                  core_content = (
+                      core_content[:old_heatmap_start] + 
+                      new_heatmap +
+                      core_content[old_heatmap_end + len('<g transform="translate(100, 98)">'):]
+                  )
+
+              # Update version to v3.2
+              core_content = re.sub(r'HALUZ_CORE_v[\d.]+', 'HALUZ_CORE_v3.2', core_content)
 
               with open('core_v3.svg', 'w', encoding='utf-8') as f:
                   f.write(core_content)
                   
-          except FileNotFoundError:
-              print("⚠️ core_v3.svg not found, skipping...")
+          except Exception as e:
+              print(f"⚠️ Error updating core_v3.svg: {e}")
 
           print("✅ All SVGs updated successfully!")
+          print(f"📊 Summary: {public_repos} repos, {followers} followers, {total_stars} stars, {total_commits} commits")
 
           PYTHON_SCRIPT
       
