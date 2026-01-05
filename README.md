@@ -9,16 +9,14 @@
   <br><br>
 
   <h3 style="color: #fcee0a; font-family: monospace;">>_ DETECTED SIGNATURES</h3>
-  <a href="https://github.com/anuraghazra/github-readme-stats">
-    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=aaronestradabonilla777&layout=compact&theme=radical&hide_border=true&bg_color=050505&title_color=00f3ff&text_color=c9d1d9&custom_title=CODE_STACK" />
-  </a>
+  
+  [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=aaronestradabonilla777&layout=compact&theme=radical&hide_border=true&bg_color=050505&title_color=00f3ff&text_color=c9d1d9&custom_title=CODE_STACK)](https://github.com/anuraghazra/github-readme-stats)
 
   <br>
 
   <h3 style="color: #ff003c; font-family: monospace;">>_ PERFORMANCE METRICS</h3>
-  <a href="https://github.com/anuraghazra/github-readme-stats">
-    <img src="https://github-readme-stats.vercel.app/api?username=aaronestradabonilla777&show_icons=true&theme=radical&hide_border=true&bg_color=050505&title_color=fcee0a&icon_color=00f3ff&text_color=c9d1d9" />
-  </a>
+
+  [![GitHub Stats](https://github-readme-stats.vercel.app/api?username=aaronestradabonilla777&show_icons=true&theme=radical&hide_border=true&bg_color=050505&title_color=fcee0a&icon_color=00f3ff&text_color=c9d1d9)](https://github.com/anuraghazra/github-readme-stats)
 
   <br><br>
 
