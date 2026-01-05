@@ -49,12 +49,10 @@ hardware:
   - ⚡ Laser Arrays
 ```
 <td width="50%" valign="top">
-  </td>
-  
-  <td width="50%" valign="top">
+```
     <h3 align="center" style="color: #FF0055;">⚡ TECH_MATRIX</h3>
     <br>
-    
+   ``` 
     <div align="center">
       <img src="https://img.shields.io/badge/INTERFACE-UI%2FUX-000000?style=flat-square&color=101010&labelColor=00FFCC">
       <br>
@@ -64,7 +62,7 @@ hardware:
       <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white" />
     </div>
     <br>
-  
+ ``` 
     <div align="center">
       <img src="https://img.shields.io/badge/SYSTEM-CORE-000000?style=flat-square&color=101010&labelColor=FF0055">
       <br>
@@ -74,7 +72,7 @@ hardware:
       <img src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white" />
     </div>
     <br>
-
+```
     <div align="center">
       <img src="https://img.shields.io/badge/MAKER-TOOLS-000000?style=flat-square&color=101010&labelColor=00AAFF">
       <br>
