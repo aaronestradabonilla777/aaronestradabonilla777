@@ -63,13 +63,18 @@
 <h3 align="center" style="color: #00FFCC;">>> ANALYZING USER DATA <<</h3>
 
 <div align="center">
-  <p align="center">
-    <img src="https://github-readme-stats.vercel.app/api?username=aaronestradabonilla777&show_icons=true&theme=radical&hide_border=true&bg_color=101010&title_color=00FFCC&icon_color=FF0055&text_color=FFFFFF" alt="Stats" />
-  </p>
-  <p align="center">
-    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=aaronestradabonilla777&layout=compact&theme=radical&hide_border=true&bg_color=101010&title_color=00FFCC&text_color=FFFFFF" alt="Langs" />
-  </p>
-</div>
+  
+  <a href="https://git.io/streak-stats">
+    <img src="https://github-readme-streak-stats.herokuapp.com/?user=aaronestradabonilla777&theme=radical&hide_border=true&background=101010&ring=FF0055&fire=FF0055&currStreakLabel=00FFCC" alt="GitHub Streak" />
+  </a>
+  
+  <br><br>
+
+  <a href="https://github.com/anuraghazra/github-readme-stats">
+    <img src="https://github-readme-stats.vercel.app/api?username=aaronestradabonilla777&show_icons=true&theme=radical&hide_border=true&bg_color=101010&title_color=00FFCC&icon_color=FF0055&text_color=FFFFFF&disable_animations=true" alt="Stats" />
+  </a>
+
+</div>>
 
 <br>
 
