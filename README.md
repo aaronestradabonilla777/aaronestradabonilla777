@@ -4,7 +4,7 @@
 
   <br/>
   <a href="https://github.com/aaronestradabonilla777">
-    <img src="https://img.shields.io/badge/LEVEL-01-ff00ff?style=for-the-badge&logo=github&logoColor=white&labelColor=1a1a1a" alt="Level" />
+    <img src="https://img.shields.io/badge/LEVEL-05-ff00ff?style=for-the-badge&logo=github&logoColor=white&labelColor=1a1a1a" alt="Level" />
   </a>
   <a href="#">
     <img src="https://img.shields.io/badge/CLASS-NETRUNNER-00ffff?style=for-the-badge&labelColor=1a1a1a" alt="Class" />
@@ -31,18 +31,3 @@ const aaron = {
     location: "Mexico",
     coffee_intake: "Infinite"
 };
-<div align="center">
-
-<h3> // SYSTEM_STATS </h3>
-
-<p> <img align="center" src="https://www.google.com/search?q=https://github-readme-stats.vercel.app/api%3Fusername%3Daaronestradabonilla777%26show_icons%3Dtrue%26theme%3Dradical%26hide_border%3Dtrue%26bg_color%3D0d1117%26title_color%3Dff00ff%26icon_color%3D00ffff%26text_color%3Dffffff" alt="Aaron's Stats" /> <img align="center" src="https://www.google.com/search?q=https://github-readme-stats.vercel.app/api/top-langs/%3Fusername%3Daaronestradabonilla777%26layout%3Dcompact%26theme%3Dradical%26hide_border%3Dtrue%26bg_color%3D0d1117%26title_color%3Dff00ff%26icon_color%3D00ffff%26text_color%3Dffffff" alt="Top Languages" /> </p>
-
-<img src="https://www.google.com/search?q=https://github-readme-activity-graph.vercel.app/graph%3Fusername%3Daaronestradabonilla777%26theme%3Dreact-dark%26bg_color%3D0d1117%26color%3Dff00ff%26line%3D00ffff%26point%3Dffffff%26hide_border%3Dtrue" width="100%" alt="Activity Graph" />
-
-
-
-<h3> // EQUIPAMIENTO </h3>
-
-<img src="https://www.google.com/search?q=https://img.shields.io/badge/React-20232A%3Fstyle%3Dfor-the-badge%26logo%3Dreact%26logoColor%3D61DAFB" /> <img src="https://www.google.com/search?q=https://img.shields.io/badge/PHP-777BB4%3Fstyle%3Dfor-the-badge%26logo%3Dphp%26logoColor%3Dwhite" /> <img src="https://www.google.com/search?q=https://img.shields.io/badge/Laravel-FF2D20%3Fstyle%3Dfor-the-badge%26logo%3Dlaravel%26logoColor%3Dwhite" /> <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" /> <img src="https://www.google.com/search?q=https://img.shields.io/badge/Git-F05032%3Fstyle%3Dfor-the-badge%26logo%3Dgit%26logoColor%3Dwhite" /> <img src="https://www.google.com/search?q=https://img.shields.io/badge/Bambu_Lab-00AE42%3Fstyle%3Dfor-the-badge%26logo%3Dbambulab%26logoColor%3Dwhite" />
-
-</div>
