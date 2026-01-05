@@ -1,0 +1,27 @@
+<svg width="800" height="60" viewBox="0 0 800 60" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&amp;display=swap');
+      .text { font-family: 'Share Tech Mono', monospace; fill: #6e6e6e; font-size: 14px; }
+      .red-alert { fill: #ff003c; text-shadow: 0 0 5px #ff003c; }
+      
+      @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.3; }
+      }
+      .blinking { animation: blink 2s infinite; }
+    </style>
+  </defs>
+
+  <rect width="100%" height="100%" fill="#050505" />
+  
+  <line x1="0" y1="1" x2="800" y2="1" stroke="#333" stroke-width="1" />
+  <line x1="0" y1="59" x2="800" y2="59" stroke="#333" stroke-width="1" />
+  
+  <path d="M 780 40 L 800 60 L 800 40 Z" fill="#333" />
+
+  <text x="20" y="35" class="text">© 2026 AARON ESTRADA // ALL RIGHTS RESERVED</text>
+
+  <rect x="650" y="20" width="8" height="8" fill="#ff003c" class="blinking" />
+  <text x="670" y="28" class="text red-alert blinking" style="font-size: 12px;">SYSTEM: OFFLINE</text>
+</svg>
