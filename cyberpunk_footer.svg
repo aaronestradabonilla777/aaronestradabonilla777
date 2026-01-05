@@ -1,198 +1,209 @@
-<svg width="850" height="650" viewBox="0 0 850 650" xmlns="http://www.w3.org/2000/svg">
+<svg width="850" height="700" viewBox="0 0 850 700" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Share+Tech+Mono&amp;display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;900&amp;family=Share+Tech+Mono&amp;display=swap');
       
       :root {
-        --bg-dark: #020203;
-        --bg-panel: #0a0a0f;
-        --cyan: #00f3ff;
-        --pink: #ff003c;
-        --purple: #bc13fe;
-        --green: #0aff0a;
-        --dim: #444;
+        --bg-deep: #020204;
+        --bg-panel: #08080c;
+        --neon-c: #00f3ff;
+        --neon-p: #bc13fe;
+        --neon-r: #ff003c;
+        --neon-g: #0aff0a;
+        --glass: rgba(0, 243, 255, 0.05);
       }
 
-      /* TEXT STYLES */
-      .font-header { font-family: 'Orbitron', sans-serif; font-weight: 900; letter-spacing: 2px; }
-      .font-mono { font-family: 'Share Tech Mono', monospace; }
-      .text-dim { fill: var(--dim); font-size: 10px; }
-      .text-label { fill: var(--cyan); font-size: 12px; font-weight: bold; letter-spacing: 1px; }
+      /* FUENTES */
+      .f-header { font-family: 'Orbitron', sans-serif; font-weight: 900; letter-spacing: 3px; }
+      .f-mono { font-family: 'Share Tech Mono', monospace; }
       
-      /* EFECTOS VISUALES */
-      .glow-c { filter: drop-shadow(0 0 3px var(--cyan)); }
-      .glow-p { filter: drop-shadow(0 0 3px var(--pink)); }
-      
-      /* ANIMACIONES */
-      @keyframes scan { 0% { transform: translateY(-100%); } 100% { transform: translateY(100%); } }
-      @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
-      @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-      @keyframes load { from { width: 0; } }
-      @keyframes pulse-red { 0% { fill: #330000; } 50% { fill: #ff003c; } 100% { fill: #330000; } }
+      /* CLASES DE TEXTO */
+      .txt-dim { fill: #445; font-size: 10px; }
+      .txt-val { fill: #fff; font-size: 12px; font-weight: bold; }
+      .txt-lbl { fill: var(--neon-c); font-size: 11px; letter-spacing: 1px; }
 
-      .scanline { fill: url(#scan-grad); animation: scan 6s linear infinite; pointer-events: none; opacity: 0.2; }
-      .blinking { animation: blink 2s infinite; }
-      .rotating { transform-origin: center; animation: rotate 20s linear infinite; }
-      .bar-anim { animation: load 1.5s ease-out forwards; }
+      /* EFECTOS */
+      .glow-blue { filter: drop-shadow(0 0 4px var(--neon-c)); }
+      .glow-pink { filter: drop-shadow(0 0 4px var(--neon-p)); }
+      .holo-blur { filter: url(#holo-glow); opacity: 0.8; }
+
+      /* ANIMACIONES */
+      @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+      @keyframes spin-rev { 0% { transform: rotate(360deg); } 100% { transform: rotate(0deg); } }
+      @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+      @keyframes pulse { 0%, 100% { opacity: 0.8; } 50% { opacity: 0.4; } }
+      @keyframes matrix { 0% { transform: translateY(-100%); opacity: 0; } 50% { opacity: 1; } 100% { transform: translateY(100%); opacity: 0; } }
+      @keyframes scan { 0% { transform: translateY(-100%); } 100% { transform: translateY(100%); } }
+      @keyframes glitch-x { 0% { transform: translate(0); } 20% { transform: translate(-3px, 1px); } 40% { transform: translate(3px, -1px); } 100% { transform: translate(0); } }
+      @keyframes load-w { from { width: 0; } }
       
+      .rotate { transform-origin: center; animation: spin 20s linear infinite; }
+      .rotate-fast { transform-origin: center; animation: spin-rev 10s linear infinite; }
+      .levitate { animation: float 6s ease-in-out infinite; }
+      .blinking { animation: pulse 2s infinite; }
+      .matrix-rain { animation: matrix 4s linear infinite; }
+      .scanline { fill: url(#scan-g); animation: scan 8s linear infinite; pointer-events: none; opacity: 0.15; }
+      .glitch-anim { animation: glitch-x 3s infinite alternate-reverse; }
+      .load-bar { animation: load-w 2s ease-out forwards; }
     </style>
 
-    <linearGradient id="main-grad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#050508" />
-      <stop offset="100%" stop-color="#000000" />
+    <filter id="holo-glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    
+    <linearGradient id="bg-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#050508"/>
+      <stop offset="100%" stop-color="#000"/>
     </linearGradient>
     
-    <linearGradient id="bar-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#bc13fe" />
-      <stop offset="100%" stop-color="#00f3ff" />
+    <linearGradient id="bar-g" x1="0" y1="0" x2="1">
+      <stop offset="0%" stop-color="#bc13fe"/>
+      <stop offset="100%" stop-color="#00f3ff"/>
     </linearGradient>
 
-    <linearGradient id="scan-grad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="transparent" />
-      <stop offset="50%" stop-color="#00f3ff" stop-opacity="0.2" />
-      <stop offset="100%" stop-color="transparent" />
+    <linearGradient id="scan-g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="transparent"/>
+      <stop offset="50%" stop-color="#00f3ff"/>
+      <stop offset="100%" stop-color="transparent"/>
     </linearGradient>
-
-    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1a1a2e" stroke-width="1"/>
+    
+    <pattern id="hex" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M20 0 L40 10 L40 30 L20 40 L0 30 L0 10 Z" fill="none" stroke="#1a1a2e" stroke-width="1" transform="scale(0.5) translate(20,20)"/>
     </pattern>
   </defs>
 
-  <rect width="100%" height="100%" fill="url(#main-grad)" />
-  <rect width="100%" height="100%" fill="url(#grid)" opacity="0.2" />
+  <rect width="100%" height="100%" fill="url(#bg-grad)" />
+  <rect width="100%" height="100%" fill="url(#hex)" opacity="0.3" />
   
-  <path d="M 20 20 L 300 20 L 320 40 L 830 40 L 830 630 L 500 630 L 480 610 L 20 610 Z" 
-        fill="none" stroke="#333" stroke-width="2" />
-  <path d="M 20 20 L 20 200" stroke="#00f3ff" stroke-width="4" class="glow-c"/>
-  <path d="M 830 630 L 700 630" stroke="#ff003c" stroke-width="4" class="glow-p"/>
-
-  <g transform="translate(40, 60)">
-    <text x="0" y="0" fill="#fff" font-size="42" class="font-header">AARON<tspan fill="#bc13fe">ESTRADA</tspan></text>
-    
-    <g transform="translate(0, 25)">
-      <rect x="0" y="0" width="80" height="18" fill="#ff003c" opacity="0.2"/>
-      <rect x="0" y="0" width="80" height="18" stroke="#ff003c" fill="none"/>
-      <text x="40" y="13" text-anchor="middle" fill="#ff003c" font-size="10" class="font-mono font-bold">NETRUNNER</text>
-    </g>
-    
-    <g transform="translate(90, 25)">
-      <rect x="0" y="0" width="100" height="18" fill="#00f3ff" opacity="0.1"/>
-      <rect x="0" y="0" width="100" height="18" stroke="#00f3ff" fill="none"/>
-      <text x="50" y="13" text-anchor="middle" fill="#00f3ff" font-size="10" class="font-mono font-bold">LVL.50 LEGEND</text>
-    </g>
-
-    <g transform="translate(550, -10)">
-      <text x="0" y="0" class="text-dim font-mono">SYS_UPTIME: 99.9%</text>
-      <text x="0" y="15" class="text-dim font-mono">KERNEL: LINUX_ARCH</text>
-      <rect x="150" y="-10" width="40" height="30" fill="none" stroke="#444" stroke-width="1"/>
-      <path d="M 155 0 L 185 0 M 155 10 L 185 10" stroke="#444"/>
-    </g>
+  <g font-family="monospace" font-size="10" fill="#0aff0a" opacity="0.15">
+    <text x="50" y="0" class="matrix-rain" style="animation-delay: 0s">1 0 1 0 0 1</text>
+    <text x="150" y="0" class="matrix-rain" style="animation-delay: 1.2s">0 1 1 0 1 0</text>
+    <text x="250" y="0" class="matrix-rain" style="animation-delay: 0.5s">1 1 0 0 1 1</text>
+    <text x="600" y="0" class="matrix-rain" style="animation-delay: 2s">0 0 1 1 0 1</text>
+    <text x="750" y="0" class="matrix-rain" style="animation-delay: 1.5s">1 0 1 1 1 0</text>
   </g>
 
-  <g transform="translate(40, 140)">
-    <text x="0" y="-10" class="text-label">> NEURAL_STACK_MODULES</text>
-    <line x1="0" y1="-5" x2="350" y2="-5" stroke="#00f3ff" stroke-width="1" opacity="0.5"/>
-
-    <rect x="0" y="10" width="380" height="180" fill="#0a0a0f" stroke="#333" stroke-width="1" rx="5"/>
-
-    <g transform="translate(20, 40)">
-      <text x="0" y="0" fill="#ccc" font-size="11" class="font-mono">JAVASCRIPT // ES6+</text>
-      <rect x="130" y="-8" width="180" height="8" fill="#222" rx="2"/>
-      <rect x="130" y="-8" width="160" height="8" fill="url(#bar-grad)" rx="2" class="bar-anim"/>
-      <text x="320" y="0" fill="#bc13fe" font-size="11" class="font-mono">90%</text>
-
-      <text x="0" y="30" fill="#ccc" font-size="11" class="font-mono">REACT // NATIVE</text>
-      <rect x="130" y="22" width="180" height="8" fill="#222" rx="2"/>
-      <rect x="130" y="22" width="150" height="8" fill="url(#bar-grad)" rx="2" class="bar-anim" style="animation-delay: 0.2s"/>
-      <text x="320" y="30" fill="#bc13fe" font-size="11" class="font-mono">80%</text>
-
-      <text x="0" y="60" fill="#ccc" font-size="11" class="font-mono">NODE.JS // BACKEND</text>
-      <rect x="130" y="52" width="180" height="8" fill="#222" rx="2"/>
-      <rect x="130" y="52" width="140" height="8" fill="url(#bar-grad)" rx="2" class="bar-anim" style="animation-delay: 0.4s"/>
-      <text x="320" y="60" fill="#bc13fe" font-size="11" class="font-mono">75%</text>
-
-      <text x="0" y="90" fill="#ccc" font-size="11" class="font-mono">LINUX // TERMINAL</text>
-      <rect x="130" y="82" width="180" height="8" fill="#222" rx="2"/>
-      <rect x="130" y="82" width="175" height="8" fill="url(#bar-grad)" rx="2" class="bar-anim" style="animation-delay: 0.6s"/>
-      <text x="320" y="90" fill="#bc13fe" font-size="11" class="font-mono">98%</text>
-    </g>
-  </g>
-
-  <g transform="translate(450, 140)">
-    <text x="0" y="-10" class="text-label" fill="#ff003c">> GEO_LOCATOR_MK.IV</text>
-    <line x1="0" y1="-5" x2="350" y2="-5" stroke="#ff003c" stroke-width="1" opacity="0.5"/>
-    
-    <rect x="0" y="10" width="350" height="180" fill="#0a0a0f" stroke="#333" stroke-width="1" rx="5"/>
-    
-    <g transform="translate(175, 100)">
-      <circle r="60" stroke="#333" fill="none"/>
-      <circle r="40" stroke="#333" fill="none"/>
-      <line x1="-70" y1="0" x2="70" y2="0" stroke="#222"/>
-      <line x1="0" y1="-70" x2="0" y2="70" stroke="#222"/>
-      
-      <path d="M 0 0 L 60 -10 A 60 60 0 0 0 60 10 Z" fill="#ff003c" opacity="0.3" class="rotating"/>
-      
-      <circle cx="-15" cy="15" r="4" fill="#ff003c" class="blinking glow-p"/>
-      <text x="0" y="20" fill="#fff" font-size="10" class="font-mono">LOC: MEXICO</text>
-      <text x="0" y="32" fill="#666" font-size="9" class="font-mono">IP: SECURE [VPN]</text>
-    </g>
-  </g>
-
-  <g transform="translate(40, 360)">
-    <text x="0" y="0" class="text-label" fill="#0aff0a">> RECENT_ACTIVITY_LOG (GITHUB)</text>
-    
-    <path d="M 0 15 L 760 15 L 760 85 L 740 105 L 0 105 Z" fill="#0a0a0f" stroke="#333" stroke-width="1"/>
-    
-    <g transform="translate(20, 35)">
-      <rect x="0" y="0" width="10" height="10" fill="#111" rx="2"/> <rect x="15" y="0" width="10" height="10" fill="#0aff0a" opacity="0.4" rx="2"/>
-      <rect x="30" y="0" width="10" height="10" fill="#0aff0a" opacity="0.8" rx="2"/> <rect x="45" y="0" width="10" height="10" fill="#111" rx="2"/>
-      <rect x="60" y="0" width="10" height="10" fill="#0aff0a" opacity="0.2" rx="2"/> <rect x="75" y="0" width="10" height="10" fill="#0aff0a" opacity="0.9" rx="2"/>
-      <rect x="90" y="0" width="600" height="10" fill="url(#grid)" opacity="0.3"/> 
-      
-      <rect x="0" y="15" width="10" height="10" fill="#0aff0a" opacity="0.6" rx="2"/> <rect x="15" y="15" width="10" height="10" fill="#111" rx="2"/>
-      <rect x="30" y="15" width="10" height="10" fill="#111" rx="2"/> <rect x="45" y="15" width="10" height="10" fill="#0aff0a" opacity="0.5" rx="2"/>
-      <rect x="60" y="15" width="10" height="10" fill="#111" rx="2"/> <rect x="75" y="15" width="10" height="10" fill="#111" rx="2"/>
-      <rect x="90" y="15" width="600" height="10" fill="url(#grid)" opacity="0.3"/>
-      
-      <rect x="0" y="30" width="10" height="10" fill="#0aff0a" opacity="0.9" rx="2"/> <rect x="15" y="30" width="10" height="10" fill="#0aff0a" opacity="0.3" rx="2"/>
-      <rect x="30" y="30" width="10" height="10" fill="#0aff0a" opacity="0.7" rx="2"/> <rect x="45" y="30" width="10" height="10" fill="#111" rx="2"/>
-      <rect x="60" y="30" width="10" height="10" fill="#0aff0a" opacity="1" rx="2"/> <rect x="75" y="30" width="10" height="10" fill="#0aff0a" opacity="0.2" rx="2"/>
-      <rect x="90" y="30" width="600" height="10" fill="url(#grid)" opacity="0.3"/>
-    </g>
-    <text x="700" y="90" fill="#0aff0a" font-size="10" class="font-mono text-dim" text-anchor="end">CONTRIBUTION_RATE: HIGH</text>
-  </g>
-
-  <g transform="translate(40, 490)">
-    <rect x="0" y="0" width="760" height="100" fill="#000" fill-opacity="0.6" stroke="#333" stroke-width="1"/>
-    <rect x="0" y="0" width="760" height="20" fill="#111"/>
-    <text x="10" y="14" class="text-dim font-mono">> ROOT_ACCESS_TERMINAL</text>
-    
-    <g transform="translate(15, 40)" font-size="11" class="font-mono" fill="#ccc">
-      <text x="0" y="0">> Initializing Full Stack Environment...</text>
-      <text x="0" y="15" fill="#0aff0a">> [OK] React Components Loaded.</text>
-      <text x="0" y="30" fill="#0aff0a">> [OK] Database Connection Established.</text>
-      <text x="0" y="45" fill="#ff003c">> WARNING: Bambu Lab Printer Offline (Ignored per user config).</text>
-      <text x="0" y="60" fill="#00f3ff">> WAITING FOR INPUT: _</text>
-      <rect x="135" y="52" width="6" height="10" fill="#00f3ff" class="blinking"/>
-    </g>
-  </g>
-
-  <g transform="translate(40, 620)">
-    <text x="0" y="0" fill="#444" font-size="10" class="font-mono">© 2026 NIGHT CITY NETWORKS // AARON ESTRADA</text>
-    
-    <g transform="translate(300, -10)">
-      <rect x="0" y="0" width="2" height="15" fill="#333"/> <rect x="4" y="0" width="1" height="15" fill="#333"/>
-      <rect x="7" y="0" width="3" height="15" fill="#333"/> <rect x="12" y="0" width="1" height="15" fill="#333"/>
-      <rect x="15" y="0" width="5" height="15" fill="#333"/> <rect x="22" y="0" width="2" height="15" fill="#333"/>
-      <text x="30" y="12" fill="#333" font-size="8" class="font-mono">ID: 777-AE-MX</text>
-    </g>
-
-    <g transform="translate(680, 0)">
-      <text x="0" y="0" fill="#0aff0a" font-size="10" class="font-mono" text-anchor="end">SYSTEM: ONLINE</text>
-      <circle cx="10" cy="-3" r="3" fill="#0aff0a" class="blinking"/>
-    </g>
-  </g>
+  <path d="M 30 30 L 250 30 L 280 60 L 820 60 L 820 150 L 800 170 L 800 600 L 770 630 L 500 630 L 480 670 L 30 670 L 30 600 L 10 580 L 10 150 L 30 130 Z" 
+        fill="#08080c" stroke="#333" stroke-width="2" fill-opacity="0.9" />
   
-  <rect width="100%" height="100%" class="scanline" pointer-events="none" />
+  <path d="M 30 30 L 30 200" stroke="#00f3ff" stroke-width="4" class="glow-blue" fill="none"/>
+  <path d="M 820 60 L 820 150" stroke="#bc13fe" stroke-width="4" class="glow-pink" fill="none"/>
+  <path d="M 480 670 L 30 670" stroke="#ff003c" stroke-width="3" fill="none"/>
+
+  <g transform="translate(60, 90)">
+    <text x="0" y="0" fill="#fff" font-size="46" class="f-header glitch-anim">AARON<tspan fill="#bc13fe">ESTRADA</tspan></text>
+    
+    <g transform="translate(0, 30)">
+      <rect x="0" y="0" width="100" height="20" fill="#ff003c" opacity="0.2"/>
+      <rect x="0" y="0" width="100" height="20" stroke="#ff003c" fill="none"/>
+      <text x="50" y="14" text-anchor="middle" fill="#ff003c" font-size="11" class="f-mono font-bold">NETRUNNER</text>
+    </g>
+    
+    <g transform="translate(110, 30)">
+      <rect x="0" y="0" width="120" height="20" fill="#00f3ff" opacity="0.1"/>
+      <rect x="0" y="0" width="120" height="20" stroke="#00f3ff" fill="none"/>
+      <text x="60" y="14" text-anchor="middle" fill="#00f3ff" font-size="11" class="f-mono font-bold">FULL STACK</text>
+    </g>
+  </g>
+
+  <g transform="translate(600, 250)">
+    <circle cx="0" cy="0" r="90" stroke="#1a1a2e" stroke-width="1" fill="none" />
+    <circle cx="0" cy="0" r="80" stroke="#00f3ff" stroke-width="2" stroke-dasharray="10 30" fill="none" class="rotate glow-blue"/>
+    <circle cx="0" cy="0" r="60" stroke="#bc13fe" stroke-width="1" stroke-dasharray="5 10" fill="none" class="rotate-fast" opacity="0.7"/>
+    
+    <g class="levitate holo-blur" transform="scale(0.8)">
+       <path d="M0,0 C-40,-50 -40,-50 -30,-80 C-30,-80 -10,-80 0,-70 C10,-80 30,-80 30,-80 C40,-50 40,-50 0,0" fill="none" stroke="#fff" stroke-width="2" opacity="0.5" />
+       <path d="M-45,0 A45,45 0 1,0 45,0 A45,45 0 1,0 -45,0" fill="none" stroke="#00f3ff" stroke-width="2" />
+       <path d="M-20,20 Q0,40 20,20" stroke="#00f3ff" fill="none" stroke-width="2"/> <circle cx="-15" cy="0" r="5" fill="#fff" class="blinking" />
+       <circle cx="15" cy="0" r="5" fill="#fff" class="blinking" style="animation-delay: 0.2s" />
+       
+       <path d="M -40 60 L 0 0 L 40 60" fill="url(#scan-g)" opacity="0.3" />
+    </g>
+    
+    <text x="0" y="110" text-anchor="middle" class="f-mono txt-val glow-blue">GITHUB_NEURAL_LINK</text>
+    <text x="0" y="125" text-anchor="middle" class="f-mono txt-dim">STATUS: CONNECTED</text>
+  </g>
+
+  <g transform="translate(60, 220)">
+    <text x="0" y="-10" class="f-header" fill="#fff" font-size="14">>> ARSENAL</text>
+    
+    <g transform="translate(0, 20)">
+      <text x="0" y="10" class="f-mono txt-dim">JAVASCRIPT</text>
+      <rect x="100" y="0" width="250" height="12" fill="#111" rx="2"/>
+      <rect x="100" y="0" width="225" height="12" fill="url(#bar-g)" rx="2" class="load-bar"/>
+      <text x="360" y="10" class="f-mono txt-val">90%</text>
+    </g>
+
+    <g transform="translate(0, 50)">
+      <text x="0" y="10" class="f-mono txt-dim">REACT / NATIVE</text>
+      <rect x="100" y="0" width="250" height="12" fill="#111" rx="2"/>
+      <rect x="100" y="0" width="200" height="12" fill="url(#bar-g)" rx="2" class="load-bar" style="animation-delay: 0.2s"/>
+      <text x="360" y="10" class="f-mono txt-val">80%</text>
+    </g>
+
+    <g transform="translate(0, 80)">
+      <text x="0" y="10" class="f-mono txt-dim">NODE.JS</text>
+      <rect x="100" y="0" width="250" height="12" fill="#111" rx="2"/>
+      <rect x="100" y="0" width="180" height="12" fill="url(#bar-g)" rx="2" class="load-bar" style="animation-delay: 0.4s"/>
+      <text x="360" y="10" class="f-mono txt-val">75%</text>
+    </g>
+
+    <g transform="translate(0, 110)">
+      <text x="0" y="10" class="f-mono txt-dim">LINUX / BASH</text>
+      <rect x="100" y="0" width="250" height="12" fill="#111" rx="2"/>
+      <rect x="100" y="0" width="245" height="12" fill="url(#bar-g)" rx="2" class="load-bar" style="animation-delay: 0.6s"/>
+      <text x="360" y="10" class="f-mono txt-val">98%</text>
+    </g>
+  </g>
+
+  <g transform="translate(60, 400)">
+    <text x="0" y="0" class="f-header" fill="#0aff0a" font-size="14">>> ACTIVITY_HEATMAP</text>
+    <rect x="0" y="15" width="400" height="100" fill="#050508" stroke="#333"/>
+    
+    <g transform="translate(10, 25)">
+      <rect x="0" y="0" width="10" height="10" fill="#111" rx="2"/> <rect x="15" y="0" width="10" height="10" fill="#0aff0a" opacity="0.8" rx="2"/>
+      <rect x="30" y="0" width="10" height="10" fill="#0aff0a" opacity="0.2" rx="2"/> <rect x="45" y="0" width="10" height="10" fill="#0aff0a" opacity="1" rx="2"/>
+      <rect x="0" y="15" width="10" height="10" fill="#0aff0a" opacity="0.4" rx="2"/> <rect x="15" y="15" width="10" height="10" fill="#111" rx="2"/>
+      <rect x="30" y="15" width="10" height="10" fill="#0aff0a" opacity="0.9" rx="2"/> <rect x="45" y="15" width="10" height="10" fill="#0aff0a" opacity="0.5" rx="2"/>
+      
+      <text x="100" y="40" class="f-mono txt-dim" font-size="10">Analyzing 4,302 Commits...</text>
+      <text x="100" y="55" class="f-mono txt-dim" font-size="10">Target: Open Source</text>
+    </g>
+  </g>
+
+  <g transform="translate(500, 400)">
+    <text x="0" y="0" class="f-header" fill="#ff003c" font-size="14">>> NET_TOPOLOGY</text>
+    <rect x="0" y="15" width="280" height="100" fill="#050508" stroke="#333"/>
+    
+    <g transform="translate(140, 65)">
+      <circle r="30" stroke="#333" fill="none"/>
+      <line x1="-30" y1="0" x2="30" y2="0" stroke="#222"/>
+      <line x1="0" y1="-30" x2="0" y2="30" stroke="#222"/>
+      <path d="M 0 0 L 30 -10 A 30 30 0 0 0 30 10 Z" fill="#ff003c" opacity="0.4" class="rotate"/>
+      <circle cx="15" cy="-10" r="3" fill="#ff003c" class="blinking glow-pink"/>
+      <text x="25" y="-10" class="f-mono txt-val" font-size="9">MX_SERVER</text>
+    </g>
+  </g>
+
+  <g transform="translate(480, 540)">
+    <path d="M 0 0 L 300 0 L 320 20 L 320 100 L 20 100 L 0 80 Z" fill="#08080c" stroke="#333" stroke-width="1"/>
+    <text x="15" y="20" class="f-mono txt-lbl">> /var/log/syslog</text>
+    
+    <g transform="translate(15, 40)" class="f-mono" font-size="10">
+       <text x="0" y="0" fill="#666">> Initializing protocol v9.0...</text>
+       <text x="0" y="12" fill="#0aff0a">> [OK] React Framework Loaded.</text>
+       <text x="0" y="24" fill="#0aff0a">> [OK] Database Encrypted.</text>
+       <text x="0" y="36" fill="#ff003c">> ALERT: Bambu Lab P1S [OFFLINE].</text>
+       <text x="0" y="48" fill="#fff">> Waiting for user input... <tspan class="blinking">_</tspan></text>
+    </g>
+  </g>
+
+  <g transform="translate(30, 600)">
+    <text x="0" y="0" class="f-mono txt-dim">© 2026 NIGHT CITY NETWORKS // AARON ESTRADA</text>
+    <text x="0" y="15" class="f-mono txt-dim">ID: 777-AE-MX // SECURE CONNECTION</text>
+  </g>
+
+  <rect width="100%" height="100%" class="scanline" />
 
 </svg>
