@@ -1,0 +1,366 @@
+<svg width="900" height="640" viewBox="0 0 900 640" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="c4-title">
+  <title id="c4-title">HALUZ — Core Dashboard v4</title>
+  <defs>
+    <style>
+      .f-title { font-family: Arial,'Helvetica Neue',sans-serif; font-weight:900; letter-spacing:1.5px; }
+      .f-mono  { font-family:'Courier New',Courier,monospace; font-weight:bold; }
+      .f-data  { font-family:'Courier New',Courier,monospace; font-size:9px; }
+
+      @keyframes fadeIn     { from{opacity:0} to{opacity:1} }
+      @keyframes borderPulse{ 0%,100%{stroke-opacity:1}    50%{stroke-opacity:.3} }
+      @keyframes blink      { 0%,100%{opacity:1}           50%{opacity:.15} }
+      @keyframes pulse      { 0%,100%{opacity:1}           50%{opacity:.4} }
+      @keyframes dataScan   { 0%,100%{opacity:.5}          50%{opacity:1} }
+      @keyframes numberFlux { 0%,100%{opacity:1}           50%{opacity:.6} }
+      @keyframes boxGlow    { 0%,100%{stroke-opacity:.5}   50%{stroke-opacity:1} }
+      @keyframes textFlicker{ 0%,100%{opacity:1} 2%{opacity:.8} 4%{opacity:1} 93%{opacity:1} 95%{opacity:.5} 97%{opacity:1} }
+      @keyframes loadBar    { from{width:0} to{width:var(--w)} }
+      @keyframes radarPulse { 0%,100%{opacity:.7} 50%{opacity:1} }
+      @keyframes cornerFlash{ 0%,90%,100%{opacity:1} 95%{opacity:.3} }
+
+      .boot-1{animation:fadeIn .4s ease-out .1s forwards;opacity:0}
+      .boot-2{animation:fadeIn .4s ease-out .3s forwards;opacity:0}
+      .boot-3{animation:fadeIn .4s ease-out .5s forwards;opacity:0}
+      .boot-4{animation:fadeIn .4s ease-out .7s forwards;opacity:0}
+      .boot-5{animation:fadeIn .4s ease-out .9s forwards;opacity:0}
+
+      .border-pulse {animation:borderPulse 2s ease-in-out infinite}
+      .anim-blink   {animation:blink       1.2s infinite}
+      .anim-pulse   {animation:pulse       2s infinite}
+      .data-scan    {animation:dataScan    1.5s ease-in-out infinite}
+      .number-flux  {animation:numberFlux  2.5s ease-in-out infinite}
+      .box-glow     {animation:boxGlow     3s ease-in-out infinite}
+      .text-flicker {animation:textFlicker 8s ease-in-out infinite}
+      .radar-pulse  {animation:radarPulse  2s ease-in-out infinite}
+      .corner-flash {animation:cornerFlash 5s ease-in-out infinite}
+
+      .bar-cyan    { fill:#00f3ff }
+      .bar-green   { fill:#0aff0a }
+      .bar-orange  { fill:#ff9500 }
+    </style>
+
+    <pattern id="cgrid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M20 0L0 0 0 20" fill="none" stroke="#0d0d0d" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="cyanBar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#00f3ff"/>
+      <stop offset="100%" stop-color="#0088aa"/>
+    </linearGradient>
+    <linearGradient id="greenBar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#0aff0a"/>
+      <stop offset="100%" stop-color="#005500"/>
+    </linearGradient>
+    <linearGradient id="orangeBar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#ff9500"/>
+      <stop offset="100%" stop-color="#663300"/>
+    </linearGradient>
+    <linearGradient id="radarFill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#00f3ff" stop-opacity=".4"/>
+      <stop offset="100%" stop-color="#00f3ff" stop-opacity=".05"/>
+    </linearGradient>
+    <filter id="glow-sm">
+      <feGaussianBlur stdDeviation="1.5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- BACKGROUND -->
+  <rect width="900" height="640" fill="#050505"/>
+  <rect width="900" height="640" fill="url(#cgrid)"/>
+  <rect x="0" y="0"   width="900" height="2" fill="#00f3ff" opacity=".35"/>
+  <rect x="0" y="638" width="900" height="2" fill="#ff003c" opacity=".35"/>
+
+  <!-- Corner brackets -->
+  <path d="M0 0 L28 0 L28 5 L5 5 L5 28 L0 28Z"         fill="#00f3ff" class="boot-1 corner-flash"/>
+  <path d="M900 0 L872 0 L872 5 L895 5 L895 28 L900 28Z" fill="#00f3ff" class="boot-1 corner-flash"/>
+  <path d="M0 640 L28 640 L28 635 L5 635 L5 612 L0 612Z"  fill="#ff003c" class="boot-1 corner-flash"/>
+  <path d="M900 640 L872 640 L872 635 L895 635 L895 612 L900 612Z" fill="#ff003c" class="boot-1 corner-flash"/>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       ROW 1: SKILL PANELS (3 panels × ~290px wide)
+       ═══════════════════════════════════════════════════════════════ -->
+
+  <!-- FRONTEND_OPS -->
+  <g transform="translate(14,14)" class="boot-2">
+    <path d="M0 18 L18 0 L282 0 L282 215 L264 215 L264 233 L0 233Z"
+          fill="#07070f" stroke="#00f3ff" stroke-width=".9" class="border-pulse" rx="1"/>
+    <text x="26" y="20" class="f-title data-scan" font-size="11" fill="#00f3ff">&gt;&gt; FRONTEND_OPS</text>
+    <circle cx="264" cy="10" r="4" fill="#0aff0a" class="anim-blink"/>
+
+    <!-- skill bars — label, bg, fill, pct -->
+    <!-- TypeScript 95% → width = 95% of 200 = 190 -->
+    <g transform="translate(16,32)">
+      <text x="0" y="11" class="f-data" fill="#aaa">TypeScript</text>
+      <rect x="88" y="0" width="150" height="12" fill="#0a1a1a" rx="1"/>
+      <rect x="88" y="0" width="143" height="12" fill="url(#cyanBar)" rx="1" opacity=".9" style="--w:143px"/>
+      <text x="242" y="10" class="f-data number-flux" fill="#00f3ff">95%</text>
+    </g>
+    <g transform="translate(16,50)">
+      <text x="0" y="11" class="f-data" fill="#aaa">React / Next.js</text>
+      <rect x="88" y="0" width="150" height="12" fill="#0a1a1a" rx="1"/>
+      <rect x="88" y="0" width="135" height="12" fill="url(#cyanBar)" rx="1" opacity=".85" style="--w:135px"/>
+      <text x="242" y="10" class="f-data number-flux" fill="#00f3ff">90%</text>
+    </g>
+    <g transform="translate(16,68)">
+      <text x="0" y="11" class="f-data" fill="#aaa">JavaScript ES6+</text>
+      <rect x="88" y="0" width="150" height="12" fill="#0a1a1a" rx="1"/>
+      <rect x="88" y="0" width="132" height="12" fill="url(#cyanBar)" rx="1" opacity=".85"/>
+      <text x="242" y="10" class="f-data number-flux" fill="#00f3ff">88%</text>
+    </g>
+    <g transform="translate(16,86)">
+      <text x="0" y="11" class="f-data" fill="#aaa">HTML5 / CSS3</text>
+      <rect x="88" y="0" width="150" height="12" fill="#0a1a1a" rx="1"/>
+      <rect x="88" y="0" width="138" height="12" fill="url(#cyanBar)" rx="1" opacity=".9"/>
+      <text x="242" y="10" class="f-data number-flux" fill="#00f3ff">92%</text>
+    </g>
+    <g transform="translate(16,104)">
+      <text x="0" y="11" class="f-data" fill="#aaa">TailwindCSS</text>
+      <rect x="88" y="0" width="150" height="12" fill="#0a1a1a" rx="1"/>
+      <rect x="88" y="0" width="128" height="12" fill="url(#cyanBar)" rx="1" opacity=".8"/>
+      <text x="242" y="10" class="f-data number-flux" fill="#00f3ff">85%</text>
+    </g>
+    <g transform="translate(16,122)">
+      <text x="0" y="11" class="f-data" fill="#aaa">React Native</text>
+      <rect x="88" y="0" width="150" height="12" fill="#0a1a1a" rx="1"/>
+      <rect x="88" y="0" width="117" height="12" fill="url(#cyanBar)" rx="1" opacity=".75"/>
+      <text x="242" y="10" class="f-data number-flux" fill="#00f3ff">78%</text>
+    </g>
+    <g transform="translate(16,140)">
+      <text x="0" y="11" class="f-data" fill="#aaa">Three.js / WebGL</text>
+      <rect x="88" y="0" width="150" height="12" fill="#0a1a1a" rx="1"/>
+      <rect x="88" y="0" width="105" height="12" fill="url(#cyanBar)" rx="1" opacity=".7"/>
+      <text x="242" y="10" class="f-data number-flux" fill="#00f3ff">70%</text>
+    </g>
+
+    <text x="16" y="180" class="f-data text-flicker" fill="#445566">STATUS: ACTIVE</text>
+    <rect x="16" y="186" width="248" height="1" fill="#00f3ff" opacity=".2"/>
+    <text x="16" y="200" class="f-data" fill="#778899">FRAMEWORK: REACT_ECOSYSTEM</text>
+    <text x="16" y="212" class="f-data" fill="#778899">LAST_BUILD: 2026.03.30</text>
+  </g>
+
+  <!-- BACKEND_SYS -->
+  <g transform="translate(310,14)" class="boot-2">
+    <path d="M0 18 L18 0 L282 0 L282 215 L264 215 L264 233 L0 233Z"
+          fill="#07070f" stroke="#0aff0a" stroke-width=".9" class="border-pulse" rx="1"/>
+    <text x="26" y="20" class="f-title data-scan" font-size="11" fill="#0aff0a">&gt;&gt; BACKEND_SYS</text>
+    <circle cx="264" cy="10" r="4" fill="#ff9500" class="anim-pulse"/>
+
+    <g transform="translate(16,32)">
+      <text x="0" y="11" class="f-data" fill="#aaa">Node.js</text>
+      <rect x="88" y="0" width="150" height="12" fill="#051505" rx="1"/>
+      <rect x="88" y="0" width="128" height="12" fill="url(#greenBar)" rx="1" opacity=".9"/>
+      <text x="242" y="10" class="f-data number-flux" fill="#0aff0a">85%</text>
+    </g>
+    <g transform="translate(16,50)">
+      <text x="0" y="11" class="f-data" fill="#aaa">Python</text>
+      <rect x="88" y="0" width="150" height="12" fill="#051505" rx="1"/>
+      <rect x="88" y="0" width="113" height="12" fill="url(#greenBar)" rx="1" opacity=".85"/>
+      <text x="242" y="10" class="f-data number-flux" fill="#0aff0a">75%</text>
+    </g>
+    <g transform="translate(16,68)">
+      <text x="0" y="11" class="f-data" fill="#aaa">Java</text>
+      <rect x="88" y="0" width="150" height="12" fill="#051505" rx="1"/>
+      <rect x="88" y="0" width="90"  height="12" fill="url(#greenBar)" rx="1" opacity=".7"/>
+      <text x="242" y="10" class="f-data number-flux" fill="#0aff0a">60%</text>
+    </g>
+    <g transform="translate(16,86)">
+      <text x="0" y="11" class="f-data" fill="#aaa">Firebase</text>
+      <rect x="88" y="0" width="150" height="12" fill="#051505" rx="1"/>
+      <rect x="88" y="0" width="105" height="12" fill="url(#greenBar)" rx="1" opacity=".75"/>
+      <text x="242" y="10" class="f-data number-flux" fill="#0aff0a">70%</text>
+    </g>
+    <g transform="translate(16,104)">
+      <text x="0" y="11" class="f-data" fill="#aaa">MongoDB</text>
+      <rect x="88" y="0" width="150" height="12" fill="#051505" rx="1"/>
+      <rect x="88" y="0" width="83"  height="12" fill="url(#greenBar)" rx="1" opacity=".65"/>
+      <text x="242" y="10" class="f-data number-flux" fill="#0aff0a">55%</text>
+    </g>
+    <g transform="translate(16,122)">
+      <text x="0" y="11" class="f-data" fill="#aaa">C++</text>
+      <rect x="88" y="0" width="150" height="12" fill="#051505" rx="1"/>
+      <rect x="88" y="0" width="75"  height="12" fill="url(#greenBar)" rx="1" opacity=".6"/>
+      <text x="242" y="10" class="f-data number-flux" fill="#0aff0a">50%</text>
+    </g>
+    <g transform="translate(16,140)">
+      <text x="0" y="11" class="f-data" fill="#aaa">PostgreSQL</text>
+      <rect x="88" y="0" width="150" height="12" fill="#051505" rx="1"/>
+      <rect x="88" y="0" width="98"  height="12" fill="url(#greenBar)" rx="1" opacity=".7"/>
+      <text x="242" y="10" class="f-data number-flux" fill="#0aff0a">65%</text>
+    </g>
+
+    <text x="16" y="180" class="f-data text-flicker" fill="#445566">STATUS: STANDBY</text>
+    <rect x="16" y="186" width="248" height="1" fill="#0aff0a" opacity=".2"/>
+    <text x="16" y="200" class="f-data" fill="#778899">RUNTIME: NODE_v22 / PY_3.12</text>
+    <text x="16" y="212" class="f-data" fill="#778899">DB: MONGO_7 / POSTGRES_16</text>
+  </g>
+
+  <!-- INFRA_STACK -->
+  <g transform="translate(606,14)" class="boot-2">
+    <path d="M0 18 L18 0 L282 0 L282 215 L264 215 L264 233 L0 233Z"
+          fill="#07070f" stroke="#ff9500" stroke-width=".9" class="border-pulse" rx="1"/>
+    <text x="26" y="20" class="f-title data-scan" font-size="11" fill="#ff9500">&gt;&gt; INFRA_STACK</text>
+    <circle cx="264" cy="10" r="4" fill="#00f3ff" class="anim-blink"/>
+
+    <g transform="translate(16,32)">
+      <text x="0" y="11" class="f-data" fill="#aaa">Linux</text>
+      <rect x="88" y="0" width="150" height="12" fill="#1a0a00" rx="1"/>
+      <rect x="88" y="0" width="135" height="12" fill="url(#orangeBar)" rx="1" opacity=".9"/>
+      <text x="242" y="10" class="f-data number-flux" fill="#ff9500">90%</text>
+    </g>
+    <g transform="translate(16,50)">
+      <text x="0" y="11" class="f-data" fill="#aaa">Git / GitHub</text>
+      <rect x="88" y="0" width="150" height="12" fill="#1a0a00" rx="1"/>
+      <rect x="88" y="0" width="143" height="12" fill="url(#orangeBar)" rx="1" opacity=".95"/>
+      <text x="242" y="10" class="f-data number-flux" fill="#ff9500">95%</text>
+    </g>
+    <g transform="translate(16,68)">
+      <text x="0" y="11" class="f-data" fill="#aaa">Docker</text>
+      <rect x="88" y="0" width="150" height="12" fill="#1a0a00" rx="1"/>
+      <rect x="88" y="0" width="98"  height="12" fill="url(#orangeBar)" rx="1" opacity=".75"/>
+      <text x="242" y="10" class="f-data number-flux" fill="#ff9500">65%</text>
+    </g>
+    <g transform="translate(16,86)">
+      <text x="0" y="11" class="f-data" fill="#aaa">Vercel / Netlify</text>
+      <rect x="88" y="0" width="150" height="12" fill="#1a0a00" rx="1"/>
+      <rect x="88" y="0" width="120" height="12" fill="url(#orangeBar)" rx="1" opacity=".8"/>
+      <text x="242" y="10" class="f-data number-flux" fill="#ff9500">80%</text>
+    </g>
+    <g transform="translate(16,104)">
+      <text x="0" y="11" class="f-data" fill="#aaa">CI/CD Pipelines</text>
+      <rect x="88" y="0" width="150" height="12" fill="#1a0a00" rx="1"/>
+      <rect x="88" y="0" width="105" height="12" fill="url(#orangeBar)" rx="1" opacity=".75"/>
+      <text x="242" y="10" class="f-data number-flux" fill="#ff9500">70%</text>
+    </g>
+    <g transform="translate(16,122)">
+      <text x="0" y="11" class="f-data" fill="#aaa">Azure / AWS</text>
+      <rect x="88" y="0" width="150" height="12" fill="#1a0a00" rx="1"/>
+      <rect x="88" y="0" width="75"  height="12" fill="url(#orangeBar)" rx="1" opacity=".65"/>
+      <text x="242" y="10" class="f-data number-flux" fill="#ff9500">50%</text>
+    </g>
+    <g transform="translate(16,140)">
+      <text x="0" y="11" class="f-data" fill="#aaa">Kubernetes</text>
+      <rect x="88" y="0" width="150" height="12" fill="#1a0a00" rx="1"/>
+      <rect x="88" y="0" width="68"  height="12" fill="url(#orangeBar)" rx="1" opacity=".6"/>
+      <text x="242" y="10" class="f-data number-flux" fill="#ff9500">45%</text>
+    </g>
+
+    <text x="16" y="180" class="f-data text-flicker" fill="#445566">STATUS: MONITOR</text>
+    <rect x="16" y="186" width="248" height="1" fill="#ff9500" opacity=".2"/>
+    <text x="16" y="200" class="f-data" fill="#778899">PLATFORM: VERCEL / DOCKER</text>
+    <text x="16" y="212" class="f-data" fill="#778899">IaC: GITHUB_ACTIONS</text>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       ROW 2: LANG DONUT  |  SKILL RADAR  |  PINNED REPOS
+       ═══════════════════════════════════════════════════════════════ -->
+
+  <!-- LANG_DISTRIBUTION -->
+  <g transform="translate(14,262)" class="boot-3">
+    <rect width="282" height="155" fill="#07070f" stroke="#bf00ff" stroke-width=".8" class="border-pulse" rx="2"/>
+    <text x="12" y="18" class="f-title text-flicker" font-size="10" fill="#bf00ff">&gt;&gt; LANG_MATRIX</text>
+
+    <!-- Donut chart (55,75 center, r=52 outer, r=32 inner) -->
+    <g transform="translate(0,22)">
+      <!-- background ring -->
+      <circle cx="72" cy="55" r="38" fill="none" stroke="#1a1a1a" stroke-width="18"/>
+      <!-- Donut slices injected by workflow -->
+      {{DONUT_SLICES}}
+      <!-- inner label -->
+      <text x="72" y="50" text-anchor="middle" class="f-data data-scan" fill="#778899">LANGS</text>
+      <text x="72" y="62" text-anchor="middle" class="f-mono number-flux" font-size="11" fill="#bf00ff">TOP 5</text>
+
+      <!-- Legend -->
+      {{DONUT_LEGEND}}
+    </g>
+  </g>
+
+  <!-- SKILL_RADAR -->
+  <g transform="translate(310,262)" class="boot-3">
+    <rect width="282" height="155" fill="#07070f" stroke="#00f3ff" stroke-width=".8" class="border-pulse" rx="2"/>
+    <text x="12" y="18" class="f-title text-flicker" font-size="10" fill="#00f3ff">&gt;&gt; SKILL_RADAR</text>
+
+    <g transform="translate(141,90)">
+      <!-- Concentric hexagons -->
+      <polygon points="0,-50 43,-25 43,25 0,50 -43,25 -43,-25" fill="none" stroke="#1a3a1a" stroke-width=".6"/>
+      <polygon points="0,-37 32,-18 32,18 0,37 -32,18 -32,-18" fill="none" stroke="#1a3a1a" stroke-width=".6"/>
+      <polygon points="0,-24 21,-12 21,12 0,24 -21,12 -21,-12" fill="none" stroke="#1a3a1a" stroke-width=".6"/>
+      <!-- Axes -->
+      <line x1="0" y1="-50" x2="0"   y2="50"  stroke="#1a2a1a" stroke-width=".5"/>
+      <line x1="43" y1="-25" x2="-43" y2="25" stroke="#1a2a1a" stroke-width=".5"/>
+      <line x1="43" y1="25"  x2="-43" y2="-25" stroke="#1a2a1a" stroke-width=".5"/>
+      <!-- Skill fill polygon: FRONTEND90 BACKEND85 DEVOPS80 MOBILE78 SECURITY55 AIML40 -->
+      <!-- calculated manually: r×sin/cos per axis -->
+      <polygon points="0,-45 37,21 34,-21 -33,20 -25,-21 0,20"
+               fill="url(#radarFill)" stroke="#00f3ff" stroke-width="1.2" class="radar-pulse" filter="url(#glow-sm)"/>
+      <!-- Data points -->
+      <circle cx="0"   cy="-45" r="3" fill="#00f3ff" class="anim-pulse"/>
+      <circle cx="37"  cy="21"  r="3" fill="#00f3ff" class="anim-pulse"/>
+      <circle cx="34"  cy="-21" r="3" fill="#0aff0a" class="anim-pulse"/>
+      <circle cx="-33" cy="20"  r="3" fill="#ff9500" class="anim-pulse"/>
+      <circle cx="-25" cy="-21" r="3" fill="#ff003c" class="anim-pulse"/>
+      <circle cx="0"   cy="20"  r="3" fill="#bf00ff" class="anim-pulse"/>
+      <!-- Labels -->
+      <text x="0"   y="-56" text-anchor="middle" class="f-data" fill="#00f3ff">FRONT</text>
+      <text x="53"  y="26"  class="f-data" fill="#0aff0a">BACK</text>
+      <text x="42"  y="-24" class="f-data" fill="#ff9500">DEVOPS</text>
+      <text x="-72" y="26"  class="f-data" fill="#ff003c">MOBILE</text>
+      <text x="-72" y="-22" class="f-data" fill="#bf00ff">SEC</text>
+      <text x="-12" y="32"  class="f-data" fill="#778899">AI/ML</text>
+    </g>
+  </g>
+
+  <!-- PINNED_REPOS -->
+  <g transform="translate(606,262)" class="boot-3">
+    <rect width="282" height="155" fill="#07070f" stroke="#ff9500" stroke-width=".8" class="border-pulse" rx="2"/>
+    <text x="12" y="18" class="f-title text-flicker" font-size="10" fill="#ff9500">&gt;&gt; PINNED_REPOS</text>
+    <g transform="translate(10,24)">
+      {{PINNED_REPOS}}
+    </g>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       ROW 3: COMMIT HEATMAP (full width, 52 weeks)
+       ═══════════════════════════════════════════════════════════════ -->
+  <g transform="translate(14,432)" class="boot-4">
+    <rect width="872" height="165" fill="#07070f" stroke="#0aff0a" stroke-width=".8" class="border-pulse" rx="2"/>
+
+    <!-- Header -->
+    <text x="14" y="18" class="f-title text-flicker" font-size="10" fill="#0aff0a">&gt;&gt; COMMIT_HEATMAP_2026</text>
+    <text x="700" y="18" class="f-data data-scan" fill="#778899">TOTAL:</text>
+    <text x="734" y="18" class="f-mono number-flux" font-size="11" fill="#39d353">{{CONTRIB_2026}}</text>
+    <text x="785" y="18" class="f-data" fill="#445566">contributions</text>
+
+    <!-- Day labels -->
+    <text x="4"  y="36" class="f-data" fill="#445566">Mon</text>
+    <text x="4"  y="58" class="f-data" fill="#445566">Wed</text>
+    <text x="4"  y="80" class="f-data" fill="#445566">Fri</text>
+
+    <!-- Heatmap grid (52w × 7d) injected by workflow -->
+    {{HEATMAP_RECTS}}
+
+    <!-- Legend -->
+    <text x="560" y="154" class="f-data" fill="#445566">Less</text>
+    <rect x="590" y="144" width="9" height="9" fill="#0d1117" rx="1.5"/>
+    <rect x="602" y="144" width="9" height="9" fill="#0e4429" rx="1.5"/>
+    <rect x="614" y="144" width="9" height="9" fill="#006d32" rx="1.5"/>
+    <rect x="626" y="144" width="9" height="9" fill="#26a641" rx="1.5"/>
+    <rect x="638" y="144" width="9" height="9" fill="#39d353" rx="1.5"/>
+    <text x="650" y="154" class="f-data" fill="#445566">More</text>
+
+    <!-- Month labels (approximate positions for 52-week grid starting ~Jan) -->
+    <text x="18"  y="144" class="f-data" fill="#445566">Jan</text>
+    <text x="62"  y="144" class="f-data" fill="#445566">Feb</text>
+    <text x="106" y="144" class="f-data" fill="#445566">Mar</text>
+    <text x="150" y="144" class="f-data" fill="#445566">Apr</text>
+    <text x="194" y="144" class="f-data" fill="#445566">May</text>
+    <text x="238" y="144" class="f-data" fill="#445566">Jun</text>
+    <text x="282" y="144" class="f-data" fill="#445566">Jul</text>
+    <text x="326" y="144" class="f-data" fill="#445566">Aug</text>
+    <text x="370" y="144" class="f-data" fill="#445566">Sep</text>
+    <text x="414" y="144" class="f-data" fill="#445566">Oct</text>
+    <text x="458" y="144" class="f-data" fill="#445566">Nov</text>
+    <text x="502" y="144" class="f-data" fill="#445566">Dec</text>
+  </g>
+
+  <text x="886" y="633" text-anchor="end" class="f-data text-flicker" fill="#334455">HALUZ_CORE_v4.0</text>
+</svg>

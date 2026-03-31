@@ -1,0 +1,429 @@
+<svg width="900" height="280" viewBox="0 0 900 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="h4-title">
+  <title id="h4-title">HALUZ — GitHub Profile Header v4</title>
+  <defs>
+    <style>
+      .f-title { font-family: Arial,'Helvetica Neue',sans-serif; font-weight:900; letter-spacing:2px; }
+      .f-mono  { font-family:'Courier New',Courier,monospace; font-weight:bold; }
+      .f-data  { font-family:'Courier New',Courier,monospace; font-size:9px; }
+
+      @keyframes haluzGlow {
+        0%,100% { fill:#bf00ff; filter:drop-shadow(0 0 8px #bf00ff); }
+        25%     { fill:#d44fff; filter:drop-shadow(0 0 15px #bf00ff); }
+        50%     { fill:#9900cc; filter:drop-shadow(0 0 4px  #bf00ff); }
+        75%     { fill:#e066ff; filter:drop-shadow(0 0 12px #bf00ff); }
+      }
+      @keyframes glitch {
+        0%,100% { opacity:1; }  10%{ opacity:.8; }  50%{ opacity:.6; }  90%{ opacity:.7; }
+      }
+      @keyframes borderPulse { 0%,100%{ stroke-opacity:1; } 50%{ stroke-opacity:.4; } }
+      @keyframes blink       { 0%,100%{ opacity:1; }        50%{ opacity:.2; } }
+      @keyframes pulse       { 0%,100%{ opacity:1; }        50%{ opacity:.45; } }
+      @keyframes dataScan    { 0%,100%{ opacity:.5; }       50%{ opacity:1; } }
+      @keyframes scanLine    { 0%{ transform:translateY(0); } 100%{ transform:translateY(200px); } }
+      @keyframes fadeIn      { from{ opacity:0; } to{ opacity:1; } }
+      @keyframes numberFlux  { 0%,100%{ opacity:1; } 50%{ opacity:.65; } }
+      @keyframes boxGlow {
+        0%,100%{ stroke:#00f3ff; stroke-opacity:.5; }
+        50%    { stroke:#00f3ff; stroke-opacity:1; }
+      }
+      @keyframes skullScan {
+        0%  { transform:translateY(-5px); opacity:.5; }
+        50% { opacity:.9; }
+        100%{ transform:translateY(205px); opacity:.5; }
+      }
+      @keyframes matrixFall {
+        0%  { opacity:0; }
+        10% { opacity:.8; }
+        90% { opacity:.6; }
+        100%{ opacity:0; }
+      }
+      @keyframes cornerFlash { 0%,90%,100%{ opacity:1; } 95%{ opacity:.3; } }
+      @keyframes textFlicker {
+        0%,100%{ opacity:1; } 2%{ opacity:.8; } 4%{ opacity:1; }
+        93%{ opacity:1; } 95%{ opacity:.5; } 97%{ opacity:1; }
+      }
+
+      .haluz-glow    { animation: haluzGlow   3s ease-in-out infinite; }
+      .glitch        { animation: glitch      4s ease-in-out infinite; }
+      .border-pulse  { animation: borderPulse 2s ease-in-out infinite; }
+      .anim-blink    { animation: blink       1.2s infinite; }
+      .anim-pulse    { animation: pulse       2s infinite; }
+      .data-scan     { animation: dataScan    1.5s ease-in-out infinite; }
+      .number-flux   { animation: numberFlux  2.5s ease-in-out infinite; }
+      .box-glow      { animation: boxGlow     3s ease-in-out infinite; }
+      .text-flicker  { animation: textFlicker 8s ease-in-out infinite; }
+      .corner-flash  { animation: cornerFlash 5s ease-in-out infinite; }
+      .skull-scan    { animation: skullScan   3s linear infinite; }
+      .boot-1 { animation: fadeIn .4s ease-out .1s forwards; opacity:0; }
+      .boot-2 { animation: fadeIn .4s ease-out .3s forwards; opacity:0; }
+      .boot-3 { animation: fadeIn .4s ease-out .5s forwards; opacity:0; }
+      .boot-4 { animation: fadeIn .4s ease-out .7s forwards; opacity:0; }
+      .boot-5 { animation: fadeIn .4s ease-out .9s forwards; opacity:0; }
+    </style>
+
+    <pattern id="hgrid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M20 0L0 0 0 20" fill="none" stroke="#0d0d0d" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="skullGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#00f3ff" stop-opacity=".9"/>
+      <stop offset="60%"  stop-color="#00c8d4" stop-opacity=".7"/>
+      <stop offset="100%" stop-color="#004d55" stop-opacity=".4"/>
+    </linearGradient>
+    <linearGradient id="streakBar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#00f3ff"/>
+      <stop offset="100%" stop-color="#0088aa"/>
+    </linearGradient>
+    <linearGradient id="maxBar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#ff9500"/>
+      <stop offset="100%" stop-color="#cc6600"/>
+    </linearGradient>
+    <linearGradient id="contribBar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#0aff0a"/>
+      <stop offset="100%" stop-color="#007700"/>
+    </linearGradient>
+    <filter id="cyan-glow">
+      <feGaussianBlur stdDeviation="2.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="purple-glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <clipPath id="skullClip">
+      <rect x="0" y="0" width="125" height="215"/>
+    </clipPath>
+  </defs>
+
+  <!-- BACKGROUND -->
+  <rect width="900" height="280" fill="#050505"/>
+  <rect width="900" height="280" fill="url(#hgrid)"/>
+
+  <!-- Top / bottom accent lines -->
+  <rect x="0" y="0"   width="900" height="2" fill="#00f3ff" opacity=".4"/>
+  <rect x="0" y="278" width="900" height="2" fill="#ff003c" opacity=".4"/>
+
+  <!-- Corner brackets -->
+  <path d="M0 0 L32 0 L32 5 L5 5 L5 32 L0 32Z"     fill="#00f3ff" class="boot-1 corner-flash"/>
+  <path d="M900 0 L868 0 L868 5 L895 5 L895 32 L900 32Z" fill="#00f3ff" class="boot-1 corner-flash"/>
+  <path d="M0 280 L32 280 L32 275 L5 275 L5 248 L0 248Z"  fill="#ff003c" class="boot-1 corner-flash"/>
+  <path d="M900 280 L868 280 L868 275 L895 275 L895 248 L900 248Z" fill="#ff003c" class="boot-1 corner-flash"/>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       SECTION 1: ASCII SKULL (pixel art, 4×4px blocks)
+       ═══════════════════════════════════════════════════════════════ -->
+  <g transform="translate(10,10)" class="boot-1" clip-path="url(#skullClip)">
+    <rect width="125" height="215" fill="#080810" stroke="#00f3ff" stroke-width=".6" class="border-pulse" rx="2"/>
+
+    <!-- Scan line sweeping over skull -->
+    <rect x="1" y="0" width="123" height="3" fill="#00f3ff" opacity=".25" class="skull-scan"/>
+
+    <!-- Skull pixel art — each rect is 4×4, origin inside panel -->
+    <g transform="translate(10,12)" fill="url(#skullGrad)" filter="url(#cyan-glow)">
+      <!-- Row 0: top dome -->
+      <rect x="28" y="0"  width="4" height="4"/>
+      <rect x="32" y="0"  width="4" height="4"/>
+      <rect x="36" y="0"  width="4" height="4"/>
+      <rect x="40" y="0"  width="4" height="4"/>
+      <rect x="44" y="0"  width="4" height="4"/>
+      <rect x="48" y="0"  width="4" height="4"/>
+      <rect x="52" y="0"  width="4" height="4"/>
+      <rect x="56" y="0"  width="4" height="4"/>
+      <rect x="60" y="0"  width="4" height="4"/>
+      <rect x="64" y="0"  width="4" height="4"/>
+      <!-- Row 1 -->
+      <rect x="20" y="4"  width="4" height="4"/>
+      <rect x="24" y="4"  width="4" height="4"/>
+      <rect x="28" y="4"  width="4" height="4"/>
+      <rect x="64" y="4"  width="4" height="4"/>
+      <rect x="68" y="4"  width="4" height="4"/>
+      <rect x="72" y="4"  width="4" height="4"/>
+      <!-- Row 2 -->
+      <rect x="12" y="8"  width="4" height="4"/>
+      <rect x="16" y="8"  width="4" height="4"/>
+      <rect x="20" y="8"  width="4" height="4"/>
+      <rect x="72" y="8"  width="4" height="4"/>
+      <rect x="76" y="8"  width="4" height="4"/>
+      <rect x="80" y="8"  width="4" height="4"/>
+      <!-- Row 3-6: dome sides -->
+      <rect x="8"  y="12" width="4" height="4"/>
+      <rect x="12" y="12" width="4" height="4"/>
+      <rect x="80" y="12" width="4" height="4"/>
+      <rect x="84" y="12" width="4" height="4"/>
+      <rect x="8"  y="16" width="4" height="4"/>
+      <rect x="84" y="16" width="4" height="4"/>
+      <rect x="8"  y="20" width="4" height="4"/>
+      <rect x="84" y="20" width="4" height="4"/>
+      <rect x="4"  y="24" width="4" height="4"/>
+      <rect x="88" y="24" width="4" height="4"/>
+      <!-- Row 7-9: eye area top -->
+      <rect x="4"  y="28" width="4" height="4"/>
+      <rect x="88" y="28" width="4" height="4"/>
+      <rect x="4"  y="32" width="4" height="4"/>
+      <rect x="88" y="32" width="4" height="4"/>
+      <!-- Row 10-12: eye sockets (gaps = eyes) -->
+      <rect x="4"  y="36" width="4" height="4"/>
+      <rect x="8"  y="36" width="4" height="4"/>
+      <!-- left eye socket skip 12..20 -->
+      <rect x="20" y="36" width="4" height="4"/>
+      <rect x="24" y="36" width="4" height="4"/>
+      <rect x="28" y="36" width="4" height="4"/>
+      <rect x="32" y="36" width="4" height="4"/>
+      <!-- nose area -->
+      <rect x="36" y="36" width="4" height="4"/>
+      <rect x="40" y="36" width="4" height="4"/>
+      <rect x="44" y="36" width="4" height="4"/>
+      <rect x="48" y="36" width="4" height="4"/>
+      <rect x="52" y="36" width="4" height="4"/>
+      <rect x="56" y="36" width="4" height="4"/>
+      <!-- right eye socket skip 60..68 -->
+      <rect x="68" y="36" width="4" height="4"/>
+      <rect x="72" y="36" width="4" height="4"/>
+      <rect x="76" y="36" width="4" height="4"/>
+      <rect x="80" y="36" width="4" height="4"/>
+      <rect x="84" y="36" width="4" height="4"/>
+      <rect x="88" y="36" width="4" height="4"/>
+
+      <rect x="4"  y="40" width="4" height="4"/>
+      <rect x="8"  y="40" width="4" height="4"/>
+      <rect x="20" y="40" width="4" height="4"/>
+      <rect x="24" y="40" width="4" height="4"/>
+      <rect x="36" y="40" width="4" height="4"/>
+      <rect x="40" y="40" width="4" height="4"/>
+      <rect x="44" y="40" width="4" height="4"/>
+      <rect x="48" y="40" width="4" height="4"/>
+      <rect x="52" y="40" width="4" height="4"/>
+      <rect x="56" y="40" width="4" height="4"/>
+      <rect x="68" y="40" width="4" height="4"/>
+      <rect x="72" y="40" width="4" height="4"/>
+      <rect x="80" y="40" width="4" height="4"/>
+      <rect x="84" y="40" width="4" height="4"/>
+      <rect x="88" y="40" width="4" height="4"/>
+
+      <rect x="4"  y="44" width="4" height="4"/>
+      <rect x="8"  y="44" width="4" height="4"/>
+      <rect x="20" y="44" width="4" height="4"/>
+      <rect x="24" y="44" width="4" height="4"/>
+      <rect x="36" y="44" width="4" height="4"/>
+      <rect x="56" y="44" width="4" height="4"/>
+      <rect x="68" y="44" width="4" height="4"/>
+      <rect x="72" y="44" width="4" height="4"/>
+      <rect x="80" y="44" width="4" height="4"/>
+      <rect x="84" y="44" width="4" height="4"/>
+      <rect x="88" y="44" width="4" height="4"/>
+
+      <!-- Row 12-13: eye socket bottom -->
+      <rect x="4"  y="48" width="4" height="4"/>
+      <rect x="8"  y="48" width="4" height="4"/>
+      <rect x="12" y="48" width="4" height="4"/>
+      <rect x="16" y="48" width="4" height="4"/>
+      <rect x="20" y="48" width="4" height="4"/>
+      <rect x="24" y="48" width="4" height="4"/>
+      <rect x="36" y="48" width="4" height="4"/>
+      <rect x="40" y="48" width="4" height="4"/>
+      <rect x="44" y="48" width="4" height="4"/>
+      <rect x="48" y="48" width="4" height="4"/>
+      <rect x="52" y="48" width="4" height="4"/>
+      <rect x="56" y="48" width="4" height="4"/>
+      <rect x="60" y="48" width="4" height="4"/>
+      <rect x="64" y="48" width="4" height="4"/>
+      <rect x="68" y="48" width="4" height="4"/>
+      <rect x="72" y="48" width="4" height="4"/>
+      <rect x="76" y="48" width="4" height="4"/>
+      <rect x="80" y="48" width="4" height="4"/>
+      <rect x="84" y="48" width="4" height="4"/>
+      <rect x="88" y="48" width="4" height="4"/>
+
+      <!-- Row 14-16: nose/cheek -->
+      <rect x="4"  y="52" width="84" height="4"/>
+      <rect x="4"  y="56" width="84" height="4"/>
+      <!-- nose hole skip 40..52 -->
+      <rect x="4"  y="60" width="32" height="4"/>
+      <rect x="56" y="60" width="36" height="4"/>
+
+      <!-- Row 17-19: teeth top -->
+      <rect x="4"  y="64" width="84" height="4"/>
+      <!-- teeth gaps: 16,24,32,40,48,56,64,72 -->
+      <rect x="4"  y="68" width="8"  height="4"/>
+      <rect x="20" y="68" width="8"  height="4"/>
+      <rect x="36" y="68" width="8"  height="4"/>
+      <rect x="52" y="68" width="8"  height="4"/>
+      <rect x="68" y="68" width="8"  height="4"/>
+      <rect x="84" y="68" width="4"  height="4"/>
+      <rect x="4"  y="72" width="8"  height="4"/>
+      <rect x="20" y="72" width="8"  height="4"/>
+      <rect x="36" y="72" width="8"  height="4"/>
+      <rect x="52" y="72" width="8"  height="4"/>
+      <rect x="68" y="72" width="8"  height="4"/>
+      <rect x="84" y="72" width="4"  height="4"/>
+
+      <!-- Row 20: chin -->
+      <rect x="4"  y="76" width="84" height="4"/>
+      <rect x="8"  y="80" width="76" height="4"/>
+      <rect x="12" y="84" width="68" height="4"/>
+      <rect x="16" y="88" width="60" height="4"/>
+      <rect x="24" y="92" width="44" height="4"/>
+    </g>
+
+    <!-- Eye glow (animated) -->
+    <rect x="16" y="50" width="16" height="16" fill="#00f3ff" opacity=".15" class="anim-pulse"/>
+    <rect x="70" y="50" width="16" height="16" fill="#00f3ff" opacity=".15" class="anim-pulse"/>
+
+    <!-- Bottom label -->
+    <rect x="0" y="196" width="125" height="18" fill="#060610" stroke="#00f3ff" stroke-width=".5" class="border-pulse"/>
+    <circle cx="10" cy="205" r="3" fill="#0aff0a" class="anim-blink"/>
+    <text x="18" y="208" font-family="Courier New" font-size="8" font-weight="bold" fill="#00f3ff" class="text-flicker">NEURAL_ID v4.0</text>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       SECTION 2: IDENTITY PANEL
+       ═══════════════════════════════════════════════════════════════ -->
+  <g transform="translate(148,14)" class="boot-2">
+    <path d="M0 0 L295 0 L315 20 L315 225 L20 225 L0 205Z"
+          fill="#07070f" stroke="#bf00ff" stroke-width="1.2" class="border-pulse"/>
+
+    <!-- HALUZ title with glitch layers -->
+    <text x="22" y="50" class="f-title haluz-glow" font-size="40" filter="url(#purple-glow)">HALUZ</text>
+    <text x="20" y="50" class="f-title glitch" font-size="40" fill="#00f3ff" opacity=".18">HALUZ</text>
+    <text x="24" y="50" class="f-title glitch" font-size="40" fill="#ff003c" opacity=".12">HALUZ</text>
+
+    <text x="22" y="68" class="f-mono text-flicker" font-size="10" fill="#fff">ID: aaronestradabonilla777</text>
+
+    <!-- Badges -->
+    <g transform="translate(22,76)">
+      <rect width="130" height="16" fill="#150505" stroke="#ff003c" stroke-width=".5" class="border-pulse" rx="1"/>
+      <text x="65" y="11" text-anchor="middle" class="f-title text-flicker" font-size="9" fill="#ff003c">NETRUNNER // LVL.50</text>
+    </g>
+    <g transform="translate(162,76)">
+      <rect width="90" height="16" fill="#051505" stroke="#0aff0a" stroke-width=".5" class="border-pulse" rx="1"/>
+      <text x="45" y="11" text-anchor="middle" class="f-data data-scan" font-size="9" fill="#0aff0a">MEXICO</text>
+    </g>
+
+    <text x="22" y="108" class="f-data text-flicker" fill="#778899">SECTOR: NIGHT_CITY_MX</text>
+
+    <!-- Live metrics: STREAK / MAX / CONTRIB_2026 -->
+    <text x="22" y="128" class="f-data data-scan" fill="#778899">// ACTIVITY MATRIX</text>
+
+    <!-- Streak actual -->
+    <g transform="translate(22,134)">
+      <text x="0" y="11" class="f-data" fill="#778899">STREAK_ACT</text>
+      <rect x="80" y="0" width="100" height="13" fill="#0a1a1a" rx="1"/>
+      <rect x="81" y="1" width="{{STREAK_ACT_W}}" height="11" fill="url(#streakBar)" rx="1" class="bar-pulse"/>
+      <text x="185" y="11" class="f-mono number-flux" font-size="11" fill="#00f3ff">{{CURRENT_STREAK}}d</text>
+    </g>
+    <!-- Longest streak -->
+    <g transform="translate(22,152)">
+      <text x="0" y="11" class="f-data" fill="#778899">STREAK_MAX</text>
+      <rect x="80" y="0" width="100" height="13" fill="#0a0a0a" rx="1"/>
+      <rect x="81" y="1" width="{{STREAK_MAX_W}}" height="11" fill="url(#maxBar)" rx="1" class="bar-pulse"/>
+      <text x="185" y="11" class="f-mono number-flux" font-size="11" fill="#ff9500">{{LONGEST_STREAK}}d</text>
+    </g>
+    <!-- Contributions 2026 -->
+    <g transform="translate(22,170)">
+      <text x="0" y="11" class="f-data" fill="#778899">CONTRIB_2026</text>
+      <rect x="80" y="0" width="100" height="13" fill="#051505" rx="1"/>
+      <rect x="81" y="1" width="98" height="11" fill="url(#contribBar)" rx="1" class="bar-pulse" opacity=".8"/>
+      <text x="185" y="11" class="f-mono number-flux" font-size="11" fill="#0aff0a">{{CONTRIB_2026}}</text>
+    </g>
+
+    <text x="22" y="205" class="f-data text-flicker" fill="#445566">BUILD: HALUZ_HEADER_v4.0 // 2026.03.30</text>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       SECTION 3: QR + UPTIME
+       ═══════════════════════════════════════════════════════════════ -->
+  <g transform="translate(478,14)" class="boot-3">
+    <!-- QR Verified -->
+    <rect width="80" height="68" fill="#07070f" stroke="#00f3ff" stroke-width=".6" class="box-glow" rx="2"/>
+    <text x="40" y="13" text-anchor="middle" class="f-data data-scan" fill="#00f3ff">VERIFIED</text>
+    <g transform="translate(20,17)" class="data-scan" fill="#00f3ff">
+      <rect x="0"  y="0"  width="6" height="6"/><rect x="8"  y="0"  width="6" height="6"/><rect x="24" y="0"  width="6" height="6"/>
+      <rect x="0"  y="8"  width="6" height="6"/><rect x="16" y="8"  width="6" height="6"/><rect x="24" y="8"  width="6" height="6"/>
+      <rect x="8"  y="16" width="6" height="6"/><rect x="16" y="16" width="6" height="6"/>
+      <rect x="0"  y="24" width="6" height="6"/><rect x="8"  y="24" width="6" height="6"/><rect x="24" y="24" width="6" height="6"/>
+    </g>
+    <text x="40" y="62" text-anchor="middle" class="f-data text-flicker" fill="#445566">ID:104384350</text>
+
+    <!-- Uptime boxes -->
+    <g transform="translate(88,0)">
+      <rect width="155" height="68" fill="#07070f" stroke="#333" stroke-width=".8" class="border-pulse" rx="2"/>
+      <text x="77" y="13" text-anchor="middle" class="f-data data-scan" fill="#778899">SYSTEM_UPTIME</text>
+      <g transform="translate(6,20)">
+        <rect width="38" height="30" fill="#0a1a1a" stroke="#00f3ff" stroke-width=".5" class="box-glow" rx="1"/>
+        <text x="19" y="21" text-anchor="middle" class="f-mono number-flux" font-size="14" fill="#00f3ff">{{YEARS}}Y</text>
+
+        <rect x="44" y="0" width="46" height="30" fill="#0a1a1a" stroke="#00f3ff" stroke-width=".5" class="box-glow" rx="1"/>
+        <text x="67" y="21" text-anchor="middle" class="f-mono number-flux" font-size="14" fill="#00f3ff">{{DAYS}}D</text>
+
+        <rect x="96" y="0" width="38" height="30" fill="#0a1a1a" stroke="#ff9500" stroke-width=".5" class="box-glow" rx="1"/>
+        <text x="115" y="21" text-anchor="middle" class="f-mono anim-blink" font-size="14" fill="#ff9500">{{HOURS}}H</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       SECTION 4: NETWORK METRICS (right panel)
+       ═══════════════════════════════════════════════════════════════ -->
+  <g transform="translate(478,96)" class="boot-4">
+    <path d="M0 18 L18 0 L243 0 L243 178 L225 178 L225 196 L0 196Z"
+          fill="#07070f" stroke="#bf00ff" stroke-width=".9" class="border-pulse" rx="1"/>
+
+    <text x="28" y="20" class="f-title text-flicker" font-size="11" fill="#bf00ff">&gt;&gt; NETWORK_METRICS</text>
+
+    <!-- 6 stat blocks in 2×3 grid -->
+    <!-- Row 1 -->
+    <g transform="translate(14,34)">
+      <text x="0" y="0" class="f-data data-scan" fill="#778899">PUBLIC_REPOS</text>
+      <rect x="0" y="4" width="100" height="38" fill="#0a1a1a" stroke="#00f3ff" stroke-width=".5" class="box-glow" rx="1"/>
+      <text x="50" y="32" text-anchor="middle" class="f-mono number-flux" font-size="24" fill="#00f3ff">{{REPOS}}</text>
+    </g>
+    <g transform="translate(124,34)">
+      <text x="0" y="0" class="f-data data-scan" fill="#778899">FOLLOWERS</text>
+      <rect x="0" y="4" width="100" height="38" fill="#0a0a1a" stroke="#bf00ff" stroke-width=".5" class="box-glow" rx="1"/>
+      <text x="50" y="32" text-anchor="middle" class="f-mono number-flux" font-size="24" fill="#bf00ff">{{FOLLOWERS}}</text>
+    </g>
+    <!-- Row 2 -->
+    <g transform="translate(14,90)">
+      <text x="0" y="0" class="f-data data-scan" fill="#778899">FOLLOWING</text>
+      <rect x="0" y="4" width="100" height="38" fill="#0a0a1a" stroke="#bf00ff" stroke-width=".5" class="box-glow" rx="1"/>
+      <text x="50" y="32" text-anchor="middle" class="f-mono number-flux" font-size="24" fill="#bf00ff">{{FOLLOWING}}</text>
+    </g>
+    <g transform="translate(124,90)">
+      <text x="0" y="0" class="f-data data-scan" fill="#778899">TOTAL_STARS</text>
+      <rect x="0" y="4" width="100" height="38" fill="#1a1a0a" stroke="#ff9500" stroke-width=".5" class="box-glow" rx="1"/>
+      <text x="50" y="32" text-anchor="middle" class="f-mono number-flux" font-size="24" fill="#ff9500">{{STARS}}</text>
+    </g>
+    <!-- Row 3 -->
+    <g transform="translate(14,146)">
+      <text x="0" y="0" class="f-data data-scan" fill="#778899">TOTAL_FORKS</text>
+      <rect x="0" y="4" width="100" height="38" fill="#0a1a1a" stroke="#00f3ff" stroke-width=".5" class="box-glow" rx="1"/>
+      <text x="50" y="32" text-anchor="middle" class="f-mono number-flux" font-size="24" fill="#00f3ff">{{FORKS}}</text>
+    </g>
+    <g transform="translate(124,146)">
+      <text x="0" y="0" class="f-data data-scan" fill="#778899">PRS_MERGED</text>
+      <rect x="0" y="4" width="100" height="38" fill="#0a1a0a" stroke="#0aff0a" stroke-width=".5" class="box-glow" rx="1"/>
+      <text x="50" y="32" text-anchor="middle" class="f-mono number-flux" font-size="24" fill="#0aff0a">{{PRS_MERGED}}</text>
+    </g>
+
+    <!-- API status -->
+    <g transform="translate(14,192)">
+      <circle cx="6" cy="4" r="3" fill="#0aff0a" class="anim-blink"/>
+      <text x="14" y="8" class="f-data data-scan" fill="#0aff0a">API_CONNECTED</text>
+      <text x="130" y="8" class="f-data text-flicker" fill="#445566">LATENCY: 23ms</text>
+    </g>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       BOTTOM DATA STREAM
+       ═══════════════════════════════════════════════════════════════ -->
+  <g transform="translate(14,238)" class="boot-5">
+    <rect width="872" height="34" fill="#060606" stroke="#1a1a1a" rx="1"/>
+    <text x="8" y="13" class="f-mono text-flicker" font-size="8" fill="#445566">
+      0x7F3A &gt;&gt; [AUTH_OK] [SYNC_OK] [BUFFER_OK] [HANDSHAKE_OK] [AES256] [PROTOCOL_V5] [STATUS:NOMINAL]
+    </text>
+    <text x="8" y="26" class="f-mono data-scan" font-size="8" fill="#00f3ff">
+      SESSION:#4A7F2B3C | SOCKET:ACTIVE | BW:847.2Mb/s | PING:12ms | UPLINK:STABLE
+    </text>
+  </g>
+
+  <text x="886" y="271" text-anchor="end" class="f-data text-flicker" fill="#334455">HALUZ_HEADER_v4.0</text>
+</svg>
