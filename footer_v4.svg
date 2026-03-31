@@ -104,11 +104,11 @@
 
     <g transform="translate(10,28)" class="f-term">
       <text x="0" y="0"  fill="#778899" class="tw-1">&gt; git log --oneline --graph</text>
-      <text x="0" y="14" fill="#0aff0a" class="tw-2">* {{COMMIT_1}}</text>
-      <text x="0" y="28" fill="#0aff0a" class="tw-3">* {{COMMIT_2}}</text>
-      <text x="0" y="42" fill="#ff9500" class="tw-4">* {{COMMIT_3}}</text>
-      <text x="0" y="56" fill="#0aff0a" class="tw-5">* {{COMMIT_4}}</text>
-      <text x="0" y="70" fill="#0aff0a" class="tw-6">* {{COMMIT_5}}</text>
+      <text x="0" y="14" fill="#0aff0a" class="tw-2">* [-------] ...</text>
+      <text x="0" y="28" fill="#0aff0a" class="tw-3">* [-------] ...</text>
+      <text x="0" y="42" fill="#ff9500" class="tw-4">* [-------] ...</text>
+      <text x="0" y="56" fill="#0aff0a" class="tw-5">* [-------] ...</text>
+      <text x="0" y="70" fill="#0aff0a" class="tw-6">* [-------] ...</text>
       <text x="0" y="84" fill="#fff" class="tw-6">&#9608;<tspan class="anim-blink">_</tspan></text>
     </g>
   </g>

@@ -307,22 +307,22 @@
     <g transform="translate(22,134)">
       <text x="0" y="11" class="f-data" fill="#778899">STREAK_ACT</text>
       <rect x="80" y="0" width="100" height="13" fill="#0a1a1a" rx="1"/>
-      <rect x="81" y="1" width="{{STREAK_ACT_W}}" height="11" fill="url(#streakBar)" rx="1" class="bar-pulse"/>
-      <text x="185" y="11" class="f-mono number-flux" font-size="11" fill="#00f3ff">{{CURRENT_STREAK}}d</text>
+      <rect x="81" y="1" width="20" height="11" fill="url(#streakBar)" rx="1" class="bar-pulse"/>
+      <text x="185" y="11" class="f-mono number-flux" font-size="11" fill="#00f3ff">1d</text>
     </g>
     <!-- Longest streak -->
     <g transform="translate(22,152)">
       <text x="0" y="11" class="f-data" fill="#778899">STREAK_MAX</text>
       <rect x="80" y="0" width="100" height="13" fill="#0a0a0a" rx="1"/>
-      <rect x="81" y="1" width="{{STREAK_MAX_W}}" height="11" fill="url(#maxBar)" rx="1" class="bar-pulse"/>
-      <text x="185" y="11" class="f-mono number-flux" font-size="11" fill="#ff9500">{{LONGEST_STREAK}}d</text>
+      <rect x="81" y="1" width="98" height="11" fill="url(#maxBar)" rx="1" class="bar-pulse"/>
+      <text x="185" y="11" class="f-mono number-flux" font-size="11" fill="#ff9500">5d</text>
     </g>
     <!-- Contributions 2026 -->
     <g transform="translate(22,170)">
       <text x="0" y="11" class="f-data" fill="#778899">CONTRIB_2026</text>
       <rect x="80" y="0" width="100" height="13" fill="#051505" rx="1"/>
       <rect x="81" y="1" width="98" height="11" fill="url(#contribBar)" rx="1" class="bar-pulse" opacity=".8"/>
-      <text x="185" y="11" class="f-mono number-flux" font-size="11" fill="#0aff0a">{{CONTRIB_2026}}</text>
+      <text x="185" y="11" class="f-mono number-flux" font-size="11" fill="#0aff0a">221</text>
     </g>
 
     <text x="22" y="205" class="f-data text-flicker" fill="#445566">BUILD: HALUZ_HEADER_v4.0 // 2026.03.30</text>
@@ -349,13 +349,13 @@
       <text x="77" y="13" text-anchor="middle" class="f-data data-scan" fill="#778899">SYSTEM_UPTIME</text>
       <g transform="translate(6,20)">
         <rect width="38" height="30" fill="#0a1a1a" stroke="#00f3ff" stroke-width=".5" class="box-glow" rx="1"/>
-        <text x="19" y="21" text-anchor="middle" class="f-mono number-flux" font-size="14" fill="#00f3ff">{{YEARS}}Y</text>
+        <text x="19" y="21" text-anchor="middle" class="f-mono number-flux" font-size="14" fill="#00f3ff">3Y</text>
 
         <rect x="44" y="0" width="46" height="30" fill="#0a1a1a" stroke="#00f3ff" stroke-width=".5" class="box-glow" rx="1"/>
-        <text x="67" y="21" text-anchor="middle" class="f-mono number-flux" font-size="14" fill="#00f3ff">{{DAYS}}D</text>
+        <text x="67" y="21" text-anchor="middle" class="f-mono number-flux" font-size="14" fill="#00f3ff">340D</text>
 
         <rect x="96" y="0" width="38" height="30" fill="#0a1a1a" stroke="#ff9500" stroke-width=".5" class="box-glow" rx="1"/>
-        <text x="115" y="21" text-anchor="middle" class="f-mono anim-blink" font-size="14" fill="#ff9500">{{HOURS}}H</text>
+        <text x="115" y="21" text-anchor="middle" class="f-mono anim-blink" font-size="14" fill="#ff9500">17H</text>
       </g>
     </g>
   </g>
@@ -374,34 +374,34 @@
     <g transform="translate(14,34)">
       <text x="0" y="0" class="f-data data-scan" fill="#778899">PUBLIC_REPOS</text>
       <rect x="0" y="4" width="100" height="38" fill="#0a1a1a" stroke="#00f3ff" stroke-width=".5" class="box-glow" rx="1"/>
-      <text x="50" y="32" text-anchor="middle" class="f-mono number-flux" font-size="24" fill="#00f3ff">{{REPOS}}</text>
+      <text x="50" y="32" text-anchor="middle" class="f-mono number-flux" font-size="24" fill="#00f3ff">13</text>
     </g>
     <g transform="translate(124,34)">
       <text x="0" y="0" class="f-data data-scan" fill="#778899">FOLLOWERS</text>
       <rect x="0" y="4" width="100" height="38" fill="#0a0a1a" stroke="#bf00ff" stroke-width=".5" class="box-glow" rx="1"/>
-      <text x="50" y="32" text-anchor="middle" class="f-mono number-flux" font-size="24" fill="#bf00ff">{{FOLLOWERS}}</text>
+      <text x="50" y="32" text-anchor="middle" class="f-mono number-flux" font-size="24" fill="#bf00ff">5</text>
     </g>
     <!-- Row 2 -->
     <g transform="translate(14,90)">
       <text x="0" y="0" class="f-data data-scan" fill="#778899">FOLLOWING</text>
       <rect x="0" y="4" width="100" height="38" fill="#0a0a1a" stroke="#bf00ff" stroke-width=".5" class="box-glow" rx="1"/>
-      <text x="50" y="32" text-anchor="middle" class="f-mono number-flux" font-size="24" fill="#bf00ff">{{FOLLOWING}}</text>
+      <text x="50" y="32" text-anchor="middle" class="f-mono number-flux" font-size="24" fill="#bf00ff">8</text>
     </g>
     <g transform="translate(124,90)">
       <text x="0" y="0" class="f-data data-scan" fill="#778899">TOTAL_STARS</text>
       <rect x="0" y="4" width="100" height="38" fill="#1a1a0a" stroke="#ff9500" stroke-width=".5" class="box-glow" rx="1"/>
-      <text x="50" y="32" text-anchor="middle" class="f-mono number-flux" font-size="24" fill="#ff9500">{{STARS}}</text>
+      <text x="50" y="32" text-anchor="middle" class="f-mono number-flux" font-size="24" fill="#ff9500">0</text>
     </g>
     <!-- Row 3 -->
     <g transform="translate(14,146)">
       <text x="0" y="0" class="f-data data-scan" fill="#778899">TOTAL_FORKS</text>
       <rect x="0" y="4" width="100" height="38" fill="#0a1a1a" stroke="#00f3ff" stroke-width=".5" class="box-glow" rx="1"/>
-      <text x="50" y="32" text-anchor="middle" class="f-mono number-flux" font-size="24" fill="#00f3ff">{{FORKS}}</text>
+      <text x="50" y="32" text-anchor="middle" class="f-mono number-flux" font-size="24" fill="#00f3ff">0</text>
     </g>
     <g transform="translate(124,146)">
       <text x="0" y="0" class="f-data data-scan" fill="#778899">PRS_MERGED</text>
       <rect x="0" y="4" width="100" height="38" fill="#0a1a0a" stroke="#0aff0a" stroke-width=".5" class="box-glow" rx="1"/>
-      <text x="50" y="32" text-anchor="middle" class="f-mono number-flux" font-size="24" fill="#0aff0a">{{PRS_MERGED}}</text>
+      <text x="50" y="32" text-anchor="middle" class="f-mono number-flux" font-size="24" fill="#0aff0a">0</text>
     </g>
 
     <!-- API status -->
