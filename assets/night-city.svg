@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 332" role="img" aria-labelledby="title desc">
   <title id="title">HALUZ · Night City · Rust y React</title>
-  <desc id="desc">Samurai ilumina una avenida mojada de Night City. Los taxis y los deportivos cruzan bajo el tren mientras las torres pasan al fondo de la firma HALUZ.</desc>
+  <desc id="desc">Seis vehículos cruzan la avenida bajo el letrero Samurai. Detrás de HALUZ se alzan viviendas suspendidas, un jardín anular y dos agujas unidas por una pasarela.</desc>
   <defs>
     <linearGradient id="sky" x1="0" y1="1" x2="1" y2="0">
       <stop stop-color="#080c1c"/><stop offset=".48" stop-color="#252242"/><stop offset=".84" stop-color="#79435c"/><stop offset="1" stop-color="#162239"/>
@@ -8,9 +8,6 @@
     <linearGradient id="shade">
       <stop stop-color="#05121b"/><stop offset=".65" stop-color="#06121c" stop-opacity=".96"/><stop offset="1" stop-color="#06121c" stop-opacity="0"/>
     </linearGradient>
-    <pattern id="glass" width="11" height="12" patternUnits="userSpaceOnUse">
-      <path d="M1 3h5m-5 3h4" stroke="#6cb3b9" stroke-width="1.5" opacity=".5"/>
-    </pattern>
     <pattern id="screen" width="4" height="5" patternUnits="userSpaceOnUse">
       <path d="M0 1h4" stroke="#02080e" stroke-width="1" opacity=".32"/>
     </pattern>
@@ -24,23 +21,56 @@
       <circle r="6.6" fill="#070d19" stroke="#8a9aaf" stroke-width="1.3"/>
       <circle r="3.1" fill="#526375"/><circle r="1.2" fill="#d6e7e7"/>
     </g>
-    <g id="coupe">
-      <path d="m47-10 57 5v5L47-7z" fill="url(#headlight)"/>
-      <path d="m-49-8 4-9 17-3 13-11h25l16 12 17 3 7 6-2 7h-98z" fill="#ee526c" stroke="#261a2b" stroke-width="1.6"/>
-      <path d="m-22-20 11-9h10v9zm26 0v-9h5l13 10z" fill="#273a50" stroke="#b9e8ec"/>
-      <path d="m-47-9 16-2 9 3 31-1 10-4 27 1-1 7h-89z" fill="#832c4b"/>
-      <path d="m-45-14 8-1m73 3 11 1" stroke="#fff6bc" stroke-width="2.2"/>
-      <path d="m-48-11 7 1" stroke="#ff4768" stroke-width="3"/>
-      <use href="#wheel" x="-31" y="-4"/><use href="#wheel" x="29" y="-4"/>
+    <!-- Side elevations share a road baseline; the bodywork defines each vehicle. -->
+    <g id="razor">
+      <path d="m59-10 51 6v3l-51-6z" fill="url(#headlight)"/>
+      <path d="m-62-26 21 5 14-2 14-9h20l22 13 25 5 10 6-18 4h-99l-7-7z" fill="#e54263" stroke="#502438"/>
+      <path d="m-18-21 11-8H8l17 10z" fill="#93e1e1"/>
+      <path d="m-13-19 10-8h8l12 8z" fill="#1e364a"/>
+      <path d="m-57-20 25 5-8 6-15-2zm47 4 34 1-14 7h-28z" fill="#702541"/>
+      <path d="m-55-22-5-9 21 3 5 5z" fill="#333046" stroke="#ff929b"/>
+      <use href="#wheel" x="-37" y="-5"/><use href="#wheel" x="36" y="-5"/>
+      <path d="m-28-4 39 1 9-2m25-8 14 4" fill="none" stroke="#fff0b5" stroke-width="2"/>
     </g>
-    <g id="taxi">
-      <path d="m43-9 42 4v5L43-6z" fill="url(#headlight)"/>
-      <path d="m-46-7 2-12 12-2 8-12h29l16 11 19 5 5 7-2 6h-88z" fill="#f3b85c" stroke="#302438" stroke-width="1.5"/>
-      <path d="m-26-22 6-9h13v9zm24 0v-9h6l13 10z" fill="#294455" stroke="#c2edef"/>
-      <path d="M-41-15h67" stroke="#43364b" stroke-width="3" stroke-dasharray="5 2"/>
-      <path d="M-13-34v-4H0v4" fill="#ffe5a2" stroke="#4d3936"/>
-      <path d="M34-13h8" stroke="#fff4c0" stroke-width="3"/>
-      <use href="#wheel" x="-28" y="-4"/><use href="#wheel" x="26" y="-4"/>
+    <g id="hauler">
+      <path d="M-54-30h55v24h-55z" fill="#3e4e62" stroke="#92acb3"/>
+      <path d="m-52-30 5-7h45l5 6zm51 4 12-9h15l14 18 7 6-2 7H-1z" fill="#d19849" stroke="#f4c575"/>
+      <path d="M8-23 16-31h8l10 13H8z" fill="#173444"/>
+      <path d="M-48-25h43m-43 6h41m-41 6h25" stroke="#768695" stroke-width="2"/>
+      <path d="m-43-32 5-4m9 4 5-4m9 4 5-4" stroke="#242e39" stroke-width="3"/>
+      <use href="#wheel" x="-42" y="-3"/><use href="#wheel" x="-25" y="-3"/><use href="#wheel" x="27" y="-3"/>
+      <path d="M34-13h9" stroke="#d3fff8" stroke-width="3"/>
+    </g>
+    <g id="glider">
+      <path d="m-49-19-9-19 18 7 16 10q12-25 37-14l17 14 22 6-9 6-86 1z" fill="#a2e4df" stroke="#386477"/>
+      <path d="M-21-22q13-23 32-10l12 11z" fill="#29465f"/>
+      <path d="m-39-13 20 1 11-5 33 1-17 7h-44z" fill="#567889"/>
+      <path d="M-34-7h16m34-1h18" stroke="#67fff0" stroke-width="4"/>
+      <path d="m-34-5-6 5h21l2-5zm50-1-4 5h20l2-5z" fill="#55d5ec" opacity=".6"/>
+    </g>
+    <g id="bubble">
+      <path d="M-29-14q1-27 22-28 19-1 26 23l11 7-3 9h-54z" fill="#182e35" stroke="#bfeb82" stroke-width="2"/>
+      <path d="M-22-22q4-17 16-17l2 17zm23 0-2-17q10 2 15 18z" fill="#8cc4b9"/>
+      <path d="m-29-16 47-3 13 7-5 8h-53z" fill="#a7cb65"/>
+      <circle cx="-16" cy="-6" r="9" fill="#1c3039" stroke="#d2e49f" stroke-width="2"/>
+      <circle cx="-16" cy="-6" r="4" fill="#748892"/><use href="#wheel" x="17" y="-4"/>
+      <path d="m20-14 7 2" stroke="#fff2be" stroke-width="2"/>
+    </g>
+    <g id="limousine">
+      <path d="m-65-15 7-7 22-2 15-9h39l19 11 23 3 8 6-3 9H-62z" fill="#dbdbcf" stroke="#686982"/>
+      <path d="m-30-23 12-8h17v8zm35 0v-8h12l15 9z" fill="#252f47"/>
+      <path d="M-59-17H57l-9 5H-59z" fill="#63576d"/>
+      <path d="M-53-15h88" stroke="#ffc671" stroke-width="2"/>
+      <use href="#wheel" x="-43" y="-4"/><use href="#wheel" x="42" y="-4"/>
+      <path d="M-64-12h7m114 0h9" stroke="#f2c8ae" stroke-width="3"/>
+    </g>
+    <g id="interceptor">
+      <path d="m-44-22-5-13 14 4 7 9 13-2 7-10h17l10 14 27 6 5 6-9 4h-80z" fill="#675eb0" stroke="#b6a6fc"/>
+      <path d="m-16-23 11-9H8l6 10z" fill="#7fceed"/>
+      <path d="m-24-14 12-6 34 2-13 8z" fill="#313351"/>
+      <circle cx="-30" cy="-6" r="9" fill="#162333" stroke="#91a5ff" stroke-width="2"/>
+      <circle cx="29" cy="-6" r="7" fill="#162333" stroke="#91a5ff" stroke-width="2"/>
+      <path d="m-19-5 30-1m28-7 9 3" stroke="#8ff9f5" stroke-width="2"/>
     </g>
     <path id="far" d="M0 290v-48h42v-24h16v-18h12v18h20v31h28v-66h14v-31h7v-13h4v13h8v27h19v49h19v-29h30v-52h9v-22h8v-18h4v18h8v20h12v56h18v-31h18v-37h20v31h14v33h14v-65h9v-41h6v-20h3v20h9v38h17v36h21v-62h18v-19h8V62h3v14h9v18h17v62h12v-45h16V91h8V69h3v22h7v18h7v55h16v-28h15v-24h12v-9h10v8h10v65h8v-64h11V82h6V52h3v30h10v26h11v51h18V97h18V76h9v-9h5v9h11v21h11v48h20v-23h28v26h16v-46h20V84h19v20h12v43h21v-34h35v177z"/>
     <path id="near" d="M0 322v-44h82v-22h55v27h43v-49h29v-9h18v51h39v-36h39v-28h25v-36h13v37h13v60h23v-46h29v-51h10v-14h7v15h11v82h20v-44h25v-61h12v-13h6v-22h3v22h9v15h10v87h19v-45h18v-29h25v-37h7v-12h6v12h9v37h17v63h24v-39h23v-60h12v-15h17v15h12v83h26v-52h19v-31h24v-21h16v20h10v71h37v-48h23v-47h9v-15h5v15h14v61h61v159z"/>
@@ -59,11 +89,12 @@
         .district { animation: district-drift 21s ease-in-out infinite alternate }
         @keyframes distant-drift { from { transform:translateX(16px) } to { transform:translateX(-31px) } }
         @keyframes district-drift { from { transform:translateX(38px) } to { transform:translateX(-62px) } }
-        .inbound { animation: inbound 8.6s linear -3.8s infinite }
-        .outbound { animation: outbound 11s linear -2.2s infinite }
-        .late-cab { animation-delay:-7.9s }
-        @keyframes inbound { from { transform:translateX(-115px) } to { transform:translateX(1080px) } }
-        @keyframes outbound { from { transform:translateX(1060px) } to { transform:translateX(-95px) } }
+        .inbound { animation: inbound 29s linear infinite; animation-delay:var(--start) }
+        .outbound { animation: outbound 37s linear infinite; animation-delay:var(--start) }
+        @keyframes inbound { 0% { transform:translateX(-150px) } 43%,100% { transform:translateX(1100px) } }
+        @keyframes outbound { 0% { transform:translateX(1080px) } 48%,100% { transform:translateX(-120px) } }
+        .lift { animation: lift 8s ease-in-out -2s infinite alternate }
+        @keyframes lift { from { transform:translateY(0) } to { transform:translateY(-49px) } }
         .shop-sign { animation: marquee 4s linear infinite }
         @keyframes marquee { to { stroke-dashoffset:-32 } }
         .train { animation: transit 9s linear infinite }
@@ -90,12 +121,48 @@
     <path d="M568 102h172m-184 8h176m-170 9h159m-127 9h129m-141 11h138m-125 10h113"/>
   </g>
   <g class="distant">
-    <use href="#far" fill="#35304d"/><use href="#far" fill="url(#glass)" opacity=".48"/>
-    <path d="m558 146 8-53 12-9 6-37 3 38 14 17 7 49z" fill="#493b53" stroke="#91637b"/>
-    <path d="m572 102 8-7m-9 15 10-8m-12 17 13-10" stroke="#e598a6" stroke-width="2"/>
+    <use href="#far" fill="#3d334e"/>
+    <!-- An industrial crane counterbalances the paired arcology spires. -->
+    <g fill="none" stroke="#937286" stroke-width="1.5">
+      <path d="M443 171V74h7v97m-33-89 91-23-59-8-32 31zm5-3 24-23 10 14 14-14 8 8m17-1v27"/>
+    </g>
+    <g transform="translate(638 26)">
+      <path d="M-44 193-34 39-22 2l4 51-3 146zm48 0L10 81 31 30l6 168z" fill="#392c49" stroke="#9e7487"/>
+      <path d="m-34 39 12-37-8 145-10 20zm45 44 20-53-8 112-14 22z" fill="#66415d"/>
+      <path d="m-32 91 6-10m-7 22 6-10m-7 23 5-8m47-7 10-13m-11 25 12-15m-13 26 13-16" fill="none" stroke="#d4939f" stroke-width="2"/>
+      <path d="m-28 69 4-38m43 62 7-35" stroke="#ffbac0" stroke-width="2"/>
+      <path d="m-25 90 40 9-3 11-38-10z" fill="#48374b" stroke="#c38485"/>
+      <path d="m-22 94 7 6 4-4 6 7 5-4 7 7 4-4" fill="none" stroke="#ffb68e" stroke-width="2"/>
+    </g>
   </g>
   <g class="district">
-  <use href="#near" fill="#152337"/><use href="#near" fill="url(#glass)"/>
+  <use href="#near" fill="#1c293c"/>
+  <!-- Staggered housing units hang from a service spine. Balcony rails, ducts and a lift break up the facade. -->
+  <g transform="translate(456 117)">
+    <path d="M-22 153V26l14-17h28v142z" fill="#203444" stroke="#41616e"/>
+    <path d="M-30 26 20 14l17 8v23l-50 12-17-8zm8 45 50-12 15 9v27l-51 10-14-7zm-18 45 54-10 15 6v27l-56 11-13-7z" fill="#505067" stroke="#8a8091"/>
+    <path d="m-28 32 49-12v16l-49 12zm8 46 47-11v15l-47 13zm-17 44 48-9v14l-48 11z" fill="#273749"/>
+    <path d="m-25 40 19-5m6-2 14-3m-30 55 20-5m6-1 9-2m-58 52 28-6" stroke="#ffbf8c" stroke-width="2.5"/>
+    <path d="M-37 46v58h10m65-58v15h9v65" fill="none" stroke="#81a1a5" stroke-width="2"/>
+    <path d="M-31 54v78" stroke="#192534" stroke-width="5"/>
+    <path class="lift" d="M-36 112h9v12h-9z" fill="#bd696a" stroke="#ffc09b"/>
+  </g>
+  <!-- An orbital greenhouse with a cantilevered observation deck and exposed lower ribs. -->
+  <g transform="translate(553 88)">
+    <path d="M-24 175-12 65-6 25h10l7 43 15 105z" fill="#253341" stroke="#5c7782"/>
+    <path d="m5 59 12 112H3L-3 68z" fill="#172433"/>
+    <path d="m-12 85 20-7m-22 22 24-8m-25 23 25-8m-26 24 28-9" fill="none" stroke="#b36679" stroke-width="2"/>
+    <path d="M-49 50Q-43 26-1 15 27 7 42 24L36 36z" fill="#416579" stroke="#8ab6bc"/>
+    <path d="m-35 43 4-7 2 2 5-8 3 5 3-4 4 4 5-10 4 6 3-3 4 3 5-12 4 8 5-5 5 4 4-6 4 4 3-3v7z" fill="#91cbad"/>
+    <path d="M-34 43Q-27 23-5 16m-9 23Q-8 19 3 14m4 19 8-19m8 14 1-12" fill="none" stroke="#182d3b" stroke-width="2"/>
+    <g transform="rotate(-13)">
+      <ellipse cy="42" rx="58" ry="10" fill="#293243" stroke="#96cbd1" stroke-width="2"/>
+      <path d="M-58 42q48 17 116 0l-7 8Q-2 67-51 50z" fill="#233242"/>
+      <path d="M-54 46q48 14 108-1" fill="none" stroke="#9ff6de" stroke-width="3.5"/>
+      <path d="m-46 53 28 21 12-17m49-5L18 69 8 58" fill="none" stroke="#739498" stroke-width="2.5"/>
+    </g>
+    <path d="M-3 16V-8m4 21V0" stroke="#b1c7c5"/><circle cx="-3" cy="-9" r="2" fill="#ff8093"/>
+  </g>
   <g transform="translate(676 94)">
     <path d="m-22 142 4-104 11-7V8l19-9 20 8v30l9 4v101z" fill="#152232" stroke="#487783"/>
     <path d="m12 0 20 7v30l9 4v101H14z" fill="#29304a"/>
@@ -104,10 +171,7 @@
     <path d="M27 54h16v52H27z" fill="#2c1831" stroke="#e76590"/>
     <path class="shop-sign" d="m30 64 5-4 5 4m-10 12 5-4 5 4m-10 12 5-4 5 4m-10 12 5-4 5 4" fill="none" stroke="#ffd092" stroke-width="2.5" stroke-dasharray="11 5"/>
   </g>
-  <g class="neon" fill="none" stroke-linecap="square">
-    <path d="M528 139v43m5-30v20m85-57v25m4-20v14" stroke="#33ebed" stroke-width="2"/>
-    <path d="M576 171h15m-15 5h11m75-57h10m-10 5h7" stroke="#ff568f" stroke-width="3"/>
-  </g>
+  <path class="neon" d="m647 199 11-5v-9m50-63v17" fill="none" stroke="#ff79a1" stroke-width="2"/>
   </g>
   <path d="M0 332v-30l131-19 183 16 219-37 112-18 127 11 188-34v111z" fill="#091824"/>
   <!-- Elevated rail and its supports follow the vanishing point on the right. -->
@@ -141,16 +205,18 @@
     <path d="M115 308h47m7 1h31m180 16h49m144-20h49m180 22h68" stroke="#51b8bd"/>
     <path d="M18 326h39m143-11h57m286 12h39m126-19h71m126 10h44" stroke="#b65c85"/>
   </g>
-  <g class="outbound" transform="translate(655)">
-    <use href="#taxi" transform="translate(0 304) scale(-.71 .71)"/>
-    <use href="#taxi" transform="translate(0 306) scale(-.71 -.12)" opacity=".23"/>
+  <g transform="translate(0 301) scale(1 .87)">
+    <g class="outbound" style="--start:-4s" transform="translate(804)"><use href="#hauler" transform="scale(-.83 1)"/></g>
+    <g class="outbound" style="--start:-14.8s" transform="translate(176)"><use href="#glider" transform="translate(0 -3) scale(-.87 1)"/></g>
+    <g class="outbound" style="--start:-28.6s" transform="translate(-120)"><use href="#interceptor" transform="scale(-.91 1)"/></g>
   </g>
-  <g class="outbound late-cab" transform="translate(256)">
-    <use href="#coupe" transform="translate(0 304) scale(-.65 .65)"/>
-  </g>
-  <g class="inbound" transform="translate(445)">
-    <use href="#coupe" transform="translate(0 325) scale(1.16)"/>
-    <use href="#coupe" transform="translate(0 326) scale(1.16 -.18)" opacity=".32"/>
+  <g transform="translate(0 325)">
+    <g class="inbound" style="--start:-5.9s" transform="translate(430)">
+      <use href="#razor" transform="scale(1.15 1)"/>
+      <path d="m-49 3 49 1 42-2-16 4-66 1z" fill="#f55f88" opacity=".34"/>
+    </g>
+    <g class="inbound" style="--start:-15.6s" transform="translate(-150)"><use href="#bubble"/></g>
+    <g class="inbound" style="--start:-25.3s" transform="translate(1100)"><use href="#limousine"/></g>
   </g>
   <g fill="none" stroke="#77d9df">
     <path d="M26 74V31h95m-95 229v22h70" stroke-width="2"/>
