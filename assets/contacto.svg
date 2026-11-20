@@ -32,6 +32,10 @@
     <linearGradient id="shopglass"><stop stop-color="#33495f"/><stop offset=".4" stop-color="#fbc3aa"/><stop offset="1" stop-color="#785573"/></linearGradient>
     <filter id="halo" x="-35%" y="-35%" width="170%" height="170%"><feGaussianBlur stdDeviation="3" result="light"/><feMerge><feMergeNode in="light"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
     <clipPath id="harbour"><path d="M0 283h960v57H0z"/></clipPath>
+    <clipPath id="wave-a"><path d="M0 284h960v3H0zm0 10h960v3H0zm0 14h960v4H0zm0 16h960v2H0z"/></clipPath>
+    <clipPath id="wave-b"><path d="M0 288h960v4H0zm0 12h960v5H0zm0 15h960v3H0zm0 16h960v3H0z"/></clipPath>
+    <clipPath id="wave-c"><path d="M0 293h960v1H0zm0 13h960v2H0zm0 14h960v2H0zm0 15h960v2H0z"/></clipPath>
+    <clipPath id="arcade-screen"><rect x="0" y="0" width="86" height="108" rx="2"/></clipPath>
     <path id="horizon" d="M-40 282V159h20v-28h18v30h11v-66h15v-8h14v79h20v-43h16v-8h12v38h20v-67h13V72h8v14h12v71h20v-35h31v28h23v-48h12V80h6v22h14v78h19v-47h20V98h8v35h19v26h19v-54h26v62h22v-39h18v-21h10v21h12v33h18v-86h9V62h7V43h3v19h9v13h9v102h24v-42h22v20h24v-52h13v-9h12v69h25v-48h17V87h8v27h16v43h30v-56h22v50h16v-27h11v-13h16v44h21v-62h11V78h5v15h16v74h15v-37h34v29h23v-68h14V78h10v13h12v86h27v-50h24v-18h9v18h15v49h22v-72h19v69h31v-29h25v153z"/>
     <g id="hotel-floor">
       <path d="m0 5 71-7 21 4-70 8z" fill="#537086"/><path d="m0 5 22 5 70-8v5l-70 8L0 10z" fill="#142638"/>
@@ -41,6 +45,7 @@
       <stop stop-color="#ffce8d"/><stop offset=".24" stop-color="#b87966"/><stop offset=".6" stop-color="#7b4661"/><stop offset="1" stop-color="#382e47"/>
     </linearGradient>
     <linearGradient id="metro-beam"><stop stop-color="#ffe0a1" stop-opacity="0"/><stop offset="1" stop-color="#fff2c5" stop-opacity=".74"/></linearGradient>
+    <linearGradient id="train-wake"><stop stop-color="#a3ffed"/><stop offset="1" stop-color="#68c3d6" stop-opacity="0"/></linearGradient>
     <g id="metro-door" stroke="#d49a88" stroke-width=".8">
       <path d="M0 0h13v19H0z" fill="#453d51"/><path d="M2 3h3v6H2zm6 0h3v6H8z" fill="#b3eeea" stroke="none"/><path d="M6.5 1v17"/>
     </g>
@@ -65,6 +70,7 @@
       <path d="M91-14h4" stroke="#ff738e" stroke-width="2.8"/>
     </g>
     <style>
+      svg { --scene-cycle:18s }
       @media (prefers-reduced-motion: no-preference) {
         .zero-hair { animation: ponytail 2.4s steps(2,end) infinite alternate; transform-origin:12px 13px }
         @keyframes ponytail { to { transform:rotate(6deg) } }
@@ -82,10 +88,17 @@
         @keyframes iris { from { transform:scaleX(.35) } to { transform:scaleX(1) } }
         .beacons { animation: light 3.6s ease-in-out infinite alternate }
         @keyframes light { from { opacity:.33 } to { opacity:.98 } }
-        .shuttle { animation: fly 17s linear -5s infinite }
-        @keyframes fly { 0% { transform:translate(-45px,91px) scale(.6) } 85%,100% { transform:translate(1020px,49px) scale(.36) } }
-        .metro { animation: ride 15s linear -5.7s infinite }
-        @keyframes ride { from { transform:translate(1095px,283px) rotate(-2.3deg) } to { transform:translate(-112px,331px) rotate(-2.3deg) } }
+        .shuttle { animation: fly var(--scene-cycle) linear -1.5s infinite }
+        @keyframes fly { 0% { transform:translate(-45px,91px) scale(.6) } 28%,100% { transform:translate(1020px,49px) scale(.36) } }
+        .saber-arm { transform-origin:27px 23px; animation: cut var(--scene-cycle) steps(2,end) -1.5s infinite }
+        @keyframes cut { 0%,34%,49%,100% { transform:rotate(0deg) } 37% { transform:rotate(12deg) } 39%,42% { transform:rotate(-108deg) } }
+        .slash, .green-wake { animation: afterimage var(--scene-cycle) linear -1.5s infinite }
+        .green-wake { animation-delay:-1.36s }
+        @keyframes afterimage { 0%,37.5%,46%,100% { opacity:0 } 39% { opacity:.94 } 42% { opacity:.56 } }
+        .metro { animation: ride var(--scene-cycle) linear -1.5s infinite }
+        @keyframes ride { 0%,53% { transform:translate(1095px,283px) rotate(-2.3deg) } 93%,100% { transform:translate(-112px,331px) rotate(-2.3deg) } }
+        .wave { animation: current var(--drift) ease-in-out infinite alternate; animation-delay:var(--offset) }
+        @keyframes current { from { transform:translateX(var(--left)) } to { transform:translateX(var(--right)) } }
         .ripples { animation: tide 4s ease-in-out infinite alternate }
         @keyframes tide { to { transform:translateX(8px) scaleX(.985) } }
         .arrow { animation: point 3s ease-in-out infinite alternate }
@@ -135,6 +148,7 @@
       <g transform="translate(394 120) skewY(-12)">
         <path d="M-3 0 0-4h86l4 4v108l-4 4H0l-3-3z" fill="#0c152a" stroke="#647393" stroke-width="2"/>
         <path d="M0 12V0h24m39 108h23V96" fill="none" stroke="#79ceda" stroke-width="1.5"/>
+        <g clip-path="url(#arcade-screen)">
         <g id="zero" transform="translate(2 8) scale(2.25)">
           <title>Zero de Mega Man X</title>
           <!-- The ponytail trails behind the helmet and the rear pauldron. -->
@@ -163,11 +177,16 @@
           <path fill="#f5eee2" d="M13 19h3v3h-3zm6 0h3v3h-3zM7 22h5v2H7zm16-1h4v2h-4z"/>
           <path fill="#4bcaa1" d="M14 19h2v2h-2zm6 0h2v2h-2z"/>
           <path fill="#e63c50" d="M6 24h5v4H9v1H6zm18-1h3v-3h3v5h-2v2h-4z"/>
+          <path class="slash" opacity="0" d="M35 2Q10-2 5 23l5-5Q16 5 33 5z" fill="#92ffb3"/>
+          <path class="slash" opacity="0" d="M28 3Q12 5 8 18l6-8 9-5z" fill="#efffcc"/>
+          <g class="saber-arm">
           <g class="zero-blade">
             <path fill="#33d991" d="M29 19v-4h1v-3h1V9h1V7h1V4h1V2h2v5h-1v4h-1v4h-1v3h-1v3z"/>
             <path fill="#d5ffac" d="M30 18v-3h1v-3h1V9h1V6h1V4h1v3h-1v4h-1v4h-1v3z"/>
           </g>
           <path fill="#ffe095" d="M27 18h3v1h3v2h-4v-1h-2z"/><path fill="#b7d5df" d="M28 20h2v4h-2z"/>
+          </g>
+        </g>
         </g>
       </g>
       <!-- A cylindrical projection theatre with an animated iris. -->
@@ -215,8 +234,8 @@
     <path d="m106 220 131-10v36l-131 10z" fill="url(#offices)"/>
     <path d="m106 221 62 27 65-37m-124 40 59-33 64 24" fill="none" stroke="#506c7b" stroke-width="2"/>
     <path d="M244 87v149m14-153v121" stroke="#eb76bc" stroke-width="2.4" filter="url(#halo)"/>
-    <path d="m240 196 32-2v29l-32 3z" fill="#502641" stroke="#ff84b8"/>
-    <path class="arrow" d="m248 216 14-14m-10 0 10-.7v10" fill="none" stroke="#ffeac7" stroke-width="2.6"/>
+    <path d="m235 193 43-3v38l-43 4z" fill="#49213a" stroke="#ff92bc" stroke-width="2"/>
+    <path class="arrow" d="m245 221 22-22m-16 1 16-1v16" fill="none" stroke="#fff0cf" stroke-width="3.7"/>
     <g fill="#ff7f98" class="beacons"><circle cx="103" cy="56" r="2"/><circle cx="250" cy="45" r="2"/><circle cx="476" cy="18" r="2"/><circle cx="814" cy="80" r="2"/></g>
     <!-- The low market buildings give the bases of the towers a human scale. -->
     <path d="M-10 285v-46l44-7 40 7v19l49-4 34 6 51-7 39 8 51-10 39 8 52-8 29 8 48-10 37 5 41-9 45 8 52-7 40 5 38-12 41 6 64-7 34 5 41-9 39 5 47-10 39 4v63z" fill="#142637" stroke="#506270"/>
@@ -233,12 +252,25 @@
       <path d="M284 268v8m11-10v10m12-9v9m257-14v12m14-13v13m144-11v12m14-14v14m14-13v13m148-29v28m10-25v25" stroke="#273247" stroke-width="2.4"/>
       <path d="M120 275v-21m113 21v-17m209 17v-18m186 18v-22m207 22v-26" stroke="#678498" stroke-width="1.6"/>
       <path d="M120 254q54 17 113 4m209-1q88 18 186-4" fill="none" stroke="#4d657b"/>
+      <!-- One lit counter anchors the quieter market front. -->
+      <path d="m271 261 19-10 32 4 7 7-22 6z" fill="#bd7442" stroke="#ffce8b"/>
+      <path d="m277 264 31 4 14-4v13h-46z" fill="#f3b16a"/>
+      <path d="M282 265v12m35-12v12" stroke="#634251" stroke-width="2"/>
+      <path d="M297 271a2.3 2.3 0 1 1 4.6 0v2l3 2v2h-11v-2l3-2z" fill="#574453"/>
+      <path d="m271 261 36 5 21-5" fill="none" stroke="#ffe4a4" stroke-width="2" filter="url(#halo)"/>
     </g>
     <path d="M0 278h960" stroke="#91cbd1" stroke-width="2" stroke-dasharray="3 8 10 4 2 11"/>
   </g>
   <g clip-path="url(#harbour)">
     <rect y="283" width="960" height="57" fill="url(#water)"/>
-    <use href="#waterfront" transform="translate(0 341) scale(1 -.21)" opacity=".47"/>
+    <defs><use id="water-image" href="#waterfront" transform="translate(0 341) scale(1 -.21)"/></defs>
+    <g clip-path="url(#wave-a)" opacity=".52"><use class="wave" href="#water-image" style="--drift:4s;--offset:-1s;--left:-4px;--right:7px"/></g>
+    <g clip-path="url(#wave-b)" opacity=".38"><use class="wave" href="#water-image" style="--drift:6.3s;--offset:-3s;--left:8px;--right:-6px"/></g>
+    <g clip-path="url(#wave-c)" opacity=".56"><use class="wave" href="#water-image" style="--drift:3.1s;--offset:-2s;--left:-8px;--right:3px"/></g>
+    <g class="ripples" fill="none" stroke="#ffca81" stroke-linecap="round" opacity=".78">
+      <path d="M280 286h36m-29 5h22m-30 6h36m-24 7h15m-21 7h22m-17 8h12m-7 9h6"/>
+    </g>
+    <path class="green-wake" opacity="0" d="m449 302 24 1-3 2-26-1zm-4 6h25l-5 2h-24zm-6 6h21l-4 2h-24zm-9 6h18l-5 2h-15z" fill="#9fffaf"/>
     <g class="ripples" fill="none" stroke-linecap="round">
       <path d="M54 296h81m10 1h27m207 18h60m7 0h16m95-12h62m52 25h34m103-34h68" stroke="#98e8e4" opacity=".55"/>
       <path d="M20 323h26m149-14h52m103 22h47m141-23h42m2 8h34m150-12h39" stroke="#e792b8" opacity=".66"/>
@@ -247,6 +279,7 @@
   <g clip-path="url(#harbour)" opacity=".33">
     <g class="metro" transform="translate(637 302) rotate(-2.3)">
       <use href="#train" transform="translate(0 9) scale(1 -.3)"/>
+      <path d="m51 12 110 1-38 2H48zm19 5 56 1-16 2H65z" fill="url(#train-wake)"/>
     </g>
   </g>
   <!-- Rail and narrow foreground pylons cut across the reflections. -->

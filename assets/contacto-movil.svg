@@ -1,0 +1,290 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="502" height="334" viewBox="49 6 502 334" role="img" aria-labelledby="title description">
+  <!-- Generated from contacto.svg by scripts/escenas_moviles.py --><title id="title">Contactar a Haluz en LinkedIn</title>
+  <desc id="description">Un anuncio gigante de LinkedIn ilumina el puerto de Night City. En la torre vecina aparece Zero de Mega Man X con su sable verde. Un aerotaxi cruza el cielo y el metro recorre el muelle.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2=".9" y2="1">
+      <stop stop-color="#101827" /><stop offset=".48" stop-color="#252843" /><stop offset=".8" stop-color="#614459" /><stop offset="1" stop-color="#cf846c" />
+    </linearGradient>
+    <linearGradient id="steel" x2=".9" y2=".1">
+      <stop stop-color="#132537" /><stop offset=".38" stop-color="#385166" /><stop offset=".49" stop-color="#101c32" /><stop offset="1" stop-color="#25374f" />
+    </linearGradient>
+    <linearGradient id="glass" x2="1" y2=".3">
+      <stop stop-color="#29315b" /><stop offset=".38" stop-color="#2f4772" /><stop offset=".65" stop-color="#242441" /><stop offset="1" stop-color="#15283d" />
+    </linearGradient>
+    <linearGradient id="screen" x2=".85" y2="1">
+      <stop stop-color="#defff5" /><stop offset=".46" stop-color="#83f6ef" /><stop offset="1" stop-color="#219ebd" />
+    </linearGradient>
+    <linearGradient id="drum">
+      <stop stop-color="#48224c" /><stop offset=".25" stop-color="#fa559e" /><stop offset=".57" stop-color="#ffadec" /><stop offset="1" stop-color="#59295e" />
+    </linearGradient>
+    <linearGradient id="water" x2="0" y2="1">
+      <stop stop-color="#314254" /><stop offset="1" stop-color="#101a2d" />
+    </linearGradient>
+    <radialGradient id="haze"><stop stop-color="#ff82c0" stop-opacity=".48" /><stop offset="1" stop-color="#d75fac" stop-opacity="0" /></radialGradient>
+    <pattern id="offices" width="29" height="15" patternUnits="userSpaceOnUse">
+      <path d="M2 3h6m2 0h3m8 0h4M5 10h4m5 0h7" stroke="#80c9c9" stroke-width="1.7" opacity=".7" />
+      <path d="M15 3h3M1 10h2" stroke="#ffe5a5" stroke-width="1.6" />
+      <path d="M0 6h29m-29 8h29" stroke="#061b2d" opacity=".65" />
+    </pattern>
+    <pattern id="fins" width="6" height="8" patternUnits="userSpaceOnUse"><path d="M1 0v8" stroke="#859bc5" stroke-width="1.4" opacity=".55" /></pattern>
+    <pattern id="led" width="4" height="4" patternUnits="userSpaceOnUse"><path d="M0 0h4" stroke="#172e46" opacity=".29" /></pattern>
+    <pattern id="shutters" width="10" height="6" patternUnits="userSpaceOnUse"><path d="M0 3h9" stroke="#8e7895" stroke-width="1.3" /></pattern>
+    <linearGradient id="shopglass"><stop stop-color="#33495f" /><stop offset=".4" stop-color="#fbc3aa" /><stop offset="1" stop-color="#785573" /></linearGradient>
+    <filter id="halo" x="-35%" y="-35%" width="170%" height="170%"><feGaussianBlur stdDeviation="3" result="light" /><feMerge><feMergeNode in="light" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
+    <clipPath id="harbour"><path d="M0 283h960v57H0z" /></clipPath>
+    <clipPath id="wave-a"><path d="M0 284h960v3H0zm0 10h960v3H0zm0 14h960v4H0zm0 16h960v2H0z" /></clipPath>
+    <clipPath id="wave-b"><path d="M0 288h960v4H0zm0 12h960v5H0zm0 15h960v3H0zm0 16h960v3H0z" /></clipPath>
+    <clipPath id="wave-c"><path d="M0 293h960v1H0zm0 13h960v2H0zm0 14h960v2H0zm0 15h960v2H0z" /></clipPath>
+    <clipPath id="arcade-screen"><rect x="0" y="0" width="86" height="108" rx="2" /></clipPath>
+    <path id="horizon" d="M-40 282V159h20v-28h18v30h11v-66h15v-8h14v79h20v-43h16v-8h12v38h20v-67h13V72h8v14h12v71h20v-35h31v28h23v-48h12V80h6v22h14v78h19v-47h20V98h8v35h19v26h19v-54h26v62h22v-39h18v-21h10v21h12v33h18v-86h9V62h7V43h3v19h9v13h9v102h24v-42h22v20h24v-52h13v-9h12v69h25v-48h17V87h8v27h16v43h30v-56h22v50h16v-27h11v-13h16v44h21v-62h11V78h5v15h16v74h15v-37h34v29h23v-68h14V78h10v13h12v86h27v-50h24v-18h9v18h15v49h22v-72h19v69h31v-29h25v153z" />
+    <g id="hotel-floor">
+      <path d="m0 5 71-7 21 4-70 8z" fill="#537086" /><path d="m0 5 22 5 70-8v5l-70 8L0 10z" fill="#142638" />
+      <path d="m2 6 20 4 68-7" fill="none" stroke="#8be9e7" stroke-width="1.6" />
+    </g>
+    <linearGradient id="metro-shell" x2="0" y2="1">
+      <stop stop-color="#ffce8d" /><stop offset=".24" stop-color="#b87966" /><stop offset=".6" stop-color="#7b4661" /><stop offset="1" stop-color="#382e47" />
+    </linearGradient>
+    <linearGradient id="metro-beam"><stop stop-color="#ffe0a1" stop-opacity="0" /><stop offset="1" stop-color="#fff2c5" stop-opacity=".74" /></linearGradient>
+    <linearGradient id="train-wake"><stop stop-color="#a3ffed" /><stop offset="1" stop-color="#68c3d6" stop-opacity="0" /></linearGradient>
+    <g id="metro-door" stroke="#d49a88" stroke-width=".8">
+      <path d="M0 0h13v19H0z" fill="#453d51" /><path d="M2 3h3v6H2zm6 0h3v6H8z" fill="#b3eeea" stroke="none" /><path d="M6.5 1v17" />
+    </g>
+    <g id="metro-bogie">
+      <path d="M-9-5H9l-2 4H-7z" fill="#101b2b" />
+      <circle cx="-5" cy="-2" r="2.6" fill="#475168" stroke="#101b2b" /><circle cx="5" cy="-2" r="2.6" fill="#475168" stroke="#101b2b" />
+    </g>
+    <!-- Double-deck harbour metro. Its cab faces left, towards the foreground pier. -->
+    <g id="train">
+      <use href="#metro-bogie" x="-62" /><use href="#metro-bogie" x="-5" /><use href="#metro-bogie" x="25" /><use href="#metro-bogie" x="84" />
+      <path d="M5-24h12v18H5z" fill="#22283a" stroke="#805e72" /><path d="M8-23v16m3-16v16m3-16v16" stroke="#b8979c" />
+      <path d="m-84-6 1-12 11-14 13-4h49l8 4h6v27h-84zM17-31l8-3h50l17 10 5 13-2 6H17z" fill="url(#metro-shell)" stroke="#26273a" stroke-width="1.3" />
+      <path d="m-80-18 10-12 14-2-6 14z" fill="#a5efef" /><path d="m-76-19 8-10 7-1-4 11z" fill="#395e78" />
+      <path d="M-52-30h41l5 4v4h-46zm73 2 6-3h44l10 7H21z" fill="#21374b" />
+      <path d="M-49-26h8m3 0h9m4 0h10m38 0h9m4 0h11m4 0h13" stroke="#ffd4a0" stroke-width="2.6" />
+      <path d="M-79-15h17m7-2h34v7h-34zm79 0h30v7H24zm52 0h13l3 6H76z" fill="#234353" stroke="#8ecbc8" stroke-width="1" />
+      <path d="M-44-17v7m11-7v7m68-7v7m10-7v7" stroke="#d5ac97" stroke-width="1.5" />
+      <use href="#metro-door" x="-17" y="-24" /><use href="#metro-door" x="58" y="-24" />
+      <path d="M-64-5h42m47 0h25m24 0h16" stroke="#67f7e4" stroke-width="2.2" />
+      <path d="M-49-36v-3h21l4 3m55 2v-4h24v4" fill="#42515b" stroke="#caada2" />
+      <path d="m-120 0 36-12v5z" fill="url(#metro-beam)" /><path d="m-83-13 5-1v3l-5 1z" fill="#fff1b8" />
+      <path d="M91-14h4" stroke="#ff738e" stroke-width="2.8" />
+    </g>
+    <style>
+      svg { --scene-cycle:18s }
+      @media (prefers-reduced-motion: no-preference) {
+        .zero-hair { animation: ponytail 2.4s steps(2,end) infinite alternate; transform-origin:12px 13px }
+        @keyframes ponytail { to { transform:rotate(6deg) } }
+        .zero-blade { animation: energy 1.7s ease-in-out infinite alternate }
+        @keyframes energy { from { opacity:.72 } to { opacity:1 } }
+        .far { animation: pan 26s ease-in-out infinite alternate }
+        .district { animation: pan 20s ease-in-out -8s infinite alternate-reverse }
+        @keyframes pan { from { transform:translateX(-9px) } to { transform:translateX(12px) } }
+        .rails { animation: chase 6s linear infinite }
+        .return { animation: chase 9s linear -4s infinite reverse }
+        @keyframes chase { to { stroke-dashoffset:-100 } }
+        .lift { animation: rise 8s ease-in-out -2s infinite alternate }
+        @keyframes rise { to { transform:translateY(-106px) } }
+        .iris { transform-origin:594px 147px; animation: iris 7s ease-in-out infinite alternate }
+        @keyframes iris { from { transform:scaleX(.35) } to { transform:scaleX(1) } }
+        .beacons { animation: light 3.6s ease-in-out infinite alternate }
+        @keyframes light { from { opacity:.33 } to { opacity:.98 } }
+        .shuttle { animation: fly var(--scene-cycle) linear -1.5s infinite }
+        @keyframes fly { 0% { transform:translate(-45px,91px) scale(.6) } 28%,100% { transform:translate(1020px,49px) scale(.36) } }
+        .saber-arm { transform-origin:27px 23px; animation: cut var(--scene-cycle) steps(2,end) -1.5s infinite }
+        @keyframes cut { 0%,34%,49%,100% { transform:rotate(0deg) } 37% { transform:rotate(12deg) } 39%,42% { transform:rotate(-108deg) } }
+        .slash, .green-wake { animation: afterimage var(--scene-cycle) linear -1.5s infinite }
+        .green-wake { animation-delay:-1.36s }
+        @keyframes afterimage { 0%,37.5%,46%,100% { opacity:0 } 39% { opacity:.94 } 42% { opacity:.56 } }
+        .metro { animation: ride var(--scene-cycle) linear -1.5s infinite }
+        @keyframes ride { 0%,53% { transform:translate(1095px,283px) rotate(-2.3deg) } 93%,100% { transform:translate(-112px,331px) rotate(-2.3deg) } }
+        .wave { animation: current var(--drift) ease-in-out infinite alternate; animation-delay:var(--offset) }
+        @keyframes current { from { transform:translateX(var(--left)) } to { transform:translateX(var(--right)) } }
+        .ripples { animation: tide 4s ease-in-out infinite alternate }
+        @keyframes tide { to { transform:translateX(8px) scaleX(.985) } }
+        .arrow { animation: point 3s ease-in-out infinite alternate }
+        @keyframes point { to { transform:translate(3px,-3px) } }
+      }
+    </style>
+  </defs>
+
+  <rect width="960" height="340" fill="url(#sky)" />
+  <ellipse cx="652" cy="177" rx="270" ry="119" fill="url(#haze)" />
+  <g class="far">
+    <use href="#horizon" fill="#30334b" /><use href="#horizon" fill="url(#offices)" opacity=".56" />
+    <path d="M18 122h17m285-13h23m274 12h15m235 19h23" stroke="#dcb6b4" stroke-width="1.6" />
+  </g>
+  <g class="shuttle" transform="translate(324 70) scale(.55)">
+    <path d="m-26 1 11-3 4-7h11l12 5 14 1-7 6h-37z" fill="#203647" stroke="#9cbdce" stroke-width="2" />
+    <path d="M-32 3h12m6 1h7" stroke="#ff97b8" stroke-width="3" />
+  </g>
+  <g id="waterfront">
+    <g class="district">
+      <!-- Terraced hotel and its exposed service core. -->
+      <g transform="translate(-25 116)">
+        <path d="m7 19 76-12 5 164H4z" fill="url(#glass)" />
+        <use href="#hotel-floor" /><use href="#hotel-floor" y="18" /><use href="#hotel-floor" y="36" /><use href="#hotel-floor" y="54" /><use href="#hotel-floor" y="72" /><use href="#hotel-floor" y="90" /><use href="#hotel-floor" y="108" /><use href="#hotel-floor" y="126" />
+      </g>
+      <!-- A cantilevered skybridge connects the atrium to the central tower. -->
+      <path d="m230 97 181-43v16l-181 45z" fill="#142438" stroke="#60738a" />
+      <path d="m230 102 181-43" stroke="#56c5c7" stroke-width="3" />
+      <path class="rails" d="m230 102 181-43" pathLength="100" stroke="#e1fff5" stroke-width="3" stroke-dasharray="7 93" />
+      <path d="m250 105 10-10 9 6 9-11 9 7 9-11 9 7 9-11 9 6 9-11 9 7 9-11 9 7 9-11" fill="none" stroke="#8993a3" />
+      <g>
+        <path d="m301 284 2-189 23-13 21 6 4 196z" fill="url(#steel)" />
+        <path d="m307 99 15-8v188h-15z" fill="url(#offices)" />
+        <path d="M333 95v177" stroke="#7694a8" stroke-width="5" /><path class="lift" d="M330 226h6v16h-6z" fill="#fff1bb" filter="url(#halo)" />
+      </g>
+      <!-- Pixel-art marquee mounted on the prismatic tower. -->
+      <path d="m367 280 2-224 110-32 43 19 3 240z" fill="url(#glass)" stroke="#485979" stroke-width="2" />
+      <path d="m369 56 110-32v257H367z" fill="url(#fins)" />
+      <path d="m482 29 36 16v235h-36z" fill="url(#offices)" opacity=".76" />
+      <path d="m363 56 116-36 49 20-6 7-43-15-113 32z" fill="#27394d" stroke="#76899c" />
+      <g fill="none" filter="url(#halo)">
+        <path d="m370 56 109-32 43 18" stroke="#c6fce9" stroke-width="2" />
+        <path d="M377 70v194m10-197v128m13-132v97m77-119v63" stroke="#9a80ff" stroke-width="2.4" />
+        <path d="M394 64v120m13-123v93" stroke="#3acdea" stroke-width="1.4" />
+      </g>
+      <path class="return" d="M382 65v174m14-177v98m17-103v61" pathLength="100" stroke="#a2d4ff" stroke-width="2" fill="none" stroke-dasharray="8 92" />
+      <g transform="translate(394 120) skewY(-12)">
+        <path d="M-3 0 0-4h86l4 4v108l-4 4H0l-3-3z" fill="#0c152a" stroke="#647393" stroke-width="2" />
+        <path d="M0 12V0h24m39 108h23V96" fill="none" stroke="#79ceda" stroke-width="1.5" />
+        <g clip-path="url(#arcade-screen)">
+        <g id="zero" transform="translate(2 8) scale(2.25)">
+          <title>Zero de Mega Man X</title>
+          <!-- The ponytail trails behind the helmet and the rear pauldron. -->
+          <g class="zero-hair">
+            <path fill="#cb8136" d="M12 10h4v9h-2v6h-2v4H9v3H6v2H2v-2h2v-5h2v-7h2v-6h4z" />
+            <path fill="#ffd264" d="M12 12h2v7h-2v6h-2v3H7v3H4v-2h2v-7h2v-6h4z" />
+            <path fill="#fff0a0" d="M11 15h2v4h-2v5H9v3H8v-6h2v-6z" />
+          </g>
+          <!-- Dark undersuit, articulated joints and flared red boots. -->
+          <path fill="#26324a" d="M13 16h10v4h3v4h-3v6h2v5h3v5H17v-6h-2v3h-3v3H4v-6h4v-5h3v-6H8v-5h5z" />
+          <path fill="#e4ecf2" d="M12 25h8v2h-2v2h-3v-1h-3zm-2 6h4v3h-4zm10 0h4v3h-4z" />
+          <path fill="#bb2343" d="M8 31h6v4h-2v5H3v-3h2v-3h3zm12 0h6v5h3v2h2v2H19v-3h1z" />
+          <path fill="#fb5260" d="M9 31h5v2h-4v3H6v-2h3zm12 1h4v4h3v2h-6z" />
+          <path fill="#f5e0d9" d="M3 39h9v1H3zm17 0h11v1H20z" />
+          <!-- Helmet fins frame the cyan forehead crystal; the visible eye faces the blade. -->
+          <path fill="#9a2345" d="M11 5h3V3h6v1h3v2h2v6h-2v3h-3v2h-6v-2h-3v-2H9V8h2z" />
+          <path fill="#fa4758" d="M12 6h2V4h5v2h3v2h2v2h-6v2h-5V9h-2V7h1z" />
+          <path fill="#f8f2eb" d="M10 1h2v2h2v2h2v3h-2V6h-2V5h-2zm12 1h2v3h-1v2h-2V5h1zM10 9h4v5h-4z" />
+          <path fill="#6cf5ed" d="M17 5h3v4h-3z" /><path fill="#fffbdc" d="M18 5h1v2h-1z" />
+          <path fill="#ffcf9c" d="M15 11h9v2h-2v2h-2v1h-4v-2h-1z" />
+          <path fill="#26364b" d="M18 10h6v1h-2v2h-2v-2h-2z" /><path fill="#7ff3e4" d="M21 11h1v1h-1z" />
+          <path fill="#ea4251" d="M11 10h2v3h-2z" />
+          <!-- Shoulder shells, chest lenses and the gauntlet around the hilt. -->
+          <path fill="#ba2848" d="M8 17h5v-1h7v1h5v5h-4v3h-8v-3H7v-4h1z" />
+          <path fill="#ff5962" d="M8 17h5v2H9v2H7v-3h1zm7 0h5v2h-5zm6 0h4v3h-4z" />
+          <path fill="#f5eee2" d="M13 19h3v3h-3zm6 0h3v3h-3zM7 22h5v2H7zm16-1h4v2h-4z" />
+          <path fill="#4bcaa1" d="M14 19h2v2h-2zm6 0h2v2h-2z" />
+          <path fill="#e63c50" d="M6 24h5v4H9v1H6zm18-1h3v-3h3v5h-2v2h-4z" />
+          <path class="slash" opacity="0" d="M35 2Q10-2 5 23l5-5Q16 5 33 5z" fill="#92ffb3" />
+          <path class="slash" opacity="0" d="M28 3Q12 5 8 18l6-8 9-5z" fill="#efffcc" />
+          <g class="saber-arm">
+          <g class="zero-blade">
+            <path fill="#33d991" d="M29 19v-4h1v-3h1V9h1V7h1V4h1V2h2v5h-1v4h-1v4h-1v3h-1v3z" />
+            <path fill="#d5ffac" d="M30 18v-3h1v-3h1V9h1V6h1V4h1v3h-1v4h-1v4h-1v3z" />
+          </g>
+          <path fill="#ffe095" d="M27 18h3v1h3v2h-4v-1h-2z" /><path fill="#b7d5df" d="M28 20h2v4h-2z" />
+          </g>
+        </g>
+        </g>
+      </g>
+      <!-- A cylindrical projection theatre with an animated iris. -->
+      <path d="M555 280v-99q38-16 76 0v99z" fill="url(#steel)" />
+      <path d="M555 179q38-14 76 0v36q-38 17-76 0z" fill="url(#drum)" />
+      <path d="M555 184q38 12 76 0v29q-38 12-76 0z" fill="url(#led)" />
+      <path class="rails" d="M556 200q37 10 74-1" pathLength="100" stroke="#ffddfc" stroke-width="3" fill="none" stroke-dasharray="4 4 18 74" />
+      <g fill="none" stroke="#ffbf86" stroke-width="3">
+        <path d="M554 177q40 12 78 0m-78 42q40 11 78-1m-77 7q40 11 76-1" />
+      </g>
+      <path d="M563 175 577 158h34l15 17" fill="#183349" stroke="#82a2ae" />
+      <ellipse cx="594" cy="170" rx="26" ry="5" fill="#92c9da" />
+      <path d="m569 167 10-36h30l12 36q-27 8-52 0" fill="#a68deb" opacity=".17" />
+      <g class="iris" fill="none" stroke="#b8fff7" filter="url(#halo)">
+        <path d="M570 147q24-28 48 0-24 28-48 0z" stroke-width="2" />
+        <circle cx="594" cy="147" r="8" stroke="#ff9cd7" stroke-width="3" />
+      </g>
+      <!-- Open-frame gate tower with a lit atrium. The sky is visible through the centre. -->
+      <path fill-rule="evenodd" d="m658 284 2-200 54-15 102 17 5 198z M688 112l23-6 69 14v109l-92-10z" fill="url(#steel)" stroke="#537186" stroke-width="2" />
+      <path d="m663 83 50-16 107 17-4 10-104-17-48 15z" fill="#334455" stroke="#b1babf" />
+      <path d="m664 91 47-12 99 17m-140 9v139m130-139v151" fill="none" stroke="#69ffee" stroke-width="2.4" filter="url(#halo)" />
+      <path d="m681 114 5 113 104 13-2-121m-100 100 92-99m-92-8 92 117" fill="none" stroke="#74648d" stroke-width="3" />
+      <path d="m693 185 82 12v9l-82-12z" fill="#e264aa" />
+      <path class="return" d="m693 188 82 12" pathLength="100" stroke="#ffeafa" stroke-width="3" stroke-dasharray="9 91" />
+      <path d="m833 284 1-127 36-14 40 9 4 132z" fill="url(#glass)" />
+      <path d="m834 161 36-12 35 9v112h-71z" fill="url(#offices)" />
+      <path d="m833 158 37-13 39 10m-76 17 37-12 39 8" fill="none" stroke="#edb881" stroke-width="2.5" />
+    </g>
+
+    <!-- LinkedIn occupies the main atrium billboard rather than a separate UI tile. -->
+    <path d="M66 284V82l42-18 149-10 25 13v217z" fill="url(#steel)" stroke="#597483" stroke-width="2" />
+    <path d="m67 86 36-14v206H67z" fill="url(#offices)" />
+    <path d="m246 68 29 6v203h-29z" fill="url(#fins)" />
+    <path d="m57 77 45-18 154-11 33 14-9 8-25-7-151 10-43 13z" fill="#263347" stroke="#86a6ae" />
+    <path d="m62 79 42-15 147-10" fill="none" stroke="#aaffeb" stroke-width="2.6" filter="url(#halo)" />
+    <path d="m102 90 136-10v122l-136 10z" fill="#0b1b2b" stroke="#7094a5" stroke-width="3" />
+    <g transform="matrix(1,-.072,0,1,110,98)">
+      <rect width="116" height="101" rx="3" fill="url(#screen)" stroke="#d4fffb" stroke-width="2" />
+      <g fill="#10384c">
+        <circle cx="26" cy="24" r="8" />
+        <path d="M19 39h14v43H19zM45 39h14v6q6-8 16-8 18 0 18 22v23H78V60q0-11-8-11-10 0-10 13v20H45z" />
+      </g>
+      <rect width="116" height="101" fill="url(#led)" opacity=".35" />
+    </g>
+    <path d="m106 220 131-10v36l-131 10z" fill="url(#offices)" />
+    <path d="m106 221 62 27 65-37m-124 40 59-33 64 24" fill="none" stroke="#506c7b" stroke-width="2" />
+    <path d="M244 87v149m14-153v121" stroke="#eb76bc" stroke-width="2.4" filter="url(#halo)" />
+    <path d="m235 193 43-3v38l-43 4z" fill="#49213a" stroke="#ff92bc" stroke-width="2" />
+    <path class="arrow" d="m245 221 22-22m-16 1 16-1v16" fill="none" stroke="#fff0cf" stroke-width="3.7" />
+    <g fill="#ff7f98" class="beacons"><circle cx="103" cy="56" r="2" /><circle cx="250" cy="45" r="2" /><circle cx="476" cy="18" r="2" /><circle cx="814" cy="80" r="2" /></g>
+    <!-- The low market buildings give the bases of the towers a human scale. -->
+    <path d="M-10 285v-46l44-7 40 7v19l49-4 34 6 51-7 39 8 51-10 39 8 52-8 29 8 48-10 37 5 41-9 45 8 52-7 40 5 38-12 41 6 64-7 34 5 41-9 39 5 47-10 39 4v63z" fill="#142637" stroke="#506270" />
+    <path d="m0 245 32-6 36 6m55 17 32 5 38-5m47 7 55-10 35 6m85 1 42-8m78 2 43-6 25 5m95-9 39 6 36-5m72-5 38-7" fill="none" stroke="#ffb081" stroke-width="2.3" />
+    <g>
+      <path d="m11 251 22-4 25 5v21H11z" fill="url(#shopglass)" />
+      <path d="M19 251v23m13-25v24m14-23v23" stroke="#263447" stroke-width="3" />
+      <path d="m76 260 28-4v18H76zm139 7 18-2v10h-18zm140-4 42-5v17h-42zm122-4 46 2v14h-46zm319-10 30-4v30h-30z" fill="url(#shutters)" />
+      <g fill="none" filter="url(#halo)">
+        <path d="m77 258 28-4m253 8 35-5m387-4 21-3" stroke="#4ae9ff" stroke-width="2" />
+        <path d="m168 264 20-3m267 0 17 1m194-7 24-3m172-4 20 2" stroke="#ff6db1" stroke-width="2.5" />
+      </g>
+      <path d="m275 269 18-5 24 4v8h-42zm280-7 19-3 17 3v12h-36zm159 1 23-4 28 2v14h-51zm175-19 27 4v26h-27z" fill="url(#shopglass)" />
+      <path d="M284 268v8m11-10v10m12-9v9m257-14v12m14-13v13m144-11v12m14-14v14m14-13v13m148-29v28m10-25v25" stroke="#273247" stroke-width="2.4" />
+      <path d="M120 275v-21m113 21v-17m209 17v-18m186 18v-22m207 22v-26" stroke="#678498" stroke-width="1.6" />
+      <path d="M120 254q54 17 113 4m209-1q88 18 186-4" fill="none" stroke="#4d657b" />
+      <!-- One lit counter anchors the quieter market front. -->
+      <path d="m271 261 19-10 32 4 7 7-22 6z" fill="#bd7442" stroke="#ffce8b" />
+      <path d="m277 264 31 4 14-4v13h-46z" fill="#f3b16a" />
+      <path d="M282 265v12m35-12v12" stroke="#634251" stroke-width="2" />
+      <path d="M297 271a2.3 2.3 0 1 1 4.6 0v2l3 2v2h-11v-2l3-2z" fill="#574453" />
+      <path d="m271 261 36 5 21-5" fill="none" stroke="#ffe4a4" stroke-width="2" filter="url(#halo)" />
+    </g>
+    <path d="M0 278h960" stroke="#91cbd1" stroke-width="2" stroke-dasharray="3 8 10 4 2 11" />
+  </g>
+  <g clip-path="url(#harbour)">
+    <rect y="283" width="960" height="57" fill="url(#water)" />
+    <defs><use id="water-image" href="#waterfront" transform="translate(0 341) scale(1 -.21)" /></defs>
+    <g clip-path="url(#wave-a)" opacity=".52"><use class="wave" href="#water-image" style="--drift:4s;--offset:-1s;--left:-4px;--right:7px" /></g>
+    <g clip-path="url(#wave-b)" opacity=".38"><use class="wave" href="#water-image" style="--drift:6.3s;--offset:-3s;--left:8px;--right:-6px" /></g>
+    <g clip-path="url(#wave-c)" opacity=".56"><use class="wave" href="#water-image" style="--drift:3.1s;--offset:-2s;--left:-8px;--right:3px" /></g>
+    <g class="ripples" fill="none" stroke="#ffca81" stroke-linecap="round" opacity=".78">
+      <path d="M280 286h36m-29 5h22m-30 6h36m-24 7h15m-21 7h22m-17 8h12m-7 9h6" />
+    </g>
+    <path class="green-wake" opacity="0" d="m449 302 24 1-3 2-26-1zm-4 6h25l-5 2h-24zm-6 6h21l-4 2h-24zm-9 6h18l-5 2h-15z" fill="#9fffaf" />
+    <g class="ripples" fill="none" stroke-linecap="round">
+      <path d="M54 296h81m10 1h27m207 18h60m7 0h16m95-12h62m52 25h34m103-34h68" stroke="#98e8e4" opacity=".55" />
+      <path d="M20 323h26m149-14h52m103 22h47m141-23h42m2 8h34m150-12h39" stroke="#e792b8" opacity=".66" />
+    </g>
+  </g>
+  <g clip-path="url(#harbour)" opacity=".33">
+    <g class="metro" transform="translate(637 302) rotate(-2.3)">
+      <use href="#train" transform="translate(0 9) scale(1 -.3)" />
+      <path d="m51 12 110 1-38 2H48zm19 5 56 1-16 2H65z" fill="url(#train-wake)" />
+    </g>
+  </g>
+  <!-- Rail and narrow foreground pylons cut across the reflections. -->
+  <path d="m-5 327 974-39v7L-5 337z" fill="#0e1d30" stroke="#6d8e9d" />
+  <path d="m4 326 950-38" stroke="#a3d9e7" fill="none" />
+  <path d="m130 330 10-1v11h-10zm343-14 10-1v25h-10zm353-15 8-1v40h-8z" fill="#0c1c2b" />
+  <g class="metro" transform="translate(637 302) rotate(-2.3)"><use href="#train" /></g>
+</svg>

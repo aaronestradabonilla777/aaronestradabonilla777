@@ -97,7 +97,9 @@
         @keyframes lift { from { transform:translateY(0) } to { transform:translateY(-49px) } }
         .shop-sign { animation: marquee 4s linear infinite }
         @keyframes marquee { to { stroke-dashoffset:-32 } }
-        .train { animation: transit 12.8s linear -7.1s infinite }
+        .train { --run:12.8s; --start:-7.1s; animation: transit var(--run) linear var(--start) infinite }
+        .samurai-light { animation: reflected-sign var(--run) linear calc(var(--start) + var(--lag, 0s)) infinite }
+        @keyframes reflected-sign { 0%,43%,83%,100% { opacity:0 } 56% { opacity:.72 } 64%,72% { opacity:.96 } }
         @keyframes transit {
           0% { transform:translate(140px,372px) rotate(-13.3deg) scale(1.28) }
           58% { transform:translate(704px,238px) rotate(-13.3deg) scale(.95) }
@@ -107,6 +109,7 @@
         .rain { animation: rainfall 1.8s linear infinite }
         @keyframes rainfall { to { transform:translate(-16px,52px) } }
         .neon { animation: nightlights 5s ease-in-out infinite alternate }
+        .crossing { animation: nightlights 3.7s ease-in-out infinite alternate }
         @keyframes nightlights { from { opacity:.45 } to { opacity:1 } }
       }
       @media (prefers-reduced-motion: reduce) { .signal { animation:none } }
@@ -195,6 +198,11 @@
     <path d="m-182-5 41-2m16 0h55m17 0 27 1" stroke="#ff84b3" stroke-width="1.6"/>
     <path d="m7-9 19 3 32 5-36-2z" fill="url(#headlight)"/>
     <path d="m8-9 15 4" stroke="#effff2" stroke-width="2"/>
+    <g fill="#ff385d" stroke="#ff8b9b" stroke-width=".7">
+      <path class="samurai-light" opacity="0" d="m-54-19 29 1 21 6-50-2z"/>
+      <path class="samurai-light" style="--lag:.69s" opacity="0" d="M-126-18h21v5h-21zm31 0h25v5h-25z"/>
+      <path class="samurai-light" style="--lag:1.36s" opacity="0" d="m-186-13 18-5 24-1v5l-42 3z"/>
+    </g>
     <path d="m-198-8 6-3" stroke="#ff6186" stroke-width="2.8"/>
   </g>
   <g transform="translate(738 25)">
@@ -210,7 +218,7 @@
     <path d="m190 28 7-1v59l-7 2zm0 78 7-1v31l-7 2z" fill="#54d9db"/>
   </g>
   <rect class="rain" x="-86" y="-55" width="1132" height="445" fill="url(#drizzle)"/>
-  <rect width="575" height="332" fill="url(#shade)"/>
+  <rect id="title-shade" width="575" height="332" fill="url(#shade)"/>
   <!-- Two street lanes sit below the elevated railway. Each reflection follows its car. -->
   <path d="M0 302h960v30H0z" fill="url(#asphalt)"/>
   <path d="M0 302h960" stroke="#669098"/>
@@ -232,6 +240,14 @@
     <g class="inbound" style="--start:-15.6s" transform="translate(-150)"><use href="#bubble"/></g>
     <g class="inbound" style="--start:-25.3s" transform="translate(1100)"><use href="#limousine"/></g>
   </g>
+  <!-- The signal stands on the near curb, in front of both traffic lanes. -->
+  <g transform="translate(657 332)">
+    <path d="M-6 0v-4l3-2v-48h5v48l4 2v4z" fill="#132333" stroke="#5c7982"/>
+    <path d="m-8-65 12-2 5 3v18l-14 2-3-3z" fill="#192b3a" stroke="#76949c"/>
+    <path d="m-6-62 10-1v6l-10 1z" fill="#342730"/><path d="m-6-52 10-1v4l-10 1z" fill="#55bdb2" class="crossing"/>
+    <path d="m-3-15 5-1m-5 5 5-1" stroke="#d99d66" stroke-width="2"/>
+  </g>
+  <g id="identity">
   <g fill="none" stroke="#77d9df">
     <path d="M26 74V31h95m-95 229v22h70" stroke-width="2"/>
     <path d="M30 32h33" stroke="#ff5866" stroke-width="4"/>
@@ -245,7 +261,7 @@
     <path d="M669 0h174v26l-115 94h108v34H662v-29l113-91H669z"/>
     <path d="M817 66h47v8h-47zM-13 113h26v5h-26z" fill="#ff3945"/>
   </g>
-  <g transform="translate(45 222)" fill="none" stroke="#91ebe6" stroke-width="2.5">
+  <g id="stack-icons" transform="translate(45 222)" fill="none" stroke="#91ebe6" stroke-width="2.5">
     <g transform="translate(21 20)">
       <ellipse rx="22" ry="8"/><ellipse rx="22" ry="8" transform="rotate(60)"/>
       <ellipse rx="22" ry="8" transform="rotate(-60)"/><circle r="3" fill="#91ebe6"/>
@@ -254,5 +270,6 @@
       <circle r="18" stroke-width="5" stroke-dasharray="5 2"/>
       <path d="M-8 9V-8h9q8 0 8 5t-8 5h-9m9 0 8 8" stroke-width="3"/>
     </g>
+  </g>
   </g>
 </svg>

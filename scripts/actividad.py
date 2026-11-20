@@ -82,6 +82,8 @@ def calendar_svg(days, today, compact):
                     phase = (column * 0.14 + row * 0.05) - 9
                     highlight = f' class="active-day" stroke="#baffef" stroke-opacity="0" style="--phase:{phase:.2f}s"'
                 parts.append(f'<rect x="{x}" y="{y}" width="{pitch-3}" height="{pitch-3}" rx="2" fill="{COLORS[level]}"{highlight}><title>{day} · {count}</title></rect>')
+                if day == today:
+                    parts.append(f'<rect id="today" x="{x-1}" y="{y-1}" width="{pitch-1}" height="{pitch-1}" rx="2.5" fill="none" stroke="#ffca70" stroke-width="1.5"><title>Hoy · {day}</title></rect>')
             else:
                 parts.append(f'<circle cx="{x+4}" cy="{y+4}" r="1.4" fill="#37505c"/>')
             day += timedelta(days=1)

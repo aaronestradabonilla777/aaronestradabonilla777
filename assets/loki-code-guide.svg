@@ -8,6 +8,8 @@
         @keyframes project { from { transform:translateY(2px) } to { transform:translateY(-8px) } }
         .leaf { animation: turn 4.8s ease-in-out -1s infinite }
         .ink { animation: turn-ink 4.8s ease-in-out -1s infinite }
+        .terminal-line { animation: type-line 4.8s steps(6,end) -1s infinite }
+        @keyframes type-line { 0%,74% { stroke-dashoffset:100 } 90%,100% { stroke-dashoffset:0 } }
         @keyframes turn {
           0%, 18%, 100% { d:path("M193 57 Q222 30 248 30 Q276 30 304 49 L241 83 Q213 80 193 112 Z"); fill:#82b2bf }
           42% { d:path("M193 57 Q211 24 235 12 Q252 10 266 18 L224 69 Q207 65 193 112 Z"); fill:#d6f5ed }
@@ -48,8 +50,11 @@
     <path class="ink" d="M205 65 Q231 39 251 40 M207 72 Q227 52 244 49" fill="none" stroke="#426775" stroke-width="1.6" opacity="0"/>
     <path d="M193 43v27" fill="none" stroke="#caffdf" stroke-dasharray="3 3"/>
     <g class="prompt">
-      <path d="m169 42 28-15 25 9-29 16z" fill="#183a47" stroke="#abf3eb"/>
-      <path d="m179 39 5-3-1-3m6 6 6-3" fill="none" stroke="#caffdf" stroke-width="2"/>
+      <g transform="matrix(1,-.46,.75,.57,162,38)">
+        <rect width="47" height="25" rx="2" fill="#183a47" stroke="#abf3eb" stroke-width="1.6"/>
+        <path d="m5 5 4 3-4 3m9-3h13" fill="none" stroke="#caffdf" stroke-width="2.5"/>
+        <path class="terminal-line" d="M7 18h8m4 0h12m4 0h5" fill="none" stroke="#8df5e1" stroke-width="2.5" pathLength="100" stroke-dasharray="100 101"/>
+      </g>
     </g>
   </g>
   <path d="M0 132h384" stroke="#315561"/>

@@ -4,8 +4,13 @@
   <defs>
     <style>
       @media (prefers-reduced-motion: no-preference) {
-        .packets { animation: dispatch 3.4s linear infinite }
-        @keyframes dispatch { to { stroke-dashoffset:-96 } }
+        .request, .reply, .ack { animation-duration:6s; animation-delay:var(--delay); animation-iteration-count:infinite; animation-timing-function:linear }
+        .request { animation-name:dispatch }
+        .reply { animation-name:confirm }
+        .ack { animation-name:received }
+        @keyframes dispatch { 0% { opacity:0; stroke-dashoffset:8 } 5% { opacity:1 } 29% { opacity:1; stroke-dashoffset:-96 } 30%,100% { opacity:0; stroke-dashoffset:-100 } }
+        @keyframes received { 0%,28%,82%,100% { opacity:0 } 33%,72% { opacity:1 } }
+        @keyframes confirm { 0%,45% { opacity:0; stroke-dashoffset:-100 } 48% { opacity:1 } 74% { opacity:1; stroke-dashoffset:0 } 76%,100% { opacity:0; stroke-dashoffset:8 } }
       }
     </style>
     <radialGradient id="glow" cx=".48" cy=".54" r=".72">
@@ -18,16 +23,39 @@
       <path d="M-14-9h24l4 4V9h-28z"/>
       <path d="M-7 0h4m5 0h4"/>
     </g>
+    <path id="upper" pathLength="100" d="M167 66h29l26-35h28"/>
+    <path id="middle" pathLength="100" d="M167 66h83"/>
+    <path id="lower" pathLength="100" d="M167 66h29l26 35h28"/>
+    <g id="check">
+      <rect x="252" y="-8" width="25" height="16" rx="2" fill="#285352" stroke="#b5ffe0"/>
+      <path d="m259-1 4 4 7-7" fill="none" stroke="#b5ffe0" stroke-width="2"/>
+    </g>
   </defs>
   <rect x=".5" y=".5" width="383" height="185" rx="5" fill="#08161e" stroke="#315561"/>
   <path d="M1 6q0-5 5-5h372q5 0 5 5v125H1z" fill="url(#glow)"/>
   <path d="M1 6h382v125H1z" fill="url(#grid)"/>
   <g fill="none" stroke="#ee9c91" stroke-width="2">
-    <path id="routes" d="M167 66h29l26-35h28m-54 35h54m-54 0 26 35h28"/>
-    <use class="packets" href="#routes" stroke="#fff1c7" stroke-width="3" stroke-dasharray="6 42"/>
+    <use href="#upper"/><use href="#middle"/><use href="#lower"/>
     <circle cx="196" cy="66" r="4" fill="#ffcf9b"/>
   </g>
   <use href="#agent" x="265" y="31"/><use href="#agent" x="265" y="66"/><use href="#agent" x="265" y="101"/>
+  <g fill="none" stroke-width="3">
+    <g style="--delay:0s">
+      <use class="request" href="#upper" opacity="0" stroke="#fff1c7" stroke-dasharray="7 105"/>
+      <use class="reply" href="#upper" opacity="0" stroke="#91efd4" stroke-dasharray="7 105"/>
+      <use class="ack" href="#check" y="31" opacity="0"/>
+    </g>
+    <g style="--delay:.5s">
+      <use class="request" href="#middle" opacity="0" stroke="#fff1c7" stroke-dasharray="7 105"/>
+      <use class="reply" href="#middle" opacity="0" stroke="#91efd4" stroke-dasharray="7 105"/>
+      <use class="ack" href="#check" y="66" opacity="0"/>
+    </g>
+    <g style="--delay:1s">
+      <use class="request" href="#lower" opacity="0" stroke="#fff1c7" stroke-dasharray="7 105"/>
+      <use class="reply" href="#lower" opacity="0" stroke="#91efd4" stroke-dasharray="7 105"/>
+      <use class="ack" href="#check" y="101" opacity="0"/>
+    </g>
+  </g>
   <path d="M97 36h48l16 16v56H97z" fill="#302532" stroke="#ad727c"/>
   <path d="M104 28h48l16 16v56h-64z" fill="#432d3b" stroke="#ffd3ad" stroke-width="2"/>
   <path d="M152 29v15h15m-51 12h36m-36 10h28m-28 10h32m-32 10h18" fill="none" stroke="#ffc0ad" stroke-width="2"/>

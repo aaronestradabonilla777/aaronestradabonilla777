@@ -348,6 +348,7 @@
 <rect x="641" y="113" width="10" height="10" rx="2" fill="#193341"><title>2026-11-18 · 0</title></rect>
 <rect x="641" y="126" width="10" height="10" rx="2" fill="#168b99" class="active-day" stroke="#baffef" stroke-opacity="0" style="--phase:-2.36s"><title>2026-11-19 · 10</title></rect>
 <rect x="641" y="139" width="10" height="10" rx="2" fill="#185b6c" class="active-day" stroke="#baffef" stroke-opacity="0" style="--phase:-2.31s"><title>2026-11-20 · 1</title></rect>
+<rect id="today" x="640" y="138" width="12" height="12" rx="2.5" fill="none" stroke="#ffca70" stroke-width="1.5"><title>Hoy · 2026-11-20</title></rect>
 <circle cx="645" cy="156" r="1.4" fill="#37505c"/>
 <circle cx="658" cy="78" r="1.4" fill="#37505c"/>
 <circle cx="658" cy="91" r="1.4" fill="#37505c"/>
