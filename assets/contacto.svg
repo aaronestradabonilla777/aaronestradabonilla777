@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="960" height="340" viewBox="0 0 960 340" role="img" aria-labelledby="title description">
   <title id="title">Contactar a Haluz en LinkedIn</title>
-  <desc id="description">Un anuncio gigante de LinkedIn ilumina el puerto de Night City. Un holograma gira entre las torres, un aerotaxi cruza el cielo y el metro recorre el muelle.</desc>
+  <desc id="description">Un anuncio gigante de LinkedIn ilumina el puerto de Night City. En la torre vecina aparece Zero de Mega Man X con su sable verde. Un aerotaxi cruza el cielo y el metro recorre el muelle.</desc>
   <defs>
     <linearGradient id="sky" x1="0" y1="0" x2=".9" y2="1">
       <stop stop-color="#101827"/><stop offset=".48" stop-color="#252843"/><stop offset=".8" stop-color="#614459"/><stop offset="1" stop-color="#cf846c"/>
@@ -32,7 +32,6 @@
     <linearGradient id="shopglass"><stop stop-color="#33495f"/><stop offset=".4" stop-color="#fbc3aa"/><stop offset="1" stop-color="#785573"/></linearGradient>
     <filter id="halo" x="-35%" y="-35%" width="170%" height="170%"><feGaussianBlur stdDeviation="3" result="light"/><feMerge><feMergeNode in="light"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
     <clipPath id="harbour"><path d="M0 283h960v57H0z"/></clipPath>
-    <clipPath id="portrait-panel"><path d="m419 123 66-14v97l-66 14z"/></clipPath>
     <path id="horizon" d="M-40 282V159h20v-28h18v30h11v-66h15v-8h14v79h20v-43h16v-8h12v38h20v-67h13V72h8v14h12v71h20v-35h31v28h23v-48h12V80h6v22h14v78h19v-47h20V98h8v35h19v26h19v-54h26v62h22v-39h18v-21h10v21h12v33h18v-86h9V62h7V43h3v19h9v13h9v102h24v-42h22v20h24v-52h13v-9h12v69h25v-48h17V87h8v27h16v43h30v-56h22v50h16v-27h11v-13h16v44h21v-62h11V78h5v15h16v74h15v-37h34v29h23v-68h14V78h10v13h12v86h27v-50h24v-18h9v18h15v49h22v-72h19v69h31v-29h25v153z"/>
     <g id="hotel-floor">
       <path d="m0 5 71-7 21 4-70 8z" fill="#537086"/><path d="m0 5 22 5 70-8v5l-70 8L0 10z" fill="#142638"/>
@@ -41,6 +40,10 @@
     <g id="train"><path d="m-48-3 2-9 7-5h58l19 9 5 5z" fill="#193d50" stroke="#83d6df"/><path d="M-34-11h10m4 0h10m4 0H4m5 0h11" stroke="#ffe6ae" stroke-width="3"/><path d="m-45-5 60 1" stroke="#ff83be" stroke-width="2"/></g>
     <style>
       @media (prefers-reduced-motion: no-preference) {
+        .zero-hair { animation: ponytail 2.4s steps(2,end) infinite alternate; transform-origin:12px 13px }
+        @keyframes ponytail { to { transform:rotate(6deg) } }
+        .zero-blade { animation: energy 1.7s ease-in-out infinite alternate }
+        @keyframes energy { from { opacity:.72 } to { opacity:1 } }
         .far { animation: pan 26s ease-in-out infinite alternate }
         .district { animation: pan 20s ease-in-out -8s infinite alternate-reverse }
         @keyframes pan { from { transform:translateX(-9px) } to { transform:translateX(12px) } }
@@ -51,8 +54,6 @@
         @keyframes rise { to { transform:translateY(-106px) } }
         .iris { transform-origin:594px 147px; animation: iris 7s ease-in-out infinite alternate }
         @keyframes iris { from { transform:scaleX(.35) } to { transform:scaleX(1) } }
-        .scan { animation: raster 4.8s linear infinite }
-        @keyframes raster { from { transform:translateY(-80px) } to { transform:translateY(110px) } }
         .beacons { animation: light 3.6s ease-in-out infinite alternate }
         @keyframes light { from { opacity:.33 } to { opacity:.98 } }
         .shuttle { animation: fly 17s linear -5s infinite }
@@ -94,7 +95,7 @@
         <path d="m307 99 15-8v188h-15z" fill="url(#offices)"/>
         <path d="M333 95v177" stroke="#7694a8" stroke-width="5"/><path class="lift" d="M330 226h6v16h-6z" fill="#fff1bb" filter="url(#halo)"/>
       </g>
-      <!-- Prismatic media tower. The magenta portrait is drawn directly on its LED facade. -->
+      <!-- Pixel-art marquee mounted on the prismatic tower. -->
       <path d="m367 280 2-224 110-32 43 19 3 240z" fill="url(#glass)" stroke="#485979" stroke-width="2"/>
       <path d="m369 56 110-32v257H367z" fill="url(#fins)"/>
       <path d="m482 29 36 16v235h-36z" fill="url(#offices)" opacity=".76"/>
@@ -105,14 +106,43 @@
         <path d="M394 64v120m13-123v93" stroke="#3acdea" stroke-width="1.4"/>
       </g>
       <path class="return" d="M382 65v174m14-177v98m17-103v61" pathLength="100" stroke="#a2d4ff" stroke-width="2" fill="none" stroke-dasharray="8 92"/>
-      <path d="m419 123 66-14v97l-66 14z" fill="#662875"/>
-      <g clip-path="url(#portrait-panel)">
-        <path d="m418 207 17-25 1-15-7-9 3-22 11-10 19-3 14 15-5 12 7 10-9 4-3 12-12 4 10 23z" fill="#ff93c8"/>
-        <path d="m433 145 15-14 22 4 8 8-4-17-16-9-21 7-12 13 2 18 12 12z" fill="#44275a"/>
-        <path d="m444 147 25-5-4 9-19 4zm-2 27 11 7-7 16-13 3z" fill="#ad347f"/>
-        <path d="m446 149 21-5" stroke="#e1ffff" stroke-width="3"/>
-        <path class="scan" d="m415 160 76-16" stroke="#ffd0ee" stroke-width="4" opacity=".68"/>
-        <rect x="418" y="104" width="69" height="120" fill="url(#led)"/>
+      <g transform="translate(394 120) skewY(-12)">
+        <path d="M-3 0 0-4h86l4 4v108l-4 4H0l-3-3z" fill="#0c152a" stroke="#647393" stroke-width="2"/>
+        <path d="M0 12V0h24m39 108h23V96" fill="none" stroke="#79ceda" stroke-width="1.5"/>
+        <g id="zero" transform="translate(2 8) scale(2.25)">
+          <title>Zero de Mega Man X</title>
+          <!-- The ponytail trails behind the helmet and the rear pauldron. -->
+          <g class="zero-hair">
+            <path fill="#cb8136" d="M12 10h4v9h-2v6h-2v4H9v3H6v2H2v-2h2v-5h2v-7h2v-6h4z"/>
+            <path fill="#ffd264" d="M12 12h2v7h-2v6h-2v3H7v3H4v-2h2v-7h2v-6h4z"/>
+            <path fill="#fff0a0" d="M11 15h2v4h-2v5H9v3H8v-6h2v-6z"/>
+          </g>
+          <!-- Dark undersuit, articulated joints and flared red boots. -->
+          <path fill="#26324a" d="M13 16h10v4h3v4h-3v6h2v5h3v5H17v-6h-2v3h-3v3H4v-6h4v-5h3v-6H8v-5h5z"/>
+          <path fill="#e4ecf2" d="M12 25h8v2h-2v2h-3v-1h-3zm-2 6h4v3h-4zm10 0h4v3h-4z"/>
+          <path fill="#bb2343" d="M8 31h6v4h-2v5H3v-3h2v-3h3zm12 0h6v5h3v2h2v2H19v-3h1z"/>
+          <path fill="#fb5260" d="M9 31h5v2h-4v3H6v-2h3zm12 1h4v4h3v2h-6z"/>
+          <path fill="#f5e0d9" d="M3 39h9v1H3zm17 0h11v1H20z"/>
+          <!-- Helmet fins frame the cyan forehead crystal; the visible eye faces the blade. -->
+          <path fill="#9a2345" d="M11 5h3V3h6v1h3v2h2v6h-2v3h-3v2h-6v-2h-3v-2H9V8h2z"/>
+          <path fill="#fa4758" d="M12 6h2V4h5v2h3v2h2v2h-6v2h-5V9h-2V7h1z"/>
+          <path fill="#f8f2eb" d="M10 1h2v2h2v2h2v3h-2V6h-2V5h-2zm12 1h2v3h-1v2h-2V5h1zM10 9h4v5h-4z"/>
+          <path fill="#6cf5ed" d="M17 5h3v4h-3z"/><path fill="#fffbdc" d="M18 5h1v2h-1z"/>
+          <path fill="#ffcf9c" d="M15 11h9v2h-2v2h-2v1h-4v-2h-1z"/>
+          <path fill="#26364b" d="M18 10h6v1h-2v2h-2v-2h-2z"/><path fill="#7ff3e4" d="M21 11h1v1h-1z"/>
+          <path fill="#ea4251" d="M11 10h2v3h-2z"/>
+          <!-- Shoulder shells, chest lenses and the gauntlet around the hilt. -->
+          <path fill="#ba2848" d="M8 17h5v-1h7v1h5v5h-4v3h-8v-3H7v-4h1z"/>
+          <path fill="#ff5962" d="M8 17h5v2H9v2H7v-3h1zm7 0h5v2h-5zm6 0h4v3h-4z"/>
+          <path fill="#f5eee2" d="M13 19h3v3h-3zm6 0h3v3h-3zM7 22h5v2H7zm16-1h4v2h-4z"/>
+          <path fill="#4bcaa1" d="M14 19h2v2h-2zm6 0h2v2h-2z"/>
+          <path fill="#e63c50" d="M6 24h5v4H9v1H6zm18-1h3v-3h3v5h-2v2h-4z"/>
+          <g class="zero-blade">
+            <path fill="#33d991" d="M29 19v-4h1v-3h1V9h1V7h1V4h1V2h2v5h-1v4h-1v4h-1v3h-1v3z"/>
+            <path fill="#d5ffac" d="M30 18v-3h1v-3h1V9h1V6h1V4h1v3h-1v4h-1v4h-1v3z"/>
+          </g>
+          <path fill="#ffe095" d="M27 18h3v1h3v2h-4v-1h-2z"/><path fill="#b7d5df" d="M28 20h2v4h-2z"/>
+        </g>
       </g>
       <!-- A cylindrical projection theatre with an animated iris. -->
       <path d="M555 280v-99q38-16 76 0v99z" fill="url(#steel)"/>
