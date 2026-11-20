@@ -1,11 +1,27 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="384" height="186" viewBox="0 0 384 186" role="img" aria-labelledby="title desc">
   <title id="title">Loki Code Guide</title>
-  <desc id="desc">Tutor de programación con IA local y Ollama. Un libro abierto proyecta líneas de código.</desc>
+  <desc id="desc">Un libro pasa sus páginas bajo un terminal holográfico. Loki Code Guide es un tutor de programación con IA local y Ollama.</desc>
   <defs>
     <style>
       @media (prefers-reduced-motion: no-preference) {
         .prompt { animation: project 3.8s ease-in-out infinite alternate }
         @keyframes project { from { transform:translateY(2px) } to { transform:translateY(-8px) } }
+        .leaf { animation: turn 4.8s ease-in-out -1s infinite }
+        .ink { animation: turn-ink 4.8s ease-in-out -1s infinite }
+        @keyframes turn {
+          0%, 18%, 100% { d:path("M193 57 Q222 30 248 30 Q276 30 304 49 L241 83 Q213 80 193 112 Z"); fill:#82b2bf }
+          42% { d:path("M193 57 Q211 24 235 12 Q252 10 266 18 L224 69 Q207 65 193 112 Z"); fill:#d6f5ed }
+          58% { d:path("M193 57 Q185 24 170 14 Q150 12 147 22 L164 75 Q182 75 193 112 Z"); fill:#9ec9d2 }
+          78%, 96% { d:path("M193 57 Q171 40 144 39 Q109 52 77 73 L141 97 Q169 92 193 112 Z"); fill:#daeff1 }
+          0%, 96%, 100% { opacity:0 } 12%, 85% { opacity:1 }
+        }
+        @keyframes turn-ink {
+          0%, 18%, 100% { d:path("M205 65 Q231 39 251 40 M207 72 Q227 52 244 49") }
+          42% { d:path("M200 60 Q218 28 243 22 M201 66 Q216 39 232 33") }
+          58% { d:path("M189 56 Q176 27 158 24 M187 64 Q177 40 165 36") }
+          78%, 96% { d:path("M182 60 Q159 45 130 58 M180 68 Q157 55 139 62") }
+          0%, 96%, 100% { opacity:0 } 12%, 85% { opacity:1 }
+        }
       }
     </style>
     <radialGradient id="glow" cx=".52" cy=".76" r=".7">
@@ -28,6 +44,8 @@
       <path d="m102 72 38-19q19-1 37 11m-64 13 27-13q19-1 37 11m-51 7 15-7q16 0 31 8"/>
       <path d="m207 62 37-18q16-1 29 5m-64 21 36-18m-35 25 20-10"/>
     </g>
+    <path class="leaf" d="M193 57 Q222 30 248 30 Q276 30 304 49 L241 83 Q213 80 193 112 Z" fill="#83b3bf" stroke="#e0fff8" opacity="0"/>
+    <path class="ink" d="M205 65 Q231 39 251 40 M207 72 Q227 52 244 49" fill="none" stroke="#426775" stroke-width="1.6" opacity="0"/>
     <path d="M193 43v27" fill="none" stroke="#caffdf" stroke-dasharray="3 3"/>
     <g class="prompt">
       <path d="m169 42 28-15 25 9-29 16z" fill="#183a47" stroke="#abf3eb"/>

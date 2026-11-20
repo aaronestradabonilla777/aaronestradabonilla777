@@ -1,10 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="106" viewBox="0 0 800 106" role="img" aria-labelledby="title">
   <title id="title">Contactar a Haluz en LinkedIn</title>
   <defs>
+    <pattern id="map-grid" width="14" height="14" patternUnits="userSpaceOnUse">
+      <path d="M14 0H0v14" stroke="#719da9" opacity=".16" fill="none"/>
+    </pattern>
+    <path id="uplink" pathLength="100" d="M129 53h53l22-22h66l27 27h80l21-21h65l29 29h49"/>
+    <path id="return" pathLength="100" d="M153 72h69l17-17h24l25 25h82l11-11h61l23-23h29l21 20h26"/>
     <style>
       @media (prefers-reduced-motion: no-preference) {
         .beacon { animation: broadcast 5s ease-out infinite; transform-origin:649px 82px }
         @keyframes broadcast { from { transform:scale(.56); opacity:.9 } to { transform:scale(1.42); opacity:0 } }
+        .traffic { animation: message 4.5s linear infinite }
+        .reply { animation: message 6s linear -1.5s infinite reverse }
+        @keyframes message { from { stroke-dashoffset:7 } to { stroke-dashoffset:-93 } }
       }
     </style>
     <linearGradient id="sky" x2="1" y2=".2">
@@ -16,12 +24,25 @@
     <path id="towers" d="M340 106V94h32V78h16v16h14V68h23v21h21V54h11V36h4v18h7v34h15V67h22v22h14V51h9V39h15v12h8v39h19V65h13V40h7v-9h11v9h7v45h15V63h20v26h13V49h8V27h6V18h4v9h7v22h5v29h13V60h21v25h11V43h8v-8h16v9h9v35h12V61h14V48h6v13h7v45z"/>
   </defs>
   <rect x=".5" y=".5" width="799" height="105" rx="3" fill="url(#sky)" stroke="#315561"/>
+  <path d="M145 13h428l26 80H145z" fill="url(#map-grid)"/>
   <g stroke="#57adb9" fill="none" opacity=".7">
     <circle class="beacon" cx="649" cy="82" r="58"/><circle cx="649" cy="82" r="52" stroke-dasharray="2 6"/>
     <path d="M455 87h343m-288-11h288m-208-11h208"/>
   </g>
   <use href="#towers" fill="#0b232d"/>
   <use href="#towers" fill="url(#windows)"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <use href="#return" stroke="#a45173" stroke-width="2.2"/>
+    <use href="#uplink" stroke="#49aab2" stroke-width="3"/>
+    <use href="#return" class="reply" stroke="#ffb2ac" stroke-width="3" stroke-dasharray="2 98"/>
+    <use href="#uplink" class="traffic" stroke="#c9fff0" stroke-width="4" stroke-dasharray="3 97"/>
+    <g fill="#132935" stroke="#a0e2de" stroke-width="2">
+      <circle cx="221" cy="31" r="4"/><circle cx="337" cy="58" r="5"/>
+      <circle cx="418" cy="37" r="4"/><circle cx="541" cy="66" r="6"/>
+    </g>
+    <path d="m524 91 17-25 16 25m-26-9h20m-10-10v-9" stroke="#87c2c7" stroke-width="2"/>
+    <path d="M535 56q6-7 12 0m-17-6q11-12 22 0m-27-6q16-18 32 0" stroke="#ffc39e" stroke-width="2"/>
+  </g>
   <path d="M340 105h458M1 105h196" stroke="#ff525e" stroke-width="2"/>
   <rect x="26" y="22" width="62" height="62" rx="7" fill="#9af2e9"/>
   <g fill="#081820">

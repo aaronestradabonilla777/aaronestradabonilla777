@@ -53,6 +53,8 @@ def calendar_svg(days, today, compact):
              f'<desc id="desc">Actividad pública del 1 de enero al {today.day} de {MONTHS[today.month - 1]}. Cada celda representa un día.</desc>',
              '<style>@media (prefers-reduced-motion: no-preference) {'
              '.sweep { animation: scan 7s linear infinite }'
+             '.active-day { animation: highlight 9s ease-in-out infinite; animation-delay:var(--phase) }'
+             '@keyframes highlight { 0%,18%,100% { stroke-opacity:0 } 8% { stroke-opacity:.85 } }'
              '@keyframes scan { to { stroke-dashoffset:-100 } } }</style>',
              f'<rect x=".5" y=".5" width="{width-1}" height="{height-1}" rx="3" fill="#08161e" stroke="#315561"/>',
              '<path d="M1 1h98l8 5h30" fill="none" stroke="#59dce4" stroke-width="2"/>',
@@ -75,7 +77,11 @@ def calendar_svg(days, today, compact):
                 parts.append(f'<text x="{x}" y="{top-7}">{MONTHS[day.month-1]}</text>')
             if day <= today:
                 count, level = days[day]
-                parts.append(f'<rect x="{x}" y="{y}" width="{pitch-3}" height="{pitch-3}" rx="2" fill="{COLORS[level]}"><title>{day} · {count}</title></rect>')
+                highlight = ''
+                if count:
+                    phase = (column * 0.14 + row * 0.05) - 9
+                    highlight = f' class="active-day" stroke="#baffef" stroke-opacity="0" style="--phase:{phase:.2f}s"'
+                parts.append(f'<rect x="{x}" y="{y}" width="{pitch-3}" height="{pitch-3}" rx="2" fill="{COLORS[level]}"{highlight}><title>{day} · {count}</title></rect>')
             else:
                 parts.append(f'<circle cx="{x+4}" cy="{y+4}" r="1.4" fill="#37505c"/>')
             day += timedelta(days=1)

@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 332" role="img" aria-labelledby="title desc">
   <title id="title">HALUZ · Night City · Rust y React</title>
-  <desc id="desc">El emblema rojo de Samurai se enciende sobre las vías de Night City. Torres de neón y una luna ámbar rodean la firma de Haluz.</desc>
+  <desc id="desc">Samurai ilumina una avenida mojada de Night City. Los taxis y los deportivos cruzan bajo el tren mientras las torres pasan al fondo de la firma HALUZ.</desc>
   <defs>
     <linearGradient id="sky" x1="0" y1="1" x2="1" y2="0">
       <stop stop-color="#080c1c"/><stop offset=".48" stop-color="#252242"/><stop offset=".84" stop-color="#79435c"/><stop offset="1" stop-color="#162239"/>
@@ -14,6 +14,34 @@
     <pattern id="screen" width="4" height="5" patternUnits="userSpaceOnUse">
       <path d="M0 1h4" stroke="#02080e" stroke-width="1" opacity=".32"/>
     </pattern>
+    <linearGradient id="asphalt" x2="0" y2="1">
+      <stop stop-color="#263344"/><stop offset=".44" stop-color="#102131"/><stop offset="1" stop-color="#291f35"/>
+    </linearGradient>
+    <linearGradient id="headlight">
+      <stop stop-color="#fff4bc" stop-opacity=".72"/><stop offset="1" stop-color="#9fefff" stop-opacity="0"/>
+    </linearGradient>
+    <g id="wheel">
+      <circle r="6.6" fill="#070d19" stroke="#8a9aaf" stroke-width="1.3"/>
+      <circle r="3.1" fill="#526375"/><circle r="1.2" fill="#d6e7e7"/>
+    </g>
+    <g id="coupe">
+      <path d="m47-10 57 5v5L47-7z" fill="url(#headlight)"/>
+      <path d="m-49-8 4-9 17-3 13-11h25l16 12 17 3 7 6-2 7h-98z" fill="#ee526c" stroke="#261a2b" stroke-width="1.6"/>
+      <path d="m-22-20 11-9h10v9zm26 0v-9h5l13 10z" fill="#273a50" stroke="#b9e8ec"/>
+      <path d="m-47-9 16-2 9 3 31-1 10-4 27 1-1 7h-89z" fill="#832c4b"/>
+      <path d="m-45-14 8-1m73 3 11 1" stroke="#fff6bc" stroke-width="2.2"/>
+      <path d="m-48-11 7 1" stroke="#ff4768" stroke-width="3"/>
+      <use href="#wheel" x="-31" y="-4"/><use href="#wheel" x="29" y="-4"/>
+    </g>
+    <g id="taxi">
+      <path d="m43-9 42 4v5L43-6z" fill="url(#headlight)"/>
+      <path d="m-46-7 2-12 12-2 8-12h29l16 11 19 5 5 7-2 6h-88z" fill="#f3b85c" stroke="#302438" stroke-width="1.5"/>
+      <path d="m-26-22 6-9h13v9zm24 0v-9h6l13 10z" fill="#294455" stroke="#c2edef"/>
+      <path d="M-41-15h67" stroke="#43364b" stroke-width="3" stroke-dasharray="5 2"/>
+      <path d="M-13-34v-4H0v4" fill="#ffe5a2" stroke="#4d3936"/>
+      <path d="M34-13h8" stroke="#fff4c0" stroke-width="3"/>
+      <use href="#wheel" x="-28" y="-4"/><use href="#wheel" x="26" y="-4"/>
+    </g>
     <path id="far" d="M0 290v-48h42v-24h16v-18h12v18h20v31h28v-66h14v-31h7v-13h4v13h8v27h19v49h19v-29h30v-52h9v-22h8v-18h4v18h8v20h12v56h18v-31h18v-37h20v31h14v33h14v-65h9v-41h6v-20h3v20h9v38h17v36h21v-62h18v-19h8V62h3v14h9v18h17v62h12v-45h16V91h8V69h3v22h7v18h7v55h16v-28h15v-24h12v-9h10v8h10v65h8v-64h11V82h6V52h3v30h10v26h11v51h18V97h18V76h9v-9h5v9h11v21h11v48h20v-23h28v26h16v-46h20V84h19v20h12v43h21v-34h35v177z"/>
     <path id="near" d="M0 322v-44h82v-22h55v27h43v-49h29v-9h18v51h39v-36h39v-28h25v-36h13v37h13v60h23v-46h29v-51h10v-14h7v15h11v82h20v-44h25v-61h12v-13h6v-22h3v22h9v15h10v87h19v-45h18v-29h25v-37h7v-12h6v12h9v37h17v63h24v-39h23v-60h12v-15h17v15h12v83h26v-52h19v-31h24v-21h16v20h10v71h37v-48h23v-47h9v-15h5v15h14v61h61v159z"/>
     <g id="emblem">
@@ -27,6 +55,17 @@
       .signal { animation: signal 7.15s linear infinite }
       @keyframes signal { 0%,16%,72%,100% { opacity:1 } 24%,49% { opacity:.48 } 55% { opacity:.68 } }
       @media (prefers-reduced-motion: no-preference) {
+        .distant { animation: distant-drift 21s ease-in-out infinite alternate }
+        .district { animation: district-drift 21s ease-in-out infinite alternate }
+        @keyframes distant-drift { from { transform:translateX(16px) } to { transform:translateX(-31px) } }
+        @keyframes district-drift { from { transform:translateX(38px) } to { transform:translateX(-62px) } }
+        .inbound { animation: inbound 8.6s linear -3.8s infinite }
+        .outbound { animation: outbound 11s linear -2.2s infinite }
+        .late-cab { animation-delay:-7.9s }
+        @keyframes inbound { from { transform:translateX(-115px) } to { transform:translateX(1080px) } }
+        @keyframes outbound { from { transform:translateX(1060px) } to { transform:translateX(-95px) } }
+        .shop-sign { animation: marquee 4s linear infinite }
+        @keyframes marquee { to { stroke-dashoffset:-32 } }
         .train { animation: transit 9s linear infinite }
         @keyframes transit {
           0%, 12% { transform:translate(175px,366px) rotate(-13deg) scale(1.4) }
@@ -50,11 +89,25 @@
   <g fill="none" stroke="#85435c" opacity=".65">
     <path d="M568 102h172m-184 8h176m-170 9h159m-127 9h129m-141 11h138m-125 10h113"/>
   </g>
-  <use href="#far" fill="#35304d"/><use href="#far" fill="url(#glass)" opacity=".48"/>
+  <g class="distant">
+    <use href="#far" fill="#35304d"/><use href="#far" fill="url(#glass)" opacity=".48"/>
+    <path d="m558 146 8-53 12-9 6-37 3 38 14 17 7 49z" fill="#493b53" stroke="#91637b"/>
+    <path d="m572 102 8-7m-9 15 10-8m-12 17 13-10" stroke="#e598a6" stroke-width="2"/>
+  </g>
+  <g class="district">
   <use href="#near" fill="#152337"/><use href="#near" fill="url(#glass)"/>
+  <g transform="translate(676 94)">
+    <path d="m-22 142 4-104 11-7V8l19-9 20 8v30l9 4v101z" fill="#152232" stroke="#487783"/>
+    <path d="m12 0 20 7v30l9 4v101H14z" fill="#29304a"/>
+    <path d="M-11 42 4 35m-15 15 15-7m-16 15 16-7m-17 15 17-7m-17 15 17-7" stroke="#5ebfca" stroke-width="2.5"/>
+    <path d="M18 12v24m6-22v18" stroke="#f4899f" stroke-width="2"/>
+    <path d="M27 54h16v52H27z" fill="#2c1831" stroke="#e76590"/>
+    <path class="shop-sign" d="m30 64 5-4 5 4m-10 12 5-4 5 4m-10 12 5-4 5 4m-10 12 5-4 5 4" fill="none" stroke="#ffd092" stroke-width="2.5" stroke-dasharray="11 5"/>
+  </g>
   <g class="neon" fill="none" stroke-linecap="square">
     <path d="M528 139v43m5-30v20m85-57v25m4-20v14" stroke="#33ebed" stroke-width="2"/>
     <path d="M576 171h15m-15 5h11m75-57h10m-10 5h7" stroke="#ff568f" stroke-width="3"/>
+  </g>
   </g>
   <path d="M0 332v-30l131-19 183 16 219-37 112-18 127 11 188-34v111z" fill="#091824"/>
   <!-- Elevated rail and its supports follow the vanishing point on the right. -->
@@ -80,8 +133,27 @@
   </g>
   <rect class="rain" x="-86" y="-55" width="1132" height="445" fill="url(#drizzle)"/>
   <rect width="575" height="332" fill="url(#shade)"/>
+  <!-- Two street lanes sit below the elevated railway. Each reflection follows its car. -->
+  <path d="M0 302h960v30H0z" fill="url(#asphalt)"/>
+  <path d="M0 302h960" stroke="#669098"/>
+  <path d="M0 314h960" stroke="#bc9b78" stroke-width="1.2" stroke-dasharray="30 52" opacity=".7"/>
+  <g fill="none" stroke-linecap="round" opacity=".5">
+    <path d="M115 308h47m7 1h31m180 16h49m144-20h49m180 22h68" stroke="#51b8bd"/>
+    <path d="M18 326h39m143-11h57m286 12h39m126-19h71m126 10h44" stroke="#b65c85"/>
+  </g>
+  <g class="outbound" transform="translate(655)">
+    <use href="#taxi" transform="translate(0 304) scale(-.71 .71)"/>
+    <use href="#taxi" transform="translate(0 306) scale(-.71 -.12)" opacity=".23"/>
+  </g>
+  <g class="outbound late-cab" transform="translate(256)">
+    <use href="#coupe" transform="translate(0 304) scale(-.65 .65)"/>
+  </g>
+  <g class="inbound" transform="translate(445)">
+    <use href="#coupe" transform="translate(0 325) scale(1.16)"/>
+    <use href="#coupe" transform="translate(0 326) scale(1.16 -.18)" opacity=".32"/>
+  </g>
   <g fill="none" stroke="#77d9df">
-    <path d="M26 74V31h95m-95 243v26h112" stroke-width="2"/>
+    <path d="M26 74V31h95m-95 229v22h70" stroke-width="2"/>
     <path d="M30 32h33" stroke="#ff5866" stroke-width="4"/>
   </g>
   <text x="43" y="72" font-family="Consolas,monospace" font-size="24" font-weight="bold" letter-spacing="5" fill="#ffce78">NIGHT CITY</text>
