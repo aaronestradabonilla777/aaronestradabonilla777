@@ -7,7 +7,7 @@ Soy **Haluz**, desarrollador full stack en México. Trabajo con TypeScript y Rea
 ## Proyectos destacados
 
 <p align="center">
-  <a href="https://github.com/aaronestradabonilla777/fraud-detection-lambda-rust"><img src="./assets/fraud-detection.svg" width="384" alt="Abrir Detección de fraude. Motor asíncrono en Rust y Tokio con el modelo de AWS Lambda."></a>
+  <a href="https://github.com/aaronestradabonilla777/sdd-template"><img src="./assets/sdd-template.svg" width="384" alt="Abrir sdd-template. Plantilla para coordinar agentes de IA mediante especificaciones."></a>
   <a href="https://github.com/aaronestradabonilla777/Loki-code-guide"><img src="./assets/loki-code-guide.svg" width="384" alt="Abrir Loki Code Guide. Tutor de programación con IA local y Ollama."></a>
 </p>
 
