@@ -14,6 +14,10 @@ def build_mobile(name, view_box):
     root = scene.getroot()
     _, _, width, height = view_box.split()
     root.attrib.update(viewBox=view_box, width=width, height=height)
+    if name == "contacto":
+        root.set("class", "compact")
+        # Keep the theatre on the quay between the two billboards in the close-up.
+        root.find(".//*[@id='projection-theatre']").set("transform", "translate(-47 107) scale(.62)")
     if name == "night-city":
         root.find(".//*[@id='identity']").set("transform", "translate(433 34) scale(.51)")
         root.find(".//*[@id='stack-icons']").set("transform", "translate(45 222) scale(1.35)")

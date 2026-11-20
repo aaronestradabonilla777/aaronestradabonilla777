@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="960" height="340" viewBox="0 0 960 340" role="img" aria-labelledby="title description">
   <title id="title">Contactar a Haluz en LinkedIn</title>
-  <desc id="description">Un anuncio gigante de LinkedIn ilumina el puerto de Night City. En la torre vecina aparece Zero de Mega Man X con su sable verde. Un aerotaxi cruza el cielo y el metro recorre el muelle.</desc>
+  <desc id="description">El anuncio de LinkedIn ilumina el puerto. Zero alza el sable verde y el teatro del muelle proyecta el ojo dorado de Atlantis. Un aerotaxi y el metro cruzan la escena.</desc>
   <defs>
     <linearGradient id="sky" x1="0" y1="0" x2=".9" y2="1">
       <stop stop-color="#101827"/><stop offset=".48" stop-color="#252843"/><stop offset=".8" stop-color="#614459"/><stop offset="1" stop-color="#cf846c"/>
@@ -21,6 +21,9 @@
       <stop stop-color="#314254"/><stop offset="1" stop-color="#101a2d"/>
     </linearGradient>
     <radialGradient id="haze"><stop stop-color="#ff82c0" stop-opacity=".48"/><stop offset="1" stop-color="#d75fac" stop-opacity="0"/></radialGradient>
+    <radialGradient id="atlantis-lens">
+      <stop stop-color="#ffe7a5"/><stop offset=".38" stop-color="#d69a55"/><stop offset=".72" stop-color="#758d79"/><stop offset="1" stop-color="#0c3843"/>
+    </radialGradient>
     <pattern id="offices" width="29" height="15" patternUnits="userSpaceOnUse">
       <path d="M2 3h6m2 0h3m8 0h4M5 10h4m5 0h7" stroke="#80c9c9" stroke-width="1.7" opacity=".7"/>
       <path d="M15 3h3M1 10h2" stroke="#ffe5a5" stroke-width="1.6"/>
@@ -75,12 +78,15 @@
       <path d="M91-14h4" stroke="#ff738e" stroke-width="2.8"/>
     </g>
     <style>
-      svg { --scene-cycle:18s }
+      svg { --scene-cycle:18s; --blade-at-rest:.78 }
+      svg.compact { --blade-at-rest:.40 }
+      .compact .arcade-frame { stroke-opacity:.43 }
+      .zero-blade { opacity:var(--blade-at-rest) }
       @media (prefers-reduced-motion: no-preference) {
         .zero-hair { animation: ponytail 2.4s steps(2,end) infinite alternate; transform-origin:12px 13px }
         @keyframes ponytail { to { transform:rotate(6deg) } }
-        .zero-blade { animation: energy 1.7s ease-in-out infinite alternate }
-        @keyframes energy { from { opacity:.72 } to { opacity:1 } }
+        .zero-blade { animation: energy var(--scene-cycle) ease-in-out -1.5s infinite }
+        @keyframes energy { 0%,35%,46%,100% { opacity:var(--blade-at-rest) } 39%,42% { opacity:1 } }
         .far { animation: pan 26s ease-in-out infinite alternate }
         .district { animation: pan 20s ease-in-out -8s infinite alternate-reverse }
         @keyframes pan { from { transform:translateX(-9px) } to { transform:translateX(12px) } }
@@ -89,8 +95,8 @@
         @keyframes chase { to { stroke-dashoffset:-100 } }
         .lift { animation: rise 8s ease-in-out -2s infinite alternate }
         @keyframes rise { to { transform:translateY(-106px) } }
-        .iris { transform-origin:594px 147px; animation: iris 7s ease-in-out infinite alternate }
-        @keyframes iris { from { transform:scaleX(.35) } to { transform:scaleX(1) } }
+        .iris { animation: blink var(--scene-cycle) ease-in-out -1.5s infinite }
+        @keyframes blink { 0%,88%,92%,100% { transform:scaleY(1) } 90% { transform:scaleY(.055) } }
         .beacons { animation: light 3.6s ease-in-out infinite alternate }
         @keyframes light { from { opacity:.33 } to { opacity:.98 } }
         .shuttle { animation: fly var(--scene-cycle) linear -1.5s infinite }
@@ -169,8 +175,8 @@
       </g>
       <path class="return" d="M382 65v174m14-177v98m17-103v61" pathLength="100" stroke="#a2d4ff" stroke-width="2" fill="none" stroke-dasharray="8 92"/>
       <g transform="translate(394 120) skewY(-12)">
-        <path d="M-3 0 0-4h86l4 4v108l-4 4H0l-3-3z" fill="#0c152a" stroke="#647393" stroke-width="2"/>
-        <path d="M0 12V0h24m39 108h23V96" fill="none" stroke="#79ceda" stroke-width="1.5"/>
+        <path class="arcade-frame" d="M-3 0 0-4h86l4 4v108l-4 4H0l-3-3z" fill="#0c152a" stroke="#647393" stroke-width="2"/>
+        <path class="arcade-frame" d="M0 12V0h24m39 108h23V96" fill="none" stroke="#79ceda" stroke-width="1.5"/>
         <g clip-path="url(#arcade-screen)">
         <g id="zero" transform="translate(2 8) scale(2.25)">
           <title>Zero de Mega Man X</title>
@@ -213,6 +219,7 @@
         </g>
       </g>
       <!-- A cylindrical projection theatre with an animated iris. -->
+      <g id="projection-theatre">
       <path d="M555 280v-99q38-16 76 0v99z" fill="url(#steel)"/>
       <path d="M555 179q38-14 76 0v36q-38 17-76 0z" fill="url(#drum)"/>
       <path d="M555 184q38 12 76 0v29q-38 12-76 0z" fill="url(#led)"/>
@@ -223,9 +230,14 @@
       <path d="M563 175 577 158h34l15 17" fill="#183349" stroke="#82a2ae"/>
       <ellipse cx="594" cy="170" rx="26" ry="5" fill="#92c9da"/>
       <path d="m569 167 10-36h30l12 36q-27 8-52 0" fill="#a68deb" opacity=".17"/>
-      <g class="iris" fill="none" stroke="#b8fff7" filter="url(#halo)">
-        <path d="M570 147q24-28 48 0-24 28-48 0z" stroke-width="2"/>
-        <circle cx="594" cy="147" r="8" stroke="#ff9cd7" stroke-width="3"/>
+      <g transform="translate(594 147)">
+        <g class="iris">
+          <path d="M-26 0Q-13-12 0-11 14-11 26 0 12 11 0 11-14 11-26 0z" fill="#19434d" stroke="#eacb92" stroke-width="1.7"/>
+          <circle r="10.5" fill="url(#atlantis-lens)" stroke="#ab9c79"/>
+          <circle r="7" fill="none" stroke="#ffe2a2" stroke-width=".8"/>
+          <circle r="4.7" fill="#0b232d" stroke="#876947"/><circle cx="-2.3" cy="-2.5" r="1.2" fill="#fff1ce"/>
+        </g>
+      </g>
       </g>
       <!-- Open-frame gate tower with a lit atrium. The sky is visible through the centre. -->
       <path fill-rule="evenodd" d="m658 284 2-200 54-15 102 17 5 198z M688 112l23-6 69 14v109l-92-10z" fill="url(#steel)" stroke="#537186" stroke-width="2"/>

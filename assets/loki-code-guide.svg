@@ -4,27 +4,28 @@
   <defs>
     <style>
       @media (prefers-reduced-motion: no-preference) {
-        .error { animation: mistake 4.8s linear -1s infinite }
-        .solution { animation: solved 4.8s linear -1s infinite }
-        .clue { animation: underline 4.8s ease-out -1s infinite }
-        @keyframes mistake { 0%,43%,100% { opacity:1 } 49%,94% { opacity:0 } }
-        @keyframes solved { 0%,53%,100% { opacity:0 } 62%,94% { opacity:1 } }
-        @keyframes underline { 0%,23%,83%,100% { stroke-dashoffset:100; opacity:0 } 37%,74% { stroke-dashoffset:0; opacity:1 } }
-        .leaf { animation: turn 4.8s ease-in-out -1s infinite }
-        .ink { animation: turn-ink 4.8s ease-in-out -1s infinite }
+        .error, .solution, .clue, .leaf, .ink { animation-duration:6.6s; animation-delay:-1s; animation-iteration-count:infinite }
+        .error { animation-name:mistake }
+        .solution { animation-name:solved }
+        .clue { animation-name:underline }
+        .leaf { animation-name:turn }
+        .ink { animation-name:turn-ink }
+        @keyframes mistake { 0%,31%,100% { opacity:1 } 36%,99% { opacity:0 } }
+        @keyframes solved { 0%,39%,99%,100% { opacity:0 } 48%,97% { opacity:1 } }
+        @keyframes underline { 0%,17%,65%,100% { stroke-dashoffset:100; opacity:0 } 27%,51% { stroke-dashoffset:0; opacity:1 } }
         @keyframes turn {
           0%, 18%, 100% { d:path("M193 57 Q222 30 248 30 Q276 30 304 49 L241 83 Q213 80 193 112 Z"); fill:#82b2bf }
-          42% { d:path("M193 57 Q211 24 235 12 Q252 10 266 18 L224 69 Q207 65 193 112 Z"); fill:#d6f5ed }
-          58% { d:path("M193 57 Q185 24 170 14 Q150 12 147 22 L164 75 Q182 75 193 112 Z"); fill:#9ec9d2 }
-          78%, 96% { d:path("M193 57 Q171 40 144 39 Q109 52 77 73 L141 97 Q169 92 193 112 Z"); fill:#daeff1 }
-          0%, 96%, 100% { opacity:0 } 12%, 85% { opacity:1 }
+          29% { d:path("M193 57 Q211 24 235 12 Q252 10 266 18 L224 69 Q207 65 193 112 Z"); fill:#d6f5ed }
+          40% { d:path("M193 57 Q185 24 170 14 Q150 12 147 22 L164 75 Q182 75 193 112 Z"); fill:#9ec9d2 }
+          50%, 97% { d:path("M193 57 Q171 40 144 39 Q109 52 77 73 L141 97 Q169 92 193 112 Z"); fill:#daeff1 }
+          0%, 62%, 100% { opacity:0 } 12%, 54% { opacity:1 }
         }
         @keyframes turn-ink {
           0%, 18%, 100% { d:path("M205 65 Q231 39 251 40 M207 72 Q227 52 244 49") }
-          42% { d:path("M200 60 Q218 28 243 22 M201 66 Q216 39 232 33") }
-          58% { d:path("M189 56 Q176 27 158 24 M187 64 Q177 40 165 36") }
-          78%, 96% { d:path("M182 60 Q159 45 130 58 M180 68 Q157 55 139 62") }
-          0%, 96%, 100% { opacity:0 } 12%, 85% { opacity:1 }
+          29% { d:path("M200 60 Q218 28 243 22 M201 66 Q216 39 232 33") }
+          40% { d:path("M189 56 Q176 27 158 24 M187 64 Q177 40 165 36") }
+          50%, 97% { d:path("M182 60 Q159 45 130 58 M180 68 Q157 55 139 62") }
+          0%, 62%, 100% { opacity:0 } 12%, 54% { opacity:1 }
         }
       }
     </style>

@@ -4,17 +4,19 @@
   <defs>
     <style>
       @media (prefers-reduced-motion: no-preference) {
-        .request, .reply, .ack, .piece { animation-duration:8s; animation-delay:var(--delay); animation-iteration-count:infinite; animation-timing-function:linear; animation-fill-mode:backwards }
+        .request, .reply, .ack, .piece, .seal, .assembled { animation-duration:10s; animation-delay:var(--delay, 0s); animation-iteration-count:infinite; animation-timing-function:linear; animation-fill-mode:backwards }
         .piece { animation-name:assemble }
-        .seal { animation:sealed 8s linear infinite }
-        @keyframes assemble { 0%,65% { opacity:0; transform:translateX(17px) } 74%,96% { opacity:1; transform:translateX(0) } 100% { opacity:0 } }
-        @keyframes sealed { 0%,86%,100% { opacity:0 } 89%,97% { opacity:1 } }
+        .seal { animation-name:sealed }
+        .assembled { animation-name:clear-file }
+        @keyframes assemble { 0%,43% { opacity:0; transform:translateX(17px) } 51%,100% { opacity:1; transform:translateX(0) } }
+        @keyframes sealed { 0%,61% { opacity:0 } 63%,100% { opacity:1 } }
+        @keyframes clear-file { 0%,36%,100% { opacity:0 } 42%,97% { opacity:1 } }
         .request { animation-name:dispatch }
         .reply { animation-name:confirm }
         .ack { animation-name:received }
-        @keyframes dispatch { 0% { opacity:0; stroke-dashoffset:8 } 5% { opacity:1 } 29% { opacity:1; stroke-dashoffset:-96 } 30%,100% { opacity:0; stroke-dashoffset:-100 } }
-        @keyframes received { 0%,28%,82%,100% { opacity:0 } 33%,72% { opacity:1 } }
-        @keyframes confirm { 0%,45% { opacity:0; stroke-dashoffset:-100 } 48% { opacity:1 } 74% { opacity:1; stroke-dashoffset:0 } 76%,100% { opacity:0; stroke-dashoffset:8 } }
+        @keyframes dispatch { 0% { opacity:0; stroke-dashoffset:8 } 4% { opacity:1 } 22% { opacity:1; stroke-dashoffset:-96 } 23%,100% { opacity:0; stroke-dashoffset:-100 } }
+        @keyframes received { 0%,21%,55%,100% { opacity:0 } 25%,49% { opacity:1 } }
+        @keyframes confirm { 0%,30% { opacity:0; stroke-dashoffset:-100 } 32% { opacity:1 } 49% { opacity:1; stroke-dashoffset:0 } 51%,100% { opacity:0; stroke-dashoffset:8 } }
       }
     </style>
     <radialGradient id="glow" cx=".48" cy=".54" r=".72">
@@ -63,12 +65,14 @@
   <path d="M97 36h48l16 16v56H97z" fill="#302532" stroke="#ad727c"/>
   <path d="M104 28h48l16 16v56h-64z" fill="#432d3b" stroke="#ffd3ad" stroke-width="2"/>
   <path d="M152 29v15h15m-51 12h36m-36 12h28m-28 12h32" fill="none" stroke="#987986" stroke-dasharray="2 3"/>
-  <g fill="none" stroke-width="2.4">
-    <path class="piece" style="--delay:0s" d="m114 53 4 3-4 3m9-3h24" stroke="#ffc68d"/>
-    <path class="piece" style="--delay:.5s" d="M114 65h5v6h-5zm9 3h18" stroke="#e8afe3"/>
-    <path class="piece" style="--delay:1s" d="m114 80 2 2 4-5m3 3h24" stroke="#97f1d7"/>
+  <g class="assembled">
+    <g fill="none" stroke-width="2.4">
+      <path class="piece" style="--delay:0s" d="m114 53 4 3-4 3m9-3h24" stroke="#ffc68d"/>
+      <path class="piece" style="--delay:.5s" d="M114 65h5v6h-5zm9 3h18" stroke="#e8afe3"/>
+      <path class="piece" style="--delay:1s" d="m114 80 2 2 4-5m3 3h24" stroke="#97f1d7"/>
+    </g>
+    <g class="seal"><circle cx="161" cy="97" r="10" fill="#173d39" stroke="#a7f4cd"/><path d="m156 97 3 3 6-7" fill="none" stroke="#c3ffe2" stroke-width="2"/></g>
   </g>
-  <g class="seal"><circle cx="161" cy="97" r="10" fill="#173d39" stroke="#a7f4cd"/><path d="m156 97 3 3 6-7" fill="none" stroke="#c3ffe2" stroke-width="2"/></g>
   <path d="M0 132h384" stroke="#315561"/>
   <g font-family="Segoe UI,Arial,sans-serif">
     <text x="18" y="167" fill="#e7f9fa" font-size="27" font-weight="700">sdd-template</text>
