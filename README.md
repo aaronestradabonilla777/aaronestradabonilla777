@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./assets/ice-city.svg" width="100%" alt="HALUZ · Rust y React · Desarrollo full stack en México. El emblema Samurai ilumina Ice City.">
+  <img src="./assets/night-city.svg" width="100%" alt="HALUZ · Rust y React · Desarrollo full stack en México. El emblema Samurai ilumina Night City.">
 </p>
 
 Soy **Haluz**, desarrollador full stack en México. Trabajo con TypeScript y React en la interfaz, y con Node.js y Rust del lado del servidor.

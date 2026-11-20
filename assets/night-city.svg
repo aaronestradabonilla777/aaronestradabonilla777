@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 332" role="img" aria-labelledby="title desc">
-  <title id="title">HALUZ · Ice City · Rust y React</title>
-  <desc id="desc">El emblema Samurai ilumina la fachada de una torre sobre las vías elevadas de Ice City. Perfil de desarrollo full stack en México.</desc>
+  <title id="title">HALUZ · Night City · Rust y React</title>
+  <desc id="desc">El emblema rojo de Samurai se enciende sobre las vías de Night City. Torres de neón y una luna ámbar rodean la firma de Haluz.</desc>
   <defs>
     <linearGradient id="sky" x1="0" y1="1" x2="1" y2="0">
-      <stop stop-color="#050d15"/><stop offset=".48" stop-color="#153948"/><stop offset=".84" stop-color="#509397"/><stop offset="1" stop-color="#19313b"/>
+      <stop stop-color="#080c1c"/><stop offset=".48" stop-color="#252242"/><stop offset=".84" stop-color="#79435c"/><stop offset="1" stop-color="#162239"/>
     </linearGradient>
     <linearGradient id="shade">
       <stop stop-color="#05121b"/><stop offset=".65" stop-color="#06121c" stop-opacity=".96"/><stop offset="1" stop-color="#06121c" stop-opacity="0"/>
@@ -30,12 +30,17 @@
     </style>
   </defs>
   <rect width="960" height="332" fill="url(#sky)"/>
-  <circle cx="651" cy="97" r="70" fill="#a2ddd8" opacity=".55"/>
-  <g fill="none" stroke="#244c57" opacity=".65">
+  <circle cx="651" cy="97" r="73" fill="none" stroke="#ffc977" opacity=".28"/>
+  <circle cx="651" cy="97" r="67" fill="#ffca70" opacity=".85"/>
+  <g fill="none" stroke="#85435c" opacity=".65">
     <path d="M568 102h172m-184 8h176m-170 9h159m-127 9h129m-141 11h138m-125 10h113"/>
   </g>
-  <use href="#far" fill="#285462"/><use href="#far" fill="url(#glass)" opacity=".48"/>
-  <use href="#near" fill="#102a36"/><use href="#near" fill="url(#glass)"/>
+  <use href="#far" fill="#35304d"/><use href="#far" fill="url(#glass)" opacity=".48"/>
+  <use href="#near" fill="#152337"/><use href="#near" fill="url(#glass)"/>
+  <g fill="none" stroke-linecap="square">
+    <path d="M528 139v43m5-30v20m85-57v25m4-20v14" stroke="#33ebed" stroke-width="2"/>
+    <path d="M576 171h15m-15 5h11m75-57h10m-10 5h7" stroke="#ff568f" stroke-width="3"/>
+  </g>
   <path d="M0 332v-30l131-19 183 16 219-37 112-18 127 11 188-34v111z" fill="#091824"/>
   <!-- Elevated rail and its supports follow the vanishing point on the right. -->
   <path d="m285 332 417-97 258-32v9l-255 34-345 86z" fill="#19343f" stroke="#5da8ad"/>
@@ -49,7 +54,8 @@
       <use href="#emblem" class="signal"/>
     </g>
     <path d="M2 29 185 9v166L2 200z" fill="url(#screen)"/>
-    <path d="M-5 206 183 183l-6 5-16 1-3 8-2-7-31 4-3 9-3-8-43 6-3 7-2-6-34 5-3 10-2-9-36 4z" fill="#84c2c9"/>
+    <path d="m-4 208 187-24" stroke="#ff4976" stroke-width="3"/>
+    <path d="m3 212 46-6m8-1 29-4" stroke="#68ebee" stroke-width="2"/>
     <path d="m190 28 7-1v59l-7 2zm0 78 7-1v31l-7 2z" fill="#54d9db"/>
   </g>
   <rect width="575" height="332" fill="url(#shade)"/>
@@ -57,7 +63,7 @@
     <path d="M26 74V31h95m-95 243v26h112" stroke-width="2"/>
     <path d="M30 32h33" stroke="#ff5866" stroke-width="4"/>
   </g>
-  <text x="43" y="72" font-family="Consolas,monospace" font-size="24" font-weight="bold" letter-spacing="5" fill="#89eced">ICE CITY</text>
+  <text x="43" y="72" font-family="Consolas,monospace" font-size="24" font-weight="bold" letter-spacing="5" fill="#ffce78">NIGHT CITY</text>
   <g transform="translate(54 105) scale(.57) skewX(-12)" fill="#f4ede6">
     <path d="M0 0h37v55h70V0h37v154h-37V91H37v63H0z"/>
     <path fill-rule="evenodd" d="M165 154 216 0h60l53 154h-42l-10-32h-63l-10 32zm60-66h42l-21-66z"/>
