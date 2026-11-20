@@ -394,7 +394,8 @@
 <circle cx="359" cy="235" r="1.4" fill="#37505c"/>
 <circle cx="359" cy="247" r="1.4" fill="#37505c"/>
 <circle cx="359" cy="259" r="1.4" fill="#37505c"/>
-<text x="17" y="326">Al 20 nov 2026</text>
+<rect x="18" y="317" width="10" height="10" rx="2.5" fill="none" stroke="#ffca70" stroke-width="1.5"/>
+<text x="35" y="326">Al 20 nov 2026</text>
 <text x="270" y="326">Menos</text>
 <rect x="310" y="318" width="9" height="9" rx="2" fill="#193341"/>
 <rect x="322" y="318" width="9" height="9" rx="2" fill="#185b6c"/>

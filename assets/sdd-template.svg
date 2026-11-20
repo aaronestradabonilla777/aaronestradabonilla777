@@ -27,12 +27,14 @@
     </pattern>
     <g id="agent" fill="#211e2a" stroke="#ffbc97" stroke-width="1.8">
       <path d="M-14-9h24l4 4V9h-28z"/>
-      <path d="M-7 0h4m5 0h4"/>
     </g>
+    <path id="prompt" d="m-3-3 4 3-4 3" fill="none" stroke="#ffc68d"/>
+    <path id="block" d="M-3-3h6v6h-6z" fill="none" stroke="#e8afe3"/>
+    <path id="tick" d="m-3 0 2 2 5-5" fill="none" stroke="#97f1d7"/>
     <path id="upper" pathLength="100" d="M167 66h29l26-35h28"/>
     <path id="middle" pathLength="100" d="M167 66h83"/>
     <path id="lower" pathLength="100" d="M167 66h29l26 35h28"/>
-    <g id="check">
+    <g id="check" transform="translate(34 0)">
       <rect x="252" y="-8" width="25" height="16" rx="2" fill="#285352" stroke="#b5ffe0"/>
       <path d="m259-1 4 4 7-7" fill="none" stroke="#b5ffe0" stroke-width="2"/>
     </g>
@@ -45,6 +47,11 @@
     <circle cx="196" cy="66" r="4" fill="#ffcf9b"/>
   </g>
   <use href="#agent" x="265" y="31"/><use href="#agent" x="265" y="66"/><use href="#agent" x="265" y="101"/>
+  <g stroke-width="2.3" stroke-linejoin="round">
+    <use href="#prompt" transform="translate(265 31) scale(1.55)"/>
+    <use href="#block" transform="translate(265 66) scale(1.55)"/>
+    <use href="#tick" transform="translate(265 101) scale(1.55)"/>
+  </g>
   <g fill="none" stroke-width="3">
     <g style="--delay:0s">
       <use class="request" href="#upper" opacity="0" stroke="#fff1c7" stroke-dasharray="7 105"/>
@@ -67,9 +74,9 @@
   <path d="M152 29v15h15m-51 12h36m-36 12h28m-28 12h32" fill="none" stroke="#987986" stroke-dasharray="2 3"/>
   <g class="assembled">
     <g fill="none" stroke-width="2.4">
-      <path class="piece" style="--delay:0s" d="m114 53 4 3-4 3m9-3h24" stroke="#ffc68d"/>
-      <path class="piece" style="--delay:.5s" d="M114 65h5v6h-5zm9 3h18" stroke="#e8afe3"/>
-      <path class="piece" style="--delay:1s" d="m114 80 2 2 4-5m3 3h24" stroke="#97f1d7"/>
+      <g class="piece" style="--delay:0s"><use href="#prompt" x="117" y="56"/><path d="M123 56h24" stroke="#ffc68d"/></g>
+      <g class="piece" style="--delay:.5s"><use href="#block" x="117" y="68"/><path d="M123 68h18" stroke="#e8afe3"/></g>
+      <g class="piece" style="--delay:1s"><use href="#tick" x="117" y="80"/><path d="M123 80h24" stroke="#97f1d7"/></g>
     </g>
     <g class="seal"><circle cx="161" cy="97" r="10" fill="#173d39" stroke="#a7f4cd"/><path d="m156 97 3 3 6-7" fill="none" stroke="#c3ffe2" stroke-width="2"/></g>
   </g>
@@ -77,5 +84,5 @@
   <g font-family="Segoe UI,Arial,sans-serif">
     <text x="18" y="167" fill="#e7f9fa" font-size="27" font-weight="700">sdd-template</text>
   </g>
-  <path d="m350 165 12-12m-10 0h10v10" fill="none" stroke="#ffba9e" stroke-width="2"/>
+  <g transform="translate(348 167) scale(.72)"><path d="M0 0l22-22m-16 1 16-1v16" fill="none" stroke="#ffba9e" stroke-width="3.7"/></g>
 </svg>

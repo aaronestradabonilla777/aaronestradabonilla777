@@ -53,7 +53,7 @@
     <path class="ink" d="M205 65 Q231 39 251 40 M207 72 Q227 52 244 49" fill="none" stroke="#426775" stroke-width="1.6" opacity="0"/>
     <path d="M193 43v27" fill="none" stroke="#caffdf" stroke-dasharray="3 3"/>
     <path class="clue" d="m110 80 31-14q16 0 30 7" fill="none" stroke="#efaa68" stroke-width="3" pathLength="100" stroke-dasharray="100" opacity="0"/>
-    <g transform="translate(118 9) skewY(-3)" font-family="Consolas,monospace" font-size="13" font-weight="bold">
+    <g id="terminal" transform="translate(118 9) skewY(-3)" font-family="Consolas,monospace" font-size="13" font-weight="bold">
       <path d="M0 5 5 0h144v32H0z" fill="#102735" stroke="#8fd9d4" stroke-width="1.5"/>
       <path d="M6 6h13" stroke="#69a1a3" stroke-width="2"/>
       <text x="6" y="24" textLength="103" lengthAdjust="spacingAndGlyphs" fill="#e4fcf3">assert_eq!(2+2,</text>
@@ -66,5 +66,5 @@
   <g font-family="Segoe UI,Arial,sans-serif">
     <text x="18" y="167" fill="#e7f9fa" font-size="27" font-weight="700">Loki Code Guide</text>
   </g>
-  <path d="m350 165 12-12m-10 0h10v10" fill="none" stroke="#94dfdc" stroke-width="2"/>
+  <g transform="translate(348 167) scale(.72)"><path d="M0 0l22-22m-16 1 16-1v16" fill="none" stroke="#94dfdc" stroke-width="3.7"/></g>
 </svg>

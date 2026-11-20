@@ -9,7 +9,7 @@
   <style>
     @media (prefers-reduced-motion: no-preference) {
       .arrow { animation: advance 3s ease-in-out infinite }
-      @keyframes advance { 0%, 70%, 100% { transform:translateX(0) } 40% { transform:translateX(5px) } }
+      @keyframes advance { 0%, 70%, 100% { transform:translate(0,0) } 40% { transform:translate(3px,-3px) } }
     }
   </style>
   <path d="M1 10 10 1h121v35l-9 9H1z" fill="#081820" stroke="#43838a"/>
@@ -20,6 +20,6 @@
     <use href="#repo" transform="translate(31 5)" color="#344356" stroke="#bad5ea"/>
     <use href="#repo" transform="translate(46 9) rotate(9)" color="#275154"/>
     <path d="M16 36l5-13h14l3 2h25l-6 12H16z" fill="#195058"/>
-    <path class="arrow" d="M77 23h28m-8-8 8 8-8 8" stroke="#ffbd80"/>
+    <g transform="translate(82 32) scale(.88)" stroke-linejoin="miter"><path class="arrow" d="M0 0l22-22m-16 1 16-1v16" stroke="#ffbd80" stroke-width="3.7"/></g>
   </g>
 </svg>

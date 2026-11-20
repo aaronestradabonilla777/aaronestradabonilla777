@@ -26,7 +26,9 @@ def build_mobile(name, view_box):
         root.find(".//*[@id='caption']").set("transform", "translate(22 39) scale(.84)")
         root.find(".//*[@id='observatory']").set("transform", "translate(377 80) scale(.76)")
         root.find(".//*[@id='ruins']").set("transform", "translate(377 174) scale(.85)")
-    else:
+    if name == "loki-code-guide":
+        root.find(".//*[@id='terminal']").set("transform", "translate(71 4) scale(1.62)")
+    if name in ("night-city", "contacto"):
         style = root.find(".//{http://www.w3.org/2000/svg}style")
         style.text = style.text.rstrip() + """
       .secondary { opacity:.48 }
@@ -44,3 +46,4 @@ if __name__ == "__main__":
     build_mobile("night-city", "435 0 525 332")
     build_mobile("contacto", "49 6 502 334")
     build_mobile("atlantis", "0 0 482 210")
+    build_mobile("loki-code-guide", "0 0 384 186")

@@ -7,16 +7,18 @@
 
 <p align="center">
   <a href="https://github.com/aaronestradabonilla777/sdd-template"><img src="./assets/sdd-template.svg" width="384" alt="Abrir sdd-template. Plantilla para coordinar agentes de IA mediante especificaciones."></a>
-  <a href="https://github.com/aaronestradabonilla777/Loki-code-guide"><img src="./assets/loki-code-guide.svg" width="384" alt="Abrir Loki Code Guide. Tutor de programación con IA local y Ollama."></a>
+  <a href="https://github.com/aaronestradabonilla777/Loki-code-guide"><picture><source media="(max-width: 600px)" srcset="./assets/loki-code-guide-movil.svg"><img src="./assets/loki-code-guide.svg" width="384" alt="Abrir Loki Code Guide. Tutor de programación con IA local y Ollama."></picture></a>
   <br>
   <a href="https://github.com/aaronestradabonilla777?tab=repositories" title="Ver todos mis repositorios"><img src="./assets/repositorios.svg" width="132" alt="Ver todos mis repositorios"></a>
 </p>
 
 <p align="center">
-  <picture>
-    <source media="(max-width: 600px)" srcset="./assets/atlantis-movil.svg">
-    <img src="./assets/atlantis.svg" width="100%" alt="Próximo proyecto de Haluz · Atlantis. Bajo la ciudad, el ojo despierta.">
-  </picture>
+  <a href="./atlantis/README.md">
+    <picture>
+      <source media="(max-width: 600px)" srcset="./assets/atlantis-movil.svg">
+      <img src="./assets/atlantis.svg" width="960" alt="Ver el recorrido del prototipo Atlantis OS. Bajo la ciudad, el ojo despierta.">
+    </picture>
+  </a>
 </p>
 
 <picture>

@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 210" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="210" viewBox="0 0 960 210" role="img" aria-labelledby="title desc">
   <title id="title">Próximo proyecto de Haluz · Atlantis</title>
   <desc id="desc">Bajo la ciudad, el ojo despierta. Un ojo dorado se abre en la oscuridad sobre las ruinas sumergidas de Atlantis.</desc>
   <defs>
@@ -84,6 +84,7 @@
     <path d="M0 0h21" stroke="#e7bd80" stroke-width="2.5"/>
     <text x="30" y="4" fill="#bbe1d6" font-family="Consolas,monospace" font-size="13" letter-spacing="2">PRÓXIMO PROYECTO</text>
     <text x="-3" y="80" fill="#f4e7c9" font-family="Georgia,serif" font-size="72" letter-spacing="4">Atlantis</text>
+    <g transform="translate(291 70) scale(.8)"><path d="M0 0l22-22m-16 1 16-1v16" fill="none" stroke="#eacb92" stroke-width="3.7"/></g>
     <text y="119" fill="#b6d8d0" font-family="Segoe UI,Arial,sans-serif" font-size="21">Bajo la ciudad, el ojo despierta.</text>
   </g>
   <path d="M0 1h960M0 209h960" fill="none" stroke="#527578"/>

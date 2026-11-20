@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="384" height="186" viewBox="0 0 384 186" role="img" aria-labelledby="title desc">
+  <!-- Generated from loki-code-guide.svg by scripts/escenas_moviles.py --><title id="title">Loki Code Guide</title>
+  <desc id="desc">Una prueba de Rust espera 5 al sumar 2 y 2. El libro señala el error, pasa la página y corrige el valor esperado a 4. Tutor local con Ollama.</desc>
+  <defs>
+    <style>
+      @media (prefers-reduced-motion: no-preference) {
+        .error, .solution, .clue, .leaf, .ink { animation-duration:6.6s; animation-delay:-1s; animation-iteration-count:infinite }
+        .error { animation-name:mistake }
+        .solution { animation-name:solved }
+        .clue { animation-name:underline }
+        .leaf { animation-name:turn }
+        .ink { animation-name:turn-ink }
+        @keyframes mistake { 0%,31%,100% { opacity:1 } 36%,99% { opacity:0 } }
+        @keyframes solved { 0%,39%,99%,100% { opacity:0 } 48%,97% { opacity:1 } }
+        @keyframes underline { 0%,17%,65%,100% { stroke-dashoffset:100; opacity:0 } 27%,51% { stroke-dashoffset:0; opacity:1 } }
+        @keyframes turn {
+          0%, 18%, 100% { d:path("M193 57 Q222 30 248 30 Q276 30 304 49 L241 83 Q213 80 193 112 Z"); fill:#82b2bf }
+          29% { d:path("M193 57 Q211 24 235 12 Q252 10 266 18 L224 69 Q207 65 193 112 Z"); fill:#d6f5ed }
+          40% { d:path("M193 57 Q185 24 170 14 Q150 12 147 22 L164 75 Q182 75 193 112 Z"); fill:#9ec9d2 }
+          50%, 97% { d:path("M193 57 Q171 40 144 39 Q109 52 77 73 L141 97 Q169 92 193 112 Z"); fill:#daeff1 }
+          0%, 62%, 100% { opacity:0 } 12%, 54% { opacity:1 }
+        }
+        @keyframes turn-ink {
+          0%, 18%, 100% { d:path("M205 65 Q231 39 251 40 M207 72 Q227 52 244 49") }
+          29% { d:path("M200 60 Q218 28 243 22 M201 66 Q216 39 232 33") }
+          40% { d:path("M189 56 Q176 27 158 24 M187 64 Q177 40 165 36") }
+          50%, 97% { d:path("M182 60 Q159 45 130 58 M180 68 Q157 55 139 62") }
+          0%, 62%, 100% { opacity:0 } 12%, 54% { opacity:1 }
+        }
+      }
+    </style>
+    <radialGradient id="glow" cx=".52" cy=".76" r=".7">
+      <stop stop-color="#215a67" /><stop offset="1" stop-color="#08161e" />
+    </radialGradient>
+    <pattern id="dots" width="9" height="9" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r=".8" fill="#a5dcdf" opacity=".32" />
+    </pattern>
+  </defs>
+  <rect x=".5" y=".5" width="383" height="185" rx="5" fill="#08161e" stroke="#315561" />
+  <path d="M1 6q0-5 5-5h372q5 0 5 5v125H1z" fill="url(#glow)" />
+  <path d="M1 6h382v125H1z" fill="url(#dots)" />
+  <!-- Layered pages and a projected code prompt. -->
+  <g stroke-linejoin="round">
+    <path d="m58 86 90-31 45 19 58-23 75 30-132 46z" fill="#141019" stroke="#63939e" />
+    <path d="m67 80 78-33 48 19 60-24 63 32-123 47z" fill="#173b49" stroke="#79b2bf" />
+    <path d="m77 73 67-34q25 0 49 18v55q-28-21-52-15z" fill="#d4edf0" stroke="#eefafa" />
+    <path d="m193 57 55-27q26-2 56 19l-63 34q-26-3-48 29z" fill="#60909d" stroke="#cbf8fa" />
+    <g fill="none" stroke="#3c6471" stroke-width="2">
+      <path d="m102 72 38-19q19-1 37 11m-64 13 27-13q19-1 37 11m-51 7 15-7q16 0 31 8" />
+      <path d="m207 62 37-18q16-1 29 5m-64 21 36-18m-35 25 20-10" />
+    </g>
+    <path class="leaf" d="M193 57 Q222 30 248 30 Q276 30 304 49 L241 83 Q213 80 193 112 Z" fill="#83b3bf" stroke="#e0fff8" opacity="0" />
+    <path class="ink" d="M205 65 Q231 39 251 40 M207 72 Q227 52 244 49" fill="none" stroke="#426775" stroke-width="1.6" opacity="0" />
+    <path d="M193 43v27" fill="none" stroke="#caffdf" stroke-dasharray="3 3" />
+    <path class="clue" d="m110 80 31-14q16 0 30 7" fill="none" stroke="#efaa68" stroke-width="3" pathLength="100" stroke-dasharray="100" opacity="0" />
+    <g id="terminal" transform="translate(71 4) scale(1.62)" font-family="Consolas,monospace" font-size="13" font-weight="bold">
+      <path d="M0 5 5 0h144v32H0z" fill="#102735" stroke="#8fd9d4" stroke-width="1.5" />
+      <path d="M6 6h13" stroke="#69a1a3" stroke-width="2" />
+      <text x="6" y="24" textLength="103" lengthAdjust="spacingAndGlyphs" fill="#e4fcf3">assert_eq!(2+2,</text>
+      <text x="119" y="24" fill="#e4fcf3">)</text>
+      <g class="error" opacity="0" fill="#ffab9d"><text x="110" y="24">5</text><path d="m133 15 8 8m0-8-8 8" fill="none" stroke="#ffab9d" stroke-width="2" /></g>
+      <g class="solution" fill="#9df3c8"><text x="110" y="24">4</text><path d="m132 19 3 4 7-9" fill="none" stroke="#9df3c8" stroke-width="2" /></g>
+    </g>
+  </g>
+  <path d="M0 132h384" stroke="#315561" />
+  <g font-family="Segoe UI,Arial,sans-serif">
+    <text x="18" y="167" fill="#e7f9fa" font-size="27" font-weight="700">Loki Code Guide</text>
+  </g>
+  <g transform="translate(348 167) scale(.72)"><path d="M0 0l22-22m-16 1 16-1v16" fill="none" stroke="#94dfdc" stroke-width="3.7" /></g>
+</svg>

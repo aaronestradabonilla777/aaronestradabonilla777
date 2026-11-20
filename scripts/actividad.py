@@ -88,7 +88,8 @@ def calendar_svg(days, today, compact):
                 parts.append(f'<circle cx="{x+4}" cy="{y+4}" r="1.4" fill="#37505c"/>')
             day += timedelta(days=1)
     foot = height - 16
-    parts.append(f'<text x="17" y="{foot}">Al {today.day:02d} {MONTHS[today.month-1]} {year}</text>')
+    parts.append(f'<rect x="18" y="{foot-9}" width="10" height="10" rx="2.5" fill="none" stroke="#ffca70" stroke-width="1.5"/>')
+    parts.append(f'<text x="35" y="{foot}">Al {today.day:02d} {MONTHS[today.month-1]} {year}</text>')
     parts.append(f'<text x="{width-142}" y="{foot}">Menos</text>')
     for i, color in enumerate(COLORS):
         parts.append(f'<rect x="{width-102+i*12}" y="{foot-8}" width="9" height="9" rx="2" fill="{color}"/>')
