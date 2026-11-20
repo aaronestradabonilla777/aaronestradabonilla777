@@ -26,8 +26,23 @@
     <style>
       .signal { animation: signal 7.15s linear infinite }
       @keyframes signal { 0%,16%,72%,100% { opacity:1 } 24%,49% { opacity:.48 } 55% { opacity:.68 } }
+      @media (prefers-reduced-motion: no-preference) {
+        .train { animation: transit 9s linear infinite }
+        @keyframes transit {
+          0%, 12% { transform:translate(175px,366px) rotate(-13deg) scale(1.4) }
+          70% { transform:translate(702px,237px) rotate(-8deg) scale(.64) }
+          100% { transform:translate(1030px,193px) rotate(-7deg) scale(.37) }
+        }
+        .rain { animation: rainfall 1.8s linear infinite }
+        @keyframes rainfall { to { transform:translate(-16px,52px) } }
+        .neon { animation: nightlights 5s ease-in-out infinite alternate }
+        @keyframes nightlights { from { opacity:.45 } to { opacity:1 } }
+      }
       @media (prefers-reduced-motion: reduce) { .signal { animation:none } }
     </style>
+    <pattern id="drizzle" width="86" height="52" patternUnits="userSpaceOnUse" patternTransform="skewX(-17.1)">
+      <path d="M9 4v6m42 22v9m27-28v4" stroke="#acceea" stroke-width="1" opacity=".33"/>
+    </pattern>
   </defs>
   <rect width="960" height="332" fill="url(#sky)"/>
   <circle cx="651" cy="97" r="73" fill="none" stroke="#ffc977" opacity=".28"/>
@@ -37,7 +52,7 @@
   </g>
   <use href="#far" fill="#35304d"/><use href="#far" fill="url(#glass)" opacity=".48"/>
   <use href="#near" fill="#152337"/><use href="#near" fill="url(#glass)"/>
-  <g fill="none" stroke-linecap="square">
+  <g class="neon" fill="none" stroke-linecap="square">
     <path d="M528 139v43m5-30v20m85-57v25m4-20v14" stroke="#33ebed" stroke-width="2"/>
     <path d="M576 171h15m-15 5h11m75-57h10m-10 5h7" stroke="#ff568f" stroke-width="3"/>
   </g>
@@ -46,6 +61,11 @@
   <path d="m285 332 417-97 258-32v9l-255 34-345 86z" fill="#19343f" stroke="#5da8ad"/>
   <path d="m327 327 377-89 256-33" fill="none" stroke="#8ee6e4" stroke-width="2"/>
   <path d="m447 307 20-5v30h-15zm113-28 12-3v39l-11 4zm80-19 8-2v26l-8 2z" fill="#0b1e28" stroke="#36626c"/>
+  <g class="train" transform="translate(622 256) rotate(-13) scale(.78)">
+    <path d="M-75-3v-8l6-4h56l12 8v4z" fill="#101b2e" stroke="#88e7df" stroke-width="1.5"/>
+    <path d="M-65-10h9m4 0h9m4 0h9m4 0h9" stroke="#ffca80" stroke-width="3"/>
+    <path d="M-81-5h8m67-2h8" stroke="#ff687a" stroke-width="2"/>
+  </g>
   <g transform="translate(738 25)">
     <path d="m-17 213 4-179 13-10 189-22 15 13v170l-19 14-21 72-43 11 9-74-68 12-5 28-38 13 5-37z" fill="#0c1e29" stroke="#4c8994" stroke-width="2"/>
     <path d="M1 27 186 7v169L1 201z" fill="#04090e" stroke="#ff5963" stroke-width="2"/>
@@ -58,6 +78,7 @@
     <path d="m3 212 46-6m8-1 29-4" stroke="#68ebee" stroke-width="2"/>
     <path d="m190 28 7-1v59l-7 2zm0 78 7-1v31l-7 2z" fill="#54d9db"/>
   </g>
+  <rect class="rain" x="-86" y="-55" width="1132" height="445" fill="url(#drizzle)"/>
   <rect width="575" height="332" fill="url(#shade)"/>
   <g fill="none" stroke="#77d9df">
     <path d="M26 74V31h95m-95 243v26h112" stroke-width="2"/>
@@ -72,6 +93,14 @@
     <path d="M669 0h174v26l-115 94h108v34H662v-29l113-91H669z"/>
     <path d="M817 66h47v8h-47zM-13 113h26v5h-26z" fill="#ff3945"/>
   </g>
-  <text x="42" y="237" font-family="Segoe UI,Arial,sans-serif" font-weight="600" font-size="29" fill="#f1f7f8">Desarrollo full stack · México</text>
-  <text x="43" y="279" font-family="Consolas,monospace" font-size="23" letter-spacing="2" fill="#9de1e0">RUST / REACT</text>
+  <g transform="translate(45 222)" fill="none" stroke="#91ebe6" stroke-width="2.5">
+    <g transform="translate(21 20)">
+      <ellipse rx="22" ry="8"/><ellipse rx="22" ry="8" transform="rotate(60)"/>
+      <ellipse rx="22" ry="8" transform="rotate(-60)"/><circle r="3" fill="#91ebe6"/>
+    </g>
+    <g transform="translate(83 20)" stroke="#ffbd80">
+      <circle r="18" stroke-width="5" stroke-dasharray="5 2"/>
+      <path d="M-8 9V-8h9q8 0 8 5t-8 5h-9m9 0 8 8" stroke-width="3"/>
+    </g>
+  </g>
 </svg>

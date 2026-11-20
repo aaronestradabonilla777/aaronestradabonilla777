@@ -2,16 +2,14 @@
   <img src="./assets/night-city.svg" width="100%" alt="HALUZ · Rust y React · Desarrollo full stack en México. El emblema Samurai ilumina Night City.">
 </p>
 
-Soy **Haluz**, desarrollador full stack en México. Trabajo con TypeScript y React en la interfaz, y con Node.js y Rust del lado del servidor.
-
-## Proyectos destacados
-
 <p align="center">
   <a href="https://github.com/aaronestradabonilla777/sdd-template"><img src="./assets/sdd-template.svg" width="384" alt="Abrir sdd-template. Plantilla para coordinar agentes de IA mediante especificaciones."></a>
   <a href="https://github.com/aaronestradabonilla777/Loki-code-guide"><img src="./assets/loki-code-guide.svg" width="384" alt="Abrir Loki Code Guide. Tutor de programación con IA local y Ollama."></a>
 </p>
 
-[Ver todos mis repositorios →](https://github.com/aaronestradabonilla777?tab=repositories)
+<p align="right">
+  <a href="https://github.com/aaronestradabonilla777?tab=repositories" title="Ver todos mis repositorios"><img src="./assets/repositorios.svg" width="132" alt="Ver todos mis repositorios"></a>
+</p>
 
 <picture>
   <source media="(max-width: 600px)" srcset="./assets/actividad-movil.svg">
@@ -21,10 +19,3 @@ Soy **Haluz**, desarrollador full stack en México. Trabajo con TypeScript y Rea
 <p>
   <a href="https://www.linkedin.com/in/aaron-bonilla-13014a219/"><img src="./assets/contacto.svg" width="100%" alt="Contactar a Haluz en LinkedIn"></a>
 </p>
-
-<details>
-  <summary>Ver el GIF Samurai original</summary>
-  <p align="center">
-    <img src="./Cyber%20Punk2077samurai%20Dragon%20GIF%20-%20Cyber%20Punk2077Samurai%20Dragon%20Cool%20-%20GIF%20탐색%20및%20공유.gif" width="220" alt="Animación Samurai original utilizada como referencia para el emblema vectorial">
-  </p>
-</details>

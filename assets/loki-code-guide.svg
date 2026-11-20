@@ -1,7 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="384" height="273" viewBox="0 0 384 273" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="384" height="186" viewBox="0 0 384 186" role="img" aria-labelledby="title desc">
   <title id="title">Loki Code Guide</title>
   <desc id="desc">Tutor de programación con IA local y Ollama. Un libro abierto proyecta líneas de código.</desc>
   <defs>
+    <style>
+      @media (prefers-reduced-motion: no-preference) {
+        .prompt { animation: project 3.8s ease-in-out infinite alternate }
+        @keyframes project { from { transform:translateY(2px) } to { transform:translateY(-8px) } }
+      }
+    </style>
     <radialGradient id="glow" cx=".52" cy=".76" r=".7">
       <stop stop-color="#215a67"/><stop offset="1" stop-color="#08161e"/>
     </radialGradient>
@@ -9,7 +15,7 @@
       <circle cx="1" cy="1" r=".8" fill="#a5dcdf" opacity=".32"/>
     </pattern>
   </defs>
-  <rect x=".5" y=".5" width="383" height="272" rx="5" fill="#08161e" stroke="#315561"/>
+  <rect x=".5" y=".5" width="383" height="185" rx="5" fill="#08161e" stroke="#315561"/>
   <path d="M1 6q0-5 5-5h372q5 0 5 5v125H1z" fill="url(#glow)"/>
   <path d="M1 6h382v125H1z" fill="url(#dots)"/>
   <!-- Layered pages and a projected code prompt. -->
@@ -22,17 +28,15 @@
       <path d="m102 72 38-19q19-1 37 11m-64 13 27-13q19-1 37 11m-51 7 15-7q16 0 31 8"/>
       <path d="m207 62 37-18q16-1 29 5m-64 21 36-18m-35 25 20-10"/>
     </g>
-    <path d="m169 42 28-15 25 9-29 16z" fill="#183a47" stroke="#abf3eb"/>
-    <path d="m179 39 5-3-1-3m6 6 6-3" fill="none" stroke="#caffdf" stroke-width="2"/>
-    <path d="M193 52v9m0 4v5" fill="none" stroke="#caffdf"/>
+    <path d="M193 43v27" fill="none" stroke="#caffdf" stroke-dasharray="3 3"/>
+    <g class="prompt">
+      <path d="m169 42 28-15 25 9-29 16z" fill="#183a47" stroke="#abf3eb"/>
+      <path d="m179 39 5-3-1-3m6 6 6-3" fill="none" stroke="#caffdf" stroke-width="2"/>
+    </g>
   </g>
   <path d="M0 132h384" stroke="#315561"/>
   <g font-family="Segoe UI,Arial,sans-serif">
     <text x="18" y="167" fill="#e7f9fa" font-size="27" font-weight="700">Loki Code Guide</text>
-    <text x="19" y="194" fill="#ccdfe2" font-size="16">Un tutor de programación con IA</text>
-    <text x="19" y="215" fill="#ccdfe2" font-size="16">que corre en tu máquina.</text>
   </g>
-  <path d="M19 231h346" stroke="#315561"/>
-  <text x="19" y="256" font-family="Consolas,monospace" font-size="14" fill="#94dfdc">Ollama · IA local</text>
-  <path d="m350 255 12-12m-10 0h10v10" fill="none" stroke="#94dfdc" stroke-width="2"/>
+  <path d="m350 165 12-12m-10 0h10v10" fill="none" stroke="#94dfdc" stroke-width="2"/>
 </svg>

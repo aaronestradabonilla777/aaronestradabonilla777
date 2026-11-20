@@ -51,8 +51,13 @@ def calendar_svg(days, today, compact):
     parts = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}" role="img" aria-labelledby="title desc">',
              f'<title id="title">{total} contribuciones en {year}</title>',
              f'<desc id="desc">Actividad pública del 1 de enero al {today.day} de {MONTHS[today.month - 1]}. Cada celda representa un día.</desc>',
+             '<style>@media (prefers-reduced-motion: no-preference) {'
+             '.sweep { animation: scan 7s linear infinite }'
+             '@keyframes scan { to { stroke-dashoffset:-100 } } }</style>',
              f'<rect x=".5" y=".5" width="{width-1}" height="{height-1}" rx="3" fill="#08161e" stroke="#315561"/>',
              '<path d="M1 1h98l8 5h30" fill="none" stroke="#59dce4" stroke-width="2"/>',
+             f'<path d="M18 48H{width-18}" stroke="#25434d"/>',
+             f'<path class="sweep" d="M18 48H{width-18}" pathLength="100" stroke="#6ce0dc" stroke-width="2" stroke-dasharray="7 93"/>',
              '<g font-family="Segoe UI,Arial,sans-serif">',
              f'<text x="18" y="36" fill="#e7f9fa" font-weight="700" font-size="22">Actividad · {year}</text>',
              f'<text x="{width-17}" y="35" text-anchor="end" fill="#8bdedc" font-size="15">{total} contribuciones</text></g>',

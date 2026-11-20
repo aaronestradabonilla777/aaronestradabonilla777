@@ -1,6 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="106" viewBox="0 0 800 106" role="img" aria-labelledby="title">
   <title id="title">Contactar a Haluz en LinkedIn</title>
   <defs>
+    <style>
+      @media (prefers-reduced-motion: no-preference) {
+        .beacon { animation: broadcast 5s ease-out infinite; transform-origin:649px 82px }
+        @keyframes broadcast { from { transform:scale(.56); opacity:.9 } to { transform:scale(1.42); opacity:0 } }
+      }
+    </style>
     <linearGradient id="sky" x2="1" y2=".2">
       <stop offset=".32" stop-color="#07151e"/><stop offset="1" stop-color="#205365"/>
     </linearGradient>
@@ -11,12 +17,15 @@
   </defs>
   <rect x=".5" y=".5" width="799" height="105" rx="3" fill="url(#sky)" stroke="#315561"/>
   <g stroke="#57adb9" fill="none" opacity=".7">
-    <circle cx="649" cy="82" r="58"/><circle cx="649" cy="82" r="52" stroke-dasharray="2 6"/>
+    <circle class="beacon" cx="649" cy="82" r="58"/><circle cx="649" cy="82" r="52" stroke-dasharray="2 6"/>
     <path d="M455 87h343m-288-11h288m-208-11h208"/>
   </g>
   <use href="#towers" fill="#0b232d"/>
   <use href="#towers" fill="url(#windows)"/>
   <path d="M340 105h458M1 105h196" stroke="#ff525e" stroke-width="2"/>
-  <text x="24" y="69" font-family="Segoe UI,Arial,sans-serif" font-weight="700" font-size="38" fill="#e7f9fa">LinkedIn</text>
-  <path d="m196 67 21-21m-18 0h18v18" fill="none" stroke="#ff6e7c" stroke-width="4"/>
+  <rect x="26" y="22" width="62" height="62" rx="7" fill="#9af2e9"/>
+  <g fill="#081820">
+    <circle cx="40" cy="38" r="4.5"/><path d="M36 47h8v24h-8zM50 47h8v3q3-5 9-4 10 0 10 12v13h-8V58q0-6-5-6t-6 7v12h-8z"/>
+  </g>
+  <path d="m108 66 21-21m-18 0h18v18" fill="none" stroke="#ff6e7c" stroke-width="4"/>
 </svg>

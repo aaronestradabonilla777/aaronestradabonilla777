@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="132" height="46" viewBox="0 0 132 46" role="img" aria-labelledby="title">
+  <title id="title">Ver todos los repositorios de Haluz</title>
+  <style>
+    @media (prefers-reduced-motion: no-preference) {
+      .arrow { animation: advance 3s ease-in-out infinite }
+      @keyframes advance { 0%, 70%, 100% { transform:translateX(0) } 40% { transform:translateX(5px) } }
+    }
+  </style>
+  <path d="M1 10 10 1h121v35l-9 9H1z" fill="#081820" stroke="#43838a"/>
+  <path d="M2 11 12 2h22m66 42h20l10-10" fill="none" stroke="#83f4e8" stroke-width="2"/>
+  <g fill="none" stroke="#aaf7ed" stroke-width="2" stroke-linejoin="round">
+    <path d="M21 16h12l4 4h17v15H21z" fill="#16393e"/>
+    <path d="M25 12h12l4 4h17v14"/>
+    <path class="arrow" d="M77 23h28m-8-8 8 8-8 8" stroke="#ffbd80"/>
+  </g>
+</svg>
