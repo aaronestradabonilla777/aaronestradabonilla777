@@ -47,8 +47,13 @@
     <linearGradient id="metro-beam"><stop stop-color="#ffe0a1" stop-opacity="0"/><stop offset="1" stop-color="#fff2c5" stop-opacity=".74"/></linearGradient>
     <linearGradient id="train-wake"><stop stop-color="#a3ffed"/><stop offset="1" stop-color="#68c3d6" stop-opacity="0"/></linearGradient>
     <g id="metro-door" stroke="#d49a88" stroke-width=".8">
-      <path d="M0 0h13v19H0z" fill="#453d51"/><path d="M2 3h3v6H2zm6 0h3v6H8z" fill="#b3eeea" stroke="none"/><path d="M6.5 1v17"/>
+      <path d="M0 0h13v19H0z" fill="#182235"/>
+      <g clip-path="url(#door-opening)">
+        <g class="door-left"><path d="M0 0h6.5v19H0z" fill="#735565"/><path d="M1 3h4v7H1z" fill="#b3eeea"/></g>
+        <g class="door-right"><path d="M6.5 0H13v19H6.5z" fill="#735565"/><path d="M8 3h4v7H8z" fill="#b3eeea"/></g>
+      </g>
     </g>
+    <clipPath id="door-opening"><rect width="13" height="19"/></clipPath>
     <g id="metro-bogie">
       <path d="M-9-5H9l-2 4H-7z" fill="#101b2b"/>
       <circle cx="-5" cy="-2" r="2.6" fill="#475168" stroke="#101b2b"/><circle cx="5" cy="-2" r="2.6" fill="#475168" stroke="#101b2b"/>
@@ -93,10 +98,28 @@
         .saber-arm { transform-origin:27px 23px; animation: cut var(--scene-cycle) steps(2,end) -1.5s infinite }
         @keyframes cut { 0%,34%,49%,100% { transform:rotate(0deg) } 37% { transform:rotate(12deg) } 39%,42% { transform:rotate(-108deg) } }
         .slash, .green-wake { animation: afterimage var(--scene-cycle) linear -1.5s infinite }
-        .green-wake { animation-delay:-1.36s }
+        .green-wake { animation: sweep-water var(--scene-cycle) linear -1.5s infinite }
+        @keyframes sweep-water {
+          0%,38%,53%,100% { opacity:0; transform:translate(0,0) }
+          40% { opacity:.85; transform:translate(-5px,1px) }
+          46% { opacity:.68; transform:translate(-156px,6px) }
+          52% { opacity:0; transform:translate(-279px,1px) }
+        }
+        .arrival-glint { animation: catch-light var(--scene-cycle) ease-in-out -1.5s infinite }
+        @keyframes catch-light { 0%,47%,61%,100% { opacity:0 } 52% { opacity:.95 } }
         @keyframes afterimage { 0%,37.5%,46%,100% { opacity:0 } 39% { opacity:.94 } 42% { opacity:.56 } }
         .metro { animation: ride var(--scene-cycle) linear -1.5s infinite }
-        @keyframes ride { 0%,53% { transform:translate(1095px,283px) rotate(-2.3deg) } 93%,100% { transform:translate(-112px,331px) rotate(-2.3deg) } }
+        @keyframes ride {
+          0%,53% { transform:translate(1095px,283px) rotate(-2.3deg) }
+          62% { transform:translate(488px,307px) rotate(-2.3deg) }
+          68% { transform:translate(364px,312px) rotate(-2.3deg) }
+          71%,84% { transform:translate(347px,313px) rotate(-2.3deg) }
+          87% { transform:translate(323px,314px) rotate(-2.3deg) }
+          97%,100% { transform:translate(-132px,333px) rotate(-2.3deg) }
+        }
+        .door-left, .door-right { animation: board var(--scene-cycle) ease-in-out -1.5s infinite }
+        .door-left { --slide:-5px } .door-right { --slide:5px }
+        @keyframes board { 0%,71%,83%,100% { transform:translateX(0) } 74%,80% { transform:translateX(var(--slide)) } }
         .wave { animation: current var(--drift) ease-in-out infinite alternate; animation-delay:var(--offset) }
         @keyframes current { from { transform:translateX(var(--left)) } to { transform:translateX(var(--right)) } }
         .ripples { animation: tide 4s ease-in-out infinite alternate }
@@ -109,8 +132,8 @@
 
   <rect width="960" height="340" fill="url(#sky)"/>
   <ellipse cx="652" cy="177" rx="270" ry="119" fill="url(#haze)"/>
-  <g class="far">
-    <use href="#horizon" fill="#30334b"/><use href="#horizon" fill="url(#offices)" opacity=".56"/>
+  <g class="far secondary">
+    <use href="#horizon" fill="#2b3047"/><use href="#horizon" fill="url(#offices)" opacity=".35"/>
     <path d="M18 122h17m285-13h23m274 12h15m235 19h23" stroke="#dcb6b4" stroke-width="1.6"/>
   </g>
   <g class="shuttle" transform="translate(324 70) scale(.55)">
@@ -137,7 +160,7 @@
       <!-- Pixel-art marquee mounted on the prismatic tower. -->
       <path d="m367 280 2-224 110-32 43 19 3 240z" fill="url(#glass)" stroke="#485979" stroke-width="2"/>
       <path d="m369 56 110-32v257H367z" fill="url(#fins)"/>
-      <path d="m482 29 36 16v235h-36z" fill="url(#offices)" opacity=".76"/>
+      <path class="secondary" d="m482 29 36 16v235h-36z" fill="url(#offices)" opacity=".60"/>
       <path d="m363 56 116-36 49 20-6 7-43-15-113 32z" fill="#27394d" stroke="#76899c"/>
       <g fill="none" filter="url(#halo)">
         <path d="m370 56 109-32 43 18" stroke="#c6fce9" stroke-width="2"/>
@@ -230,6 +253,7 @@
         <path d="M19 39h14v43H19zM45 39h14v6q6-8 16-8 18 0 18 22v23H78V60q0-11-8-11-10 0-10 13v20H45z"/>
       </g>
       <rect width="116" height="101" fill="url(#led)" opacity=".35"/>
+      <path class="arrival-glint" d="M0 68v30q0 3 3 3h110q3 0 3-3V52" fill="none" stroke="#bdffd7" stroke-width="4" opacity="0"/>
     </g>
     <path d="m106 220 131-10v36l-131 10z" fill="url(#offices)"/>
     <path d="m106 221 62 27 65-37m-124 40 59-33 64 24" fill="none" stroke="#506c7b" stroke-width="2"/>
@@ -256,7 +280,8 @@
       <path d="m271 261 19-10 32 4 7 7-22 6z" fill="#bd7442" stroke="#ffce8b"/>
       <path d="m277 264 31 4 14-4v13h-46z" fill="#f3b16a"/>
       <path d="M282 265v12m35-12v12" stroke="#634251" stroke-width="2"/>
-      <path d="M297 271a2.3 2.3 0 1 1 4.6 0v2l3 2v2h-11v-2l3-2z" fill="#574453"/>
+      <g fill="#453343"><circle cx="298" cy="269" r="2.6"/><path d="m294 273 3-2 4 1 4 3 5-1v2l-7 1-3-2v3h-7z"/></g>
+      <path d="m284 277 28 1" stroke="#81485a" stroke-width="2"/>
       <path d="m271 261 36 5 21-5" fill="none" stroke="#ffe4a4" stroke-width="2" filter="url(#halo)"/>
     </g>
     <path d="M0 278h960" stroke="#91cbd1" stroke-width="2" stroke-dasharray="3 8 10 4 2 11"/>
@@ -287,4 +312,17 @@
   <path d="m4 326 950-38" stroke="#a3d9e7" fill="none"/>
   <path d="m130 330 10-1v11h-10zm343-14 10-1v25h-10zm353-15 8-1v40h-8z" fill="#0c1c2b"/>
   <g class="metro" transform="translate(637 302) rotate(-2.3)"><use href="#train"/></g>
+  <!-- Foreground island platform. The two amber strips line up with the stopped doors. -->
+  <g transform="translate(310 319) rotate(-2.3)">
+    <path d="m-20 0 12-4h131l12 4v4H-20z" fill="#273548" stroke="#667384"/>
+    <path d="M16-4h14m61 0h14" stroke="#ffcf8a" stroke-width="2.2"/>
+    <path d="M-7 0h125" stroke="#97aaad" stroke-dasharray="2 5"/>
+    <path d="M42-3v-14l8-4h8v3H48v15" fill="#384b5a" stroke="#84999c"/>
+    <rect x="39" y="-22" width="12" height="10" rx="1" fill="#153942" stroke="#91cfc8"/>
+    <path transform="translate(42 -20) scale(.042) skewX(-12)" d="M0 0h37v55h70V0h37v154h-37V91H37v63H0z" fill="#e2fff0"/>
+    <g transform="translate(75 -4)" fill="#1b2234" stroke="#b8a1a4" stroke-width=".8">
+      <circle cx="1" cy="-15" r="2.3"/><path d="m-2-12 4-1 3 5 4-1 1 2-6 2-1-3 1 7H2L0-5-2 0h-2l2-7z"/>
+      <path d="M-5-11h3v7h-4z" fill="#80596a"/>
+    </g>
+  </g>
 </svg>

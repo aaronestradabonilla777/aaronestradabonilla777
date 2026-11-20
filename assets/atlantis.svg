@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 210" role="img" aria-labelledby="title desc">
+  <title id="title">Próximo proyecto de Haluz · Atlantis</title>
+  <desc id="desc">Bajo la ciudad, el ojo despierta. Un ojo dorado se abre en la oscuridad sobre las ruinas sumergidas de Atlantis.</desc>
+  <defs>
+    <linearGradient id="deep" x2="0" y2="1">
+      <stop stop-color="#163b47"/><stop offset=".51" stop-color="#0c2633"/><stop offset="1" stop-color="#07151f"/>
+    </linearGradient>
+    <radialGradient id="lens">
+      <stop stop-color="#ffe7a5"/><stop offset=".38" stop-color="#d69a55"/><stop offset=".72" stop-color="#758d79"/><stop offset="1" stop-color="#0c3843"/>
+    </radialGradient>
+    <radialGradient id="light">
+      <stop stop-color="#6ebeac" stop-opacity=".30"/><stop offset="1" stop-color="#3a949d" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="ruling" width="5" height="5" patternUnits="userSpaceOnUse">
+      <path d="m-1 4 5-5m-1 7 4-4" stroke="#a5d9d1" stroke-width=".6" opacity=".16"/>
+    </pattern>
+    <g id="pier">
+      <path d="m0 0 9-8 7-29 6 26 8 4 3 38H-3z" fill="#193843" stroke="#497179"/>
+      <path d="m9-8 7-29-2 39-5 4z" fill="#46666b"/>
+      <path d="M3 1 14 5l13-6m-23 9 10 4 12-6" stroke="#78918a" fill="none"/>
+    </g>
+    <path id="engraving" d="M0-49v6m9-5-1 4m9-3-2 6m10-2-2 4m10 1-4 4" fill="none" stroke="#c8ac7f" stroke-width="1.8"/>
+    <path id="eye" d="M-100 0Q-51-46 0-44 56-43 100 0 47 42 0 43-53 44-100 0z"/>
+    <clipPath id="opening">
+      <use class="lid" href="#eye"/>
+    </clipPath>
+    <style>
+      @media (prefers-reduced-motion: no-preference) {
+        .dial { animation:orbit 42s linear infinite }
+        .lid { animation:wake 9s ease-in-out infinite }
+        .gaze { animation:look 9s ease-in-out infinite }
+        .sediment { animation:rise 8s ease-in-out infinite alternate }
+        @keyframes orbit { to { transform:rotate(360deg) } }
+        @keyframes wake { 0%,86%,100% { transform:scaleY(1) } 91% { transform:scaleY(.075) } }
+        @keyframes look { 0%,27%,100% { transform:translateX(0) } 49%,74% { transform:translateX(-11px) } }
+        @keyframes rise { to { transform:translate(9px,-10px); opacity:.35 } }
+      }
+    </style>
+  </defs>
+  <rect width="960" height="210" fill="url(#deep)"/>
+  <g fill="#85e6d1" opacity=".055"><path d="M470 0h65L383 200zM659 0h28L528 167zM822 0h77L721 189z"/></g>
+  <path d="M0 167q67-8 122 12t124 1 111-10 124 1 111-39 119-16 123 21 126-22v95H0z" fill="#112e39"/>
+  <g fill="none" stroke="#46717a" stroke-width=".8" opacity=".66">
+    <path d="M0 163c103-13 141 39 240 16s113-17 187-9 95-5 150-28 116-28 190-10 123 7 193-24"/>
+    <path d="M0 170c103-13 141 39 240 16s113-17 187-9 95-5 150-28 116-28 190-10 123 7 193-24"/>
+    <path d="M0 182c104-12 137 36 242 14s116-18 184-10 104-5 154-25 118-32 189-11 125 4 191-23"/>
+  </g>
+  <g id="ruins" transform="translate(706 175)">
+    <ellipse cy="-67" rx="206" ry="130" fill="url(#light)"/>
+    <path d="m-157 32 9-18 18-3 4-11 22-2 3-11 38-3 7 8 42-2 12-12 20-1 7 9 28-1 6-10 35-4 11 7 24-4 15 18 51 2 9 38z" fill="#112931" stroke="#375660"/>
+    <use href="#pier" transform="translate(-119 6) scale(.73)"/><use href="#pier" transform="translate(93 -5) scale(.94)"/>
+    <path d="m-73 28 4-22 17-13 7-28 6 17-5 15 15 1 22-10 18 8v7l-26 11-18-2-11 16z" fill="#21434c" stroke="#4a7074"/>
+    <path d="m-53 2 12 1 9 2 27-11m-48 16 12-3m13-1 18-8" fill="none" stroke="#7c958c"/>
+  </g>
+  <g id="observatory" transform="translate(706 99)">
+    <circle r="82" fill="none" stroke="#648a87" stroke-dasharray="96 12 38 7" opacity=".68"/>
+    <circle r="73" fill="url(#ruling)" stroke="#477378"/>
+    <g class="dial" fill="none" stroke="#bca780">
+      <circle r="66" stroke-width="2" stroke-dasharray="2 9.52"/>
+      <path d="m0-79 4 7-4-2-4 2zM75 0l-5 3V-3z" fill="#eac083"/>
+    </g>
+    <path d="M-124 0h18m212 0h18M0-94v8m0 173v8" stroke="#b5b79b"/>
+    <use href="#eye" fill="#0b2934" stroke="#678e8a" stroke-width="4"/>
+    <g clip-path="url(#opening)">
+      <use href="#eye" fill="#19434d"/>
+      <g class="gaze">
+        <circle r="44" fill="url(#lens)" stroke="#ab9c79" stroke-width="2"/>
+        <g class="dial">
+          <use href="#engraving"/><use href="#engraving" transform="rotate(45)"/><use href="#engraving" transform="rotate(90)"/><use href="#engraving" transform="rotate(135)"/>
+          <use href="#engraving" transform="rotate(180)"/><use href="#engraving" transform="rotate(225)"/><use href="#engraving" transform="rotate(270)"/><use href="#engraving" transform="rotate(315)"/>
+        </g>
+        <circle r="29" fill="none" stroke="#ffe2a2"/><circle r="20" fill="#0b232d" stroke="#876947" stroke-width="3"/>
+        <circle cx="-9" cy="-10" r="4" fill="#fff1ce"/><circle cx="8" cy="9" r="1.5" fill="#85c8bc"/>
+      </g>
+    </g>
+    <use class="lid" href="#eye" fill="none" stroke="#eacb92" stroke-width="2.2"/>
+    <path d="M-100-7Q-49-53 0-51q55 0 99 44M-78 21q37 29 78 29t77-28" fill="none" stroke="#87a79e"/>
+  </g>
+  <g class="sediment" fill="#d1d6ac" opacity=".67">
+    <circle cx="407" cy="58" r="1"/><circle cx="488" cy="113" r="1.5"/><circle cx="575" cy="46" r="1.2"/><circle cx="615" cy="163" r="1"/>
+    <circle cx="807" cy="64" r="1.5"/><circle cx="853" cy="119" r="1"/><circle cx="883" cy="43" r="1.2"/>
+  </g>
+  <g id="caption" transform="translate(48 42)">
+    <path d="M0 0h21" stroke="#e7bd80" stroke-width="2.5"/>
+    <text x="30" y="4" fill="#bbe1d6" font-family="Consolas,monospace" font-size="13" letter-spacing="2">PRÓXIMO PROYECTO</text>
+    <text x="-3" y="80" fill="#f4e7c9" font-family="Georgia,serif" font-size="72" letter-spacing="4">Atlantis</text>
+    <text y="119" fill="#b6d8d0" font-family="Segoe UI,Arial,sans-serif" font-size="21">Bajo la ciudad, el ojo despierta.</text>
+  </g>
+  <path d="M0 1h960M0 209h960" fill="none" stroke="#527578"/>
+</svg>

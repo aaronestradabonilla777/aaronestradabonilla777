@@ -18,6 +18,19 @@ def build_mobile(name, view_box):
         root.find(".//*[@id='identity']").set("transform", "translate(433 34) scale(.51)")
         root.find(".//*[@id='stack-icons']").set("transform", "translate(45 222) scale(1.35)")
         root.find(".//*[@id='title-shade']").attrib.update(x="435", width="322", opacity=".64")
+    if name == "atlantis":
+        root.find(".//*[@id='caption']").set("transform", "translate(22 39) scale(.84)")
+        root.find(".//*[@id='observatory']").set("transform", "translate(377 80) scale(.76)")
+        root.find(".//*[@id='ruins']").set("transform", "translate(377 174) scale(.85)")
+    else:
+        style = root.find(".//{http://www.w3.org/2000/svg}style")
+        style.text = style.text.rstrip() + """
+      .secondary { opacity:.48 }
+      .rain, .return, .beacons { opacity:.31 }
+      .far.secondary { opacity:.45 }
+      .inbound, .outbound { opacity:.55 }
+      .freight, .rider { opacity:.72 }
+"""
     root.insert(0, ET.Comment(f" Generated from {name}.svg by scripts/escenas_moviles.py "))
     content = ET.tostring(root, encoding="unicode")
     (ASSETS / f"{name}-movil.svg").write_text(content + "\n", encoding="utf-8")
@@ -26,3 +39,4 @@ def build_mobile(name, view_box):
 if __name__ == "__main__":
     build_mobile("night-city", "435 0 525 332")
     build_mobile("contacto", "49 6 502 334")
+    build_mobile("atlantis", "0 0 482 210")

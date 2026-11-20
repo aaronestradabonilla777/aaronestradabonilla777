@@ -1,15 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="384" height="186" viewBox="0 0 384 186" role="img" aria-labelledby="title desc">
   <title id="title">Loki Code Guide</title>
-  <desc id="desc">Un libro pasa sus páginas bajo un terminal holográfico. Loki Code Guide es un tutor de programación con IA local y Ollama.</desc>
+  <desc id="desc">Una prueba de Rust espera 5 al sumar 2 y 2. El libro señala el error, pasa la página y corrige el valor esperado a 4. Tutor local con Ollama.</desc>
   <defs>
     <style>
       @media (prefers-reduced-motion: no-preference) {
-        .prompt { animation: project 3.8s ease-in-out infinite alternate }
-        @keyframes project { from { transform:translateY(2px) } to { transform:translateY(-8px) } }
+        .error { animation: mistake 4.8s linear -1s infinite }
+        .solution { animation: solved 4.8s linear -1s infinite }
+        .clue { animation: underline 4.8s ease-out -1s infinite }
+        @keyframes mistake { 0%,43%,100% { opacity:1 } 49%,94% { opacity:0 } }
+        @keyframes solved { 0%,53%,100% { opacity:0 } 62%,94% { opacity:1 } }
+        @keyframes underline { 0%,23%,83%,100% { stroke-dashoffset:100; opacity:0 } 37%,74% { stroke-dashoffset:0; opacity:1 } }
         .leaf { animation: turn 4.8s ease-in-out -1s infinite }
         .ink { animation: turn-ink 4.8s ease-in-out -1s infinite }
-        .terminal-line { animation: type-line 4.8s steps(6,end) -1s infinite }
-        @keyframes type-line { 0%,74% { stroke-dashoffset:100 } 90%,100% { stroke-dashoffset:0 } }
         @keyframes turn {
           0%, 18%, 100% { d:path("M193 57 Q222 30 248 30 Q276 30 304 49 L241 83 Q213 80 193 112 Z"); fill:#82b2bf }
           42% { d:path("M193 57 Q211 24 235 12 Q252 10 266 18 L224 69 Q207 65 193 112 Z"); fill:#d6f5ed }
@@ -49,12 +51,14 @@
     <path class="leaf" d="M193 57 Q222 30 248 30 Q276 30 304 49 L241 83 Q213 80 193 112 Z" fill="#83b3bf" stroke="#e0fff8" opacity="0"/>
     <path class="ink" d="M205 65 Q231 39 251 40 M207 72 Q227 52 244 49" fill="none" stroke="#426775" stroke-width="1.6" opacity="0"/>
     <path d="M193 43v27" fill="none" stroke="#caffdf" stroke-dasharray="3 3"/>
-    <g class="prompt">
-      <g transform="matrix(1,-.46,.75,.57,162,38)">
-        <rect width="47" height="25" rx="2" fill="#183a47" stroke="#abf3eb" stroke-width="1.6"/>
-        <path d="m5 5 4 3-4 3m9-3h13" fill="none" stroke="#caffdf" stroke-width="2.5"/>
-        <path class="terminal-line" d="M7 18h8m4 0h12m4 0h5" fill="none" stroke="#8df5e1" stroke-width="2.5" pathLength="100" stroke-dasharray="100 101"/>
-      </g>
+    <path class="clue" d="m110 80 31-14q16 0 30 7" fill="none" stroke="#efaa68" stroke-width="3" pathLength="100" stroke-dasharray="100" opacity="0"/>
+    <g transform="translate(118 9) skewY(-3)" font-family="Consolas,monospace" font-size="13" font-weight="bold">
+      <path d="M0 5 5 0h144v32H0z" fill="#102735" stroke="#8fd9d4" stroke-width="1.5"/>
+      <path d="M6 6h13" stroke="#69a1a3" stroke-width="2"/>
+      <text x="6" y="24" textLength="103" lengthAdjust="spacingAndGlyphs" fill="#e4fcf3">assert_eq!(2+2,</text>
+      <text x="119" y="24" fill="#e4fcf3">)</text>
+      <g class="error" opacity="0" fill="#ffab9d"><text x="110" y="24">5</text><path d="m133 15 8 8m0-8-8 8" fill="none" stroke="#ffab9d" stroke-width="2"/></g>
+      <g class="solution" fill="#9df3c8"><text x="110" y="24">4</text><path d="m132 19 3 4 7-9" fill="none" stroke="#9df3c8" stroke-width="2"/></g>
     </g>
   </g>
   <path d="M0 132h384" stroke="#315561"/>

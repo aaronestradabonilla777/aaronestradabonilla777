@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="435 0 525 332" role="img" aria-labelledby="title desc" width="525" height="332">
   <!-- Generated from night-city.svg by scripts/escenas_moviles.py --><title id="title">HALUZ · Night City · Rust y React</title>
-  <desc id="desc">Seis vehículos cruzan la avenida bajo el letrero Samurai. Detrás de HALUZ se alzan viviendas suspendidas, un jardín anular y dos agujas unidas por una pasarela.</desc>
+  <desc id="desc">Una moto adelanta a un camión en el cruce. El expreso HALUZ pasa bajo el anuncio Samurai, entre el jardín anular y las agujas de Night City.</desc>
   <defs>
     <linearGradient id="sky" x1="0" y1="1" x2="1" y2="0">
       <stop stop-color="#080c1c" /><stop offset=".48" stop-color="#252242" /><stop offset=".84" stop-color="#79435c" /><stop offset="1" stop-color="#162239" />
@@ -48,6 +48,14 @@
       <path d="M-34-7h16m34-1h18" stroke="#67fff0" stroke-width="4" />
       <path d="m-34-5-6 5h21l2-5zm50-1-4 5h20l2-5z" fill="#55d5ec" opacity=".6" />
     </g>
+    <g id="motorcycle">
+      <g fill="#141e35" stroke="#d7b1ff" stroke-width="1.8"><circle cx="-18" cy="-5" r="6.8" /><circle cx="17" cy="-5" r="6.8" /></g>
+      <path d="m-18-5 8-10 13 4 6-8 8 14M-17-5l17-1 8-9" fill="none" stroke="#988ac7" stroke-width="2.5" />
+      <path d="m-25-17 12 1 8 4 6-5 10 1-7 8h-16z" fill="#a876cc" stroke="#ebacf5" />
+      <path d="m-8-12 2-8 8-6 6 2-8 8 8 2-4 3z" fill="#202c43" stroke="#bdb7c9" />
+      <path d="m2-26 3-5 6 1 2 5-4 2-6-1z" fill="#e4d9de" /><path d="m7-27 7 1-5 2z" fill="#355266" />
+      <path d="m10-20 6 1m-39 4 5 1" stroke="#fff1c6" stroke-width="2" />
+    </g>
     <g id="bubble">
       <path d="M-29-14q1-27 22-28 19-1 26 23l11 7-3 9h-54z" fill="#182e35" stroke="#bfeb82" stroke-width="2" />
       <path d="M-22-22q4-17 16-17l2 17zm23 0-2-17q10 2 15 18z" fill="#8cc4b9" />
@@ -91,13 +99,26 @@
         @keyframes district-drift { from { transform:translateX(38px) } to { transform:translateX(-62px) } }
         .inbound { animation: inbound 29s linear infinite; animation-delay:var(--start) }
         .outbound { animation: outbound 37s linear infinite; animation-delay:var(--start) }
+        .freight, .rider, .coupe, .brake, .walk, .stop { animation-duration:30s; animation-delay:-7s; animation-iteration-count:infinite; animation-timing-function:linear }
+        .freight { animation-name:haul }
+        .rider { animation-name:overtake }
+        .coupe { animation-name:approach }
+        .brake { animation-name:braking }
+        .walk { animation-name:go }
+        .stop { animation-name:wait }
+        @keyframes haul { 0% { transform:translateX(1110px) } 21%,30% { transform:translateX(718px) } 36% { transform:translateX(699px) } 49% { transform:translateX(540px) } 85%,100% { transform:translateX(-140px) } }
+        @keyframes overtake { 0%,11% { transform:translateX(1070px) } 25%,30% { transform:translateX(782px) } 37% { transform:translateX(682px) } 57%,100% { transform:translateX(-100px) } }
+        @keyframes approach { 0% { transform:translateX(-155px) } 12% { transform:translateX(413px) } 17% { transform:translateX(547px) } 22%,30% { transform:translateX(577px) } 35% { transform:translateX(643px) } 44%,100% { transform:translateX(1110px) } }
+        @keyframes braking { 0%,11%,32%,100% { opacity:0 } 15%,30% { opacity:1 } }
+        @keyframes go { 0%,29%,100% { opacity:.12 } 30%,93% { opacity:1 } }
+        @keyframes wait { 0%,29%,100% { opacity:1 } 30%,93% { opacity:.12 } }
         @keyframes inbound { 0% { transform:translateX(-150px) } 43%,100% { transform:translateX(1100px) } }
         @keyframes outbound { 0% { transform:translateX(1080px) } 48%,100% { transform:translateX(-120px) } }
         .lift { animation: lift 8s ease-in-out -2s infinite alternate }
         @keyframes lift { from { transform:translateY(0) } to { transform:translateY(-49px) } }
         .shop-sign { animation: marquee 4s linear infinite }
         @keyframes marquee { to { stroke-dashoffset:-32 } }
-        .train { --run:12.8s; --start:-7.1s; animation: transit var(--run) linear var(--start) infinite }
+        .train { --run:10s; --start:-4.9s; animation: transit var(--run) linear var(--start) infinite }
         .samurai-light { animation: reflected-sign var(--run) linear calc(var(--start) + var(--lag, 0s)) infinite }
         @keyframes reflected-sign { 0%,43%,83%,100% { opacity:0 } 56% { opacity:.72 } 64%,72% { opacity:.96 } }
         @keyframes transit {
@@ -113,7 +134,12 @@
         @keyframes nightlights { from { opacity:.45 } to { opacity:1 } }
       }
       @media (prefers-reduced-motion: reduce) { .signal { animation:none } }
-    </style>
+      .secondary { opacity:.48 }
+      .rain, .return, .beacons { opacity:.31 }
+      .far.secondary { opacity:.45 }
+      .inbound, .outbound { opacity:.55 }
+      .freight, .rider { opacity:.72 }
+</style>
     <pattern id="drizzle" width="86" height="52" patternUnits="userSpaceOnUse" patternTransform="skewX(-17.1)">
       <path d="M9 4v6m42 22v9m27-28v4" stroke="#acceea" stroke-width="1" opacity=".33" />
     </pattern>
@@ -125,9 +151,9 @@
     <path d="M568 102h172m-184 8h176m-170 9h159m-127 9h129m-141 11h138m-125 10h113" />
   </g>
   <g class="distant">
-    <use href="#far" fill="#3d334e" />
+    <use href="#far" fill="#353047" opacity=".80" />
     <!-- An industrial crane counterbalances the paired arcology spires. -->
-    <g fill="none" stroke="#937286" stroke-width="1.5">
+    <g class="secondary" fill="none" stroke="#78677e" stroke-width="1.5">
       <path d="M443 171V74h7v97m-33-89 91-23-59-8-32 31zm5-3 24-23 10 14 14-14 8 8m17-1v27" />
     </g>
     <g transform="translate(638 26)">
@@ -136,13 +162,14 @@
       <path d="m-32 91 6-10m-7 22 6-10m-7 23 5-8m47-7 10-13m-11 25 12-15m-13 26 13-16" fill="none" stroke="#d4939f" stroke-width="2" />
       <path d="m-28 69 4-38m43 62 7-35" stroke="#ffbac0" stroke-width="2" />
       <path d="m-25 90 40 9-3 11-38-10z" fill="#48374b" stroke="#c38485" />
-      <path d="m-22 94 7 6 4-4 6 7 5-4 7 7 4-4" fill="none" stroke="#ffb68e" stroke-width="2" />
+      <path d="m-25 90 40 9" fill="none" stroke="#ffe1a3" stroke-width="2.6" />
+      <path d="m-22 94 7 6 4-4 6 7 5-4 7 7 4-4" fill="none" stroke="#e6a086" stroke-width="1.5" />
     </g>
   </g>
   <g class="district">
   <use href="#near" fill="#1c293c" />
   <!-- Staggered housing units hang from a service spine. Balcony rails, ducts and a lift break up the facade. -->
-  <g transform="translate(456 117)">
+  <g class="secondary" opacity=".83" transform="translate(456 117)">
     <path d="M-22 153V26l14-17h28v142z" fill="#203444" stroke="#41616e" />
     <path d="M-30 26 20 14l17 8v23l-50 12-17-8zm8 45 50-12 15 9v27l-51 10-14-7zm-18 45 54-10 15 6v27l-56 11-13-7z" fill="#505067" stroke="#8a8091" />
     <path d="m-28 32 49-12v16l-49 12zm8 46 47-11v15l-47 13zm-17 44 48-9v14l-48 11z" fill="#273749" />
@@ -162,7 +189,8 @@
     <g transform="rotate(-13)">
       <ellipse cy="42" rx="58" ry="10" fill="#293243" stroke="#96cbd1" stroke-width="2" />
       <path d="M-58 42q48 17 116 0l-7 8Q-2 67-51 50z" fill="#233242" />
-      <path d="M-54 46q48 14 108-1" fill="none" stroke="#9ff6de" stroke-width="3.5" />
+      <path d="M-54 46q48 14 108-1" fill="none" stroke="#63d6ca" stroke-width="7" opacity=".22" />
+      <path d="M-54 46q48 14 108-1" fill="none" stroke="#c0ffe0" stroke-width="3" />
       <path d="m-46 53 28 21 12-17m49-5L18 69 8 58" fill="none" stroke="#739498" stroke-width="2.5" />
     </g>
     <path d="M-3 16V-8m4 21V0" stroke="#b1c7c5" /><circle cx="-3" cy="-9" r="2" fill="#ff8093" />
@@ -204,6 +232,7 @@
       <path class="samurai-light" style="--lag:1.36s" opacity="0" d="m-186-13 18-5 24-1v5l-42 3z" />
     </g>
     <path d="m-198-8 6-3" stroke="#ff6186" stroke-width="2.8" />
+    <use href="#haluz-h" transform="translate(-56 -11) scale(.047) skewX(-12)" fill="#fff4db" />
   </g>
   <g transform="translate(738 25)">
     <path d="m-17 213 4-179 13-10 189-22 15 13v170l-19 14-21 72-43 11 9-74-68 12-5 28-38 13 5-37z" fill="#0c1e29" stroke="#4c8994" stroke-width="2" />
@@ -228,13 +257,15 @@
     <path d="M18 326h39m143-11h57m286 12h39m126-19h71m126 10h44" stroke="#b65c85" />
   </g>
   <g transform="translate(0 301) scale(1 .87)">
-    <g class="outbound" style="--start:-4s" transform="translate(804)"><use href="#hauler" transform="scale(-.83 1)" /></g>
+    <g class="freight" transform="translate(758)"><use href="#hauler" transform="scale(-.83 1)" /></g>
     <g class="outbound" style="--start:-14.8s" transform="translate(176)"><use href="#glider" transform="translate(0 -3) scale(-.87 1)" /></g>
     <g class="outbound" style="--start:-28.6s" transform="translate(-120)"><use href="#interceptor" transform="scale(-.91 1)" /></g>
   </g>
+  <g transform="translate(0 309)"><g class="rider" transform="translate(678)"><use href="#motorcycle" transform="scale(-1 1)" /></g></g>
   <g transform="translate(0 325)">
-    <g class="inbound" style="--start:-5.9s" transform="translate(430)">
+    <g class="coupe" transform="translate(577)">
       <use href="#razor" transform="scale(1.15 1)" />
+      <path class="brake" d="m-70-16 8 1m-11 17 14 1" stroke="#ff687f" stroke-width="3" opacity="0" />
       <path d="m-49 3 49 1 42-2-16 4-66 1z" fill="#f55f88" opacity=".34" />
     </g>
     <g class="inbound" style="--start:-15.6s" transform="translate(-150)"><use href="#bubble" /></g>
@@ -244,7 +275,7 @@
   <g transform="translate(657 332)">
     <path d="M-6 0v-4l3-2v-48h5v48l4 2v4z" fill="#132333" stroke="#5c7982" />
     <path d="m-8-65 12-2 5 3v18l-14 2-3-3z" fill="#192b3a" stroke="#76949c" />
-    <path d="m-6-62 10-1v6l-10 1z" fill="#342730" /><path d="m-6-52 10-1v4l-10 1z" fill="#55bdb2" class="crossing" />
+    <path class="stop" d="m-6-62 10-1v6l-10 1z" fill="#ff7586" /><path d="m-6-52 10-1v4l-10 1z" fill="#82f5c9" class="walk" opacity=".12" />
     <path d="m-3-15 5-1m-5 5 5-1" stroke="#d99d66" stroke-width="2" />
   </g>
   <g id="identity" transform="translate(433 34) scale(.51)">
@@ -254,7 +285,7 @@
   </g>
   <text x="43" y="72" font-family="Consolas,monospace" font-size="24" font-weight="bold" letter-spacing="5" fill="#ffce78">NIGHT CITY</text>
   <g transform="translate(54 105) scale(.57) skewX(-12)" fill="#f4ede6">
-    <path d="M0 0h37v55h70V0h37v154h-37V91H37v63H0z" />
+    <path id="haluz-h" d="M0 0h37v55h70V0h37v154h-37V91H37v63H0z" />
     <path fill-rule="evenodd" d="M165 154 216 0h60l53 154h-42l-10-32h-63l-10 32zm60-66h42l-21-66z" />
     <path d="M349 0h39v119h95v35H349z" />
     <path d="M497 0h39v111l10 10h52l10-10V0h39v128l-27 26h-95l-28-27z" />

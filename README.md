@@ -12,6 +12,13 @@
   <a href="https://github.com/aaronestradabonilla777?tab=repositories" title="Ver todos mis repositorios"><img src="./assets/repositorios.svg" width="132" alt="Ver todos mis repositorios"></a>
 </p>
 
+<p align="center">
+  <picture>
+    <source media="(max-width: 600px)" srcset="./assets/atlantis-movil.svg">
+    <img src="./assets/atlantis.svg" width="100%" alt="Próximo proyecto de Haluz · Atlantis. Bajo la ciudad, el ojo despierta.">
+  </picture>
+</p>
+
 <picture>
   <source media="(max-width: 600px)" srcset="./assets/actividad-movil.svg">
   <img src="./assets/actividad.svg" width="100%" alt="Calendario anual de contribuciones de Haluz en GitHub, con una celda por día">
