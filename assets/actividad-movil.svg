@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 412 342" role="img" aria-labelledby="title desc">
-<title id="title">741 contribuciones en 2026</title>
-<desc id="desc">Actividad pública del 1 de enero al 19 de nov. Cada celda representa un día.</desc>
+<title id="title">744 contribuciones en 2026</title>
+<desc id="desc">Actividad pública del 1 de enero al 20 de nov. Cada celda representa un día.</desc>
 <rect x=".5" y=".5" width="411" height="341" rx="3" fill="#08161e" stroke="#315561"/>
 <path d="M1 1h98l8 5h30" fill="none" stroke="#59dce4" stroke-width="2"/>
 <g font-family="Segoe UI,Arial,sans-serif">
 <text x="18" y="36" fill="#e7f9fa" font-weight="700" font-size="22">Actividad · 2026</text>
-<text x="395" y="35" text-anchor="end" fill="#8bdedc" font-size="15">741 contribuciones</text></g>
+<text x="395" y="35" text-anchor="end" fill="#8bdedc" font-size="15">744 contribuciones</text></g>
 <g font-family="Consolas,monospace" font-size="11" fill="#afd0d5">
 <text x="16" y="94">Lu</text>
 <text x="16" y="118">Mi</text>
@@ -346,8 +346,8 @@
 <rect x="283" y="219" width="9" height="9" rx="2" fill="#193341"><title>2026-11-16 · 0</title></rect>
 <rect x="283" y="231" width="9" height="9" rx="2" fill="#193341"><title>2026-11-17 · 0</title></rect>
 <rect x="283" y="243" width="9" height="9" rx="2" fill="#193341"><title>2026-11-18 · 0</title></rect>
-<rect x="283" y="255" width="9" height="9" rx="2" fill="#185b6c"><title>2026-11-19 · 1</title></rect>
-<circle cx="287" cy="271" r="1.4" fill="#37505c"/>
+<rect x="283" y="255" width="9" height="9" rx="2" fill="#185b6c"><title>2026-11-19 · 4</title></rect>
+<rect x="283" y="267" width="9" height="9" rx="2" fill="#193341"><title>2026-11-20 · 0</title></rect>
 <circle cx="287" cy="283" r="1.4" fill="#37505c"/>
 <circle cx="299" cy="211" r="1.4" fill="#37505c"/>
 <circle cx="299" cy="223" r="1.4" fill="#37505c"/>
@@ -390,7 +390,7 @@
 <circle cx="359" cy="235" r="1.4" fill="#37505c"/>
 <circle cx="359" cy="247" r="1.4" fill="#37505c"/>
 <circle cx="359" cy="259" r="1.4" fill="#37505c"/>
-<text x="17" y="326">Al 19 nov 2026</text>
+<text x="17" y="326">Al 20 nov 2026</text>
 <text x="270" y="326">Menos</text>
 <rect x="310" y="318" width="9" height="9" rx="2" fill="#193341"/>
 <rect x="322" y="318" width="9" height="9" rx="2" fill="#185b6c"/>
