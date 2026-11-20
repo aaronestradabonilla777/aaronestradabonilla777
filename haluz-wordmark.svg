@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="996" height="498" viewBox="0 0 996 498" role="img" aria-labelledby="title">
+  <title id="title">HALUZ · Full stack · México</title>
+  <defs>
+    <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M28 0H0v28" fill="none" stroke="#ff5362" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="fade">
+      <stop stop-color="white"/><stop offset="1" stop-color="black"/>
+    </linearGradient>
+    <mask id="grid-fade"><rect width="996" height="498" fill="url(#fade)"/></mask>
+    <pattern id="hatch" width="22" height="22" patternUnits="userSpaceOnUse">
+      <path d="M-2 22 20 0 M20 22 42 0" stroke="#ff3945" stroke-width="7"/>
+    </pattern>
+  </defs>
+  <rect width="996" height="498" fill="#050204"/>
+  <path d="M54 58h888v375H54z" fill="url(#grid)" mask="url(#grid-fade)" opacity=".14"/>
+
+  <g fill="none" stroke-width="2">
+    <path d="M54 92V57h640l17 17h230" stroke="#872635"/>
+    <path d="M54 57h170" stroke="#ff3945" stroke-width="5"/>
+    <path d="M54 397v36h777l19-19h91" stroke="#872635"/>
+    <path d="M54 433h72" stroke="#ff3945" stroke-width="5"/>
+  </g>
+  <g font-family="'Courier New',monospace" font-weight="bold">
+    <text x="58" y="143" font-size="34" letter-spacing="4" fill="#ff4655">// FULL STACK</text>
+    <text x="943" y="144" text-anchor="end" font-size="32" letter-spacing="3" fill="#f1e8e2">MÉXICO</text>
+  </g>
+
+  <!-- Angular lettering drawn as paths keeps the silhouette independent of installed fonts. -->
+  <g transform="translate(88 184) skewX(-12)" fill="#f4ede6">
+    <path d="M0 0h37v55h70V0h37v154h-37V91H37v63H0z"/>
+    <path fill-rule="evenodd" d="M165 154 216 0h60l53 154h-42l-10-32h-63l-10 32zm60-66h42l-21-66z"/>
+    <path d="M349 0h39v119h95v35H349z"/>
+    <path d="M497 0h39v111l10 10h52l10-10V0h39v128l-27 26h-95l-28-27z"/>
+    <path d="M669 0h174v26l-115 94h108v34H662v-29l113-91H669z"/>
+    <path d="M817 66h47v8h-47zM-13 113h26v5h-26z" fill="#ff3945"/>
+  </g>
+  <path d="M56 370h607l12-12h96" fill="none" stroke="#872635" stroke-width="2"/>
+  <path d="M793 355h148v17H793z" fill="url(#hatch)"/>
+</svg>

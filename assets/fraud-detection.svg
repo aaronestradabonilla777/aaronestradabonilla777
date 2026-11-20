@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="384" height="273" viewBox="0 0 384 273" role="img" aria-labelledby="title desc">
+  <title id="title">Detección de fraude</title>
+  <desc id="desc">Motor en Rust y Tokio con el modelo de AWS Lambda. Un monitor señala una anomalía en un flujo de eventos.</desc>
+  <defs>
+    <radialGradient id="glow" cx=".65" cy=".55" r=".75">
+      <stop stop-color="#532720"/><stop offset="1" stop-color="#201215"/>
+    </radialGradient>
+    <pattern id="grid" width="18" height="18" patternUnits="userSpaceOnUse">
+      <path d="M18 0H0v18" fill="none" stroke="#9c5e50" stroke-width=".7" opacity=".6"/>
+    </pattern>
+  </defs>
+  <rect x=".5" y=".5" width="383" height="272" rx="5" fill="#1c1415" stroke="#70443e"/>
+  <path d="M1 6q0-5 5-5h372q5 0 5 5v125H1z" fill="url(#glow)"/>
+  <path d="M1 6h382v125H1z" fill="url(#grid)"/>
+  <g fill="none">
+    <path d="M18 97h49l12-8 12 7h21l12-17 13 23 16-17h32l15-30 17 52 19-22h74l11-8 19 8h25" stroke="#996457" stroke-dasharray="3 4"/>
+    <path d="M18 82h29l11-7 10 7h32l11-15 13 28 17-21 11 8h33l17-22 11 14 25-47 17 72 13-22 11 5h26l10-8 11 8h37" stroke="#ff9679" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M238 10v106m-39-89h81" stroke="#ffbc9e" stroke-dasharray="2 4"/>
+    <circle cx="238" cy="27" r="10" stroke="#ffe6cd"/>
+    <circle cx="238" cy="27" r="4" fill="#ffe3c6" stroke="#341815"/>
+    <path d="M19 22v-6h12m334 91v8h-12" stroke="#ca8874" stroke-width="2"/>
+  </g>
+  <path d="M0 132h384" stroke="#70443e"/>
+  <g font-family="Segoe UI,Arial,sans-serif">
+    <text x="18" y="167" fill="#fff6ee" font-size="27" font-weight="700">Detección de fraude</text>
+    <text x="19" y="194" fill="#e8d9d5" font-size="16">Motor asíncrono que analiza eventos</text>
+    <text x="19" y="215" fill="#e8d9d5" font-size="16">con el modelo de AWS Lambda.</text>
+  </g>
+  <path d="M19 231h346" stroke="#513735"/>
+  <text x="19" y="256" font-family="Consolas,monospace" font-size="14" fill="#ffab90">Rust · Tokio</text>
+  <path d="m350 255 12-12m-10 0h10v10" fill="none" stroke="#ffab90" stroke-width="2"/>
+</svg>
