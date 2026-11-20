@@ -3,36 +3,36 @@
   <desc id="desc">Tutor de programación con IA local y Ollama. Un libro abierto proyecta líneas de código.</desc>
   <defs>
     <radialGradient id="glow" cx=".52" cy=".76" r=".7">
-      <stop stop-color="#47365e"/><stop offset="1" stop-color="#16131e"/>
+      <stop stop-color="#215a67"/><stop offset="1" stop-color="#08161e"/>
     </radialGradient>
     <pattern id="dots" width="9" height="9" patternUnits="userSpaceOnUse">
-      <circle cx="1" cy="1" r=".8" fill="#cfbef4" opacity=".32"/>
+      <circle cx="1" cy="1" r=".8" fill="#a5dcdf" opacity=".32"/>
     </pattern>
   </defs>
-  <rect x=".5" y=".5" width="383" height="272" rx="5" fill="#16131e" stroke="#594a68"/>
+  <rect x=".5" y=".5" width="383" height="272" rx="5" fill="#08161e" stroke="#315561"/>
   <path d="M1 6q0-5 5-5h372q5 0 5 5v125H1z" fill="url(#glow)"/>
   <path d="M1 6h382v125H1z" fill="url(#dots)"/>
   <!-- Layered pages and a projected code prompt. -->
   <g stroke-linejoin="round">
-    <path d="m58 86 90-31 45 19 58-23 75 30-132 46z" fill="#141019" stroke="#856ca7"/>
-    <path d="m67 80 78-33 48 19 60-24 63 32-123 47z" fill="#30223e" stroke="#b69fcf"/>
-    <path d="m77 73 67-34q25 0 49 18v55q-28-21-52-15z" fill="#d9caeb" stroke="#eee5fa"/>
-    <path d="m193 57 55-27q26-2 56 19l-63 34q-26-3-48 29z" fill="#8f75b2" stroke="#e4d2f3"/>
-    <g fill="none" stroke="#614d78" stroke-width="2">
+    <path d="m58 86 90-31 45 19 58-23 75 30-132 46z" fill="#141019" stroke="#63939e"/>
+    <path d="m67 80 78-33 48 19 60-24 63 32-123 47z" fill="#173b49" stroke="#79b2bf"/>
+    <path d="m77 73 67-34q25 0 49 18v55q-28-21-52-15z" fill="#d4edf0" stroke="#eefafa"/>
+    <path d="m193 57 55-27q26-2 56 19l-63 34q-26-3-48 29z" fill="#60909d" stroke="#cbf8fa"/>
+    <g fill="none" stroke="#3c6471" stroke-width="2">
       <path d="m102 72 38-19q19-1 37 11m-64 13 27-13q19-1 37 11m-51 7 15-7q16 0 31 8"/>
       <path d="m207 62 37-18q16-1 29 5m-64 21 36-18m-35 25 20-10"/>
     </g>
-    <path d="m169 42 28-15 25 9-29 16z" fill="#30243e" stroke="#bbf9d8"/>
+    <path d="m169 42 28-15 25 9-29 16z" fill="#183a47" stroke="#abf3eb"/>
     <path d="m179 39 5-3-1-3m6 6 6-3" fill="none" stroke="#caffdf" stroke-width="2"/>
     <path d="M193 52v9m0 4v5" fill="none" stroke="#caffdf"/>
   </g>
-  <path d="M0 132h384" stroke="#594a68"/>
+  <path d="M0 132h384" stroke="#315561"/>
   <g font-family="Segoe UI,Arial,sans-serif">
-    <text x="18" y="167" fill="#faf6ff" font-size="27" font-weight="700">Loki Code Guide</text>
-    <text x="19" y="194" fill="#ded5e6" font-size="16">Un tutor de programación con IA</text>
-    <text x="19" y="215" fill="#ded5e6" font-size="16">que corre en tu máquina.</text>
+    <text x="18" y="167" fill="#e7f9fa" font-size="27" font-weight="700">Loki Code Guide</text>
+    <text x="19" y="194" fill="#ccdfe2" font-size="16">Un tutor de programación con IA</text>
+    <text x="19" y="215" fill="#ccdfe2" font-size="16">que corre en tu máquina.</text>
   </g>
-  <path d="M19 231h346" stroke="#463a51"/>
-  <text x="19" y="256" font-family="Consolas,monospace" font-size="14" fill="#c2f8db">Ollama · IA local</text>
-  <path d="m350 255 12-12m-10 0h10v10" fill="none" stroke="#c2f8db" stroke-width="2"/>
+  <path d="M19 231h346" stroke="#315561"/>
+  <text x="19" y="256" font-family="Consolas,monospace" font-size="14" fill="#94dfdc">Ollama · IA local</text>
+  <path d="m350 255 12-12m-10 0h10v10" fill="none" stroke="#94dfdc" stroke-width="2"/>
 </svg>

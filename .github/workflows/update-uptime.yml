@@ -1,384 +1,43 @@
-name: Update Dashboard Stats
+name: Calendario de contribuciones del perfil
 
 on:
   schedule:
-    - cron: '0 */6 * * *'
+    - cron: '17 */6 * * *'
   workflow_dispatch:
   push:
     branches: [main]
+    paths:
+      - 'scripts/actividad.py'
+      - '.github/workflows/update-uptime.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: calendario-del-perfil
+  cancel-in-progress: false
 
 jobs:
-  update-stats:
+  actualizar:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-
-      - name: Install dependencies
-        run: pip install requests
-
-      - name: Fetch GitHub Stats and Update SVGs
+      - name: Generar calendario anual
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          USERNAME: aaronestradabonilla777
+          GITHUB_TOKEN: ${{ github.token }}
+          PROFILE_USER: ${{ github.repository_owner }}
+        run: python scripts/actividad.py
+      - name: Guardar calendario
         run: |
-          python3 << 'PYTHON_SCRIPT'
-          import requests
-          import os
-          from datetime import datetime, timezone
-          from collections import defaultdict
-
-          USERNAME = os.environ.get('USERNAME', 'aaronestradabonilla777')
-          TOKEN = os.environ.get('GITHUB_TOKEN', '')
-          HEADERS = {
-              'Authorization': f'Bearer {TOKEN}',
-              'Content-Type': 'application/json'
-          }
-          REST_HEADERS = {
-              'Authorization': f'token {TOKEN}',
-              'Accept': 'application/vnd.github.v3+json'
-          }
-
-          print(f"Fetching data for {USERNAME}...")
-
-          # ── GraphQL: profile + pinned repos + contributions ──────────────────
-          GQL_QUERY = """
-          query($login: String!, $from: DateTime!) {
-            user(login: $login) {
-              createdAt
-              repositories(first: 100, isFork: false, ownerAffiliations: OWNER) {
-                totalCount
-                nodes { stargazerCount forkCount }
-              }
-              followers { totalCount }
-              following { totalCount }
-              pinnedItems(first: 6, types: REPOSITORY) {
-                nodes {
-                  ... on Repository {
-                    name
-                    description
-                    stargazerCount
-                    forkCount
-                    primaryLanguage { name color }
-                    url
-                  }
-                }
-              }
-              contributionsCollection(from: $from) {
-                totalCommitContributions
-                totalPullRequestContributions
-                contributionCalendar {
-                  totalContributions
-                  weeks {
-                    contributionDays {
-                      contributionCount
-                      date
-                    }
-                  }
-                }
-              }
-            }
-          }
-          """
-
-          now = datetime.now(timezone.utc)
-          year_start = f"{now.year}-01-01T00:00:00Z"
-
-          gql_resp = requests.post(
-              'https://api.github.com/graphql',
-              json={'query': GQL_QUERY, 'variables': {'login': USERNAME, 'from': year_start}},
-              headers=HEADERS
-          )
-          gql_data = gql_resp.json().get('data', {}).get('user', {}) if gql_resp.status_code == 200 else {}
-
-          if not gql_data:
-              print("GraphQL failed, aborting.")
-              raise SystemExit(1)
-
-          # ── Basic stats ───────────────────────────────────────────────────────
-          public_repos  = gql_data['repositories']['totalCount']
-          followers     = gql_data['followers']['totalCount']
-          following     = gql_data['following']['totalCount']
-          total_stars   = sum(r['stargazerCount'] for r in gql_data['repositories']['nodes'])
-          total_forks   = sum(r['forkCount']      for r in gql_data['repositories']['nodes'])
-          created_at    = gql_data.get('createdAt', '2022-04-25T00:00:00Z')
-
-          contrib       = gql_data['contributionsCollection']
-          contributions_year = contrib['contributionCalendar']['totalContributions']
-          prs_merged    = contrib['totalPullRequestContributions']
-
-          print(f"Repos:{public_repos} Stars:{total_stars} Forks:{total_forks} Followers:{followers} PRs:{prs_merged}")
-
-          # ── Uptime ────────────────────────────────────────────────────────────
-          start = datetime.fromisoformat(created_at.replace('Z', '+00:00'))
-          diff  = now - start
-          secs  = int(diff.total_seconds())
-          years = secs // 31536000
-          days  = (secs % 31536000) // 86400
-          hours = (secs % 86400) // 3600
-
-          print(f"Uptime: {years}Y {days}D {hours}H")
-
-          # ── Streak calculation ────────────────────────────────────────────────
-          all_days = []
-          for week in gql_data['contributionsCollection']['contributionCalendar']['weeks']:
-              for d in week['contributionDays']:
-                  all_days.append((d['date'], d['contributionCount']))
-
-          all_days.sort(key=lambda x: x[0])
-          today_str = now.strftime('%Y-%m-%d')
-
-          current_streak = 0
-          longest_streak = 0
-          streak = 0
-          for date_str, count in reversed(all_days):
-              if date_str > today_str:
-                  continue
-              if count > 0:
-                  streak += 1
-                  if current_streak == 0:
-                      current_streak = streak
-              else:
-                  if current_streak == 0:
-                      current_streak = streak  # streak ended before today — save it
-                  streak = 0
-              longest_streak = max(longest_streak, streak)
-
-          if current_streak == 0:
-              current_streak = streak  # edge case: consecutive days up to now
-
-          print(f"Streak current:{current_streak} longest:{longest_streak}")
-
-          # ── Pinned repos ──────────────────────────────────────────────────────
-          pinned = gql_data.get('pinnedItems', {}).get('nodes', [])
-          # Fallback: fetch most-starred repos if no pins
-          if not pinned:
-              nodes = gql_data['repositories']['nodes']
-              # Can't sort by stars from GraphQL without name; use REST
-              rest_repos = requests.get(
-                  f'https://api.github.com/users/{USERNAME}/repos?per_page=6&sort=stars&direction=desc',
-                  headers=REST_HEADERS
-              ).json() or []
-              pinned = [
-                  {
-                      'name': r.get('name',''),
-                      'description': r.get('description',''),
-                      'stargazerCount': r.get('stargazers_count', 0),
-                      'forkCount': r.get('forks_count', 0),
-                      'primaryLanguage': {'name': r.get('language') or 'Other', 'color': '#778899'},
-                      'url': r.get('html_url','')
-                  }
-                  for r in rest_repos if isinstance(r, dict)
-              ]
-
-          # ── Language distribution ─────────────────────────────────────────────
-          lang_bytes = defaultdict(int)
-          rest_repos_all = requests.get(
-              f'https://api.github.com/users/{USERNAME}/repos?per_page=100&type=owner',
-              headers=REST_HEADERS
-          ).json() or []
-
-          for repo in rest_repos_all:
-              if isinstance(repo, dict) and not repo.get('fork'):
-                  lr = requests.get(repo.get('languages_url',''), headers=REST_HEADERS)
-                  if lr.status_code == 200:
-                      for lang, b in lr.json().items():
-                          lang_bytes[lang] += b
-
-          total_bytes = sum(lang_bytes.values())
-          lang_pct = {}
-          LANG_COLORS = {
-              'TypeScript':'#3178c6','JavaScript':'#f7df1e','Python':'#3572a5',
-              'Java':'#b07219','C++':'#f34b7d','Go':'#00add8','Rust':'#dea584',
-              'C#':'#178600','HTML':'#e34c26','CSS':'#563d7c','Other':'#778899'
-          }
-          if total_bytes > 0:
-              for lang, b in sorted(lang_bytes.items(), key=lambda x: x[1], reverse=True)[:5]:
-                  lang_pct[lang] = round((b / total_bytes) * 100)
-
-          print(f"Languages: {lang_pct}")
-
-          # ── Recent commits ────────────────────────────────────────────────────
-          events = requests.get(
-              f'https://api.github.com/users/{USERNAME}/events?per_page=50',
-              headers=REST_HEADERS
-          ).json() or []
-
-          recent_commits = []
-          for ev in events:
-              if not isinstance(ev, dict) or ev.get('type') != 'PushEvent':
-                  continue
-              commits = ev.get('payload', {}).get('commits', [])
-              for c in commits:
-                  msg = c.get('message','').split('\n')[0][:42]
-                  sha = c.get('sha','')[:7]
-                  recent_commits.append(f'[{sha}] {msg}')
-                  if len(recent_commits) >= 5:
-                      break
-              if len(recent_commits) >= 5:
-                  break
-
-          while len(recent_commits) < 5:
-              recent_commits.append('[-------] ...')
-
-          print(f"Recent commits collected: {len(recent_commits)}")
-
-          # ── Heatmap (52 weeks × 7 days) ──────────────────────────────────────
-          day_map = {}
-          for week in gql_data['contributionsCollection']['contributionCalendar']['weeks']:
-              for d in week['contributionDays']:
-                  day_map[d['date']] = d['contributionCount']
-
-          def heat_color(n):
-              if n == 0:   return '#0d1117'
-              if n <= 2:   return '#0e4429'
-              if n <= 5:   return '#006d32'
-              if n <= 9:   return '#26a641'
-              return '#39d353'
-
-          # Build 52w grid from Sunday
-          from datetime import timedelta
-          # find last Sunday
-          last_sunday = now.date()
-          while last_sunday.weekday() != 6:
-              last_sunday -= timedelta(days=1)
-
-          heat_rects = []
-          for w in range(52):
-              week_start = last_sunday - timedelta(weeks=(51 - w))
-              for d in range(7):
-                  cell_date = (week_start + timedelta(days=d)).strftime('%Y-%m-%d')
-                  count = day_map.get(cell_date, 0)
-                  x = 18 + w * 11
-                  y = 22 + d * 11
-                  color = heat_color(count)
-                  tip = f"{cell_date}: {count}"
-                  heat_rects.append(
-                      f'      <rect x="{x}" y="{y}" width="9" height="9" fill="{color}" rx="1.5"><title>{tip}</title></rect>'
-                  )
-
-          heatmap_block = '\n'.join(heat_rects)
-
-          # ── Build pinned repos SVG blocks ─────────────────────────────────────
-          def repo_card(repo, idx):
-              """Returns SVG group for one repo card in a 2-column grid."""
-              col = idx % 2
-              row = idx // 2
-              rx = col * 148
-              ry = row * 56
-              lang_obj  = repo.get('primaryLanguage') or {}
-              lang_name  = (lang_obj.get('name') or 'Other')[:12]
-              lang_color = lang_obj.get('color') or '#778899'
-              name  = (repo.get('name') or '')[:18]
-              stars = repo.get('stargazerCount', 0)
-              forks = repo.get('forkCount', 0)
-              desc  = (repo.get('description') or '')[:28]
-              return f'''    <g transform="translate({rx},{ry})">
-              <rect width="140" height="50" fill="#0a0a0d" stroke="{lang_color}" stroke-width="0.7" rx="2"/>
-              <text x="6" y="14" font-family="Courier New" font-size="9" font-weight="bold" fill="#fff">{name}</text>
-              <text x="6" y="25" font-family="Courier New" font-size="8" fill="#778899">{desc}</text>
-              <circle cx="9" cy="38" r="4" fill="{lang_color}"/>
-              <text x="17" y="41" font-family="Courier New" font-size="8" fill="#778899">{lang_name}</text>
-              <text x="90" y="41" font-family="Courier New" font-size="8" fill="#ff9500">&#9733; {stars}</text>
-              <text x="115" y="41" font-family="Courier New" font-size="8" fill="#778899">&#8916; {forks}</text>
-            </g>'''
-
-          repo_cards_svg = '\n'.join(repo_card(r, i) for i, r in enumerate(pinned[:6]))
-
-          # ── Language donut ────────────────────────────────────────────────────
-          DONUT_COLORS = ['#3178c6','#f7df1e','#3572a5','#b07219','#f34b7d','#778899']
-          donut_slices = []
-          legend_items = []
-          circumference = 2 * 3.14159 * 40
-          offset = 0
-          sorted_langs = sorted(lang_pct.items(), key=lambda x: x[1], reverse=True)
-          for i, (lang, pct) in enumerate(sorted_langs[:5]):
-              color = LANG_COLORS.get(lang, DONUT_COLORS[i % len(DONUT_COLORS)])
-              dash = circumference * pct / 100
-              gap  = circumference - dash
-              donut_slices.append(
-                  f'      <circle cx="55" cy="55" r="40" fill="none" stroke="{color}" stroke-width="18" '
-                  f'stroke-dasharray="{dash:.1f} {gap:.1f}" stroke-dashoffset="-{offset:.1f}" opacity="0.9"/>'
-              )
-              legend_items.append(
-                  f'      <circle cx="130" cy="{15 + i*18}" r="4" fill="{color}"/>'
-                  f'<text x="138" y="{19 + i*18}" font-family="Courier New" font-size="8" fill="#aaa">{lang} {pct}%</text>'
-              )
-              offset += dash
-
-          donut_svg   = '\n'.join(donut_slices)
-          legend_svg  = '\n'.join(legend_items)
-
-          # ── Write header_v4.svg ───────────────────────────────────────────────
-          print("Writing header_v4.svg...")
-          with open('header_v4.svg', 'r', encoding='utf-8') as f:
-              h = f.read()
-
-          # Bar widths for streak display (max bar = 98px, cap at 365d)
-          max_days = max(longest_streak, current_streak, 1)
-          act_w = min(98, round(current_streak / max(max_days, 1) * 98))
-          max_w = min(98, round(longest_streak / max(max_days, 1) * 98))
-
-          replacements = {
-              '{{YEARS}}':          str(years),
-              '{{DAYS}}':           str(days),
-              '{{HOURS}}':          str(hours),
-              '{{REPOS}}':          str(public_repos),
-              '{{FOLLOWERS}}':      str(followers),
-              '{{FOLLOWING}}':      str(following),
-              '{{STARS}}':          str(total_stars),
-              '{{FORKS}}':          str(total_forks),
-              '{{PRS_MERGED}}':     str(prs_merged),
-              '{{CURRENT_STREAK}}': str(current_streak),
-              '{{LONGEST_STREAK}}': str(longest_streak),
-              '{{CONTRIB_2026}}':   str(contributions_year),
-              '{{STREAK_ACT_W}}':   str(act_w),
-              '{{STREAK_MAX_W}}':   str(max_w),
-          }
-          for k, v in replacements.items():
-              h = h.replace(k, v)
-
-          with open('header_v4.svg', 'w', encoding='utf-8') as f:
-              f.write(h)
-
-          # ── Write core_v4.svg ─────────────────────────────────────────────────
-          print("Writing core_v4.svg...")
-          with open('core_v4.svg', 'r', encoding='utf-8') as f:
-              c = f.read()
-
-          c = c.replace('{{HEATMAP_RECTS}}', heatmap_block)
-          c = c.replace('{{CONTRIB_2026}}',  str(contributions_year))
-          c = c.replace('{{PINNED_REPOS}}',  repo_cards_svg)
-          c = c.replace('{{DONUT_SLICES}}',  donut_svg)
-          c = c.replace('{{DONUT_LEGEND}}',  legend_svg)
-
-          with open('core_v4.svg', 'w', encoding='utf-8') as f:
-              f.write(c)
-
-          # ── Write footer_v4.svg ───────────────────────────────────────────────
-          print("Writing footer_v4.svg...")
-          with open('footer_v4.svg', 'r', encoding='utf-8') as f:
-              ft = f.read()
-
-          for i, commit_line in enumerate(recent_commits[:5], 1):
-              ft = ft.replace(f'{{{{COMMIT_{i}}}}}', commit_line)
-
-          with open('footer_v4.svg', 'w', encoding='utf-8') as f:
-              f.write(ft)
-
-          print("All SVGs updated.")
-          PYTHON_SCRIPT
-
-      - name: Commit and push changes
-        run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git add header_v4.svg core_v4.svg footer_v4.svg
-          git diff --staged --quiet || git commit -m "chore: update dashboard stats [skip ci]"
-          git push
+          git add -- assets/actividad.svg assets/actividad-movil.svg
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Actualizar calendario del perfil'
+          git pull --rebase origin main
+          git push origin HEAD:main
