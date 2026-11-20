@@ -23,9 +23,11 @@ def build_mobile(name, view_box):
         root.find(".//*[@id='stack-icons']").set("transform", "translate(45 222) scale(1.35)")
         root.find(".//*[@id='title-shade']").attrib.update(x="435", width="322", opacity=".64")
     if name == "atlantis":
-        root.find(".//*[@id='caption']").set("transform", "translate(22 39) scale(.84)")
-        root.find(".//*[@id='observatory']").set("transform", "translate(377 80) scale(.76)")
-        root.find(".//*[@id='ruins']").set("transform", "translate(377 174) scale(.85)")
+        root.find(".//*[@id='caption']").set("transform", "translate(22 32) scale(.83)")
+        root.find(".//*[@id='city']").set("transform", "translate(301 292) scale(.87)")
+        root.find(".//*[@id='sunlight']").set("transform", "translate(-323 0)")
+        root.find(".//*[@id='shade']").attrib.update(x2="0", y2="1")
+        root.find(".//*[@id='caption-shade']").attrib.update(width=width, height="174", opacity=".64")
     if name == "loki-code-guide":
         root.find(".//*[@id='terminal']").set("transform", "translate(71 4) scale(1.62)")
     if name in ("night-city", "contacto"):
@@ -45,5 +47,5 @@ def build_mobile(name, view_box):
 if __name__ == "__main__":
     build_mobile("night-city", "435 0 525 332")
     build_mobile("contacto", "49 6 502 334")
-    build_mobile("atlantis", "0 0 482 210")
+    build_mobile("atlantis", "0 0 482 334")
     build_mobile("loki-code-guide", "0 0 384 186")

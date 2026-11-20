@@ -1,91 +1,164 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="960" height="210" viewBox="0 0 960 210" role="img" aria-labelledby="title desc">
-  <title id="title">Próximo proyecto de Haluz · Atlantis</title>
-  <desc id="desc">Bajo la ciudad, el ojo despierta. Un ojo dorado se abre en la oscuridad sobre las ruinas sumergidas de Atlantis.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="288" viewBox="0 0 960 288" role="img" aria-labelledby="title desc">
+  <title id="title">Atlantis · El santuario sumergido</title>
+  <desc id="desc">Una mantarraya atraviesa la luz sobre las ruinas de la Atlántida. El ojo de oro del templo despierta y un pulso turquesa recorre las gradas hasta el canal. Abrir el recorrido del prototipo Atlantis OS.</desc>
   <defs>
-    <linearGradient id="deep" x2="0" y2="1">
-      <stop stop-color="#163b47"/><stop offset=".51" stop-color="#0c2633"/><stop offset="1" stop-color="#07151f"/>
+    <linearGradient id="sea" x2=".85" y2="1">
+      <stop stop-color="#0a172c"/><stop offset=".32" stop-color="#103445"/><stop offset=".67" stop-color="#176067"/><stop offset="1" stop-color="#091a31"/>
     </linearGradient>
-    <radialGradient id="lens">
-      <stop stop-color="#ffe7a5"/><stop offset=".38" stop-color="#d69a55"/><stop offset=".72" stop-color="#758d79"/><stop offset="1" stop-color="#0c3843"/>
-    </radialGradient>
-    <radialGradient id="light">
-      <stop stop-color="#6ebeac" stop-opacity=".30"/><stop offset="1" stop-color="#3a949d" stop-opacity="0"/>
-    </radialGradient>
-    <pattern id="ruling" width="5" height="5" patternUnits="userSpaceOnUse">
-      <path d="m-1 4 5-5m-1 7 4-4" stroke="#a5d9d1" stroke-width=".6" opacity=".16"/>
-    </pattern>
-    <g id="pier">
-      <path d="m0 0 9-8 7-29 6 26 8 4 3 38H-3z" fill="#193843" stroke="#497179"/>
-      <path d="m9-8 7-29-2 39-5 4z" fill="#46666b"/>
-      <path d="M3 1 14 5l13-6m-23 9 10 4 12-6" stroke="#78918a" fill="none"/>
+    <linearGradient id="shaft" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="227"><stop stop-color="#a0ffdf" stop-opacity=".36"/><stop offset=".64" stop-color="#73ecdc" stop-opacity=".13"/><stop offset="1" stop-color="#73ecdc" stop-opacity="0"/></linearGradient>
+    <radialGradient id="lagoon"><stop stop-color="#68c5ac" stop-opacity=".31"/><stop offset="1" stop-color="#416fa0" stop-opacity="0"/></radialGradient>
+    <linearGradient id="chamber" x2="0" y2="1"><stop stop-color="#103245"/><stop offset=".7" stop-color="#23515c"/><stop offset="1" stop-color="#67aca1"/></linearGradient>
+    <linearGradient id="stone" x2=".91" y2=".35"><stop stop-color="#102736"/><stop offset=".32" stop-color="#436a72"/><stop offset=".5" stop-color="#63848a"/><stop offset=".58" stop-color="#2a4858"/><stop offset="1" stop-color="#152c41"/></linearGradient>
+    <linearGradient id="bronze" x2=".83" y2=".5"><stop stop-color="#857257"/><stop offset=".33" stop-color="#f3d9a0"/><stop offset=".57" stop-color="#b79e6c"/><stop offset="1" stop-color="#5d695f"/></linearGradient>
+    <radialGradient id="lens"><stop stop-color="#ffe7a5"/><stop offset=".38" stop-color="#d69a55"/><stop offset=".72" stop-color="#758d79"/><stop offset="1" stop-color="#0c3843"/></radialGradient>
+    <linearGradient id="shade"><stop stop-color="#08172a"/><stop offset=".65" stop-color="#0a1d30" stop-opacity=".86"/><stop offset="1" stop-color="#0a1d30" stop-opacity="0"/></linearGradient>
+    <linearGradient id="lamp"><stop stop-color="#ffeab2" stop-opacity=".77"/><stop offset="1" stop-color="#c6fff1" stop-opacity="0"/></linearGradient>
+    <pattern id="frieze" width="14" height="7" patternUnits="userSpaceOnUse"><path d="M0 6h11V1H4v3h4m3 2h3" fill="none" stroke="#d3bd86" stroke-width="1.1"/></pattern>
+    <g id="kelp" fill="#102e3b" stroke="#396568" stroke-width=".7">
+      <path d="M0 0Q3-19-4-27q-9-12-4-25 1 13 9 21Q9-17 2 0z"/>
+      <path d="M3 0q-1-14 10-26 7-8 7-17 5 10-3 21Q6-11 6 0zM0 0q-7-14-13-17-8-6-8-17 4 9 10 11Q1-17 2 0z"/>
     </g>
-    <path id="engraving" d="M0-49v6m9-5-1 4m9-3-2 6m10-2-2 4m10 1-4 4" fill="none" stroke="#c8ac7f" stroke-width="1.8"/>
+    <g id="pillar">
+      <path d="M-7-79H7l-1.4 65H-5.6z" fill="url(#stone)" stroke="#6a9090" stroke-width=".8"/>
+      <path d="m-4-77 .7 60m2-60v60m3-60-.4 60" fill="none" stroke="#183e4b" stroke-width="1.3"/>
+      <path d="M-11-88h22l-2 5-3 3H-6l-4-3zM-8-15H8l2 4v3h-20v-3z" fill="url(#stone)" stroke="#819c93"/>
+      <path d="M-11-85h22m-18 69H7" stroke="#e3bd82" stroke-width="1.3"/>
+    </g>
+    <g id="arcade">
+      <path d="M0 0v-49h168V0h-9v-22q-10-24-20 0V0h-8v-22q-10-24-20 0V0h-8v-22q-10-24-20 0V0h-8v-22q-10-24-20 0V0h-8v-22q-10-24-20 0V0h-8v-22Q9-46 5-22V0z" fill="#24505e" stroke="#518181"/>
+      <path d="M-3-49h174v5H-3z" fill="#3e6970"/><path d="M0-49h56m8 0h35m19 0h47" stroke="#89b6aa" stroke-width="1.4"/>
+    </g>
     <path id="eye" d="M-100 0Q-51-46 0-44 56-43 100 0 47 42 0 43-53 44-100 0z"/>
-    <clipPath id="opening">
-      <use class="lid" href="#eye"/>
-    </clipPath>
+    <clipPath id="opening"><use class="lid" href="#eye"/></clipPath>
+    <g id="fish"><path d="M-7 0q5-5 12 0-7 5-12 0l-4 3v-6z" fill="#74b6ad"/></g>
     <style>
       @media (prefers-reduced-motion: no-preference) {
-        .dial { animation:orbit 42s linear infinite }
-        .lid { animation:wake 9s ease-in-out infinite }
-        .gaze { animation:look 9s ease-in-out infinite }
-        .sediment { animation:rise 8s ease-in-out infinite alternate }
+        .shafts { animation:refract 7s ease-in-out infinite alternate }
+        .caustic { animation:surface 11s ease-in-out infinite alternate }
+        .dial { animation:orbit 40s linear infinite }
+        .lid { animation:wake 12s ease-in-out infinite }
+        .gaze { animation:look 12s ease-in-out infinite }
+        .conduit { animation:conduct 12s linear infinite }
+        .canal { animation:echo 12s ease-out infinite }
+        .manta { animation:glide 17s ease-in-out infinite alternate }
+        .wing { animation:undulate 3.8s ease-in-out infinite alternate }
+        .school { animation:school 13s ease-in-out infinite alternate }
+        .bubbles { animation:breathe 6s linear var(--delay,0s) infinite }
+        .diver { animation:drift 8s ease-in-out infinite alternate }
+        .fronds { animation:sway 4.7s ease-in-out infinite alternate }
+        @keyframes refract { to { transform:skewX(-5deg); opacity:.62 } }
+        @keyframes surface { to { transform:translateX(32px) scaleY(.72) } }
         @keyframes orbit { to { transform:rotate(360deg) } }
-        @keyframes wake { 0%,86%,100% { transform:scaleY(1) } 91% { transform:scaleY(.075) } }
-        @keyframes look { 0%,27%,100% { transform:translateX(0) } 49%,74% { transform:translateX(-11px) } }
-        @keyframes rise { to { transform:translate(9px,-10px); opacity:.35 } }
+        @keyframes wake { 0%,22%,31%,100% { transform:scaleY(1) } 26% { transform:scaleY(.07) } }
+        @keyframes look { 0%,24%,75%,100% { transform:translateX(0) } 40%,60% { transform:translateX(-10px) } }
+        @keyframes conduct { 0%,30% { opacity:0; stroke-dashoffset:115 } 34% { opacity:1 } 63% { opacity:1; stroke-dashoffset:-12 } 69%,100% { opacity:0; stroke-dashoffset:-30 } }
+        @keyframes echo { 0%,57% { opacity:0; transform:scale(.62) } 65% { opacity:.76 } 86%,100% { opacity:0; transform:scale(1.16) } }
+        @keyframes glide { from { transform:translate(-34px,6px) rotate(-4deg) } to { transform:translate(46px,-8px) rotate(5deg) } }
+        @keyframes undulate { from { transform:scaleY(.65) } to { transform:scaleY(1.14) } }
+        @keyframes school { to { transform:translate(39px,-12px) } }
+        @keyframes breathe { 0% { opacity:0; transform:translate(0,4px) } 20%,65% { opacity:.64 } 100% { opacity:0; transform:translate(10px,-33px) } }
+        @keyframes drift { to { transform:translate(12px,-5px) rotate(-4deg) } }
+        @keyframes sway { from { transform:skewX(-4deg) } to { transform:skewX(7deg) } }
       }
     </style>
   </defs>
-  <rect width="960" height="210" fill="url(#deep)"/>
-  <g fill="#85e6d1" opacity=".055"><path d="M470 0h65L383 200zM659 0h28L528 167zM822 0h77L721 189z"/></g>
-  <path d="M0 167q67-8 122 12t124 1 111-10 124 1 111-39 119-16 123 21 126-22v95H0z" fill="#112e39"/>
-  <g fill="none" stroke="#46717a" stroke-width=".8" opacity=".66">
-    <path d="M0 163c103-13 141 39 240 16s113-17 187-9 95-5 150-28 116-28 190-10 123 7 193-24"/>
-    <path d="M0 170c103-13 141 39 240 16s113-17 187-9 95-5 150-28 116-28 190-10 123 7 193-24"/>
-    <path d="M0 182c104-12 137 36 242 14s116-18 184-10 104-5 154-25 118-32 189-11 125 4 191-23"/>
+  <rect width="960" height="340" fill="url(#sea)"/>
+  <g id="sunlight"><g class="shafts" fill="url(#shaft)">
+    <path d="M492-6h55l-147 221-80 34zM604-4h16L482 203zM706-5h81L592 282l-66 14zM825-8h29L736 187z"/>
+  </g></g>
+  <g class="caustic" fill="none" stroke="#91e7d6" opacity=".40">
+    <path d="M-50 9q72-12 118 0t110 0 100-2 108 3 100-3 109 2 108-2 100 0 99-1 105 1"/>
+    <path d="M-18 3q31 8 69 4t66 4m148 1q27-12 66-5t66 2m89 4q41-13 69-7t57 5m41-2q25 6 61-2t72 1m26 6q40-13 92-6" stroke-width="2"/>
   </g>
-  <g id="ruins" transform="translate(706 175)">
-    <ellipse cy="-67" rx="206" ry="130" fill="url(#light)"/>
-    <path d="m-157 32 9-18 18-3 4-11 22-2 3-11 38-3 7 8 42-2 12-12 20-1 7 9 28-1 6-10 35-4 11 7 24-4 15 18 51 2 9 38z" fill="#112931" stroke="#375660"/>
-    <use href="#pier" transform="translate(-119 6) scale(.73)"/><use href="#pier" transform="translate(93 -5) scale(.94)"/>
-    <path d="m-73 28 4-22 17-13 7-28 6 17-5 15 15 1 22-10 18 8v7l-26 11-18-2-11 16z" fill="#21434c" stroke="#4a7074"/>
-    <path d="m-53 2 12 1 9 2 27-11m-48 16 12-3m13-1 18-8" fill="none" stroke="#7c958c"/>
-  </g>
-  <g id="observatory" transform="translate(706 99)">
-    <circle r="82" fill="none" stroke="#648a87" stroke-dasharray="96 12 38 7" opacity=".68"/>
-    <circle r="73" fill="url(#ruling)" stroke="#477378"/>
-    <g class="dial" fill="none" stroke="#bca780">
-      <circle r="66" stroke-width="2" stroke-dasharray="2 9.52"/>
-      <path d="m0-79 4 7-4-2-4 2zM75 0l-5 3V-3z" fill="#eac083"/>
+  <g id="city" transform="translate(672 238)">
+    <ellipse cy="-93" rx="330" ry="178" fill="url(#lagoon)"/>
+    <!-- Broken aqueduct and stepped districts on the far shore. -->
+    <g opacity=".72">
+      <path d="M-398-4v-23h18v-23h17v-18h10v-12h6v15h15v23h18v-34h17v-19h12v-19h5v17h10v19h13v32h17v-19h15v-23h11v-9h5v9h10v23h18v29h19v-42h13v-20h7v-14h4v14h9v21h10v22h26V0z" fill="#234c5d" stroke="#467178"/>
+      <use href="#arcade" transform="translate(-305 -13) rotate(-3) scale(.87)"/>
+      <use href="#arcade" transform="translate(99 3) rotate(3) scale(1.1)"/>
+      <path d="m-304-57 29-1 6-6 26-1m62-5 23-1m310 23 48 3 5-5 24 1" stroke="#77baad" fill="none"/>
     </g>
-    <path d="M-124 0h18m212 0h18M0-94v8m0 173v8" stroke="#b5b79b"/>
-    <use href="#eye" fill="#0b2934" stroke="#678e8a" stroke-width="4"/>
-    <g clip-path="url(#opening)">
-      <use href="#eye" fill="#19434d"/>
-      <g class="gaze">
-        <circle r="44" fill="url(#lens)" stroke="#ab9c79" stroke-width="2"/>
-        <g class="dial">
-          <use href="#engraving"/><use href="#engraving" transform="rotate(45)"/><use href="#engraving" transform="rotate(90)"/><use href="#engraving" transform="rotate(135)"/>
-          <use href="#engraving" transform="rotate(180)"/><use href="#engraving" transform="rotate(225)"/><use href="#engraving" transform="rotate(270)"/><use href="#engraving" transform="rotate(315)"/>
-        </g>
-        <circle r="29" fill="none" stroke="#ffe2a2"/><circle r="20" fill="#0b232d" stroke="#876947" stroke-width="3"/>
-        <circle cx="-9" cy="-10" r="4" fill="#fff1ce"/><circle cx="8" cy="9" r="1.5" fill="#85c8bc"/>
+    <!-- Sanctuary built around a bronze lens; the split cornice exposes the chamber. -->
+    <path d="M-111-8v-13h9v-72l-9-4v-8L-7-175l9 3 7-3 104 64v12l-8 6v72l12 4v9z" fill="#122f3b" stroke="#5d8789" stroke-width="2"/>
+    <path d="m-91-92 90-59 90 57-12 5-77-45-80 47z" fill="#376269"/>
+    <path d="m-111-105 102-71 10 3-9 7-95 66zM8-178l107 67-2 8L5-168z" fill="url(#bronze)" stroke="#bdc29e"/>
+    <path d="m-80-106 52-36 9 1m44-2 48 32" fill="none" stroke="#68d8c1" stroke-width="2"/>
+    <path d="M-109-104h77l10 7 19-4 9 4 12-8h91v12H-109z" fill="url(#stone)" stroke="#8a9f95"/>
+    <path d="M-103-101h74v6h-74zm128 0h75v6H25z" fill="url(#frieze)"/>
+    <path d="M-82-90h164v69H-82z" fill="#0c2735"/>
+    <path d="M-27-21v-47l26-20 27 20v47z" fill="#38616b" stroke="#739892"/>
+    <path d="M-20-21v-43l19-15 20 15v43z" fill="url(#chamber)" stroke="#52808a"/>
+    <path d="m-13-26 1-33 11-9 12 9v32" fill="none" stroke="#62bdaf" stroke-width="2"/>
+    <path d="m-9-24 1-29 7-6 8 6v29z" fill="#102b3c"/><path d="M-1-58v33" stroke="#32535d"/>
+    <g transform="translate(0 -6)">
+      <use href="#pillar" x="-92"/><use href="#pillar" x="-68"/><use href="#pillar" x="-43"/>
+      <use href="#pillar" x="43"/><use href="#pillar" x="68"/><use href="#pillar" x="92"/>
+    </g>
+    <path d="M-111-17h222v5h9v5h10v6h11v8h-282v-8h11v-6h10v-5h9z" fill="url(#stone)" stroke="#729695"/>
+    <path d="M-115-11h232m-243 6h253m-263 6h272" stroke="#1d4854" stroke-width="2"/>
+    <path d="m-21-16-26 23h94L21-16" fill="#254b54" stroke="#bea879"/>
+    <path d="M-23-12h46m-51 5h56m-63 5h70m-77 6h84" stroke="#8aaba3"/>
+    <g fill="none" stroke-width="2">
+      <defs><path id="vein" d="m-12-116-16 13h-22l-4 5h-28v10l4 5v54l-4 5v9h40l-24 21h-46" pathLength="100"/></defs>
+      <g id="powered-stone"><use href="#vein" stroke="#488982"/><use class="conduit" href="#vein" stroke="#99ffe2" stroke-dasharray="20 100" opacity="0"/></g>
+      <use href="#powered-stone" transform="scale(-1 1)"/>
+    </g>
+    <g transform="translate(0 -131) scale(.35)">
+      <circle r="64" fill="#163842" stroke="url(#bronze)" stroke-width="7"/>
+      <g class="dial" fill="none" stroke="#e2c491"><circle r="56" stroke-width="4" stroke-dasharray="2 8"/><path d="m0-68 5 8-5-2-5 2z" fill="#f8deb4"/></g>
+      <use href="#eye" fill="#102a37" stroke="#b59e77" stroke-width="5"/>
+      <g clip-path="url(#opening)">
+        <use href="#eye" fill="#23515b"/>
+        <g class="gaze"><circle r="44" fill="url(#lens)" stroke="#ab9c79" stroke-width="3"/><circle r="29" fill="none" stroke="#ffe2a2" stroke-width="2"/><circle r="19" fill="#092432"/><circle cx="-9" cy="-10" r="5" fill="#fff1ce"/></g>
+      </g>
+      <use class="lid" href="#eye" fill="none" stroke="#efd09a" stroke-width="3.5"/>
+    </g>
+    <!-- Circular canal and a causeway that leads through the water to the temple. -->
+    <g transform="translate(0 22)" fill="none">
+      <ellipse rx="193" ry="18" stroke="#385963" stroke-width="7"/>
+      <ellipse rx="194" ry="18" stroke="#77a8a1" stroke-width="1.3" stroke-dasharray="250 8 44 31"/>
+      <ellipse rx="241" ry="26" stroke="#285662" stroke-width="4"/>
+      <ellipse class="canal" rx="203" ry="19" stroke="#96ffe2" stroke-width="1.8" opacity="0"/>
+    </g>
+    <path d="m-26 8-67 42h187L27 8z" fill="#193845" stroke="#678f91"/>
+    <path d="m-31 12 59 1m-72 6 85 1m-106 9 124 2m-149 15 166 1" fill="none" stroke="#48636b" stroke-width="2"/>
+    <g transform="translate(-168 -4) rotate(-10) scale(1.12)"><use href="#pillar"/><path d="m-6-57 6 9-3 6 8 6" fill="none" stroke="#172e38" stroke-width="2"/></g>
+    <g transform="translate(172 7) rotate(14)"><use href="#pillar"/><path d="m-7-73 5 5-4 8 10 8" fill="none" stroke="#172e38" stroke-width="2"/></g>
+    <g transform="translate(228 46)">
+      <path d="m-44 5 12-10 16 1 10-8 23 1 13-7 29 5 17-5 19 8v22H-44z" fill="#102b37" stroke="#36565b"/>
+      <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m-6-6 2-11-7-8 1-12m6 20 7-9 2-12m-3 16 13-7 6-13m-7 16 9-2 7-9m-40 15-9-4-4-8" stroke="#986e69" stroke-width="3"/>
+        <path d="m-9-30-4-6m18 3 5-5m6 4 1-6m4 6 4-3m-47 9-5-2" stroke="#dbab86" stroke-width="1.5"/>
       </g>
     </g>
-    <use class="lid" href="#eye" fill="none" stroke="#eacb92" stroke-width="2.2"/>
-    <path d="M-100-7Q-49-53 0-51q55 0 99 44M-78 21q37 29 78 29t77-28" fill="none" stroke="#87a79e"/>
+    <g transform="translate(-235 41)"><g class="fronds"><use href="#kelp"/><use href="#kelp" transform="translate(-14 1) scale(-.62 .66)"/></g></g>
+    <g transform="translate(245 51) scale(.66)"><use class="fronds" href="#kelp"/></g>
+    <g transform="translate(-173 -147)">
+      <g class="manta">
+        <path class="wing" d="M-4 0Q-16-6-29-27q24 10 39 16 12-7 24-5l-6 8Q53-2 64 11 36 3 16 10 3 13-4 4z" fill="#174755" stroke="#70afa9" stroke-width="1.2"/>
+        <path d="M28-8q-5 10-18 14-10 0-22-6-18-8-40-6 23-4 45 3L7 0q8-3 16-12l4-1z" fill="#245563"/>
+        <circle cx="23" cy="-7" r="1.2" fill="#c1dfc9"/>
+      </g>
+    </g>
+    <g transform="translate(143 -120)"><g class="school"><use href="#fish"/><use href="#fish" x="18" y="-6"/><use href="#fish" x="17" y="7"/><use href="#fish" x="34" y="1"/><use href="#fish" x="4" y="14"/></g></g>
+    <g transform="translate(-126 -47)">
+      <g class="diver">
+        <path d="m10-2 51-12 7 21-57-6z" fill="url(#lamp)"/>
+        <path d="m-4 0-8 4-10-2m16 0-8 8-9 1" fill="none" stroke="#122937" stroke-width="3.2"/>
+        <path d="m-24 1 6-1 1 3-8 1zm-1 9 8-3 1 2-7 5z" fill="#749f99"/>
+        <path d="m-8-1 10-4 3 5-11 4z" fill="#1b3440" stroke="#91b5a8"/>
+        <circle cx="5" cy="-4" r="3.2" fill="#20333c" stroke="#b9ac82"/><path d="m7-5 2 1m-7 5 8-1" stroke="#f3cd86" stroke-width="1.5"/>
+      </g>
+      <g fill="none" stroke="#a5ddd2" stroke-width=".8"><g class="bubbles"><circle cx="5" cy="-11" r="1.7"/><circle cx="7" cy="-18" r="1.1"/></g><g class="bubbles" style="--delay:-3s"><circle cx="6" cy="-12" r="1.3"/></g></g>
+    </g>
   </g>
-  <g class="sediment" fill="#d1d6ac" opacity=".67">
-    <circle cx="407" cy="58" r="1"/><circle cx="488" cy="113" r="1.5"/><circle cx="575" cy="46" r="1.2"/><circle cx="615" cy="163" r="1"/>
-    <circle cx="807" cy="64" r="1.5"/><circle cx="853" cy="119" r="1"/><circle cx="883" cy="43" r="1.2"/>
-  </g>
-  <g id="caption" transform="translate(48 42)">
+  <rect id="caption-shade" width="476" height="288" fill="url(#shade)"/>
+  <g id="caption" transform="translate(46 76)">
     <path d="M0 0h21" stroke="#e7bd80" stroke-width="2.5"/>
     <text x="30" y="4" fill="#bbe1d6" font-family="Consolas,monospace" font-size="13" letter-spacing="2">PRÓXIMO PROYECTO</text>
     <text x="-3" y="80" fill="#f4e7c9" font-family="Georgia,serif" font-size="72" letter-spacing="4">Atlantis</text>
     <g transform="translate(291 70) scale(.8)"><path d="M0 0l22-22m-16 1 16-1v16" fill="none" stroke="#eacb92" stroke-width="3.7"/></g>
     <text y="119" fill="#b6d8d0" font-family="Segoe UI,Arial,sans-serif" font-size="21">Bajo la ciudad, el ojo despierta.</text>
   </g>
-  <path d="M0 1h960M0 209h960" fill="none" stroke="#527578"/>
 </svg>
