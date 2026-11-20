@@ -97,11 +97,12 @@
         @keyframes lift { from { transform:translateY(0) } to { transform:translateY(-49px) } }
         .shop-sign { animation: marquee 4s linear infinite }
         @keyframes marquee { to { stroke-dashoffset:-32 } }
-        .train { animation: transit 9s linear infinite }
+        .train { animation: transit 12.8s linear -7.1s infinite }
         @keyframes transit {
-          0%, 12% { transform:translate(175px,366px) rotate(-13deg) scale(1.4) }
-          70% { transform:translate(702px,237px) rotate(-8deg) scale(.64) }
-          100% { transform:translate(1030px,193px) rotate(-7deg) scale(.37) }
+          0% { transform:translate(140px,372px) rotate(-13.3deg) scale(1.28) }
+          58% { transform:translate(704px,238px) rotate(-13.3deg) scale(.95) }
+          72% { transform:translate(821px,222px) rotate(-7.4deg) scale(.77) }
+          100% { transform:translate(1130px,181px) rotate(-7.4deg) scale(.53) }
         }
         .rain { animation: rainfall 1.8s linear infinite }
         @keyframes rainfall { to { transform:translate(-16px,52px) } }
@@ -178,10 +179,23 @@
   <path d="m285 332 417-97 258-32v9l-255 34-345 86z" fill="#19343f" stroke="#5da8ad"/>
   <path d="m327 327 377-89 256-33" fill="none" stroke="#8ee6e4" stroke-width="2"/>
   <path d="m447 307 20-5v30h-15zm113-28 12-3v39l-11 4zm80-19 8-2v26l-8 2z" fill="#0b1e28" stroke="#36626c"/>
-  <g class="train" transform="translate(622 256) rotate(-13) scale(.78)">
-    <path d="M-75-3v-8l6-4h56l12 8v4z" fill="#101b2e" stroke="#88e7df" stroke-width="1.5"/>
-    <path d="M-65-10h9m4 0h9m4 0h9m4 0h9" stroke="#ffca80" stroke-width="3"/>
-    <path d="M-81-5h8m67-2h8" stroke="#ff687a" stroke-width="2"/>
+  <!-- High-speed set: swept observation nose, articulated centre coach and tapered tail. -->
+  <g class="train" transform="translate(685 242) rotate(-13.3) scale(.98)">
+    <path d="m-197-5 8-7h174l20 7-12 4h-185z" fill="#07121e"/>
+    <g fill="#102431" stroke="#70939c" stroke-width="1.1">
+      <path d="M-138-17h8v14h-8zm72 0h8v14h-8z"/>
+      <path d="M-135-16v12m3-12v12m69-12v12m3-12v12"/>
+    </g>
+    <path d="m-199-9 17-11 24-5 19 2 2 5v12h-46zM-129-21l6-3h54l4 4v15h-65zM-57-20l4-5h28q19 0 29 9l23 10-5 3-79-2z" fill="#c2e3df" stroke="#293d4d" stroke-width="1.2"/>
+    <path d="m-191-12 19-7 32-1v8zm63-7h61v8h-61zm72-1h32q14 0 25 7l8 4-64-3z" fill="#194455"/>
+    <path d="m-39-21 14-1q14 0 26 8l-24-1z" fill="#78cee1"/>
+    <path d="m-173-16 9-2m4 0h12m22 2h11m3 0h11m13 0h13m20-1h9" stroke="#ffdc93" stroke-width="2.8"/>
+    <path d="M-104-23v17m7-17v17m54-15 9 10" fill="none" stroke="#597785" stroke-width="1.3"/>
+    <path d="m-191-8 52-2v4l-41 2zm62-2h63v5h-63zm72 0 58 3 18 3-59-1-17-2z" fill="#963357"/>
+    <path d="m-182-5 41-2m16 0h55m17 0 27 1" stroke="#ff84b3" stroke-width="1.6"/>
+    <path d="m7-9 19 3 32 5-36-2z" fill="url(#headlight)"/>
+    <path d="m8-9 15 4" stroke="#effff2" stroke-width="2"/>
+    <path d="m-198-8 6-3" stroke="#ff6186" stroke-width="2.8"/>
   </g>
   <g transform="translate(738 25)">
     <path d="m-17 213 4-179 13-10 189-22 15 13v170l-19 14-21 72-43 11 9-74-68 12-5 28-38 13 5-37z" fill="#0c1e29" stroke="#4c8994" stroke-width="2"/>

@@ -37,7 +37,33 @@
       <path d="m0 5 71-7 21 4-70 8z" fill="#537086"/><path d="m0 5 22 5 70-8v5l-70 8L0 10z" fill="#142638"/>
       <path d="m2 6 20 4 68-7" fill="none" stroke="#8be9e7" stroke-width="1.6"/>
     </g>
-    <g id="train"><path d="m-48-3 2-9 7-5h58l19 9 5 5z" fill="#193d50" stroke="#83d6df"/><path d="M-34-11h10m4 0h10m4 0H4m5 0h11" stroke="#ffe6ae" stroke-width="3"/><path d="m-45-5 60 1" stroke="#ff83be" stroke-width="2"/></g>
+    <linearGradient id="metro-shell" x2="0" y2="1">
+      <stop stop-color="#ffce8d"/><stop offset=".24" stop-color="#b87966"/><stop offset=".6" stop-color="#7b4661"/><stop offset="1" stop-color="#382e47"/>
+    </linearGradient>
+    <linearGradient id="metro-beam"><stop stop-color="#ffe0a1" stop-opacity="0"/><stop offset="1" stop-color="#fff2c5" stop-opacity=".74"/></linearGradient>
+    <g id="metro-door" stroke="#d49a88" stroke-width=".8">
+      <path d="M0 0h13v19H0z" fill="#453d51"/><path d="M2 3h3v6H2zm6 0h3v6H8z" fill="#b3eeea" stroke="none"/><path d="M6.5 1v17"/>
+    </g>
+    <g id="metro-bogie">
+      <path d="M-9-5H9l-2 4H-7z" fill="#101b2b"/>
+      <circle cx="-5" cy="-2" r="2.6" fill="#475168" stroke="#101b2b"/><circle cx="5" cy="-2" r="2.6" fill="#475168" stroke="#101b2b"/>
+    </g>
+    <!-- Double-deck harbour metro. Its cab faces left, towards the foreground pier. -->
+    <g id="train">
+      <use href="#metro-bogie" x="-62"/><use href="#metro-bogie" x="-5"/><use href="#metro-bogie" x="25"/><use href="#metro-bogie" x="84"/>
+      <path d="M5-24h12v18H5z" fill="#22283a" stroke="#805e72"/><path d="M8-23v16m3-16v16m3-16v16" stroke="#b8979c"/>
+      <path d="m-84-6 1-12 11-14 13-4h49l8 4h6v27h-84zM17-31l8-3h50l17 10 5 13-2 6H17z" fill="url(#metro-shell)" stroke="#26273a" stroke-width="1.3"/>
+      <path d="m-80-18 10-12 14-2-6 14z" fill="#a5efef"/><path d="m-76-19 8-10 7-1-4 11z" fill="#395e78"/>
+      <path d="M-52-30h41l5 4v4h-46zm73 2 6-3h44l10 7H21z" fill="#21374b"/>
+      <path d="M-49-26h8m3 0h9m4 0h10m38 0h9m4 0h11m4 0h13" stroke="#ffd4a0" stroke-width="2.6"/>
+      <path d="M-79-15h17m7-2h34v7h-34zm79 0h30v7H24zm52 0h13l3 6H76z" fill="#234353" stroke="#8ecbc8" stroke-width="1"/>
+      <path d="M-44-17v7m11-7v7m68-7v7m10-7v7" stroke="#d5ac97" stroke-width="1.5"/>
+      <use href="#metro-door" x="-17" y="-24"/><use href="#metro-door" x="58" y="-24"/>
+      <path d="M-64-5h42m47 0h25m24 0h16" stroke="#67f7e4" stroke-width="2.2"/>
+      <path d="M-49-36v-3h21l4 3m55 2v-4h24v4" fill="#42515b" stroke="#caada2"/>
+      <path d="m-120 0 36-12v5z" fill="url(#metro-beam)"/><path d="m-83-13 5-1v3l-5 1z" fill="#fff1b8"/>
+      <path d="M91-14h4" stroke="#ff738e" stroke-width="2.8"/>
+    </g>
     <style>
       @media (prefers-reduced-motion: no-preference) {
         .zero-hair { animation: ponytail 2.4s steps(2,end) infinite alternate; transform-origin:12px 13px }
@@ -58,8 +84,8 @@
         @keyframes light { from { opacity:.33 } to { opacity:.98 } }
         .shuttle { animation: fly 17s linear -5s infinite }
         @keyframes fly { 0% { transform:translate(-45px,91px) scale(.6) } 85%,100% { transform:translate(1020px,49px) scale(.36) } }
-        .metro { animation: ride 12s linear -7s infinite }
-        @keyframes ride { from { transform:translate(1040px,287px) rotate(-2deg) } to { transform:translate(-100px,332px) rotate(-2deg) } }
+        .metro { animation: ride 15s linear -5.7s infinite }
+        @keyframes ride { from { transform:translate(1095px,283px) rotate(-2.3deg) } to { transform:translate(-112px,331px) rotate(-2.3deg) } }
         .ripples { animation: tide 4s ease-in-out infinite alternate }
         @keyframes tide { to { transform:translateX(8px) scaleX(.985) } }
         .arrow { animation: point 3s ease-in-out infinite alternate }
@@ -218,9 +244,14 @@
       <path d="M20 323h26m149-14h52m103 22h47m141-23h42m2 8h34m150-12h39" stroke="#e792b8" opacity=".66"/>
     </g>
   </g>
+  <g clip-path="url(#harbour)" opacity=".33">
+    <g class="metro" transform="translate(637 302) rotate(-2.3)">
+      <use href="#train" transform="translate(0 9) scale(1 -.3)"/>
+    </g>
+  </g>
   <!-- Rail and narrow foreground pylons cut across the reflections. -->
   <path d="m-5 327 974-39v7L-5 337z" fill="#0e1d30" stroke="#6d8e9d"/>
   <path d="m4 326 950-38" stroke="#a3d9e7" fill="none"/>
   <path d="m130 330 10-1v11h-10zm343-14 10-1v25h-10zm353-15 8-1v40h-8z" fill="#0c1c2b"/>
-  <g class="metro" transform="translate(637 304) rotate(-2)"><use href="#train"/></g>
+  <g class="metro" transform="translate(637 302) rotate(-2.3)"><use href="#train"/></g>
 </svg>
