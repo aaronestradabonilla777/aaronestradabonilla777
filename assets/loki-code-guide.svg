@@ -8,6 +8,8 @@
         .error { animation-name:mistake }
         .solution { animation-name:solved }
         .clue { animation-name:underline }
+        .projection { animation:projection 6.6s ease-in-out -1s infinite }
+        @keyframes projection { 0%,31%,100% { opacity:.50 } 42% { opacity:.95 } 62%,97% { opacity:.65 } }
         .leaf { animation-name:turn }
         .ink { animation-name:turn-ink }
         @keyframes mistake { 0%,31%,100% { opacity:1 } 36%,99% { opacity:0 } }
@@ -35,6 +37,8 @@
     <pattern id="dots" width="9" height="9" patternUnits="userSpaceOnUse">
       <circle cx="1" cy="1" r=".8" fill="#a5dcdf" opacity=".32"/>
     </pattern>
+    <linearGradient id="page-edge" x2=".7" y2="1"><stop stop-color="#a7c8cb"/><stop offset=".45" stop-color="#4d7889"/><stop offset=".55" stop-color="#304f63"/><stop offset="1" stop-color="#88bbc1"/></linearGradient>
+    <linearGradient id="hologram" x2="0" y2="1"><stop stop-color="#83fce6" stop-opacity=".06"/><stop offset=".75" stop-color="#8cfbe6" stop-opacity=".28"/><stop offset="1" stop-color="#ccffed" stop-opacity=".7"/></linearGradient>
   </defs>
   <rect x=".5" y=".5" width="383" height="185" rx="5" fill="#08161e" stroke="#315561"/>
   <path d="M1 6q0-5 5-5h372q5 0 5 5v125H1z" fill="url(#glow)"/>
@@ -43,6 +47,12 @@
   <g stroke-linejoin="round">
     <path d="m58 86 90-31 45 19 58-23 75 30-132 46z" fill="#141019" stroke="#63939e"/>
     <path d="m67 80 78-33 48 19 60-24 63 32-123 47z" fill="#173b49" stroke="#79b2bf"/>
+    <path d="m77 73 65 22q28-1 51 15 21-22 48-27l63-34v12l-62 31q-25 4-49 27-24-14-52-15L77 82z" fill="url(#page-edge)" stroke="#426475"/>
+    <g stroke="#d7e7d9" stroke-width=".9" fill="none" opacity=".76">
+      <path d="m80 77 61 21q28 0 48 15m10-2q19-19 41-24l60-31"/>
+      <path d="m84 81 56 20q27 0 47 14m16-3q17-16 38-22l58-29"/>
+    </g>
+    <path d="m187 111 6 2 6-5v10l-6 5-6-3z" fill="#264354" stroke="#83b6b5"/>
     <path d="m77 73 67-34q25 0 49 18v55q-28-21-52-15z" fill="#d4edf0" stroke="#eefafa"/>
     <path d="m193 57 55-27q26-2 56 19l-63 34q-26-3-48 29z" fill="#60909d" stroke="#cbf8fa"/>
     <g fill="none" stroke="#3c6471" stroke-width="2">
@@ -51,7 +61,11 @@
     </g>
     <path class="leaf" d="M193 57 Q222 30 248 30 Q276 30 304 49 L241 83 Q213 80 193 112 Z" fill="#83b3bf" stroke="#e0fff8" opacity="0"/>
     <path class="ink" d="M205 65 Q231 39 251 40 M207 72 Q227 52 244 49" fill="none" stroke="#426775" stroke-width="1.6" opacity="0"/>
-    <path d="M193 43v27" fill="none" stroke="#caffdf" stroke-dasharray="3 3"/>
+    <g class="projection" opacity=".60">
+      <path d="m139 39 113-6-58 46z" fill="url(#hologram)"/>
+      <path d="m149 40 44 38 48-44m-49 6 1 38" stroke="#b4f9ea" stroke-width=".85" fill="none" stroke-dasharray="5 4"/>
+    </g>
+    <path d="m187 79 6-3 7-4" stroke="#a1f7e4" stroke-width="2.2" fill="none"/>
     <path class="clue" d="m110 80 31-14q16 0 30 7" fill="none" stroke="#efaa68" stroke-width="3" pathLength="100" stroke-dasharray="100" opacity="0"/>
     <g id="terminal" transform="translate(118 9) skewY(-3)" font-family="Consolas,monospace" font-size="13" font-weight="bold">
       <path d="M0 5 5 0h144v32H0z" fill="#102735" stroke="#8fd9d4" stroke-width="1.5"/>

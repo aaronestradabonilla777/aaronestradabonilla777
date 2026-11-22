@@ -20,6 +20,9 @@ def build_mobile(name, view_box):
         root.find(".//*[@id='projection-theatre']").set("transform", "translate(-47 107) scale(.62)")
     if name == "night-city":
         root.find(".//*[@id='identity']").set("transform", "translate(433 34) scale(.51)")
+        root.find(".//*[@id='wordmark']").set("transform", "translate(54 100) scale(.60) skewX(-12)")
+        root.find(".//*[@id='tower-district']").attrib.update(x="435", width=width, viewBox="219 0 525 324")
+        root.find(".//*[@id='night-market']").attrib.update(x="435", width=width, viewBox="170 0 525 274")
         root.find(".//*[@id='stack-icons']").set("transform", "translate(45 222) scale(1.35)")
         root.find(".//*[@id='title-shade']").attrib.update(x="435", width="322", opacity=".64")
     if name == "atlantis":
@@ -45,7 +48,7 @@ def build_mobile(name, view_box):
 
 
 if __name__ == "__main__":
-    build_mobile("night-city", "435 0 525 332")
+    build_mobile("night-city", "435 0 525 996")
     build_mobile("contacto", "49 6 502 334")
     build_mobile("atlantis", "0 0 482 334")
     build_mobile("loki-code-guide", "0 0 384 186")

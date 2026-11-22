@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 332" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="996" viewBox="0 0 960 996" role="img" aria-labelledby="title desc">
   <title id="title">HALUZ · Night City · Rust y React</title>
-  <desc id="desc">Una moto adelanta a un camión en el cruce. El expreso HALUZ pasa bajo el anuncio Samurai, entre el jardín anular y las agujas de Night City.</desc>
+  <desc id="desc">HALUZ en tres escenas de Night City. Una mensajera observa una avería bajo el cartel Samurai. Un aerotaxi pasa entre torres habitadas. Más abajo, un puesto de ramen ilumina la calle lluviosa bajo un pez holográfico.</desc>
   <defs>
     <linearGradient id="sky" x1="0" y1="1" x2="1" y2="0">
       <stop stop-color="#080c1c"/><stop offset=".48" stop-color="#252242"/><stop offset=".84" stop-color="#79435c"/><stop offset="1" stop-color="#162239"/>
@@ -21,6 +21,26 @@
       <circle r="6.6" fill="#070d19" stroke="#8a9aaf" stroke-width="1.3"/>
       <circle r="3.1" fill="#526375"/><circle r="1.2" fill="#d6e7e7"/>
     </g>
+    <radialGradient id="sky-bloom"><stop stop-color="#ffc089" stop-opacity=".59"/><stop offset=".52" stop-color="#d77889" stop-opacity=".27"/><stop offset="1" stop-color="#9e6baf" stop-opacity="0"/></radialGradient>
+    <linearGradient id="near-deck" x2=".72" y2="1"><stop stop-color="#254352"/><stop offset=".35" stop-color="#1c2839"/><stop offset=".8" stop-color="#1b182a"/><stop offset="1" stop-color="#102535"/></linearGradient>
+    <linearGradient id="coat-metal" x2=".94" y2=".28"><stop stop-color="#354456"/><stop offset=".23" stop-color="#284751"/><stop offset=".55" stop-color="#172e39"/><stop offset=".79" stop-color="#3c3548"/><stop offset="1" stop-color="#ac5965"/></linearGradient>
+    <linearGradient id="chrome-arm" x2=".84" y2=".25"><stop stop-color="#446677"/><stop offset=".25" stop-color="#99ccc8"/><stop offset=".44" stop-color="#344554"/><stop offset=".8" stop-color="#795965"/><stop offset="1" stop-color="#e59a91"/></linearGradient>
+    <radialGradient id="steam-density"><stop stop-color="#adbbc6" stop-opacity=".5"/><stop offset=".66" stop-color="#86a5ab" stop-opacity=".22"/><stop offset="1" stop-color="#799baa" stop-opacity="0"/></radialGradient>
+    <linearGradient id="shard" x2=".8" y2="1"><stop stop-color="#8be0da" stop-opacity=".56"/><stop offset=".44" stop-color="#2f5267" stop-opacity=".78"/><stop offset="1" stop-color="#bc8794" stop-opacity=".45"/></linearGradient>
+    <radialGradient id="arc-bloom"><stop stop-color="#fff3bd" stop-opacity=".88"/><stop offset=".16" stop-color="#ffc17d" stop-opacity=".58"/><stop offset="1" stop-color="#e57564" stop-opacity="0"/></radialGradient>
+    <pattern id="deck-scuffs" width="87" height="17" patternUnits="userSpaceOnUse" patternTransform="skewX(-32)">
+      <path d="M3 3h19m28 6h29M31 14h9" stroke="#b3a6ac" opacity=".20" stroke-width=".8"/>
+    </pattern>
+    <clipPath id="road-pools">
+      <path d="m-15 317 88-3 120 2-18 2-79 1-23 2h-88zM214 322l104-3 90 2-24 2-118 2zM393 310l64-3 95 1 36 3-77 2-53-1zM528 325l108-4 95 2-35 3-114 1zM671 308l70-4 121-1 108 2v7l-111 2-36-2-72 1zM726 320l61-5 101 1 69-2 13 3v8l-91 2-35-2-54 3-66-2z"/>
+    </clipPath>
+    <linearGradient id="sign-on-water"><stop stop-color="#79273d" stop-opacity="0"/><stop offset=".29" stop-color="#d84964"/><stop offset=".55" stop-color="#ff7689"/><stop offset=".84" stop-color="#c2345b"/><stop offset="1" stop-color="#7a2949" stop-opacity="0"/></linearGradient>
+    <mask id="tire-wake" maskUnits="userSpaceOnUse" x="660" y="302" width="300" height="30">
+      <rect x="660" y="302" width="300" height="30" fill="white"/>
+      <g class="rider" transform="translate(678)">
+        <path d="m-19 308 46 2 32 3-49-2zm23 5 41 1 34 4-54-3zm19 6 45 1 26 4-48-2z" fill="black"/>
+      </g>
+    </mask>
     <!-- Side elevations share a road baseline; the bodywork defines each vehicle. -->
     <g id="razor">
       <path d="m59-10 51 6v3l-51-6z" fill="url(#headlight)"/>
@@ -128,6 +148,19 @@
           100% { transform:translate(1130px,181px) rotate(-7.4deg) scale(.53) }
         }
         .rain { animation: rainfall 1.8s linear infinite }
+        .steam-bank { animation: vent-drift 6.8s ease-out var(--offset,0s) infinite }
+        @keyframes vent-drift { 0% { transform:translate(0,5px) scale(.64); opacity:0 } 21% { opacity:.71 } 77% { opacity:.3 } 100% { transform:translate(34px,-53px) scale(1.36); opacity:0 } }
+        .arc, .falling-sparks, .scanner-arm { animation-duration:11s; animation-delay:-2.2s; animation-iteration-count:infinite }
+        .arc { animation-name:arc-light }
+        @keyframes arc-light { 0%,23%,39%,100% { opacity:0 } 28% { opacity:.96 } 33% { opacity:.38 } }
+        .falling-sparks { animation-name:arc-debris; animation-timing-function:ease-in }
+        @keyframes arc-debris { 0%,26% { opacity:0; transform:translate(0,0) } 28% { opacity:1 } 36% { opacity:.72 } 43%,100% { opacity:0; transform:translate(-9px,29px) } }
+        .scanner-arm { animation-name:lift-scanner; transform-origin:0 0 }
+        @keyframes lift-scanner { 0%,25%,73%,100% { transform:rotate(0deg) } 38%,58% { transform:rotate(29deg) } }
+        .loose-pane { animation: hinge 7s ease-in-out infinite alternate }
+        @keyframes hinge { from { transform:rotate(-3deg) } to { transform:rotate(5deg) } }
+        .coat-tail { animation:billow 3.6s ease-in-out infinite alternate; transform-origin:0 -41px }
+        @keyframes billow { from { transform:skewX(-2deg) } to { transform:skewX(5deg) } }
         @keyframes rainfall { to { transform:translate(-16px,52px) } }
         .neon { animation: nightlights 5s ease-in-out infinite alternate }
         .crossing { animation: nightlights 3.7s ease-in-out infinite alternate }
@@ -140,6 +173,7 @@
     </pattern>
   </defs>
   <rect width="960" height="332" fill="url(#sky)"/>
+  <ellipse cx="643" cy="90" rx="168" ry="112" fill="url(#sky-bloom)"/>
   <circle cx="651" cy="97" r="73" fill="none" stroke="#ffc977" opacity=".28"/>
   <circle cx="651" cy="97" r="67" fill="#ffca70" opacity=".85"/>
   <g fill="none" stroke="#85435c" opacity=".65">
@@ -245,6 +279,19 @@
   <rect id="title-shade" width="575" height="332" fill="url(#shade)"/>
   <!-- Two street lanes sit below the elevated railway. Each reflection follows its car. -->
   <path d="M0 302h960v30H0z" fill="url(#asphalt)"/>
+  <g clip-path="url(#road-pools)">
+    <rect y="302" width="960" height="30" fill="#173043"/>
+    <g mask="url(#tire-wake)" class="signal" fill="url(#sign-on-water)">
+      <path d="m711 304 87-2 156 1-12 5-133 1-67 3zM726 314l68-3 157-1-21 6-127 1-38 2zM736 322l91-5 117 2-35 7-145 3z"/>
+    </g>
+    <g class="coupe" transform="translate(577)">
+      <path d="m61 325 161-8 24 2-153 10H61z" fill="url(#headlight)"/>
+    </g>
+    <g class="rider" transform="translate(678)">
+      <path d="m14 309 66 2 51 4-95-2z" transform="scale(-1 1)" fill="url(#headlight)"/>
+      <path d="m12 310 19 1 16 2-28-1zm14 5 26 1 15 2-26-1z" fill="#ff889f" opacity=".66"/>
+    </g>
+  </g>
   <path d="M0 302h960" stroke="#669098"/>
   <path d="M0 314h960" stroke="#bc9b78" stroke-width="1.2" stroke-dasharray="30 52" opacity=".7"/>
   <g fill="none" stroke-linecap="round" opacity=".5">
@@ -273,13 +320,66 @@
     <path class="stop" d="m-6-62 10-1v6l-10 1z" fill="#ff7586"/><path d="m-6-52 10-1v4l-10 1z" fill="#82f5c9" class="walk" opacity=".12"/>
     <path d="m-3-15 5-1m-5 5 5-1" stroke="#d99d66" stroke-width="2"/>
   </g>
+  <!-- Pedestrian deck in front of the avenue. -->
+  <path d="M0 332h960v72H0z" fill="url(#near-deck)"/>
+  <path d="M0 332h960v72H0z" fill="url(#deck-scuffs)"/>
+  <g fill="none" stroke="#41606c"><path d="m0 346 960-11M0 382l960-35M-45 404l627-70M366 404l311-70M736 404l26-70"/></g>
+  <path d="m447 351 108-4-9 3-97 3zm202 13 92-6-15 4-79 4zm101 19 87-10-18 6-62 8z" fill="#a35d73" opacity=".46"/>
+  <g transform="translate(582 355)">
+    <path d="m-102-13 7-16 85-17 41 7-3 5-34-3-78 16z" fill="url(#chrome-arm)" stroke="#6f7d89"/>
+    <path d="m-86-19 71-15-5 11-18-1-6 4-13-1-12 6z" fill="url(#shard)" stroke="#779caa"/>
+    <path d="m-37-29-7 7 2 2-12 4m10-6-9-2" stroke="#b4c6c5" fill="none"/>
+    <path d="m-88-18 1 26 4 1v-28m63-18 5 40 4-1-4-39" fill="#263748" stroke="#728696"/>
+    <g transform="translate(5 -36)"><g class="loose-pane">
+      <path d="m0 0 21 5-4 15-6-4-4 8-3-11-4 2z" fill="url(#shard)" stroke="#ae9e9a"/>
+      <path d="M4 1q-2 9 5 14l-2 8" fill="none" stroke="#8299a6"/>
+    </g></g>
+    <path d="M-1-35q-6 13 0 16l3 3" fill="none" stroke="#191927" stroke-width="2"/>
+    <g class="arc" opacity="0"><ellipse cx="2" cy="-15" rx="24" ry="19" fill="url(#arc-bloom)"/><path d="m-1-18 3 4 3-2-2 5" fill="none" stroke="#fff5cb" stroke-width="1.8"/></g>
+    <g class="falling-sparks" fill="none" stroke="#ffd29a" stroke-linecap="round" opacity="0">
+      <path d="m0-12-4 3m11-5 3 4m-5 1 1 3m-8 0-3 5m16-7 3 2m-12 3-1 5"/>
+    </g>
+  </g>
+  <g transform="translate(621 365)">
+    <path d="m-6-21-4 11 1 8-5 2h10l1-9 5-7 4 9 1 7h9l-5-3-1-12-5-10z" fill="#202b3a" stroke="#62717c"/>
+    <path d="m-9-36 6-6 9 1 6 9-4 9-14 4-8-6z" fill="#97735a" stroke="#c4a07c"/>
+    <path d="m-10-35-3 9 5 4 2-7m10-7 3 11" fill="none" stroke="#4e545e" stroke-width="2.6"/>
+    <path d="m-7-46 4-6 8 2 2 6-2 6-7-1-2-3-3-1z" fill="#7d6f6c" stroke="#b09c91"/>
+    <path d="m-7-47 6-5 7 2 2 4-15 3z" fill="#d0a262"/><path d="m-7-44 8-1" stroke="#9cffeb" stroke-width="1.7"/>
+    <g transform="translate(-6 -33)"><g class="scanner-arm">
+      <path d="m0 0-3 11-11-4" fill="none" stroke="url(#chrome-arm)" stroke-linecap="round" stroke-width="4"/>
+      <path d="m-17 2 7 2-2 6-7-2z" fill="#233c46" stroke="#83c6cb"/><path d="m-16 4 4 1" stroke="#affff2"/>
+    </g></g>
+  </g>
+  <g transform="translate(708 378)">
+    <path d="m-28 0 39-5 18 3-38 7z" fill="#111d2a" stroke="#53616b"/>
+    <path d="m-19 0 24-3m-15 4 23-3" stroke="#80929b"/>
+    <g fill="url(#steam-density)"><g class="steam-bank"><ellipse cy="-12" rx="13" ry="22"/><ellipse cx="8" cy="-26" rx="15" ry="14"/></g><g class="steam-bank" style="--offset:-3.4s"><ellipse cy="-15" rx="18" ry="24"/></g></g>
+  </g>
+  <!-- Messenger, turned towards the service bay. -->
+  <g transform="translate(838 393) scale(1.09)">
+    <ellipse cx="7" cy="0" rx="25" ry="3" fill="#0c1722" opacity=".84"/>
+    <path d="m-12-48 14 1-4 20-7 14-1 10-8 3-8-1 8-5 2-17zm17 1 12-1-1 22 5 20 8 4-1 2H15l-5-20-7-8z" fill="#24303f" stroke="#696476"/>
+    <path d="m-7-30-6 7m25-2 3 10m-34 11 8-2m28 2h9" fill="none" stroke="#96a1a7" stroke-width="1.5"/>
+    <path class="coat-tail" d="m-11-61 19-1 11 7q4 17 21 29-13 6-22 3l-10-11 2 11-22 3 4-13-13 9-6-2q9-19 16-35z" fill="url(#coat-metal)" stroke="#577581"/>
+    <path d="m-9-77 7-11 12 1 10 10-2 19-8 12-22-3-3-13z" fill="url(#coat-metal)" stroke="#72848d"/>
+    <path d="m-13-81 12-9 10 2 7 6-10 3-6-2-10 8z" fill="#53546a" stroke="#ce8794"/>
+    <path d="m-12-70 5 6 9-2-5 12-11 3m13-25 9 1-2 11-5 1" fill="none" stroke="#55727b" stroke-width="2"/>
+    <path d="m-3-100 3-7 9-2 8 8-2 13-6 5-11-5-4-6 4-1z" fill="#866d6c" stroke="#ae9991"/>
+    <path d="m-5-100 1-9 10-6 11 3 8 7-4 1 6 5-9-1-2 9-4-3-2-11-7 5z" fill="#342b40" stroke="#986b82"/>
+    <path d="m-6-99 12-3 2 5-11 4z" fill="#1d313e" stroke="#91e8e6"/><path d="m-5-97 7-1" stroke="#c5fff5" stroke-width="1.5"/>
+    <path d="m-4-93 7-2 4 6-4 4-6-4z" fill="#293749"/><path d="m-1-90 4-1m-3 3 3-1" stroke="#92a5ad" stroke-width="1"/>
+    <path d="m10-76 9-4 6 11-6 17-6-1 2-13z" fill="#303c4b" stroke="#b68a96"/>
+    <path d="m16-56 6 1-1 8-8 13-5-3 6-12z" fill="url(#chrome-arm)" stroke="#8da4a7"/><circle cx="18" cy="-54" r="3.4" fill="#263744" stroke="#f2aa93"/>
+    <path d="m8-37 5 3-2 7-3 1-1-3-2 1z" fill="#536574"/><path d="m16-49-5 11m3-34 4 1" stroke="#aff8e2" stroke-width="1.5"/>
+  </g>
   <g id="identity">
   <g fill="none" stroke="#77d9df">
     <path d="M26 74V31h95m-95 229v22h70" stroke-width="2"/>
     <path d="M30 32h33" stroke="#ff5866" stroke-width="4"/>
   </g>
   <text x="43" y="72" font-family="Consolas,monospace" font-size="24" font-weight="bold" letter-spacing="5" fill="#ffce78">NIGHT CITY</text>
-  <g transform="translate(54 105) scale(.57) skewX(-12)" fill="#f4ede6">
+  <g id="wordmark" transform="translate(54 95) scale(.68) skewX(-12)" fill="#f4ede6">
     <path id="haluz-h" d="M0 0h37v55h70V0h37v154h-37V91H37v63H0z"/>
     <path fill-rule="evenodd" d="M165 154 216 0h60l53 154h-42l-10-32h-63l-10 32zm60-66h42l-21-66z"/>
     <path d="M349 0h39v119h95v35H349z"/>
@@ -298,4 +398,197 @@
     </g>
   </g>
   </g>
+  <!-- Looking into the tower district from beneath the expressway. -->
+  <svg id="tower-district" x="0" y="398" width="960" height="324" viewBox="0 0 960 324" overflow="hidden">
+    <defs>
+      <linearGradient id="canyon-sky" x2=".83" y2="1"><stop stop-color="#191d36"/><stop offset=".40" stop-color="#46314b"/><stop offset=".73" stop-color="#96536c"/><stop offset="1" stop-color="#366171"/></linearGradient>
+      <linearGradient id="tower-face"><stop stop-color="#16273e"/><stop offset=".28" stop-color="#32475b"/><stop offset=".51" stop-color="#3c5263"/><stop offset=".75" stop-color="#252840"/><stop offset="1" stop-color="#142333"/></linearGradient>
+      <linearGradient id="atrium-glass"><stop stop-color="#204957"/><stop offset=".32" stop-color="#458485"/><stop offset=".62" stop-color="#294458"/><stop offset=".9" stop-color="#384157"/><stop offset="1" stop-color="#54394e"/></linearGradient>
+      <pattern id="tower-slits" width="26" height="19" patternUnits="userSpaceOnUse"><path d="M0 2h22M0 11h17" stroke="#172a3e" stroke-width="4"/><path d="M1 2h7m5 0h4m-14 9h9" stroke="#75b1ac" stroke-width="1.5"/><path d="M19 2h3" stroke="#e8a999"/></pattern>
+      <g id="terrace"><path d="m0 0 106-21 52 10-102 24z" fill="#4b6070" stroke="#758394"/><path d="m0 0 56 13 102-24v9L56 22 0 8z" fill="#1b2d40" stroke="#374f64"/><path d="m2 3 54 12 100-23" fill="none" stroke="#89dacd" stroke-width="1.7"/><path d="m65 6 1-6 68-16v6m-52 10v-6m17 2v-6m16 2v-6" fill="none" stroke="#aec5c1" stroke-width=".9"/></g>
+      <g id="drum-floor"><path d="M0 1q61-22 131-8v15Q68-4 0 17z" fill="url(#atrium-glass)" stroke="#4f6675"/><path d="M0 12q63-20 132-8" fill="none" stroke="#f18aa0" stroke-width="2"/><path d="M12 0v10m16-15v10m20-14v10m20-13v10m20-10v9m20-8v9" stroke="#243849" stroke-width="3"/></g>
+      <path id="bridge-rail" d="m0 4 10-9 10 7 10-10 10 7 10-10 10 7 10-10 10 7 10-10 10 7 10-10 10 7 10-10 10 7 10-10 10 7" fill="none" stroke="#7496a1" stroke-width="1.8"/>
+      <linearGradient id="portrait-light" x2=".85" y2=".44"><stop stop-color="#fcd4bd"/><stop offset=".42" stop-color="#e88cad"/><stop offset="1" stop-color="#83638a"/></linearGradient>
+      <pattern id="display-lines" width="5" height="4" patternUnits="userSpaceOnUse"><path d="M0 1h5" stroke="#151b35" opacity=".26"/></pattern>
+      <clipPath id="portrait-frame"><rect x="2" y="2" width="57" height="87" rx="2"/></clipPath>
+      <g id="fan-blade"><path d="M0-2q-7-5-5-12 4-1 8 1L2-6z" fill="#709498" stroke="#243b4b"/></g>
+      <style>
+        @media (prefers-reduced-motion: no-preference) {
+          .tower-lift { animation:tower-trip 14s ease-in-out infinite }
+          @keyframes tower-trip { 0%,13%,100% { transform:translateY(0) } 44%,58% { transform:translateY(-100px) } }
+          .sky-cab { animation:cab-crossing 19s linear -4s infinite }
+          @keyframes cab-crossing { 0%,8% { transform:translate(-100px,192px) scale(.88) } 51% { transform:translate(533px,143px) scale(.64) } 85%,100% { transform:translate(1050px,116px) scale(.45) } }
+          .district-haze { animation:haze-shift 16s ease-in-out infinite alternate }
+          @keyframes haze-shift { to { transform:translate(27px,-7px); opacity:.38 } }
+          .bridge-walker { animation:bridge-cross 21s linear infinite alternate }
+          @keyframes bridge-cross { to { transform:translate(111px,-16px) } }
+          .light-ribs { animation:tower-current 8s linear infinite }
+          @keyframes tower-current { to { stroke-dashoffset:-128 } }
+          .fan { animation:vent-spin 7s linear infinite } @keyframes vent-spin { to { transform:rotate(360deg) } }
+          .portrait-scan { animation:diagnose 8.5s ease-in-out infinite }
+          @keyframes diagnose { 0%,15% { opacity:0; transform:translateY(0) } 23%,68% { opacity:.65 } 78%,100% { opacity:0; transform:translateY(85px) } }
+        }
+      </style>
+    </defs>
+    <rect width="960" height="324" fill="url(#canyon-sky)"/>
+    <ellipse class="district-haze" cx="530" cy="165" rx="228" ry="155" fill="url(#sky-bloom)"/>
+    <g fill="#38374e" stroke="#665371"><path d="M0 324V91l65-9 21 8v69l51-8V63l29-7 16 8v69l28-6V88l26-14 18 6v70l43-3V88l17-6V58l11-4v27l16 5v109l31-6v-77l20-7V69l10-9 12 9v29l14 5v98l31-4v-56l16-8v-17l17-8 9 6v16l12 4v71l21-3v-36l12-7 21 4v85l32-4V109l22-7V72l12-5 13 8v23l19 8v71l38-3V57l15-10 16 8v19l17 7v84l34-7V99l20-5V65l17-8 20 12v86l53-5V76l44-21 22 10v72l47-5v192z"/></g>
+    <g fill="none" stroke="#cc93a3" opacity=".6"><path d="m313 97 7-3m8-1 7 3m42 33 19-6m-18 13 17-6m4-39 6-2m56 62 11-4m5-22 10-4m132-21 13-3m48 5 13-4m-14 10 16-4"/></g>
+    <!-- A narrow spire with exposed diagonal braces at the vanishing point. -->
+    <g transform="translate(546 0)"><path d="m-27 319 7-201 12-29 3-49 3 48 10-19 5 55 12 9 6 186z" fill="#26384f" stroke="#aa7d99"/>
+      <path d="m-13 126 17-40 4 37-19 28 20 18-22 29 23 20-25 36 23 25-25 37" fill="none" stroke="#e38aab" stroke-width="2"/>
+      <path d="m8 124 4 178m4-166 4 137" stroke="#4e6274" stroke-width="3"/><path d="M-4 61V29" stroke="#b39aaf"/><circle class="neon" cx="-4" cy="28" r="2.3" fill="#ff888f"/>
+    </g>
+    <!-- West residential stack: cantilevered balconies, glazing, and two lift rails. -->
+    <g transform="translate(113 2) skewY(-4)">
+      <path d="M0 315V47L107 16l56 15v288z" fill="url(#tower-face)" stroke="#566c7b"/>
+      <path d="M4 51 58 65v242H4z" fill="url(#tower-slits)"/><path d="m66 66 85-20v257l-85 13z" fill="url(#atrium-glass)"/>
+      <use href="#terrace" y="47"/><use href="#terrace" y="82"/><use href="#terrace" y="117"/><use href="#terrace" y="152"/><use href="#terrace" y="187"/><use href="#terrace" y="222"/><use href="#terrace" y="257"/><use href="#terrace" y="292"/>
+      <path d="M105 17V8l15-3 24 6v12" fill="#37475a" stroke="#8a8190"/><path d="M8 42v-7l33-10m8-2 38-10" stroke="#8bb8ba" fill="none"/>
+    </g>
+    <path d="m278 324 1-224 29-15 16 6v233z" fill="url(#tower-face)" stroke="#587387"/>
+    <path d="M289 107v210m18-218v219" stroke="#7f99a6" stroke-width="2"/>
+    <g transform="translate(289 229)"><g class="tower-lift"><path d="m0 1 15-6 3 2v21l-15 6-3-2z" fill="#294352" stroke="#afdad4"/><path d="m3 4 11-4v10L3 14z" fill="#ffe1a3"/><path d="m2 18 14-5" stroke="#fa99aa"/></g></g>
+    <path d="m324 178 156-23v12l-156 25z" fill="#263c51" stroke="#7aa0a2"/><use href="#bridge-rail" transform="translate(324 174)"/>
+    <g transform="translate(338 175)"><g class="bridge-walker" fill="#112537"><circle cy="-6" r="1.8"/><path d="m-2-4 4-1 2 6H1l-2 4-1-1 1-4-3 1z"/></g></g>
+    <g transform="translate(367 82)"><path d="m0 242 1-159 28-8V23l24-12 28 6v64l13 6v155z" fill="url(#tower-face)" stroke="#6b6680"/><path d="m33 28 17-10v202l-17 6z" fill="url(#tower-slits)"/><path d="m58 23 16 3v154l-16-3z" fill="#442d4c"/>
+      <g fill="none" stroke="#eb90b3" stroke-width="2"><path d="m62 44 8 1-4 9 4 8-8-1m1 10 7 1v12l-7-1zm0 23 7 1-7 14 7 1m-6 13v15m5-14v15"/></g>
+    </g>
+    <g transform="translate(360 181) skewY(-9)">
+      <path d="M-3 2 1-3h57l6 4v92H-3z" fill="#272a42" stroke="#947b94"/>
+      <g clip-path="url(#portrait-frame)">
+        <rect width="61" height="92" fill="#412d4d"/><circle cx="37" cy="36" r="26" fill="none" stroke="#975a81"/>
+        <path d="M9 91q4-16 15-22l1-13-6-14q-3-16 5-23 8-9 21-4 9 5 9 18l-2 7 5 8-6 2-2 9-10 4-1 8 11 12 13 8z" fill="url(#portrait-light)"/>
+        <path d="m11 44 1-15 4-10 8-8 15-5 12 3 8 9-14-3-12 8-4 12-7 7 4 17-4 7-8-9z" fill="#463a57" stroke="#c786ac"/>
+        <path d="m16 31 5-10 10-7m-13 28 5-11 4-3m-4 18 4 7m15-21 9-2m-13 8 12-3-4 4z" fill="none" stroke="#734861" stroke-width="1.7"/>
+        <path d="m40 36 8-2" stroke="#cafded" stroke-width="2"/><path d="m32 41 4 5 12 1m-16-2 3 5 7 1-7 9-2 10" fill="none" stroke="#915e7d"/>
+        <circle cx="29" cy="40" r="6" fill="#4b4561" stroke="#f0bac6"/><circle cx="29" cy="40" r="2.2" fill="#9de6d9"/>
+        <path d="m-1 89 14-15 16-7 8 7 7-4 15 17 5 7H0z" fill="#34364e" stroke="#ca8ca9"/><path d="m8 88 17-12 10 4 8-3m-13 2 5 10" fill="none" stroke="#669aa1"/>
+        <rect width="61" height="92" fill="url(#display-lines)"/><path class="portrait-scan" d="M1 1h60" stroke="#9ef2dc" stroke-width="2" opacity="0"/>
+      </g>
+      <path d="M-1 15V0h15m45 74v17H45" fill="none" stroke="#ffc1b5" stroke-width="2"/>
+    </g>
+    <g transform="translate(499 244)">
+      <path d="m-37 68 2-57 13-12 21-3 11 6 16-2 14 8v60z" fill="url(#tower-face)" stroke="#617481"/>
+      <path d="m-34 9 12-12 21-3 8 4m-5 0v-31h6v29m7 4v-22h6v24" fill="none" stroke="#7d8e96"/>
+      <path d="M-26 9h32v34h-32z" fill="#223342" stroke="#667c87"/>
+      <g transform="translate(-10 26)"><circle r="14.5" fill="#15283a" stroke="#92aba9"/>
+        <g class="fan"><use href="#fan-blade"/><use href="#fan-blade" transform="rotate(72)"/><use href="#fan-blade" transform="rotate(144)"/><use href="#fan-blade" transform="rotate(216)"/><use href="#fan-blade" transform="rotate(288)"/></g><circle r="3" fill="#d2a79b"/>
+      </g>
+      <path d="M13 13h16m-16 6h16m-16 6h16m-16 6h16M-27 49H2l6 6h21" fill="none" stroke="#687e85" stroke-width="2"/>
+    </g>
+    <!-- Curved east hotel. Rings catch pink light, structural ribs cast deep shadows. -->
+    <g transform="translate(635 0)">
+      <path d="M0 324V54q64-34 140-16l14 9v277z" fill="url(#tower-face)" stroke="#7c7a8b"/>
+      <path d="m-4 53 15-13q60-25 124-11l14 8-7 5Q69 25 2 59z" fill="#52485d" stroke="#d0a0a9"/>
+      <path d="M10 50q63-26 128-11" fill="none" stroke="#ffd4b1" stroke-width="3"/>
+      <use href="#drum-floor" y="75"/><use href="#drum-floor" y="105"/><use href="#drum-floor" y="135"/><use href="#drum-floor" y="165"/><use href="#drum-floor" y="195"/><use href="#drum-floor" y="225"/><use href="#drum-floor" y="255"/><use href="#drum-floor" y="285"/>
+      <path d="M21 58v266m87-279v279m29-274v274" stroke="#1d3246" stroke-width="7"/>
+      <path class="light-ribs" d="M23 61v254m86-264v264" stroke="#91e8df" stroke-width="2.2" stroke-dasharray="23 105"/>
+    </g>
+    <g class="sky-cab" transform="translate(442 151) scale(.65)"><path d="m-39-3 14-4 12-9h20l12 9 22 3-4 6-20 4h-42z" fill="url(#chrome-arm)" stroke="#1c3044" stroke-width="2"/>
+      <path d="m-19-8 9-6H6l10 8z" fill="#294c65" stroke="#9ce0d9"/><path d="M-31 4h10m33 0h10" stroke="#b1ffea" stroke-width="3"/><path d="m-35 0-15 1" stroke="#ff89ad" stroke-width="2"/></g>
+    <!-- Nearest facades crop the panorama and lead towards the lower street. -->
+    <path d="M0 0h73l32 25v187l-17 18v94H0zM960 0H818l-28 36 9 137-15 14 13 137h163z" fill="url(#tower-face)" stroke="#476274"/>
+    <path d="M0 30 64 58v183L0 259zm835 10 125-24v210l-125 24z" fill="url(#tower-slits)"/>
+    <g fill="none" stroke-linejoin="round"><path d="m7 47 66 28v103l-8 14v49m744-201 17-17 72-12m-87 55 13-14 87-16" stroke="#63c8cc" stroke-width="3"/><path d="m863 73 47-10v135l-47 11z" fill="#40293d" stroke="#df8c98" stroke-width="2"/><path d="m875 97 22-5-11 16 11 9-22 6m0 14 22-5v26l-22 5zm1 46 20-5" stroke="#ffbe9c" stroke-width="3"/></g>
+    <path d="m0 280 88-18 53 5 101 14 64-10 72 16 44-9 71 15 71-10 87 5 75-19 79 8 71-28 84 8v67H0z" fill="#172a3b" stroke="#526370"/>
+    <path d="m0 300 242-22 204 21m117-5 153-16 66 6 178-27" fill="none" stroke="#b7838b" stroke-width="2"/>
+    <path d="M0 0h960v8L743 5l-27 8-84-6-65 3L358 6l-70 10-37-4-102 6L0 11z" fill="#10212f"/><path d="M0 21q145 37 267-14m457 4q148 53 236 12" fill="none" stroke="#202e3e" stroke-width="2"/>
+    <rect class="rain" x="-86" y="-54" width="1132" height="440" fill="url(#drizzle)" opacity=".38"/>
+  </svg>
+  <svg id="night-market" x="0" y="722" width="960" height="274" viewBox="0 0 960 274" overflow="hidden">
+    <defs>
+      <linearGradient id="market-air" x2=".43" y2="1"><stop stop-color="#101e32"/><stop offset=".48" stop-color="#244650"/><stop offset=".76" stop-color="#4f4a50"/><stop offset="1" stop-color="#27364a"/></linearGradient>
+      <linearGradient id="counter-light" x2=".23" y2="1"><stop stop-color="#fff0bf"/><stop offset=".3" stop-color="#efb879"/><stop offset=".72" stop-color="#9c6254"/><stop offset="1" stop-color="#50384a"/></linearGradient>
+      <linearGradient id="curtain" x2=".92" y2=".3"><stop stop-color="#693a46"/><stop offset=".2" stop-color="#bd605a"/><stop offset=".48" stop-color="#914749"/><stop offset=".82" stop-color="#c57465"/><stop offset="1" stop-color="#713448"/></linearGradient>
+      <linearGradient id="umbra" x2=".85" y2=".9"><stop stop-color="#e59a97"/><stop offset=".31" stop-color="#936980"/><stop offset=".7" stop-color="#554761"/><stop offset="1" stop-color="#413a56"/></linearGradient>
+      <pattern id="shutter" width="10" height="7" patternUnits="userSpaceOnUse"><rect width="10" height="7" fill="#344756"/><path d="M0 2h10" stroke="#68818a"/><path d="M0 5h10" stroke="#263845"/></pattern>
+      <g id="market-lantern"><path d="M0-15V-7" stroke="#9f8d84"/><path d="M-4-7h8l3 4v12l-3 4h-8l-3-4V-3z" fill="url(#counter-light)" stroke="#a77d69"/><path d="M-5-5h10m-11 4h12m-12 7h12m-11 4h10" stroke="#91554d" stroke-width="1.2"/><path d="M0 14v4" stroke="#f4cb92"/></g>
+      <g id="bowl"><path d="M-8-3H8Q6 4 1 5h-3q-4-2-6-8z" fill="#cad0b9" stroke="#876f67"/><path d="M-7-2H7" stroke="#df9362"/><path d="m2-3 7-9m-4 9 7-8" stroke="#bca780"/></g>
+      <g id="awning-cloth"><path d="M0 0h23v24l-4 4-18-3z" fill="url(#curtain)" stroke="#733e4b"/><path d="M3 22q8 3 16 2" fill="none" stroke="#e2a186"/></g>
+      <radialGradient id="koi-bloom"><stop stop-color="#9bfbe4" stop-opacity=".42"/><stop offset="1" stop-color="#77d8c9" stop-opacity="0"/></radialGradient>
+      <style>
+        @media (prefers-reduced-motion: no-preference) {
+          .market-cloth { animation:draft 4.7s ease-in-out var(--offset,0s) infinite alternate }
+          @keyframes draft { to { transform:skewX(8deg) scaleY(.95) } }
+          .koi { animation:float-koi 6.3s ease-in-out infinite alternate }
+          @keyframes float-koi { from { transform:translate(-3px,3px) rotate(-3deg) } to { transform:translate(4px,-6px) rotate(4deg) } }
+          .koi-tail { transform-origin:-21px 0; animation:swim 2.1s ease-in-out infinite alternate }
+          @keyframes swim { from { transform:scaleX(.70) skewY(-7deg) } to { transform:scaleX(1) skewY(4deg) } }
+          .pedestrian { animation:market-cross 31s linear -6s infinite }
+          @keyframes market-cross { 0%,6% { transform:translate(1015px,246px) } 85%,100% { transform:translate(-72px,266px) } }
+          .stride { transform-origin:0 -29px; animation:step .76s ease-in-out infinite alternate }
+          .stride.back { animation-direction:alternate-reverse }
+          @keyframes step { from { transform:rotate(-13deg) } to { transform:rotate(14deg) } }
+          .umbrella { animation:carry .76s ease-in-out infinite alternate } @keyframes carry { to { transform:translateY(1.6px) } }
+          .cook-hand { animation:serve 5.8s ease-in-out infinite; transform-origin:0 0 }
+          @keyframes serve { 0%,18%,87%,100% { transform:rotate(0deg) } 46%,61% { transform:rotate(-25deg) } }
+        }
+      </style>
+    </defs>
+    <rect width="960" height="274" fill="url(#market-air)"/>
+    <path d="M0 198V31l99-14 60 20v53l43-9V38l70-12 36 10v58l38-8V54l36-8 17 8v66l32-8V46l29-7 18 4v65l24-4V62l18-7 15 4v68l30-8V53l52-9 39 14v27l38-7V39l39-12 33 9v57l45-9V45l80-21 37 11v163z" fill="#263849" stroke="#43606b"/>
+    <g fill="url(#tower-slits)" opacity=".58"><path d="m8 43 75-11v100H8zm206 6 51-9v76l-51 8zm227 6 14-3v78l-14 3zm130 9 42-8v56l-42 6zm249-11 65-14v79l-65 8z"/></g>
+    <path d="M0 186h960v88H0z" fill="url(#near-deck)"/><path d="m517 181 443 77v16H55z" fill="#2d3949"/>
+    <g stroke="#556171" fill="none" opacity=".65"><path d="m515 184-441 90m445-90-248 90m252-89-79 89m86-88 91 88m-84-88 247 88M0 216l960-8M0 247l960-13"/></g>
+    <g opacity=".57"><path d="m211 208 164-5-32 6-131 5zm-22 12 115-7 32 2-65 7-93 5zm-52 17 116-10 37 1-54 6-113 12zm-31 18 90-12 25 1-51 10z" fill="#be8875"/><path d="m578 204 54-2 18 3-50 1zm18 10 61-4 25 4-67 3zm44 15 45-6 17 4-43 4zm18 8 70-4 24 4-69 3z" fill="#74aaab"/></g>
+    <!-- The open counter sits behind the noren; the cook and patrons share its light. -->
+    <g transform="translate(184 54)">
+      <path d="m-17 148 1-105 32-19 191-16 42 16 4 124z" fill="#293b47" stroke="#728186"/>
+      <path d="m8 50 183-15 37 10v72L8 132z" fill="url(#counter-light)"/>
+      <path d="m17 66 104-9v5L17 71zm9 18 76-6v4l-76 7z" fill="#795b51"/>
+      <path d="m18 90 84-7v20l-84 7z" fill="#935f53"/><path d="m18 96 84-7m-81 13 82-6m-71-8v17m15-18v16m17-17v17m16-18v17" stroke="#bd8c70" stroke-width="1" fill="none"/>
+      <path d="m174 60 16 1v27l-16 1zm20 2 12 1v23h-12z" fill="#dac295" stroke="#876a58"/>
+      <path d="M178 67h8m-8 4h6m-6 5h8m10-8h6m-6 5h5" stroke="#926454" stroke-width="1.1"/>
+      <g fill="#3b5253" stroke="#9f8a73"><path d="M28 65v-8h3v-5h3v5h3v7zm13-1v-7h6v7zm17-2v-11h6v11zm21-1v-7h9v6zm11-1v-6h8v5z"/></g>
+      <path d="m132 116 2-28 10-10 15 1 12 15-3 20z" fill="#3a464d" stroke="#b59e83"/><path d="m144 84 10 2 4 25-15 2z" fill="#cfbaa0"/>
+      <path d="m143 67 7-7 10 4 1 9-5 7-11-3z" fill="#a97e6d"/><path d="m141 66 2-6 15-1 5 5-2 4-14-3z" fill="#e3cbb0"/>
+      <g transform="translate(138 89)"><g class="cook-hand"><path d="m0 0-9 8-14-2" fill="none" stroke="#5b5151" stroke-width="6" stroke-linecap="round"/><path d="m-21 5-8 7" stroke="#cad4bf" stroke-width="2"/></g></g>
+      <path d="m-5 123 194-16 47 8-1 8-239 18z" fill="url(#chrome-arm)" stroke="#b8b3a1"/><path d="m0 137 228-18v23L1 156z" fill="#3d4548" stroke="#667479"/>
+      <use href="#bowl" x="53" y="117"/><use href="#bowl" x="112" y="112"/><use href="#bowl" x="173" y="109"/>
+      <g transform="translate(111 108)"><g class="steam-bank" fill="url(#steam-density)"><ellipse cy="-11" rx="10" ry="20"/><ellipse cx="6" cy="-22" rx="10" ry="14"/></g></g>
+      <path d="m-29 37 37-28 178-17 65 20 7 10-244 23z" fill="url(#coat-metal)" stroke="#a6a7a0"/><path d="m-24 39 237-20 43 3" fill="none" stroke="#ffc78c" stroke-width="3"/>
+      <path d="m-15 32 31-16 169-16 41 12-207 18z" fill="#38515a"/><path d="m8 24 179-18m-193 23 203-20" fill="none" stroke="#62797c" stroke-width="1.6"/>
+      <g transform="translate(8 41) rotate(-5)"><use class="market-cloth" href="#awning-cloth"/><g transform="translate(26 0)"><use class="market-cloth" href="#awning-cloth" style="--offset:-1.6s"/></g><g transform="translate(52 0)"><use class="market-cloth" href="#awning-cloth" style="--offset:-3.2s"/></g></g>
+      <use href="#market-lantern" x="198" y="46"/><use href="#market-lantern" x="225" y="43"/>
+      <path d="M1 52v93m230-117v117" stroke="#304250" stroke-width="5"/>
+      <g fill="#202e39" stroke="#92776c"><ellipse cx="55" cy="142" rx="12" ry="4"/><path d="m51 145-3 12m11-13 5 11"/><ellipse cx="137" cy="137" rx="12" ry="4"/><path d="m134 141-3 12m10-13 5 12"/></g>
+      <g transform="translate(54 140)">
+        <path d="m-7-28 2-8 8-1 4 6-2 7-6 2z" fill="#564e55" stroke="#ab8a79"/><path d="m-7-30 1-7 8-2 6 4-2 3-9 1z" fill="#354854"/>
+        <path d="m-3-24 8-2 5 7 10 3 7-2 1 3-10 4-10-3-1 12-17 1 1-13z" fill="url(#coat-metal)" stroke="#a99083"/>
+        <path d="m-6-1 15-2 8 5-4 12 5 1-1 2H8L9 5-4 7l-3-2z" fill="#343746" stroke="#84757c"/>
+      </g>
+    </g>
+    <!-- The projector carries an articulated luminous koi above the repair kiosk. -->
+    <g transform="translate(619 83)">
+      <path d="m-59 107 2-56 48-13 80 7 3 62z" fill="#29434d" stroke="#5e7e81"/><path d="m-43 59 32-8v42l-32 6zm40-9 60 5v36l-60 2z" fill="url(#shutter)"/>
+      <path d="m-68 48 48-15 95 8 5 7-92-6-54 12z" fill="#486169" stroke="#8ba8a4"/>
+      <path d="m-19 34 13-11 29 2 13 11z" fill="#28535b" stroke="#97c7b9"/><ellipse cx="10" cy="26" rx="17" ry="3" fill="#abf4d6"/>
+      <ellipse cy="-5" rx="76" ry="47" fill="url(#koi-bloom)"/>
+      <path d="m-5 25-31-44 77 3-22 41z" fill="#8df9d9" opacity=".10"/>
+      <g class="koi" fill="none" stroke="#a2ecd1" stroke-linejoin="round">
+        <path class="koi-tail" d="m-18-1-20-16 2 13-9 15 25-6z" fill="#548f96" stroke="#9de9dc"/>
+        <path d="M-23 0q21-17 43-10 13 4 16 9-2 8-18 11Q-5 14-23 3z" fill="#497d88" stroke-width="1.8"/>
+        <path d="M-13-6 1-19l8 9m-8 17-9 8 1-9m18-2 7 12 4-10" fill="#658c9e"/>
+        <path d="m-12-3 8-5 5 2-5 7-7 2zm19-5 10 1-2 5-9 1z" fill="#edaaa4" stroke="none"/><path d="m18-7-4 6 3 8m16-5q10-1 12 4m-13-1q7 2 7 6" stroke-width="1.3"/>
+        <circle cx="25" cy="-3" r="2.4" fill="#e4ffec" stroke="#203d50"/>
+      </g>
+    </g>
+    <g transform="translate(491 190)" fill="#273746" stroke="#80777a"><circle cx="1" cy="-28" r="4.4"/><path d="m-3-23 7-1 4 11-4 3 2 10H2l-2-10-3 10h-4l3-16z"/></g>
+    <g class="pedestrian" transform="translate(721 250)">
+      <g class="stride back"><path d="m-2-32 5 3-2 15 6 12 6 1-1 2H4L-5-13z" fill="#344351" stroke="#687482"/></g>
+      <g class="stride"><path d="m-6-31 7 2-7 16-2 11-7 3h-4v-2l6-3 2-13z" fill="#242f3f" stroke="#817d8b"/></g>
+      <path d="m-7-51 6-4 10 6 4 14 5 9-8 2-5-4 1 5-15-2 3-12-4 4-3-2z" fill="url(#coat-metal)" stroke="#96949a"/>
+      <path d="m-6-58 4-5 7 1 1 7-4 4-7-2z" fill="#a8847d" stroke="#63546a"/>
+      <g class="umbrella"><path d="m-7-73 4 33q1 5 4 2" fill="none" stroke="#c3bbac" stroke-width="1.6"/>
+        <path d="M-38-64q7-16 31-18 19-1 34 13-8-2-14 2-9-3-18 2-8-2-17 2-7-3-16-1z" fill="url(#umbra)" stroke="#cca7aa"/>
+        <path d="M-7-81q-9 3-15 17m15-17q6 4 2 15m-2-15q13 3 20 13" fill="none" stroke="#684f68" stroke-width="1.2"/></g>
+    </g>
+    <path d="M0 274v-78l23-10v-49l34-13 13 7v82l56-9 12 5-1 34 70-7 16 8 14 30zm960 0v-92l-63-8-13 7v39l-63 7-12 12-37 5-23 30z" fill="#142335" stroke="#405768"/>
+    <g fill="none" stroke="#536879"><path d="m3 201 24-9v-49l27-10m-48 79 45-11m32 26 41-5m721 10 42-9 58 7m-66 15 57 3"/></g>
+    <path d="M0 0h960v17l-119-6-36 7-135-8-65 5-89-9-179 7-31-5-152 11L0 16z" fill="#111f2f"/><path d="M0 19q163 58 319-10m15 0q134 47 282-1m4 11q156 55 340 6" fill="none" stroke="#263545" stroke-width="2.5"/>
+    <use href="#market-lantern" x="419" y="34"/><use href="#market-lantern" x="478" y="37"/><use href="#market-lantern" x="530" y="33"/>
+    <rect class="rain" x="-86" y="-54" width="1132" height="390" fill="url(#drizzle)" opacity=".33"/>
+  </svg>
 </svg>

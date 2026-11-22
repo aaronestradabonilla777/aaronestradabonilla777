@@ -50,13 +50,16 @@
     <linearGradient id="metro-beam"><stop stop-color="#ffe0a1" stop-opacity="0" /><stop offset="1" stop-color="#fff2c5" stop-opacity=".74" /></linearGradient>
     <linearGradient id="train-wake"><stop stop-color="#a3ffed" /><stop offset="1" stop-color="#68c3d6" stop-opacity="0" /></linearGradient>
     <g id="metro-door" stroke="#d49a88" stroke-width=".8">
-      <path d="M0 0h13v19H0z" fill="#182235" />
+      <path d="M0 0h13v19H0z" fill="#ffe0a0" />
       <g clip-path="url(#door-opening)">
         <g class="door-left"><path d="M0 0h6.5v19H0z" fill="#735565" /><path d="M1 3h4v7H1z" fill="#b3eeea" /></g>
         <g class="door-right"><path d="M6.5 0H13v19H6.5z" fill="#735565" /><path d="M8 3h4v7H8z" fill="#b3eeea" /></g>
       </g>
     </g>
     <clipPath id="door-opening"><rect width="13" height="19" /></clipPath>
+    <linearGradient id="platform-amber" x1="0" y1="0" x2=".32" y2="1">
+      <stop stop-color="#fff1be" stop-opacity=".96" /><stop offset=".50" stop-color="#ffc279" stop-opacity=".75" /><stop offset="1" stop-color="#e89259" stop-opacity=".14" />
+    </linearGradient>
     <g id="metro-bogie">
       <path d="M-9-5H9l-2 4H-7z" fill="#101b2b" />
       <circle cx="-5" cy="-2" r="2.6" fill="#475168" stroke="#101b2b" /><circle cx="5" cy="-2" r="2.6" fill="#475168" stroke="#101b2b" />
@@ -126,6 +129,8 @@
         .door-left, .door-right { animation: board var(--scene-cycle) ease-in-out -1.5s infinite }
         .door-left { --slide:-5px } .door-right { --slide:5px }
         @keyframes board { 0%,71%,83%,100% { transform:translateX(0) } 74%,80% { transform:translateX(var(--slide)) } }
+        .platform-spill { animation: doorway-light var(--scene-cycle) ease-in-out -1.5s infinite }
+        @keyframes doorway-light { 0%,71%,83%,100% { opacity:0 } 74%,80% { opacity:1 } }
         .wave { animation: current var(--drift) ease-in-out infinite alternate; animation-delay:var(--offset) }
         @keyframes current { from { transform:translateX(var(--left)) } to { transform:translateX(var(--right)) } }
         .ripples { animation: tide 4s ease-in-out infinite alternate }
@@ -332,6 +337,10 @@
   <!-- Foreground island platform. The two amber strips line up with the stopped doors. -->
   <g transform="translate(310 319) rotate(-2.3)">
     <path d="m-20 0 12-4h131l12 4v4H-20z" fill="#273548" stroke="#667384" />
+    <g class="platform-spill" opacity="0" fill="url(#platform-amber)">
+      <path d="M19-10h10L49 3 35 4zM95-10h10L83 4l-22-1z" />
+      <path d="M20-10h8m68 0h8" stroke="#fff1b9" stroke-width="1.8" />
+    </g>
     <path d="M16-4h14m61 0h14" stroke="#ffcf8a" stroke-width="2.2" />
     <path d="M-7 0h125" stroke="#97aaad" stroke-dasharray="2 5" />
     <path d="M42-3v-14l8-4h8v3H48v15" fill="#384b5a" stroke="#84999c" />
@@ -340,6 +349,7 @@
     <g transform="translate(75 -4)" fill="#1b2234" stroke="#b8a1a4" stroke-width=".8">
       <circle cx="1" cy="-15" r="2.3" /><path d="m-2-12 4-1 3 5 4-1 1 2-6 2-1-3 1 7H2L0-5-2 0h-2l2-7z" />
       <path d="M-5-11h3v7h-4z" fill="#80596a" />
+      <path class="platform-spill" opacity="0" d="M2-17q3 1 1 4m0 1 2 4 4-1m-6 4 1 4" fill="none" stroke="#ffcf91" stroke-width="1.5" />
     </g>
   </g>
 </svg>
