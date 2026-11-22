@@ -1,12 +1,42 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="525" height="996" viewBox="435 0 525 996" role="img" aria-labelledby="title desc">
   <!-- Generated from night-city.svg by scripts/escenas_moviles.py --><title id="title">HALUZ · Night City · Rust y React</title>
-  <desc id="desc">Night City ilustrada en estilo anime. Bajo el Samurai, una mensajera observa al técnico mientras pasa el tren de neón. Una grulla holográfica abre las alas sobre el anuncio de 2077. Abajo, los letreros del ramen y del pez koi se reflejan en el mercado mojado.</desc>
+  <desc id="desc">Johnny Silverhand y su guitarra bajo el Samurai. Una grulla holográfica sobrevuela el distrito entre el anuncio de 2077 y la torre de Arasaka. En el mercado, David Martínez come ramen mientras D alza la mano hacia el engrama de Capri.</desc>
   <defs>
+    <linearGradient id="engram-falloff" x2="0" y2="1"><stop offset=".6" stop-color="#fff" /><stop offset="1" stop-color="#141414" /></linearGradient>
+    <mask id="silverhand-fade" maskUnits="userSpaceOnUse" x="-56" y="-65" width="140" height="142"><rect x="-56" y="-65" width="140" height="142" fill="url(#engram-falloff)" /></mask>
+    <!-- Material library. Window modules are drawn in elevation, then mapped onto each wall. -->
+    <linearGradient id="residential-bronze"><stop stop-color="#4a404d" /><stop offset=".36" stop-color="#73545a" /><stop offset=".67" stop-color="#483849" /><stop offset="1" stop-color="#292e41" /></linearGradient>
+    <linearGradient id="office-mirror"><stop stop-color="#253849" /><stop offset=".24" stop-color="#436879" /><stop offset=".42" stop-color="#687c8e" /><stop offset=".54" stop-color="#39455f" /><stop offset=".84" stop-color="#282d46" /><stop offset="1" stop-color="#785168" /></linearGradient>
+    <linearGradient id="polished-stone"><stop stop-color="#3b3448" /><stop offset=".16" stop-color="#716171" /><stop offset=".52" stop-color="#53465d" /><stop offset=".85" stop-color="#302c45" /><stop offset="1" stop-color="#63495a" /></linearGradient>
+    <linearGradient id="lobby-light" x2=".12" y2="1"><stop stop-color="#ffdfa2" /><stop offset=".32" stop-color="#f2b17d" /><stop offset=".65" stop-color="#b87573" /><stop offset="1" stop-color="#715369" /></linearGradient>
+    <linearGradient id="soffit-light" x2=".06" y2="1"><stop stop-color="#171e30" /><stop offset=".62" stop-color="#263749" /><stop offset="1" stop-color="#667281" /></linearGradient>
+    <linearGradient id="brick-wash" x2=".95" y2=".35"><stop stop-color="#71505b" /><stop offset=".44" stop-color="#483b4b" /><stop offset="1" stop-color="#243142" /></linearGradient>
+    <pattern id="occupied-rooms" width="73" height="39" patternUnits="userSpaceOnUse">
+      <path d="M1 2h70v14H1zm0 20h70v13H1z" fill="#192d3e" />
+      <path d="M3 4h15v9H3zm35 0h13v8H38zM20 23h15v9H20zm36 0h12v8H56z" fill="url(#lobby-light)" />
+      <path d="M21 4h12v9H21zm35 0h12v8H56zM3 24h14v8H3zm37 0h11v7H40z" fill="#587487" />
+      <path d="M4 4h5v9H4zm40 0h6v8h-6zM25 23h2v9h-2zm3 0h2v9h-2z" fill="#897777" />
+      <path d="M11 10h5v3h-5zm27 0h6v2h-6zM20 29h8v3h-8zm43-2h3v4h-3z" fill="#655463" />
+      <path d="M1 16H71m-70 19h70" stroke="#8c8a94" stroke-width=".85" />
+    </pattern>
+    <pattern id="glass-bays" width="48" height="27" patternUnits="userSpaceOnUse">
+      <path d="M0 1h48M0 14h48" stroke="#252d40" stroke-width="2.4" />
+      <path d="M3 4h9v4H3zm24 1h6v4h-6zM16 18h8v4h-8zm22 0h7v3h-7z" fill="#f3cb9f" opacity=".78" />
+      <path d="M15 5h7m14 1h8M3 19h7m16 1h7" stroke="#a2ceca" stroke-width="2.2" opacity=".8" />
+      <path d="M.6 0v27m23-27v27" stroke="#253748" stroke-width="1.3" /><path d="M46 0v27" stroke="#8293a2" stroke-width=".65" />
+    </pattern>
+    <pattern id="laid-brick" width="26" height="12" patternUnits="userSpaceOnUse">
+      <path d="M0 5.5h26M0 11.5h26M6 0v5m13 1v5" stroke="#b18a82" fill="none" opacity=".28" stroke-width=".8" />
+    </pattern>
+    <g id="roof-plant">
+      <path d="m0 0 9-4 19 3-9 5z" fill="#838491" /><path d="m0 0 19 4v8L0 8z" fill="#444859" /><path d="m19 4 9-5v8l-9 5z" fill="#28384a" />
+      <path d="m3 3 12 2.5m-12 .3 12 2.5" stroke="#97a0a7" stroke-width=".85" />
+    </g>
     <linearGradient id="sky" x1="0" y1="1" x2="1" y2="0">
       <stop stop-color="#080c22" /><stop offset=".38" stop-color="#26204b" /><stop offset=".66" stop-color="#613771" /><stop offset=".83" stop-color="#a04474" /><stop offset="1" stop-color="#293967" />
     </linearGradient>
     <linearGradient id="shade">
-      <stop stop-color="#05121b" /><stop offset=".65" stop-color="#06121c" stop-opacity=".96" /><stop offset="1" stop-color="#06121c" stop-opacity="0" />
+      <stop stop-color="#05121b" stop-opacity=".98" /><stop offset=".46" stop-color="#06121c" stop-opacity=".91" /><stop offset=".76" stop-color="#091424" stop-opacity=".49" /><stop offset="1" stop-color="#06121c" stop-opacity="0" />
     </linearGradient>
     <pattern id="screen" width="4" height="5" patternUnits="userSpaceOnUse">
       <path d="M0 1h4" stroke="#02080e" stroke-width="1" opacity=".32" />
@@ -192,6 +222,10 @@
         .paper-wing { animation:fold-wing 3.8s ease-in-out infinite alternate }
         @keyframes fold-wing { to { transform:skewX(7deg) scaleY(.66) } }
         .foil-bird { animation:foil-hover 5s ease-in-out infinite alternate }
+        .engram-echo { animation:engram-trace 7s ease-in-out infinite }
+        @keyframes engram-trace { 0%,36%,58%,100% {opacity:.16} 48% {opacity:.62} }
+        .capri-float { animation:capri-hover 4.8s ease-in-out infinite alternate }
+        @keyframes capri-hover { to { transform:translate(2px,-4px) rotate(1.4deg) } }
         @keyframes foil-hover { to { transform:translate(4px,-5px) rotate(3deg) } }
         .noodle-steam { animation:noodle-rise 3.2s ease-in-out infinite alternate }
         @keyframes noodle-rise { to { transform:translate(1px,-3px); opacity:.5 } }
@@ -225,6 +259,7 @@
   </g>
   <g class="distant">
     <use href="#far" fill="#353047" opacity=".80" />
+    <use href="#far" fill="url(#glass-bays)" opacity=".39" />
     <!-- An industrial crane counterbalances the paired arcology spires. -->
     <g class="secondary" fill="none" stroke="#78677e" stroke-width="1.5">
       <path d="M443 171V74h7v97m-33-89 91-23-59-8-32 31zm5-3 24-23 10 14 14-14 8 8m17-1v27" />
@@ -241,6 +276,17 @@
   </g>
   <g class="district">
   <use href="#near" fill="#1c293c" />
+  <use href="#near" fill="url(#glass-bays)" opacity=".44" />
+  <!-- The avenue faces a stepped office block. Service cores continue to the viaduct below. -->
+  <g transform="translate(348 72)">
+    <path d="M-30 220V70l16-7V39l19-7V13l32-9 27 9v25l14 6v28l13 4v140z" fill="url(#office-mirror)" />
+    <g fill="url(#glass-bays)"><path d="m8 18 26-7v34l-26 6zM-9 51l44-11v27l-44 10zm-17 33 65-14v139l-65 8z" /></g>
+    <path d="m38 9 22 7v32l-22-6zm5 64 44 10v116l-44 9z" fill="#36354c" />
+    <g transform="matrix(.73,.18,0,.75,46,79)"><rect width="50" height="161" fill="url(#occupied-rooms)" opacity=".76" /></g>
+    <path d="m-30 82 69-16 50 12v5L39 71l-69 16zm16-38 49-12 31 7v5l-31-7-49 12z" fill="#50586b" />
+    <path d="m-29 81 68-15 47 11M-11 44l46-12 28 6M7 16l29-8 23 7" fill="none" stroke="#a2bbc4" stroke-width="1.4" />
+    <path d="m13 149 5-1v56l-5 .5zm10-3 3-.5v49l-3 .6z" fill="#d5928b" /><use href="#roof-plant" transform="translate(14 12) scale(.55)" />
+  </g>
   <g transform="translate(712 73)">
     <path d="m-9 132 3-99-8-9 2-11 8-7 1-14 3-9 2 17 13 5 5 9-2 11-8 8 4 94z" fill="#342c53" stroke="#8876b6" />
     <path d="m-10 14 10-6 12 3 4 5-15-3-11 6zm4 24 3 1-2 78-3 8z" fill="#c794ec" />
@@ -251,6 +297,7 @@
     <path d="M-22 153V26l14-17h28v142z" fill="#203444" stroke="#41616e" />
     <path d="M-30 26 20 14l17 8v23l-50 12-17-8zm8 45 50-12 15 9v27l-51 10-14-7zm-18 45 54-10 15 6v27l-56 11-13-7z" fill="#505067" stroke="#8a8091" />
     <path d="m-28 32 49-12v16l-49 12zm8 46 47-11v15l-47 13zm-17 44 48-9v14l-48 11z" fill="#273749" />
+    <g fill="url(#occupied-rooms)"><path d="m-27 32 47-11v13l-47 11zm8 47 44-11v13l-44 11zm-17 44 46-9v12l-46 10z" /></g>
     <path d="m-25 40 19-5m6-2 14-3m-30 55 20-5m6-1 9-2m-58 52 28-6" stroke="#ffbf8c" stroke-width="2.5" />
     <path d="M-37 46v58h10m65-58v15h9v65" fill="none" stroke="#81a1a5" stroke-width="2" />
     <path d="M-31 54v78" stroke="#192534" stroke-width="5" />
@@ -260,6 +307,7 @@
   <g transform="translate(553 88)">
     <path d="M-24 175-12 65-6 25h10l7 43 15 105z" fill="#253341" stroke="#5c7782" />
     <path d="m5 59 12 112H3L-3 68z" fill="#172433" />
+    <path d="m-10 71 11-4-2 87-17 6zm15-2 5 3 8 81-10-4z" fill="url(#glass-bays)" />
     <path d="m-12 85 20-7m-22 22 24-8m-25 23 25-8m-26 24 28-9" fill="none" stroke="#b36679" stroke-width="2" />
     <path d="M-49 50Q-43 26-1 15 27 7 42 24L36 36z" fill="#416579" stroke="#8ab6bc" />
     <path d="m-35 43 4-7 2 2 5-8 3 5 3-4 4 4 5-10 4 6 3-3 4 3 5-12 4 8 5-5 5 4 4-6 4 4 3-3v7z" fill="#91cbad" />
@@ -276,6 +324,7 @@
   <g transform="translate(676 94)">
     <path d="m-22 142 4-104 11-7V8l19-9 20 8v30l9 4v101z" fill="#152232" stroke="#487783" />
     <path d="m12 0 20 7v30l9 4v101H14z" fill="#29304a" />
+    <path d="m-6 11 16-7v31l-16 7zm-10 76 25-10v59l-25 3zm33-42 20 7v79l-20-2z" fill="url(#occupied-rooms)" opacity=".75" />
     <path d="M-11 42 4 35m-15 15 15-7m-16 15 16-7m-17 15 17-7m-17 15 17-7" stroke="#5ebfca" stroke-width="2.5" />
     <path d="M18 12v24m6-22v18" stroke="#f4899f" stroke-width="2" />
     <path d="M27 54h16v52H27z" fill="#2c1831" stroke="#e76590" />
@@ -393,6 +442,40 @@
     <g class="arc" opacity="0"><ellipse cx="2" cy="-15" rx="24" ry="19" fill="url(#arc-bloom)" /><path d="m-1-18 3 4 3-2-2 5" fill="none" stroke="#fff5cb" stroke-width="1.8" /></g>
     <g class="falling-sparks" fill="none" stroke="#ffd29a" stroke-linecap="round" opacity="0">
       <path d="m0-12-4 3m11-5 3 4m-5 1 1 3m-8 0-3 5m16-7 3 2m-12 3-1 5" />
+    </g>
+  </g>
+  <!-- Johnny's engram catches the rail light. The silver hand hangs over the guitar. -->
+  <g id="johnny-silverhand" transform="translate(471 335) scale(.87)" stroke-linejoin="round" stroke-linecap="round">
+    <title>Johnny Silverhand con su guitarra</title>
+    <ellipse cy="14" rx="48" ry="58" fill="url(#violet-air)" opacity=".52" />
+    <g mask="url(#silverhand-fade)">
+      <path d="M-19-10q-8-17-4-32 1-13 13-16 18-7 28 6 8 11 4 25l5 16-9-4 4 9-12-6-16 9-1-8-12 5z" fill="#242331" stroke="#927594" stroke-width="1.4" />
+      <path d="m-10-15 17-8 2 12 9 5-12 18-18-6 7-9z" fill="#c58c83" />
+      <path d="m-10-9 8 10 12 1 4-9 9 4 6 31-4 24 2 17-51 3 4-21-5-30 5-24z" fill="#252b3a" stroke="#72667a" stroke-width="1.4" />
+      <path d="m-14-6 7 1-4 17 4 29-7 14-9 5 2-24-4-22zm33 2-5 15 4 22-4 19 5 9 6-7 2-31z" fill="#444052" />
+      <path d="m-10-4-5 15 3 25m32-38-4 14m-24-2 9 3 8-5" fill="none" stroke="#b5a2a4" stroke-width="1.1" />
+      <path d="M-14-44q4-10 15-9 14 1 15 15l-2 9 3 6-4 2-1 5-7 6-9-2-8-7-4-12z" fill="#dca695" stroke="#402e3b" stroke-width="1.4" />
+      <path d="M-9-34q2 10 5 12l8 3 6-2 4-4-2 11-8 6-9-4-7-9z" fill="#654854" />
+      <path d="m-1-17 4-3 8 .8 1 2-6-.6-2 1.6zm1 3 7 .3-3 1.6z" fill="#362d39" />
+      <path d="M-19-26q-6-16 2-25 6-10 19-9 8-.4 13 6l5 12-6-6q-3-6-9-6-5 6-13 10l-4 12 2 13-6-5 1 9-6-5z" fill="#2a2632" /><path d="M-17-27q-3-19 11-27m-7 18q1-11 11-17m9-2 8 7" fill="none" stroke="#806775" stroke-width="1.2" />
+      <path d="M3-55q-4 8-11 12l-4 9 1-7-5 9q0-14 9-20zm4-1q10 3 12 14l-1 10-4-12q-2-6-7-8z" fill="#392c38" />
+      <path d="M-13-42q5-9 11-12m13 2 5 7" fill="none" stroke="#9e777b" stroke-width=".95" />
+      <path d="m-11-37 9-2 6 1 3-.8 9-1.8.4 3-2.6 5-6 .7-3-4-2 .5-1 4.6-6 .6-4-3.5z" fill="#733646" stroke="#282838" stroke-width="1.35" />
+      <path d="m-9-36 7-1m10-1 6-1" stroke="#ff9c9b" stroke-width="1.2" /><path d="m5-33 2.2 5.8-2.6 1.2" fill="none" stroke="#966572" />
+      <path d="m-8-29 6 1.7 2.2 3-5-1.5zm18 3.2 2-1.1-1 3.6-3 1.2z" fill="#bb807e" />
+      <path d="m-6-22 2 2m1-1 2 2m1 2 1.4 1.2m7-1.4 2-1m2-2 1.5-2" stroke="#79545f" stroke-width="1" />
+      <path d="M-24 1q-10 .5-12 13l-4 19 8 12 9-7-3-9 7-15z" fill="#ca9085" stroke="#634652" /><path d="m-34 14 5-5 3 4-5 4 3 4-4 4-1-5-3-2z" fill="#605367" />
+      <!-- A solid-body electric guitar and an angled six-string neck. -->
+      <path d="M-21 45q4-10 12-7 4 1 10-3l5-6 4 4-2 9 6 .5 3 6-9 3q-5 4-7 12-3 11-14 10-13-2-15-12-1-8 7-16z" fill="#9c4550" stroke="#33283b" stroke-width="2" />
+      <path d="m-6 47 15-11 39-24 3 4-41 29-12 8z" fill="#665160" stroke="#cba897" stroke-width="1.2" />
+      <path d="m46 13 10-9 8-1 1 5-13 10z" fill="#896163" stroke="#c29d91" /><path d="m52 9-1-3m6 0-1-3m4 8 2 2" stroke="#e5c8b2" stroke-width="1.8" />
+      <path d="m-16 57 5 4 7-10-4-3z" fill="#363140" /><path d="m-14 58 63-43m-62 45 63-43" stroke="#ddcebd" stroke-width=".65" />
+      <path d="M22 0q7-1 10 7l3 20-5 6-18 8-5-6 18-13-7-13z" fill="url(#chrome-arm)" stroke="#31394a" stroke-width="1.5" />
+      <path d="m22 4 5 .1 4 9-4 1-6-7zm6 13 4-2 2 10-5-.5zm-2 9 3 3-13 9-2-3z" fill="#bddadd" /><circle cx="30" cy="26" r="3.6" fill="#526374" stroke="#d1cbc0" />
+      <path d="m22 6 5 2 3 6m-5 1 5 1m-5 3 6 1m-5 3 5 1m-8 6-7 5m5-2-5 4" fill="none" stroke="#4e5c70" stroke-width=".95" />
+      <path d="m12 34 5 5-3 3-6 1-5 4-1-2 4-4-6 2-.5-2 5-3z" fill="#beced0" stroke="#536175" />
+      <path d="m-32 36 6-2 7 7 9 2 2 4-6 2-13-3z" fill="#ce9588" stroke="#704f5f" />
+      <path class="engram-echo" d="m-26-30 10-1m24 4 16-1m-58 53 21-1m10 30 24-1m-16 8 28-2" fill="none" stroke="#97f1ee" stroke-width="1.4" />
     </g>
   </g>
   <!-- The technician kneels on the rear knee, bracing the reader with the other hand. -->
@@ -521,23 +604,12 @@
       <linearGradient id="tower-face"><stop stop-color="#16273e" /><stop offset=".28" stop-color="#32475b" /><stop offset=".51" stop-color="#3c5263" /><stop offset=".75" stop-color="#252840" /><stop offset="1" stop-color="#142333" /></linearGradient>
       <linearGradient id="atrium-glass"><stop stop-color="#204957" /><stop offset=".32" stop-color="#458485" /><stop offset=".62" stop-color="#294458" /><stop offset=".9" stop-color="#384157" /><stop offset="1" stop-color="#54394e" /></linearGradient>
       <pattern id="tower-slits" width="26" height="19" patternUnits="userSpaceOnUse"><path d="M0 2h22M0 11h17" stroke="#172a3e" stroke-width="4" /><path d="M1 2h7m5 0h4m-14 9h9" stroke="#75b1ac" stroke-width="1.5" /><path d="M19 2h3" stroke="#e8a999" /></pattern>
-      <g id="terrace">
-        <path d="m0 0 106-21 52 10-102 24z" fill="#586875" />
-        <!-- Recessed parapet, projecting drip edge and brackets on the shaded underside. -->
-        <path d="m7 .3 94-18.5 37 7.7-82 19.2z" fill="#384958" />
-        <path d="m0 0 56 12.5L158-11v6L56 20 0 7z" fill="url(#balcony-soffit)" stroke="#293e50" />
-        <path d="m0-4 56 12 102-23v3L56 11 0-1z" fill="#849297" />
-        <path d="M0 0 56 12.5 157-11" fill="none" stroke="#8ac8c2" stroke-width="1.25" />
-        <path d="M8-3v3m15 0v3m15 0v4m16-1v5m12-5v3m18-8v4m21-9v4m21-9v4m20-9v3" stroke="#526878" stroke-width="1.5" />
-        <path d="m15 10 7 1-1 4zm29 6 7 1-2 5zm31 0 7-2-6 7zm53-13 8-2-7 7z" fill="#233042" />
-      </g>
-      <g id="drum-floor"><path d="M0 1q61-22 131-8v15Q68-4 0 17z" fill="url(#atrium-glass)" stroke="#4f6675" /><path d="M0 12q63-20 132-8" fill="none" stroke="#f18aa0" stroke-width="2" /><path d="M12 0v10m16-15v10m20-14v10m20-13v10m20-10v9m20-8v9" stroke="#243849" stroke-width="3" /></g>
+
       <path id="bridge-rail" d="m0 4 10-9 10 7 10-10 10 7 10-10 10 7 10-10 10 7 10-10 10 7 10-10 10 7 10-10 10 7 10-10 10 7" fill="none" stroke="#7496a1" stroke-width="1.8" />
       <linearGradient id="ad-glass" x2=".8" y2="1"><stop stop-color="#301538" /><stop offset=".48" stop-color="#4b2345" /><stop offset="1" stop-color="#111827" /></linearGradient>
       <linearGradient id="ad-chrome" x2=".18" y2="1"><stop stop-color="#ffecba" /><stop offset=".35" stop-color="#ff947f" /><stop offset=".49" stop-color="#dd5676" /><stop offset=".53" stop-color="#7d3759" /><stop offset="1" stop-color="#332339" /></linearGradient>
       <linearGradient id="ad-cast" x2="1" y2=".1"><stop stop-color="#ff9284" stop-opacity=".40" /><stop offset=".68" stop-color="#fd7489" stop-opacity=".12" /><stop offset="1" stop-color="#ee8b96" stop-opacity="0" /></linearGradient>
-      <linearGradient id="hotel-glazing"><stop stop-color="#243549" /><stop offset=".26" stop-color="#497478" /><stop offset=".49" stop-color="#759090" /><stop offset=".56" stop-color="#475b69" /><stop offset=".84" stop-color="#30384c" /><stop offset="1" stop-color="#745365" /></linearGradient>
-      <linearGradient id="balcony-soffit" x2=".28" y2="1"><stop stop-color="#091c2b" /><stop offset="1" stop-color="#344353" /></linearGradient>
+
       <pattern id="service-panels" width="17" height="26" patternUnits="userSpaceOnUse">
         <path d="M.5 26V.5H17" fill="none" stroke="#96a5a9" stroke-opacity=".24" stroke-width=".8" /><path d="M2 24h9m2-21h2" stroke="#192a3b" stroke-width="1.3" />
       </pattern>
@@ -546,18 +618,9 @@
         <path d="M3 5h5m5 0h8m12 0h3M6 14h9m10 0h4M0 23h5m6 0h4m8 0h10" stroke="#85999f" stroke-width="1.7" />
         <path d="M27 5h4M16 23h4" stroke="#cca999" stroke-width="2.2" />
       </pattern>
-      <g id="apartment-bay">
-        <path d="m0 1 27-6V8L0 14z" fill="#172b3c" /><path d="m2 2 12-3v9l-12 3z" fill="#a29b92" /><path d="m4 2 4-1-1 9-4 1zm13-3 8-2v9l-8 2z" fill="#596f77" />
-        <path d="m2 9 8-2 3 1-11 3z" fill="#394852" /><path d="m16-1 .2 10" stroke="#243746" stroke-width="1.5" />
-      </g>
+
       <clipPath id="spire-glass"><path d="m-18 281 5-157 15-29 7 43 2 139z" /></clipPath>
-      <g id="hotel-suite">
-        <path d="M27-6q38-11 76-7v11q-38-4-76 8z" fill="url(#hotel-glazing)" />
-        <path d="m31-6 10-2v8L31 3zm40-6 9-.2v7.7l-9 .3z" fill="#d4ae9c" />
-        <path d="m34-7 3-.4v7l-3 .7zm51-6 6 .2v8l-6-.5z" fill="#8c9190" />
-        <path d="m38-1 6-.9v2l-6 1zm33-5 9-.3v2l-9 .3z" fill="#4b5661" />
-        <path d="m53-10 1-.1v9l-1 .2zm43-3h1v10h-1z" fill="#263848" />
-      </g>
+
       <g id="ad-year" fill-rule="evenodd">
         <path d="M1 5 6 0h17l3 4-2 10-14 6-1 3h13l-1 6H0l2-13 15-6 .7-4H8L7 9H1zM29 5l5-5h16l3 4-4 21-5 4H29l-4-4zm7 1-3 17h9l3-17zM56 0h24l-1 6-15 23h-9L71 7H55zM83 0h24l-1 6-15 23h-9L98 7H82z" />
       </g>
@@ -603,6 +666,8 @@
       <path d="m-16 218 2-121 8-4V46l10-5V19L22 5l16 6v38l7 4v160z" fill="#562e49" stroke="#ae6778" />
       <path d="m5 21 17-13v45l-17 8zm-7 48 24-10v123l-24 10z" fill="#a55562" />
       <path d="m23 9 11 4v44l-11-4zm1 54 14 5v122l-14-4z" fill="#39304d" />
+      <g transform="matrix(.43,-.17,0,.58,-1,67)"><rect width="52" height="283" fill="url(#occupied-rooms)" /></g>
+      <g transform="matrix(.55,.17,0,.68,24,62)"><rect width="24" height="252" fill="url(#glass-bays)" /></g>
       <path d="m-8 80 30-13 19 5v10l-19-4L-8 91zm-3 38 33-11 20 4v12l-20-4-33 11zm-2 43 35-11 21 3v13l-21-4-35 11z" fill="#34354e" stroke="#b16778" />
       <path d="m-7 81 28-12 16 4m-46 47 29-10 18 4m-47 49 28-10 19 4" fill="none" stroke="#ffac70" stroke-width="2.5" />
       <path d="m8 31 10-8m-10 15 10-8m-10 15 10-8m10 26 1 122" fill="none" stroke="#ee8185" stroke-width="1.6" />
@@ -629,18 +694,34 @@
       <path d="m-13 126 17-40 4 37-19 28 20 18-22 29 23 20-25 36 23 25-25 37" fill="none" stroke="#e38aab" stroke-width="2" />
       <path d="m8 124 4 178m4-166 4 137" stroke="#4e6274" stroke-width="3" /><path d="M-4 61V29" stroke="#b39aaf" /><circle class="neon" cx="-4" cy="28" r="2.3" fill="#ff888f" />
     </g>
-    <!-- West residential stack: cantilevered balconies, glazing, and two lift rails. -->
-    <g transform="translate(113 2) skewY(-4)">
-      <path d="M0 315V47L107 16l56 15v288z" fill="url(#tower-face)" stroke="#566c7b" />
-      <path d="M4 51 58 65v242H4z" fill="url(#tower-slits)" /><path d="m66 66 85-20v257l-85 13z" fill="url(#atrium-glass)" />
-      <path d="m60 62 95-22v241l-95 25z" fill="url(#service-panels)" />
-      <g><use href="#apartment-bay" x="76" y="74" /><use href="#apartment-bay" x="111" y="66" /><use href="#apartment-bay" x="93" y="104" /><use href="#apartment-bay" x="70" y="145" /><use href="#apartment-bay" x="117" y="134" /><use href="#apartment-bay" x="89" y="176" /><use href="#apartment-bay" x="113" y="205" /><use href="#apartment-bay" x="75" y="249" /></g>
-      <use href="#terrace" y="47" /><use href="#terrace" y="82" /><use href="#terrace" y="117" /><use href="#terrace" y="152" /><use href="#terrace" y="187" /><use href="#terrace" y="222" /><use href="#terrace" y="257" /><use href="#terrace" y="292" />
-      <path d="m2 49 54 12 98-23m-149 83 51 11 97-22m-99 119 98-22" fill="none" stroke="#6afce1" stroke-width="2.5" />
-      <g fill="#b6da84" stroke="#4b896e" stroke-width=".65"><path d="m88 55-5-6 6 3-.5-8 3 5 4-9 1 8 6-4-2 6zm32 132-6-7 6 3 1-8 3 5 7-8-2 9 5-3-1 5z" /></g>
-      <path d="M105 17V8l15-3 24 6v12" fill="#37475a" stroke="#8a8190" /><path d="M8 42v-7l33-10m8-2 38-10" stroke="#8bb8ba" fill="none" />
-      <g stroke="#879297" stroke-width=".8"><path d="m86 25 1-7 11-3 6 1v8l-11 3z" fill="#52626c" /><path d="m88 19 6 2 8-3m-7 3v4" fill="none" /><path d="M121 6V-2l3-1v8" fill="#354a5b" /></g>
-      <g fill="#344f53" stroke="#879986" stroke-width=".8"><path d="m124 98 16-4v4l-16 4zM72 183l15-3v4l-15 3z" /><path d="m128 97-2-5 4 3 1-5 2 4 4-4v4m-62 88-1-5 4 4 2-6 3 4" fill="#597a6c" /></g>
+    <!-- Split-level apartment house. The upper floors step back behind a glazed winter garden. -->
+    <g id="west-residences" transform="translate(193 0) scale(.62 1)">
+      <path d="M13 309V62l19-5V39l33-9V18l36-10 28 8v18l21 7v33l22 7v224z" fill="url(#residential-bronze)" stroke="#5c5364" />
+      <path d="M68 21 101 12v61l-33 4z" fill="#594351" /><path d="m102 12 24 7v52l-24-3z" fill="#303246" />
+      <g transform="matrix(.73,-.18,0,.62,70,25)"><rect width="39" height="55" fill="url(#occupied-rooms)" /></g>
+      <path d="m69 22 31-9 24 7m-20-7v-6l6 1v7" fill="none" stroke="#da9f8c" stroke-width="1.4" />
+      <path d="m30 44 52-13 24 6v26l-76 14z" fill="#273749" />
+      <g transform="matrix(.74,-.17,0,.82,34,46)"><rect width="64" height="31" fill="url(#occupied-rooms)" /></g>
+      <path d="m25 71 59-14 24 6v5L84 64 26 79z" fill="url(#soffit-light)" /><path d="m27 72 57-13 21 5" fill="none" stroke="#f2b699" stroke-width="1.6" />
+      <path d="M15 80 83 66v239l-68 7z" fill="url(#residential-bronze)" />
+      <g transform="matrix(.91,-.17,0,.78,17,84)"><rect width="71" height="271" fill="url(#occupied-rooms)" /></g>
+      <path d="M84 66 111 74v227l-27 4z" fill="#303244" />
+      <path d="m88 75 17 5v185l-17 2z" fill="url(#service-panels)" />
+      <path d="m21 80 3-.6-1 220-4 1zm46-10 6-1-1 225-5 2z" fill="#897181" />
+      <path d="M104 80V46l28-7 15 4v34l18 4v218l-62 7z" fill="url(#office-mirror)" />
+      <g transform="matrix(.71,-.14,0,.77,106,83)"><rect width="62" height="278" fill="url(#glass-bays)" /></g>
+      <path d="M132 41v34l16 4V44z" fill="#313347" /><path d="m108 51 21-6v26l-21 5z" fill="url(#rear-offices)" />
+      <path d="m151 84 17-4v220l-17 2z" fill="#263447" />
+      <path d="M156 86v192m6-194v194" stroke="#989b9f" stroke-width="1.3" />
+      <!-- Three occupied winter gardens project at different heights. -->
+      <g fill="#284751" stroke="#617d84"><path d="m9 104 51-11 14 4v24l-52 12-13-4z" /><path d="m97 134 48-10 13 4v27l-50 10-11-5z" /><path d="m6 203 49-8 19 5v28l-50 9-18-6z" /></g>
+      <g fill="url(#lobby-light)"><path d="m24 107 34-8v17l-34 8z" /><path d="m111 138 33-8v19l-33 8z" /><path d="m23 208 32-7v19l-32 7z" /></g>
+      <g fill="#4d6465"><path d="m26 119 4-5 4 3 1-7 5 3-1 6-13 4zm89 28 5-3 2-8 3 3 3-4 1 7-4 5-10 4zM25 224v-7l6-4 4 3 2-7 5 3v8z" /></g>
+      <g fill="none" stroke="#374452" stroke-width="2"><path d="M22 106v19m24-25v19m64 18v21m25-27v21m-112 55v21m22-25v21" /></g>
+      <path d="m7 128 15 4 54-12v6l-54 12-15-5zm88 31 14 4 51-10v6l-51 10-14-5zm-91 70 20 6 52-9v6l-53 10-19-7z" fill="url(#soffit-light)" />
+      <path d="m8 129 14 4 51-11m24 38 12 4 48-10m-151 77 18 5 48-8" fill="none" stroke="#92ede0" stroke-width="1.7" />
+      <path d="M108 178v26l20-4v-26m0 8-18 18m1-10 16-10m-15 27v24l17-3v-26m-15 23 14-15" fill="none" stroke="#83979d" stroke-width="1.4" />
+      <use href="#roof-plant" transform="translate(38 39) scale(.58)" />
     </g>
     <path d="m278 324 1-224 29-15 16 6v233z" fill="url(#tower-face)" stroke="#587387" />
     <path d="M289 107v210m18-218v219" stroke="#7f99a6" stroke-width="2" />
@@ -700,40 +781,71 @@
       </g>
       <path d="M13 13h16m-16 6h16m-16 6h16m-16 6h16M-27 49H2l6 6h21" fill="none" stroke="#687e85" stroke-width="2" />
     </g>
-    <!-- Curved east hotel. Rings catch pink light, structural ribs cast deep shadows. -->
-    <g transform="translate(635 0)">
-      <path d="M0 324V54q64-34 140-16l14 9v277z" fill="url(#tower-face)" stroke="#7c7a8b" />
-      <path d="M43 35V25q25-11 55-7l15 4v11z" fill="#334357" stroke="#807787" />
-      <path d="M42 25q26-12 56-8l15 4-4 3q-32-8-66 5z" fill="#6c6a78" /><path d="M51 26q23-8 42-6m4 0 9 2" fill="none" stroke="#d6a696" />
-      <path d="M91 17V9m4 9v-5" stroke="#8d8494" />
-      <path d="m-4 53 15-13q60-25 124-11l14 8-7 5Q69 25 2 59z" fill="#52485d" stroke="#d0a0a9" />
-      <path d="M10 50q63-26 128-11" fill="none" stroke="#ffd4b1" stroke-width="3" />
-      <path d="M0 51q62-33 141-16" fill="none" stroke="#ff589d" stroke-width="6" opacity=".38" />
-      <path d="M1 62Q72 31 140 47v261H1z" fill="url(#hotel-glazing)" />
-      <path d="M2 61q64-27 134-16v6Q57 42 2 68z" fill="#293244" />
-      <use href="#drum-floor" y="75" /><use href="#drum-floor" y="105" /><use href="#drum-floor" y="135" /><use href="#drum-floor" y="165" /><use href="#drum-floor" y="195" /><use href="#drum-floor" y="225" /><use href="#drum-floor" y="255" /><use href="#drum-floor" y="285" />
-      <use href="#hotel-suite" y="74" /><use href="#hotel-suite" y="134" opacity=".53" /><use href="#hotel-suite" y="254" opacity=".8" />
-      <!-- Double-height sky lobby: a recessed band of glass behind its projecting sill. -->
-      <path d="M3 180q62-24 132-11v24Q66 182 3 204z" fill="#1c3343" stroke="#556d78" />
-      <path d="M7 182q58-22 123-11v15Q68 178 7 197z" fill="url(#hotel-glazing)" />
-      <path d="M29 178q19-5 38-6v10q-18 1-38 7z" fill="#c9977f" />
-      <path d="m33 180 10-2v3l-10 2zm24-6 6-.7v5l-6 1z" fill="#ebc59e" />
-      <path d="m38 183 6-1v4l-6 1zm16-3 5-.8 2 3-8 1.2z" fill="#6b6667" />
-      <path d="M18 179v15m13-19v15m18-19v16m20-20v16m17-17v16m19-15v15m15-13v15" stroke="#354958" stroke-width="1.4" />
-      <path d="M-2 203q64-24 139-12v4Q64 184 0 209z" fill="#716671" stroke="#c99691" />
-      <path d="m42 103 10-2v5l-10 2zm45 119h12v6l-12-.4z" fill="#d5b391" opacity=".7" />
-      <g fill="none" stroke="#bbb4ab" stroke-width="1.1" opacity=".64"><path d="M46 53v234m31-243v239m43-244v243" /></g>
-      <path d="m142 45 8 4 5 219-13 4z" fill="url(#service-panels)" />
-      <path d="M21 58v266m87-279v279m29-274v274" stroke="#1d3246" stroke-width="7" />
-      <path class="light-ribs" d="M23 61v254m86-264v264" stroke="#91e8df" stroke-width="2.2" stroke-dasharray="23 105" />
-      <path d="M2 88q60-23 129-10m-127 128q61-24 130-11" fill="none" stroke="#ff6ea8" stroke-width="2.7" />
-      <path d="m136 56 3 208" stroke="#bb93ff" stroke-width="2.4" />
+    <!-- Streamlined corner hotel. A continuous curved curtain wall turns away from the avenue. -->
+    <g id="east-hotel" transform="translate(624 0) scale(.82 1)">
+      <path d="M-2 306V64Q3 51 23 45V37l11-5v-7l15-5V13l17-6 17 2v10l24 4v8l18 4v10l20 7 6 251z" fill="url(#polished-stone)" />
+      <path d="M18 50Q60 26 123 41v11Q66 37 15 63z" fill="url(#lobby-light)" />
+      <path d="M23 48q46-21 94-9m-88 8v10m9-14v10m10-14v11m12-14v11m13-13v11m14-11v10m14-9v10m12-9v10" stroke="#675462" fill="none" stroke-width="1.7" />
+      <path d="m42 29 20-9 27 1 16 4v4l-26-4-18 1-19 7z" fill="#a38283" />
+      <path d="m55 18 10-6 16 2m-20 4 4-2 11 .6" fill="none" stroke="#ffd4a3" stroke-width="1.6" />
+      <path d="M4 65Q53 32 134 50v251H4z" fill="url(#office-mirror)" />
+      <path d="M14 66q8-5 17-8v239l-12 1zm25-11 6-2v241l-4 1z" fill="#94b7b9" opacity=".25" />
+      <path d="m74 47 12 .3-3 255-13 2zm24 1 8 1-6 253h-4z" fill="#d79caf" opacity=".17" />
+      <path d="M7 74q56-24 125-7v2Q63 54 7 77z" fill="#203043" />
+      <path d="m23 63 9-1m3-.4 5-.3" fill="none" stroke="#f5ca92" stroke-width="3" />
+      <path d="M7 87q56-24 125-7v2Q63 67 7 90z" fill="#203043" />
+      <path d="m55 70 9-1m3-.4 5-.3" fill="none" stroke="#c598a3" stroke-width="3" />
+      <path d="M7 100q56-24 125-7v2Q63 80 7 103z" fill="#203043" />
+      <path d="m76 83 9-1m3-.4 5-.3" fill="none" stroke="#83babf" stroke-width="3" />
+      <path d="M7 113q56-24 125-7v2Q63 93 7 116z" fill="#203043" />
+      <path d="m38 98 9-1m3-.4 5-.3" fill="none" stroke="#ffddad" stroke-width="3" />
+      <path d="M7 126q56-24 125-7v2Q63 106 7 129z" fill="#203043" />
+      <path d="m92 110 9-1m3-.4 5-.3" fill="none" stroke="#91a5c2" stroke-width="3" />
+      <path d="M7 139q56-24 125-7v2Q63 119 7 142z" fill="#203043" />
+      <path d="m23 128 9-1m3-.4 5-.3" fill="none" stroke="#f5ca92" stroke-width="3" />
+      <path d="M7 152q56-24 125-7v2Q63 132 7 155z" fill="#203043" />
+      <path d="m55 135 9-1m3-.4 5-.3" fill="none" stroke="#c598a3" stroke-width="3" />
+      <path d="M7 165q56-24 125-7v2Q63 145 7 168z" fill="#203043" />
+      <path d="m76 148 9-1m3-.4 5-.3" fill="none" stroke="#83babf" stroke-width="3" />
+      <path d="M7 178q56-24 125-7v2Q63 158 7 181z" fill="#203043" />
+      <path d="m38 163 9-1m3-.4 5-.3" fill="none" stroke="#ffddad" stroke-width="3" />
+      <path d="M7 206q56-24 125-7v2Q63 186 7 209z" fill="#203043" />
+      <path d="m92 190 9-1m3-.4 5-.3" fill="none" stroke="#91a5c2" stroke-width="3" />
+      <path d="M7 219q56-24 125-7v2Q63 199 7 222z" fill="#203043" />
+      <path d="m23 208 9-1m3-.4 5-.3" fill="none" stroke="#f5ca92" stroke-width="3" />
+      <path d="M7 232q56-24 125-7v2Q63 212 7 235z" fill="#203043" />
+      <path d="m55 215 9-1m3-.4 5-.3" fill="none" stroke="#c598a3" stroke-width="3" />
+      <path d="M7 245q56-24 125-7v2Q63 225 7 248z" fill="#203043" />
+      <path d="m76 228 9-1m3-.4 5-.3" fill="none" stroke="#83babf" stroke-width="3" />
+      <path d="M7 258q56-24 125-7v2Q63 238 7 261z" fill="#203043" />
+      <path d="m38 243 9-1m3-.4 5-.3" fill="none" stroke="#ffddad" stroke-width="3" />
+      <path d="M7 271q56-24 125-7v2Q63 251 7 274z" fill="#203043" />
+      <path d="m92 255 9-1m3-.4 5-.3" fill="none" stroke="#91a5c2" stroke-width="3" />
+      <path d="M7 284q56-24 125-7v2Q63 264 7 287z" fill="#203043" />
+      <path d="m23 273 9-1m3-.4 5-.3" fill="none" stroke="#f5ca92" stroke-width="3" />
+      <path d="M7 297q56-24 125-7v2Q63 277 7 300z" fill="#203043" />
+      <path d="m55 280 9-1m3-.4 5-.3" fill="none" stroke="#c598a3" stroke-width="3" />
+      <path d="M6 65Q60 34 135 50v5Q61 39 6 70z" fill="#393245" />
+      <path d="M4 63Q64 31 136 49" fill="none" stroke="#ffd49f" stroke-width="2.4" />
+      <path d="M5 182q52-24 128-7v21q-68-15-128 7z" fill="#223848" />
+      <path d="M11 183q48-20 113-9v12q-61-10-113 9z" fill="url(#lobby-light)" />
+      <path d="m18 187 6-2 4-8 1 7 4-.7v6l-15 5zm29-8 14-2 3 3v2l-18 2zm45-4 22 2v4l-22-2z" fill="#886d73" />
+      <g stroke="#384654" stroke-width="1.3"><path d="M20 178v15m13-19v15m14-19v16m17-18v17m18-17v15m17-14v15m15-12v14" /></g>
+      <path d="M1 202q57-23 136-7v5q-69-15-136 8z" fill="#695765" />
+      <path d="M3 201q57-22 134-7" fill="none" stroke="#ffa1ab" stroke-width="2.6" />
+      <g fill="#343347" stroke="#958793" stroke-width=".7"><path d="m5 61 5-4-1 242-5 2zM34 48l3-1v248l-3 1zm78-5 3 1v249h-3z" /></g>
+      <path d="M129 49q10 1 17 6v243l-17 .3z" fill="url(#polished-stone)" />
+      <path d="M130 49v247m5-246v245m5-243v243" stroke="#aa8192" stroke-width="1.5" />
+      <path class="light-ribs" d="M136 52v237" fill="none" stroke="#ffb9bc" stroke-width="2" stroke-dasharray="61 94" />
     </g>
     <g class="sky-cab" transform="translate(442 151) scale(.65)"><path d="m-39-3 14-4 12-9h20l12 9 22 3-4 6-20 4h-42z" fill="url(#chrome-arm)" stroke="#1c3044" stroke-width="2" />
       <path d="m-19-8 9-6H6l10 8z" fill="#294c65" stroke="#9ce0d9" /><path d="M-31 4h10m33 0h10" stroke="#b1ffea" stroke-width="3" /><path d="m-35 0-15 1" stroke="#ff89ad" stroke-width="2" /></g>
     <!-- Nearest facades crop the panorama and lead towards the lower street. -->
     <path d="M0 0h73l32 25v187l-17 18v94H0zM960 0H818l-28 36 9 137-15 14 13 137h163z" fill="url(#tower-face)" stroke="#476274" />
     <path d="M0 30 64 58v183L0 259zm835 10 125-24v210l-125 24z" fill="url(#tower-slits)" />
+    <g transform="matrix(.78,.24,0,.83,-4,55)"><rect width="88" height="190" fill="url(#office-mirror)" /><rect width="88" height="190" fill="url(#glass-bays)" opacity=".84" /></g>
+    <g transform="matrix(.91,-.17,0,.80,835,52)"><rect width="145" height="224" fill="url(#brick-wash)" /><rect width="145" height="224" fill="url(#occupied-rooms)" opacity=".88" /></g>
+    <path d="m835 52 125-23v5l-125 23zm0 70 125-20v5l-125 20zm0 71 125-17v5l-125 17z" fill="#5c5566" />
     <path d="m75 7 24 21v176l-15 16-9-4zm735 33 19-18 1 222-18 12z" fill="url(#service-panels)" />
     <path d="m82 21 6 5v161l-5 8zm728 33 6-9v175l-5 5z" fill="#162839" />
     <g fill="#344b58" stroke="#829098" stroke-width="1">
@@ -741,7 +853,19 @@
       <path d="m916 80 34-6v19l-34 6z" /><path d="m919 83 28-5m-28 8 28-5m-28 8 28-5m-28 8 28-5" fill="none" />
     </g>
     <path d="m922 99 1 22 5 4v89l-6 8v19m8-143 1 18 6 5v84" fill="none" stroke="#192b3b" stroke-width="4.5" /><path d="m922 99 1 22 5 4v89l-6 8v19m8-143 1 18 6 5v84" fill="none" stroke="#73848b" stroke-width="1.1" />
-    <g fill="none" stroke-linejoin="round"><path d="m7 47 66 28v103l-8 14v49m744-201 17-17 72-12m-87 55 13-14 87-16" stroke="#63c8cc" stroke-width="3" /><path d="m863 73 47-10v135l-47 11z" fill="#40293d" stroke="#df8c98" stroke-width="2" /><path d="m875 97 22-5-11 16 11 9-22 6m0 14 22-5v26l-22 5zm1 46 20-5" stroke="#ffbe9c" stroke-width="3" /></g>
+    <path d="m7 47 66 28v103l-8 14v49m744-201 17-17 72-12m-87 55 13-14 87-16" fill="none" stroke="#63c8cc" stroke-width="3" />
+    <g id="arasaka-sign" transform="translate(677 84) skewY(-10) scale(.80)">
+      <title>Arasaka</title>
+      <ellipse cx="27" cy="68" rx="51" ry="89" fill="url(#rose-air)" opacity=".65" />
+      <path d="m-3-1 5-5h51l6 4v140l-5 5H-3z" fill="#242231" stroke="#846470" />
+      <path d="M0 1h53v136H0z" fill="#371b2b" stroke="#fa6576" />
+      <g transform="translate(26.5 25)" fill="#ff5265">
+        <circle r="17.8" fill="none" stroke="#ff5265" stroke-width="2" />
+        <path d="M-2 18v-6l-7-6q-7-1-6-8 7-2 10 4l-.5 3 4 3V-2q-6-9 1.5-15Q8-10 2-2v10l4-3q-1-8 8-9 4 7-4 10l-7 6v6z" />
+      </g>
+      <text transform="translate(19.5 49) rotate(90)" textLength="83" lengthAdjust="spacingAndGlyphs" fill="#ffe1dc" font-family="Arial,sans-serif" font-weight="bold" font-size="17" letter-spacing="1.2">ARASAKA</text>
+      <path d="M4 8V4h9m36 117v12h-7" fill="none" stroke="#ffb6b0" stroke-width="1.2" />
+    </g>
     <!-- The corner club's record sign protrudes from the wall on a triangular steel bracket. -->
     <g transform="translate(41 130) skewY(11)">
       <ellipse rx="53" ry="64" fill="url(#violet-air)" opacity=".85" />
@@ -752,8 +876,16 @@
       <ellipse rx="6.5" ry="9" fill="#ff8297" /><ellipse rx="2" ry="3" fill="#4b3757" />
       <path d="m12-19 5-2-2 16-8 10" stroke="#a9f9ee" fill="none" stroke-width="2" />
     </g>
-    <path d="m0 280 88-18 53 5 101 14 64-10 72 16 44-9 71 15 71-10 87 5 75-19 79 8 71-28 84 8v67H0z" fill="#172a3b" stroke="#526370" />
-    <path d="m0 300 242-22 204 21m117-5 153-16 66 6 178-27" fill="none" stroke="#b7838b" stroke-width="2" />
+    <!-- Occupied roof level over the market, with three independent parapets and a plant room. -->
+    <path d="m0 278 169-17 87 13v39L0 327z" fill="#333849" /><path d="m0 281 169-18 86 13-86-8L0 287z" fill="#727582" />
+    <path d="m0 290 164-17v28L0 314z" fill="url(#glass-bays)" opacity=".75" /><path d="m170 270 79 9v21l-79 2z" fill="url(#service-panels)" />
+    <use href="#roof-plant" transform="translate(84 267) scale(1.12)" /><use href="#roof-plant" transform="translate(121 264) scale(.72)" />
+    <path d="m238 288 203-25 98 14v30l-298 9z" fill="#303545" /><path d="m240 287 201-24 96 13v4l-96-12-201 24z" fill="#6c6473" />
+    <path d="m253 294 178-21v17l-178 17z" fill="url(#rear-offices)" /><path d="m459 278 59 5v14l-59-2z" fill="url(#service-panels)" />
+    <path d="m530 290 165-24 77 5 25-9 111-16 58 7v68H530z" fill="#293746" />
+    <path d="m531 290 164-25 77 6m26-8 111-16 57 7" fill="none" stroke="#ae8f96" stroke-width="2" />
+    <path d="m560 291 124-18v21l-124 14zm244-23 96-14v27l-96 12z" fill="url(#glass-bays)" />
+    <path d="M0 314q250-26 514-14 206 9 446-25v49H0z" fill="#172736" /><path d="M0 314q250-26 514-14 206 9 446-25" stroke="#526175" fill="none" stroke-width="2.4" />
     <path d="M0 0h960v8L743 5l-27 8-84-6-65 3L358 6l-70 10-37-4-102 6L0 11z" fill="#10212f" /><path d="M0 21q145 37 267-14m457 4q148 53 236 12" fill="none" stroke="#202e3e" stroke-width="2" />
     <rect class="rain" x="-86" y="-54" width="1132" height="440" fill="url(#drizzle)" opacity=".38" />
   </svg>
@@ -790,7 +922,139 @@
     <rect width="960" height="274" fill="url(#market-air)" />
     <ellipse cx="266" cy="96" rx="192" ry="111" fill="url(#rose-air)" opacity=".45" />
     <path d="M0 198V31l99-14 60 20v53l43-9V38l70-12 36 10v58l38-8V54l36-8 17 8v66l32-8V46l29-7 18 4v65l24-4V62l18-7 15 4v68l30-8V53l52-9 39 14v27l38-7V39l39-12 33 9v57l45-9V45l80-21 37 11v163z" fill="#263849" stroke="#43606b" />
-    <g fill="url(#tower-slits)" opacity=".58"><path d="m8 43 75-11v100H8zm206 6 51-9v76l-51 8zm227 6 14-3v78l-14 3zm130 9 42-8v56l-42 6zm249-11 65-14v79l-65 8z" /></g>
+    <!-- Brick merchants’ houses recede toward the intersection. Lintels, glazing and paving share a vanishing point. -->
+    <g id="market-west-frontage">
+      <path d="M-50 -44 436.8 134.9 436.8 165.1 -50 231z" fill="url(#brick-wash)" />
+      <g>
+        <path d="M398.5 124.2 434.1 136.1 434.1 165.2 398.5 169.8z" fill="url(#residential-bronze)" />
+        <path d="M398.5 124.2 434.1 136.1 434.1 149.1 398.5 144.6z" fill="url(#laid-brick)" /><path d="M401.7 148.6 430.9 151.2 430.9 164.4 401.7 167.6z" fill="#142637" />
+        <path d="M422.5 134.5 430.5 137 430.5 140.8 422.5 138.9z" fill="url(#lobby-light)" /><path d="M422.5 139.4 430.5 141.3 430.5 144.6 422.5 143.1z" fill="#5b647d" />
+        <path d="M412.8 131.6 420.8 134 420.8 138.5 412.8 136.5z" fill="#5b647d" /><path d="M412.8 137.1 420.8 139 420.8 142.8 412.8 141.3z" fill="#50667a" />
+        <path d="M403.1 128.7 411.1 131.1 411.1 136.1 403.1 134.2z" fill="#50667a" /><path d="M403.1 134.9 411.1 136.7 411.1 141 403.1 139.5z" fill="url(#lobby-light)" />
+        <path d="M403.2 151 429.5 152.7 429.5 155.3 403.2 154.6z" fill="url(#lobby-light)" /><path d="M403.9 155.6 415.6 155.8 415.6 164 403.9 165z" fill="#375464" /><path d="M417.4 156 428.8 156.1 428.8 164.2 417.4 165.4z" fill="#273b50" />
+        <path d="M398.5 125.9 434.1 137.1" fill="none" stroke="#afa0a1" stroke-width="0.3" /><path d="M398.5 145.7 434.1 149.8" fill="none" stroke="#1b2c40" stroke-width="0.5" /><path d="M401.7 149 430.9 151.4" fill="none" stroke="#ffbd95" stroke-width="0.4" />
+        <path d="M431.6 136.7 434.1 137.5 434.1 165.1 431.6 165.4z" fill="#283346" /><path d="M401.4 168.7 429.8 165.2" fill="none" stroke="#9d8489" stroke-width="0.3" />
+      </g>
+      <g>
+        <path d="M338.4 96.7 398.5 119.6 398.5 169.8 338.4 177.6z" fill="url(#residential-bronze)" />
+        <path d="M338.4 96.7 398.5 119.6 398.5 144.6 338.4 137z" fill="url(#laid-brick)" /><path d="M343.8 143.6 393.1 147.9 393.1 168.6 343.8 174.1z" fill="#142637" />
+        <path d="M378.9 115.8 392.5 120.5 392.5 126.6 378.9 122.7z" fill="#5b647d" /><path d="M378.9 123.5 392.5 127.4 392.5 132.6 378.9 129.4z" fill="#50667a" />
+        <path d="M362.5 110 376.1 114.8 376.1 121.9 362.5 117.9z" fill="#50667a" /><path d="M362.5 118.9 376.1 122.7 376.1 128.7 362.5 125.5z" fill="url(#lobby-light)" />
+        <path d="M346.1 104.3 359.7 109 359.7 117.1 346.1 113.1z" fill="url(#lobby-light)" /><path d="M346.1 114.2 359.7 118.1 359.7 124.9 346.1 121.7z" fill="#5b647d" />
+        <path d="M346.2 147.4 390.7 150.2 390.7 154.3 346.2 153.1z" fill="#5b647d" /><path d="M347.4 154.8 367.3 155.1 367.3 168.1 347.4 169.9z" fill="#375464" /><path d="M370.3 155.4 389.5 155.6 389.5 168.4 370.3 170.4z" fill="#273b50" />
+        <path d="M338.4 99.3 398.5 121.2" fill="none" stroke="#afa0a1" stroke-width="0.6" /><path d="M338.4 138.7 398.5 145.7" fill="none" stroke="#1b2c40" stroke-width="0.9" /><path d="M343.8 144.1 393.1 148.3" fill="none" stroke="#88d6d7" stroke-width="0.7" />
+        <path d="M394.3 120.2 398.5 121.7 398.5 169.6 394.3 170.1z" fill="#283346" /><path d="M343.2 175.8 391.3 169.9" fill="none" stroke="#9d8489" stroke-width="0.5" />
+      </g>
+      <g>
+        <path d="M261.8 74 338.4 101 338.4 177.6 261.8 187.5z" fill="url(#brick-wash)" />
+        <path d="M261.8 74 338.4 101 338.4 137 261.8 127.3z" fill="url(#laid-brick)" /><path d="M268.7 137 331.5 142.5 331.5 175.5 268.7 182.5z" fill="#142637" />
+        <path d="M313.4 97.9 330.7 103.5 330.7 113.2 313.4 108.7z" fill="#50667a" /><path d="M313.4 110 330.7 114.4 330.7 122.6 313.4 119.1z" fill="url(#lobby-light)" />
+        <path d="M292.5 91.2 309.8 96.8 309.8 107.7 292.5 103.2z" fill="url(#lobby-light)" /><path d="M292.5 104.7 309.8 109.1 309.8 118.3 292.5 114.8z" fill="#5b647d" />
+        <path d="M271.6 84.5 288.9 90 288.9 102.2 271.6 97.7z" fill="#5b647d" /><path d="M271.6 99.3 288.9 103.7 288.9 114 271.6 110.4z" fill="#50667a" />
+        <path d="M271.7 142.6 328.4 146.2 328.4 152.7 271.7 151.2z" fill="#50667a" /><path d="M273.3 153.7 298.5 154.1 298.5 174.1 273.3 176.2z" fill="#375464" /><path d="M302.4 154.5 326.9 154.8 326.9 175 302.4 177.6z" fill="#273b50" />
+        <path d="M261.8 77.9 338.4 103.6" fill="none" stroke="#afa0a1" stroke-width="0.8" /><path d="M261.8 129.9 338.4 138.7" fill="none" stroke="#1b2c40" stroke-width="1.3" /><path d="M268.7 137.8 331.5 143.1" fill="none" stroke="#ffbd95" stroke-width="1" />
+        <path d="M333 102.7 338.4 104.5 338.4 177.3 333 178z" fill="#283346" /><path d="M267.9 185.1 329.2 177.6" fill="none" stroke="#9d8489" stroke-width="0.8" />
+      </g>
+      <g>
+        <path d="M163.3 34.4 261.8 70.6 261.8 187.5 163.3 200.3z" fill="url(#residential-bronze)" />
+        <path d="M163.3 34.4 261.8 70.6 261.8 127.3 163.3 114.9z" fill="url(#laid-brick)" /><path d="M172.2 128.5 252.9 135.6 252.9 184.2 172.2 193.2z" fill="#142637" />
+        <path d="M229.7 67.1 251.9 74.6 251.9 88.9 229.7 82.7z" fill="url(#lobby-light)" /><path d="M229.7 84.7 251.9 90.7 251.9 102.8 229.7 97.9z" fill="#5b647d" />
+        <path d="M202.8 58 225.1 65.5 225.1 81.4 202.8 75.3z" fill="#5b647d" /><path d="M202.8 77.4 225.1 83.4 225.1 96.8 202.8 91.9z" fill="#50667a" />
+        <path d="M175.9 49 198.2 56.5 198.2 74 175.9 67.8z" fill="#50667a" /><path d="M175.9 70.1 198.2 76.2 198.2 90.9 175.9 86z" fill="url(#lobby-light)" />
+        <path d="M176.1 136.5 249 141.1 249 150.7 176.1 148.8z" fill="url(#lobby-light)" /><path d="M178.1 152.3 210.6 152.8 210.6 181.6 178.1 184.4z" fill="#375464" /><path d="M215.5 153.4 247 153.8 247 183.5 215.5 186.8z" fill="#273b50" />
+        <path d="M163.3 39.9 261.8 74.4" fill="none" stroke="#afa0a1" stroke-width="1.2" /><path d="M163.3 118.6 261.8 129.9" fill="none" stroke="#1b2c40" stroke-width="1.8" /><path d="M172.2 129.7 252.9 136.5" fill="none" stroke="#88d6d7" stroke-width="1.5" />
+        <path d="M254.9 73.3 261.8 75.7 261.8 187.1 254.9 188z" fill="#283346" /><path d="M171.2 196.9 250 187.3" fill="none" stroke="#9d8489" stroke-width="1.1" />
+      </g>
+      <g>
+        <path d="M56.7 13.7 163.3 48.4 163.3 200.3 56.7 214.2z" fill="url(#residential-bronze)" />
+        <path d="M56.7 13.7 163.3 48.4 163.3 114.9 56.7 101.5z" fill="url(#laid-brick)" /><path d="M66.3 119.2 153.7 126.9 153.7 195.3 66.3 205z" fill="#142637" />
+        <path d="M128.6 48.6 152.7 55.7 152.7 75.8 128.6 70.1z" fill="#5b647d" /><path d="M128.6 72.8 152.7 78.3 152.7 95.3 128.6 91z" fill="#50667a" />
+        <path d="M99.4 40 123.5 47.1 123.5 68.9 99.4 63.2z" fill="#50667a" /><path d="M99.4 66.1 123.5 71.7 123.5 90.1 99.4 85.8z" fill="url(#lobby-light)" />
+        <path d="M70.3 31.4 94.4 38.5 94.4 62.1 70.3 56.4z" fill="url(#lobby-light)" /><path d="M70.3 59.5 94.4 65 94.4 84.9 70.3 80.6z" fill="#5b647d" />
+        <path d="M70.5 129.7 149.5 134.8 149.5 148.1 70.5 146.1z" fill="#5b647d" /><path d="M72.7 150.8 107.9 151.3 107.9 190.4 72.7 193.5z" fill="#375464" /><path d="M113.2 152.1 147.3 152.5 147.3 194.1 113.2 197.7z" fill="#273b50" />
+        <path d="M56.7 21 163.3 53.9" fill="none" stroke="#afa0a1" stroke-width="1.5" /><path d="M56.7 106.3 163.3 118.6" fill="none" stroke="#1b2c40" stroke-width="2.4" /><path d="M66.3 120.8 153.7 128.1" fill="none" stroke="#ffbd95" stroke-width="1.9" />
+        <path d="M155.9 53.5 163.3 55.7 163.3 199.7 155.9 200.7z" fill="#283346" /><path d="M65.2 209.9 150.5 199.4" fill="none" stroke="#9d8489" stroke-width="1.4" />
+      </g>
+      <g>
+        <path d="M-50 -40 56.7 -1.6 56.7 214.2 -50 228z" fill="url(#brick-wash)" />
+        <path d="M-50 -40 56.7 -1.6 56.7 101.5 -50 88z" fill="url(#laid-brick)" /><path d="M-40.4 109.8 47.1 117.5 47.1 207.2 -40.4 216.9z" fill="#142637" />
+        <path d="M21.9 0.7 46 8.6 46 35 21.9 28.5z" fill="#50667a" /><path d="M21.9 31.9 46 38.3 46 60.5 21.9 55.4z" fill="url(#lobby-light)" />
+        <path d="M-7.2 -8.9 16.9 -1 16.9 27.1 -7.2 20.6z" fill="url(#lobby-light)" /><path d="M-7.2 24.3 16.9 30.6 16.9 54.3 -7.2 49.1z" fill="#5b647d" />
+        <path d="M-36.3 -18.5 -12.2 -10.6 -12.2 19.2 -36.3 12.7z" fill="#5b647d" /><path d="M-36.3 16.6 -12.2 22.9 -12.2 48.1 -36.3 42.9z" fill="#50667a" />
+        <path d="M-36.1 122.9 42.8 127.9 42.8 145.4 -36.1 143.4z" fill="#50667a" /><path d="M-34 149.2 1.2 149.7 1.2 199.6 -34 202.6z" fill="#375464" /><path d="M6.5 150.7 40.7 151.2 40.7 205.4 6.5 209z" fill="#273b50" />
+        <path d="M-50 -31 56.7 5.7" fill="none" stroke="#afa0a1" stroke-width="1.9" /><path d="M-50 94 56.7 106.3" fill="none" stroke="#1b2c40" stroke-width="3" /><path d="M-40.4 111.8 47.1 119.2" fill="none" stroke="#88d6d7" stroke-width="2.4" />
+        <path d="M49.2 5.5 56.7 8.1 56.7 213.4 49.2 214.3z" fill="#283346" /><path d="M-41.5 223 43.9 212.5" fill="none" stroke="#9d8489" stroke-width="1.8" />
+      </g>
+    </g>
+    <!-- Former workshops recede toward the intersection. Lintels, glazing and paving share a vanishing point. -->
+    <g id="market-east-frontage">
+      <path d="M1005 -65 552.9 132.6 552.9 165.1 1005 231z" fill="url(#office-mirror)" />
+      <g>
+        <path d="M588.4 120.5 555.4 133.7 555.4 165.2 588.4 169.8z" fill="url(#polished-stone)" />
+        <path d="M588.4 120.5 555.4 133.7 555.4 149.1 588.4 144.6z" fill="url(#laid-brick)" /><path d="M585.5 148.6 558.4 151.2 558.4 164.4 585.5 167.6z" fill="#142637" />
+        <path d="M566.2 131.7 558.7 134.4 558.7 138.3 566.2 136z" fill="#8e7184" /><path d="M566.2 136.6 558.7 138.8 558.7 142.1 566.2 140.2z" fill="url(#lobby-light)" />
+        <path d="M575.2 128.4 567.7 131.1 567.7 135.6 575.2 133.3z" fill="url(#lobby-light)" /><path d="M575.2 133.9 567.7 136.1 567.7 139.9 575.2 138.1z" fill="#527b87" />
+        <path d="M584.2 125.1 576.8 127.8 576.8 132.8 584.2 130.6z" fill="#527b87" /><path d="M584.2 131.2 576.8 133.5 576.8 137.7 584.2 135.9z" fill="#8e7184" />
+        <path d="M584.1 151 559.7 152.7 559.7 155.3 584.1 154.6z" fill="#8e7184" /><path d="M583.5 155.6 572.6 155.8 572.6 164 583.5 165z" fill="#375464" /><path d="M570.9 156 560.4 156.1 560.4 164.2 570.9 165.4z" fill="#273b50" />
+        <path d="M588.4 122.1 555.4 134.7" fill="none" stroke="#afa0a1" stroke-width="0.3" /><path d="M588.4 145.7 555.4 149.8" fill="none" stroke="#1b2c40" stroke-width="0.5" /><path d="M585.5 149 558.4 151.4" fill="none" stroke="#ffbd95" stroke-width="0.4" />
+        <path d="M557.7 134.2 555.4 135 555.4 165.1 557.7 165.4z" fill="#283346" /><path d="M585.8 168.7 559.4 165.2" fill="none" stroke="#9d8489" stroke-width="0.3" />
+      </g>
+      <g>
+        <path d="M644.3 90.6 588.4 115.8 588.4 169.8 644.3 177.6z" fill="url(#polished-stone)" />
+        <path d="M644.3 90.6 588.4 115.8 588.4 144.6 644.3 137z" fill="url(#laid-brick)" /><path d="M639.3 143.6 593.5 147.9 593.5 168.6 639.3 174.1z" fill="#142637" />
+        <path d="M606.7 111.2 594 116.5 594 122.6 606.7 118.1z" fill="url(#lobby-light)" /><path d="M606.7 119 594 123.4 594 128.5 606.7 124.8z" fill="#527b87" />
+        <path d="M621.9 104.9 609.3 110.1 609.3 117.2 621.9 112.7z" fill="#527b87" /><path d="M621.9 113.7 609.3 118.1 609.3 124.1 621.9 120.4z" fill="#8e7184" />
+        <path d="M637.2 98.5 624.5 103.8 624.5 111.8 637.2 107.3z" fill="#8e7184" /><path d="M637.2 108.4 624.5 112.8 624.5 119.6 637.2 115.9z" fill="url(#lobby-light)" />
+        <path d="M637.1 147.4 595.7 150.2 595.7 154.3 637.1 153.1z" fill="url(#lobby-light)" /><path d="M635.9 154.8 617.5 155.1 617.5 168.1 635.9 169.9z" fill="#375464" /><path d="M614.7 155.4 596.8 155.6 596.8 168.4 614.7 170.4z" fill="#273b50" />
+        <path d="M644.3 93.2 588.4 117.4" fill="none" stroke="#afa0a1" stroke-width="0.6" /><path d="M644.3 138.7 588.4 145.7" fill="none" stroke="#1b2c40" stroke-width="0.9" /><path d="M639.3 144.1 593.5 148.3" fill="none" stroke="#88d6d7" stroke-width="0.7" />
+        <path d="M592.4 116.3 588.4 117.9 588.4 169.6 592.4 170.1z" fill="#283346" /><path d="M639.8 175.8 595.1 169.9" fill="none" stroke="#9d8489" stroke-width="0.5" />
+      </g>
+      <g>
+        <path d="M715.4 65 644.3 94.9 644.3 177.6 715.4 187.5z" fill="url(#brick-wash)" />
+        <path d="M715.4 65 644.3 94.9 644.3 137 715.4 127.3z" fill="url(#laid-brick)" /><path d="M709 137 650.7 142.5 650.7 175.5 709 182.5z" fill="#142637" />
+        <path d="M667.5 90.9 651.4 97.1 651.4 106.8 667.5 101.6z" fill="#527b87" /><path d="M667.5 103 651.4 108.1 651.4 116.3 667.5 112z" fill="#8e7184" />
+        <path d="M686.9 83.3 670.8 89.6 670.8 100.5 686.9 95.3z" fill="#8e7184" /><path d="M686.9 96.8 670.8 101.9 670.8 111.1 686.9 106.9z" fill="url(#lobby-light)" />
+        <path d="M706.3 75.8 690.3 82.1 690.3 94.2 706.3 89z" fill="url(#lobby-light)" /><path d="M706.3 90.7 690.3 95.7 690.3 106 706.3 101.8z" fill="#527b87" />
+        <path d="M706.2 142.6 653.6 146.2 653.6 152.7 706.2 151.2z" fill="#527b87" /><path d="M704.8 153.7 681.3 154.1 681.3 174.1 704.8 176.2z" fill="#375464" /><path d="M677.7 154.5 655 154.8 655 175 677.7 177.6z" fill="#273b50" />
+        <path d="M715.4 68.9 644.3 97.6" fill="none" stroke="#afa0a1" stroke-width="0.8" /><path d="M715.4 129.9 644.3 138.7" fill="none" stroke="#1b2c40" stroke-width="1.3" /><path d="M709 137.8 650.7 143.1" fill="none" stroke="#ffbd95" stroke-width="1" />
+        <path d="M649.3 96.4 644.3 98.4 644.3 177.3 649.3 178z" fill="#283346" /><path d="M709.8 185.1 652.9 177.6" fill="none" stroke="#9d8489" stroke-width="0.8" />
+      </g>
+      <g>
+        <path d="M806.9 21.6 715.4 61.5 715.4 187.5 806.9 200.3z" fill="url(#polished-stone)" />
+        <path d="M806.9 21.6 715.4 61.5 715.4 127.3 806.9 114.9z" fill="url(#laid-brick)" /><path d="M798.7 128.5 723.7 135.6 723.7 184.2 798.7 193.2z" fill="#142637" />
+        <path d="M745.2 56.8 724.6 65.2 724.6 79.5 745.2 72.5z" fill="#8e7184" /><path d="M745.2 74.4 724.6 81.3 724.6 93.4 745.2 87.6z" fill="url(#lobby-light)" />
+        <path d="M770.2 46.7 749.5 55.1 749.5 71 770.2 64z" fill="url(#lobby-light)" /><path d="M770.2 66.1 749.5 73 749.5 86.4 770.2 80.6z" fill="#527b87" />
+        <path d="M795.2 36.7 774.5 45 774.5 62.5 795.2 55.5z" fill="#527b87" /><path d="M795.2 57.8 774.5 64.7 774.5 79.4 795.2 73.7z" fill="#8e7184" />
+        <path d="M795 136.5 727.3 141.1 727.3 150.7 795 148.8z" fill="#8e7184" /><path d="M793.2 152.3 763 152.8 763 181.6 793.2 184.4z" fill="#375464" /><path d="M758.4 153.4 729.2 153.8 729.2 183.5 758.4 186.8z" fill="#273b50" />
+        <path d="M806.9 27.1 715.4 65.4" fill="none" stroke="#afa0a1" stroke-width="1.2" /><path d="M806.9 118.6 715.4 129.9" fill="none" stroke="#1b2c40" stroke-width="1.8" /><path d="M798.7 129.7 723.7 136.5" fill="none" stroke="#88d6d7" stroke-width="1.5" />
+        <path d="M721.8 64.1 715.4 66.7 715.4 187.1 721.8 188z" fill="#283346" /><path d="M799.6 196.9 726.4 187.3" fill="none" stroke="#9d8489" stroke-width="1.1" />
+      </g>
+      <g>
+        <path d="M905.9 -3.2 806.9 35.6 806.9 200.3 905.9 214.2z" fill="url(#polished-stone)" />
+        <path d="M905.9 -3.2 806.9 35.6 806.9 114.9 905.9 101.5z" fill="url(#laid-brick)" /><path d="M897 119.2 815.8 126.9 815.8 195.3 897 205z" fill="#142637" />
+        <path d="M839.2 34.4 816.8 42.4 816.8 62.6 839.2 56z" fill="url(#lobby-light)" /><path d="M839.2 58.7 816.8 65.1 816.8 82.1 839.2 76.8z" fill="#527b87" />
+        <path d="M866.2 24.7 843.8 32.7 843.8 54.6 866.2 48z" fill="#527b87" /><path d="M866.2 50.9 843.8 57.3 843.8 75.8 866.2 70.5z" fill="#8e7184" />
+        <path d="M893.3 15 870.9 23.1 870.9 46.6 893.3 40z" fill="#8e7184" /><path d="M893.3 43.1 870.9 49.5 870.9 69.4 893.3 64.2z" fill="url(#lobby-light)" />
+        <path d="M893.1 129.7 819.8 134.8 819.8 148.1 893.1 146.1z" fill="url(#lobby-light)" /><path d="M891.1 150.8 858.4 151.3 858.4 190.4 891.1 193.5z" fill="#375464" /><path d="M853.4 152.1 821.7 152.5 821.7 194.1 853.4 197.7z" fill="#273b50" />
+        <path d="M905.9 4 806.9 41.1" fill="none" stroke="#afa0a1" stroke-width="1.5" /><path d="M905.9 106.3 806.9 118.6" fill="none" stroke="#1b2c40" stroke-width="2.4" /><path d="M897 120.8 815.8 128.1" fill="none" stroke="#ffbd95" stroke-width="1.9" />
+        <path d="M813.8 40.4 806.9 42.9 806.9 199.7 813.8 200.7z" fill="#283346" /><path d="M898 209.9 818.8 199.4" fill="none" stroke="#9d8489" stroke-width="1.4" />
+      </g>
+      <g>
+        <path d="M1005 -61 905.9 -18.5 905.9 214.2 1005 228z" fill="url(#brick-wash)" />
+        <path d="M1005 -61 905.9 -18.5 905.9 101.5 1005 88z" fill="url(#laid-brick)" /><path d="M996.1 109.8 914.9 117.5 914.9 207.2 996.1 216.9z" fill="#142637" />
+        <path d="M938.2 -17.6 915.8 -8.7 915.8 17.7 938.2 10.2z" fill="#527b87" /><path d="M938.2 13.7 915.8 21 915.8 43.2 938.2 37.1z" fill="#8e7184" />
+        <path d="M965.3 -28.3 942.9 -19.4 942.9 8.7 965.3 1.2z" fill="#8e7184" /><path d="M965.3 4.9 942.9 12.2 942.9 35.9 965.3 29.8z" fill="url(#lobby-light)" />
+        <path d="M992.3 -39 969.9 -30.1 969.9 -0.3 992.3 -7.8z" fill="url(#lobby-light)" /><path d="M992.3 -3.9 969.9 3.4 969.9 28.5 992.3 22.4z" fill="#527b87" />
+        <path d="M992.1 122.9 918.8 127.9 918.8 145.4 992.1 143.4z" fill="#527b87" /><path d="M990.1 149.2 957.5 149.7 957.5 199.6 990.1 202.6z" fill="#375464" /><path d="M952.5 150.7 920.8 151.2 920.8 205.4 952.5 209z" fill="#273b50" />
+        <path d="M1005 -52 905.9 -11.2" fill="none" stroke="#afa0a1" stroke-width="1.9" /><path d="M1005 94 905.9 106.3" fill="none" stroke="#1b2c40" stroke-width="3" /><path d="M996.1 111.8 914.9 119.2" fill="none" stroke="#88d6d7" stroke-width="2.4" />
+        <path d="M912.9 -11.6 905.9 -8.8 905.9 213.4 912.9 214.3z" fill="#283346" /><path d="M997.1 223 917.8 212.5" fill="none" stroke="#9d8489" stroke-width="1.8" />
+      </g>
+    </g>
+    <!-- The end of the lane is a lit passage at street level. -->
+    <path d="M469 181v-29q2-21 25-23 23-2 32 15v37z" fill="#473e50" stroke="#777985" />
+    <path d="M478 180v-27q1-15 18-16 17-.5 20 14v29z" fill="url(#lobby-light)" />
+    <path d="M483 180v-25q0-12 12-14 13-1 16 11v28z" fill="#314654" /><path d="M486 180v-22q1-9 8-11l6-.4v33z" fill="#687980" />
+    <path d="M472 154q0-20 22-22 22-2 29 17" fill="none" stroke="#d9ae96" stroke-width="1.8" />
     <path d="M0 186h960v88H0z" fill="url(#near-deck)" /><path d="m517 181 443 77v16H55z" fill="#2d3949" />
     <g stroke="#556171" fill="none" opacity=".65"><path d="m515 184-441 90m445-90-248 90m252-89-79 89m86-88 91 88m-84-88 247 88M0 216l960-8M0 247l960-13" /></g>
     <g opacity=".57"><path d="m211 208 164-5-32 6-131 5zm-22 12 115-7 32 2-65 7-93 5zm-52 17 116-10 37 1-54 6-113 12zm-31 18 90-12 25 1-51 10z" fill="#be8875" /><path d="m578 204 54-2 18 3-50 1zm18 10 61-4 25 4-67 3zm44 15 45-6 17 4-43 4zm18 8 70-4 24 4-69 3z" fill="#74aaab" /></g>
@@ -850,18 +1114,21 @@
       <path d="M1 52v93m230-117v117" stroke="#304250" stroke-width="5" />
       <g fill="#202e39" stroke="#92776c"><ellipse cx="55" cy="142" rx="12" ry="4" /><path d="m51 145-3 12m11-13 5 11" /><ellipse cx="137" cy="137" rx="12" ry="4" /><path d="m134 141-3 12m10-13 5 12" /></g>
       <g id="counter-patron" transform="translate(54 141) scale(1.08)">
+        <title>David Martínez en el puesto de ramen</title>
         <path d="M-7-5q8-1 15 3l3 3-6 9-5 2-3-1 1-2 4-1 2-5-9-1z" fill="#34404e" /><path d="m1 8 4 1-2 4q-4 2-9 0l.8-1.8 4-.6z" fill="#29343f" />
         <path d="M-9-4q7-5 14-4l10 5q4 2 3 6l-5 14 5 3-1 2-9-.5-1-2 3-15-13 1q-9 0-6-9z" fill="url(#denim)" />
         <path d="m11 12 4 1-1 6 7 2q2 2-1 3l-13-2z" fill="#2c3541" />
-        <path d="M-8-26q2-6 9-8l7 5 2 11-3 10 1 6q-7 3-20 1l1-10q-2-7 3-15z" fill="url(#jacket-cel)" />
-        <path d="M-10-17q6 3 12 1l-8 3 7 3-11-1z" fill="#52626b" />
+        <path d="M-11-26l2-8 7 2 7-1 5 6 2 10-4 11 2 5q-8 4-23 1l2-10q-4-7 0-16z" fill="#ebac32" stroke="#573e38" stroke-width="1.15" />
+        <path d="m-11-24 5 2 3 12 7 4-14-1 3-3z" fill="#ba772e" /><path d="m-12-9 17 2v2l-17-2z" fill="#93eece" />
+        <path d="m-8-23 5-.7-2 2.4 4-.3-3 3.1-1.3-1.5-2.5 2 .4-3.4z" fill="#79ff99" stroke="#537c55" stroke-width=".6" />
         <path d="M-3-41q1-7 7-6 6 0 7 5l-.5 4 2.8 3-3.4 1.1q-1 6-5 6l-4-1-2-6z" fill="url(#face-lit)" />
-        <path d="M-8-32q-5-7-2-13l-4 1 5-6-1-4 6 2q8-7 15-1l4 6-2 .5 3 4-6-1-1 4-3-4-3 7-.6-4-4 6 1-6-3 5 1 5-7 6z" fill="#31305c" stroke="#28233c" stroke-width="1.1" />
-        <path d="m-9-45 7-6 8-.5 4 2-8 1 3 1-9 2 2-3z" fill="#8396eb" /><path d="m-4-42 5-5" stroke="#ff9bc8" stroke-width="1.3" />
+        <path d="M-8-46q2-6 12-2l-1 7-3 4-1 6-6-4z" fill="#927668" /><path d="m-7-44 5-2-3 5 5-2-3 5" fill="none" stroke="#483e42" stroke-width="1.25" />
+        <path d="m-9-46-4-5 2-6-4-5 7 .8-1-6 7 4 4-1 8 7 6 3-4 2 4 3-6 .3-5-2-3 3-6-1z" fill="#37333e" stroke="#252432" stroke-width="1.25" />
+        <path d="m-10-60 8 2 9 6-7-2 2 3-8-3z" fill="#66575d" />
         <path d="m5-39 6 .5-1.8 3-3.5-.8z" fill="#ffecd5" /><path d="m5-39 6-.3-.5 1.3-1.8-.1-.5 2-1-.3-.6-1.9z" fill="#453148" />
         <path d="M1-37q-2-1-2 1.8 0 2.3 2.3 2.7l.8-2z" fill="#bf8c79" /><path d="m8-32 2.4-.6m-1.5 2.1-2 .6" stroke="#78565a" stroke-width=".8" />
         <path d="m-9-22 3-4 4-1m-8 17 .4 7 5 .5" fill="none" stroke="#8b9290" stroke-width=".7" />
-        <path d="M2-26q5-5 9 0l5 10 6-3 3 3-10 7-4-1-10-10z" fill="url(#jacket-cel)" />
+        <path d="M2-26q5-5 9 0l5 10 6-3 3 3-10 7-4-1-10-10z" fill="#efb542" stroke="#76523d" /><path d="m8-23 4 2 2.5 6-3 1-4-5z" fill="#b5ffdb" />
         <path d="m21-19 3-5 4 1-1 4-4 3z" fill="url(#face-lit)" /><path d="m24-22 9-11m-7 12 9-10" stroke="#d9b48c" fill="none" stroke-width="1" />
       </g>
     </g>
@@ -893,6 +1160,44 @@
       <path d="M-1-32q1-4 5-3 3 .6 2.5 4l1 2-2 1-1 3-4-1z" fill="url(#face-lit)" />
       <path d="M-3-29q-1-7 5-8 5 0 6 5l-6-.5-1 4z" fill="#344653" />
       <path d="m4-32 3.5.5m-3 8 2 4 3.5-2" fill="none" stroke="#afbaac" stroke-width=".85" />
+    </g>
+    <!-- D and Capri meet in the pool of light between the food counter and the kiosk. -->
+    <g id="d-nomad" transform="translate(443 182) scale(.87)" stroke-linejoin="round" stroke-linecap="round">
+      <title>D, el netrunner de Snake Nation</title>
+      <ellipse cy="84" rx="29" ry="3.2" fill="#172434" opacity=".85" />
+      <path d="m-13 17 22-2 8 14-2 22 6 24-8 4L3 56l-5-15-4 14-7 23-9-2 4-29z" fill="#232c44" stroke="#172336" stroke-width="1.5" />
+      <path d="m-12 35 7-9-5 21 4-4-8 22 2-12zm19-6 7 4-4 12 4 15-7-10z" fill="#40455b" />
+      <path d="m-21 72 11 2-1 7-7 2-11-.4q-1-3 5-5zm34 2 8-2 4 5 8 3q.5 3-7 3l-11-2z" fill="#252735" stroke="#867985" />
+      <path d="M-16-29q7-6 21-5l13 8 4 19-5 22-1 11-13 5-6-6-16 6-6-9 4-23-4-19z" fill="#437ed4" stroke="#202c49" stroke-width="1.8" />
+      <path d="m-4-31 8-2 8 11-3 14 5 30-9 4-8-4-6-39z" fill="#22283b" /><path d="m-7-30 3-2-1 15 3 34-3 5-4-39zm15-3 4 2 2 9-3 8 5 29-1 8-3-8-4-28z" fill="#cbd1ce" />
+      <path d="m-13-32 6-4 2 4-5 11-7-4zm18-3 8 1 7 11-8-1z" fill="#dedbd0" stroke="#505169" />
+      <path d="m9-19 13 .4-4 13-8 4-2-6z" fill="#9b9eae" stroke="#424960" /><path d="m-21-17 10 1-1 8-7-.7zm29 21 9-2-2 11-6 2z" fill="#3264ad" stroke="#253b61" /><path d="m-20-16 7 .8-.5 2-6.3-.5zm29 21 6-1-.2 2-5.5 1z" fill="#d8edf2" />
+      <path d="m-21-27 6-2-1 12-7 12-.1 15-6 .5-2-15 3-14z" fill="#3c6ac3" stroke="#293650" /><path d="m-29 8 7-.5 1 7-4 7-2-1 2-6-4 4-2-2z" fill="#ebb2a2" />
+      <path d="m18-24 7 7 2 15 9-3 3 5-15 9-5-4-5-16z" fill="#4f87de" stroke="#243659" stroke-width="1.6" /><path d="m34-5 6-6 3-.6-1 3-3 3 5-1 1 2-6 4-3 .4z" fill="#f7c5ad" stroke="#a97a80" />
+      <path d="m-5-43 12-5 1 13-4 7-8-5z" fill="#bd777c" />
+      <path d="M-15-62q4-12 17-10 12 1 15 13l-1 9 4 5-4 1-2 6-7 6-9-3-7-8-6-4z" fill="#f4c4ae" stroke="#402e42" stroke-width="1.4" />
+      <path d="m-9-56 12-4 10 5-6 7-7-1-5 8-4-3z" fill="#d98085" />
+      <path d="m5-51 9-3-2 6-5 1z" fill="#fff1ca" /><path d="m5-51 10-4-2 2-2 4-2 .4-1-2z" fill="#263944" /><path d="m8-50 2-.6-.3 2" stroke="#80dfab" stroke-width="1.1" />
+      <path d="m11-40 4-.7m-10 4 4 .1" fill="none" stroke="#925f6a" />
+      <path d="m-14-40-5-10-.2-10-4 1 4-8-3-1 11-6-2-4 12 2 9-4-1 4 11-1-5 5 4-.2-5 6-2 9-4 6 1-14-5 4-2 16-3-12-1 14-5 14-1-18-2 6-3 16-2-15z" fill="#203547" stroke="#182737" stroke-width="1.5" />
+      <path d="m-17-63 6-8 7-2-6 6-3 17-.5-12zm14-9 7-1 5 4-5-2-5 9z" fill="#375366" />
+    </g>
+    <g id="capri-engram" transform="translate(515 170) scale(.82)" stroke-linejoin="round">
+      <title>Capri, el engrama del proyecto Capricorn</title>
+      <ellipse cx="-1" cy="69" rx="29" ry="4" fill="url(#rose-air)" />
+      <g class="capri-float">
+        <ellipse cy="-24" rx="50" ry="61" fill="url(#rose-air)" opacity=".57" />
+        <path d="m-10 14 10 2 5 14-5 18-9 12 3 5 9 1-2 3-17-1-2-5 9-20-7-18zm10 0 11-4 6 17-3 28 5 8 6 2-1 3-12-2-4-7 1-26-9-8z" fill="#542457" stroke="#ff6fab" stroke-width="1.2" />
+        <path d="m-3 31-1 11-10 19 4-15zm17 9-1 15 4 8-5-4-1-14z" fill="#17e0aa" />
+        <path d="m-10-27 11-6 9 4-1 14 5 13-9 8 5 6-9 6-15-6 8-12-6-9z" fill="#48234d" stroke="#d95491" />
+        <path d="m-7-26 8-4-1 10-8 6-3-6zm9 14 6-10-1 14 6 7-14 5-5-6zm-5 15 10 5-8 7-9-3z" fill="#ff3996" />
+        <path d="m-8-25-5 1-6 12-11 6-4 .2-5 4 4-1-2 4 5-4 3-1 13-5 9-12z" fill="#862468" stroke="#eb69ba" /><path d="m8-26 6 2 3 21 8 13-1 4-5-3 1-3-9-11z" fill="#d53280" />
+        <path d="M-21-50q5-13 17-14 14 0 18 12l-3 14-12 11-10-1-3-5-6-3 2-5z" fill="#49365f" stroke="#ec74b8" stroke-width="1.5" />
+        <path d="m-17-44 9-2-3 5-5 .5zm13-4 10-4-4 7-5 1z" fill="#6dffd3" /><path d="m-13-44 1-1m13-3 1-1" stroke="#363552" stroke-width="1.8" /><path d="m-12-35 7-1-3 2.5z" fill="#ff9ebc" />
+        <path d="m-22-31-7-12-6 4 3-13-6 2 7-13-4-1 14-9-2-5 13 2 23-13-8 10 16-5-4 9 14-4-5 13 8-2-6 12 3 4-7 10-1 14-5-9-6 4 4-18-7 6 3-16-9 10 1-7-9 10 1-8-10 11-2 12z" fill="#fc3b9a" stroke="#6d205c" stroke-width="1.4" />
+        <path d="m-29-56 12-14 12-2-14 10 6-1-12 10zm26-17 16-10-6 9 9-3-13 11 2-6-12 8z" fill="#ff99cd" /><path d="m13-62 10-9-6 17-5 5z" fill="#b42c85" />
+        <path class="engram-echo" d="M-33-55h19m22 13 22-1m-45 31h14m4 36h12" fill="none" stroke="#8effe6" stroke-width="1.7" />
+      </g>
     </g>
     <g class="pedestrian" transform="translate(721 250)">
       <g transform="scale(1.17)">

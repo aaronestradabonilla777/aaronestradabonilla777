@@ -22,10 +22,12 @@
 </p>
 
 <p align="center">
-  <picture>
-    <source media="(max-width: 600px)" srcset="./assets/arcadia-movil.svg">
-    <img src="./assets/arcadia.svg" width="960" alt="Arcadia, mundo virtual en desarrollo con Rust, wgpu y WGSL. Arte conceptual en primera persona: una mano se acerca a un cubo suspendido sobre un cañón.">
-  </picture>
+  <a href="./arcadia/README.md">
+    <picture>
+      <source media="(max-width: 600px)" srcset="./assets/arcadia-movil.svg">
+      <img src="./assets/arcadia.svg" width="960" alt="Ver el adelanto de Arcadia. Dos mundos unidos por un portal en Urano, el motor 3D de Haluz. Presentación próximamente.">
+    </picture>
+  </a>
 </p>
 
 <picture>

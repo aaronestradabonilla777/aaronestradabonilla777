@@ -22,6 +22,10 @@ def build_mobile(name, view_box):
         root.find(".//*[@id='identity']").set("transform", "translate(433 34) scale(.51)")
         root.find(".//*[@id='wordmark']").set("transform", "translate(54 100) scale(.60) skewX(-12)")
         root.find(".//*[@id='tower-district']").attrib.update(x="435", width=width, viewBox="219 0 525 324")
+        # Bring both corner buildings into the narrower street view around the billboard.
+        root.find(".//*[@id='west-residences']").set("transform", "translate(193 0) scale(.62 1)")
+        root.find(".//*[@id='east-hotel']").set("transform", "translate(624 0) scale(.82 1)")
+        root.find(".//*[@id='arasaka-sign']").set("transform", "translate(677 84) skewY(-10) scale(.80)")
         root.find(".//*[@id='night-market']").attrib.update(x="435", width=width, viewBox="170 0 525 274")
         root.find(".//*[@id='stack-icons']").set("transform", "translate(45 222) scale(1.35)")
         root.find(".//*[@id='title-shade']").attrib.update(x="435", width="322", opacity=".64")
@@ -32,6 +36,7 @@ def build_mobile(name, view_box):
         root.find(".//*[@id='shade']").attrib.update(x2="0", y2="1")
         root.find(".//*[@id='caption-shade']").attrib.update(width=width, height="174", opacity=".64")
     if name == "arcadia":
+        root.find(".//*[@id='teaser-link']").set("transform", "translate(337 385)")
         root.find(".//*[@id='caption']").set("transform", "translate(338 35) scale(.78)")
         root.find(".//*[@id='wrist']").set("transform", "translate(724 367)")
         root.find(".//*[@id='caption-shadow']").attrib.update(x="315", width="225")

@@ -180,10 +180,15 @@
   <rect id="caption-shadow" width="475" height="452" fill="url(#edge-shade)"/>
   <g id="caption" transform="translate(38 43)">
     <path d="m1 13 12-18h4l13 18h-6l-9-13-9 13zm10 0 4-6 4 6z" fill="#ffe5bf"/>
-    <text x="39" y="11" font-family="Consolas, monospace" font-size="12" letter-spacing="2.2" fill="#ffdbb7">MUNDO VIRTUAL</text>
+    <text x="39" y="11" font-family="Consolas, monospace" font-size="14" letter-spacing="2" fill="#ffdbb7">PRÓXIMAMENTE</text>
     <text x="-3" y="69" font-family="Bahnschrift,Arial,sans-serif" font-weight="700" font-size="65" letter-spacing="1" fill="#fff1dd">ARCADIA</text>
     <path d="M1 85h25m6 0h3" stroke="#ffc496" stroke-width="2"/>
-    <text x="44" y="89" font-family="Consolas, monospace" font-size="12" letter-spacing="1.2" fill="#ffe1c8">RUST / wgpu / WGSL</text>
+    <text x="44" y="89" font-family="Consolas, monospace" font-size="14" letter-spacing=".7" fill="#ffe1c8">URANO / MOTOR 3D EN RUST</text>
+  </g>
+  <g id="teaser-link" transform="translate(39 366)">
+    <path d="M0 0h181l11 11v29H0z" fill="#192737" stroke="#d9bda2"/>
+    <text x="13" y="26" font-family="Arial,sans-serif" font-weight="bold" font-size="17" fill="#ffebce">Ver los mundos</text>
+    <path d="m159 24 11-11m-11 0h11v11" stroke="#a7ffe4" stroke-width="2" fill="none"/>
   </g>
   <g id="visor" fill="none" stroke="#fce7cb" opacity=".77">
     <path d="M13 38V24l10-11h33m845 0h36l10 11v14M13 408v19l12 12h31m848 0h31l12-12v-19"/>
