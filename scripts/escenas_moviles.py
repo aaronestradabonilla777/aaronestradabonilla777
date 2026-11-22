@@ -31,6 +31,12 @@ def build_mobile(name, view_box):
         root.find(".//*[@id='sunlight']").set("transform", "translate(-323 0)")
         root.find(".//*[@id='shade']").attrib.update(x2="0", y2="1")
         root.find(".//*[@id='caption-shade']").attrib.update(width=width, height="174", opacity=".64")
+    if name == "arcadia":
+        root.find(".//*[@id='caption']").set("transform", "translate(338 35) scale(.78)")
+        root.find(".//*[@id='wrist']").set("transform", "translate(724 367)")
+        root.find(".//*[@id='caption-shadow']").attrib.update(x="315", width="225")
+        visor = root.find(".//*[@id='visor']")
+        visor.set("transform", "translate(315 0) scale(.5104167 1)")
     if name == "loki-code-guide":
         root.find(".//*[@id='terminal']").set("transform", "translate(71 4) scale(1.62)")
     if name in ("night-city", "contacto"):
@@ -51,4 +57,5 @@ if __name__ == "__main__":
     build_mobile("night-city", "435 0 525 996")
     build_mobile("contacto", "49 6 502 334")
     build_mobile("atlantis", "0 0 482 334")
+    build_mobile("arcadia", "315 0 490 452")
     build_mobile("loki-code-guide", "0 0 384 186")

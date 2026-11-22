@@ -21,6 +21,13 @@
   </a>
 </p>
 
+<p align="center">
+  <picture>
+    <source media="(max-width: 600px)" srcset="./assets/arcadia-movil.svg">
+    <img src="./assets/arcadia.svg" width="960" alt="Arcadia, mundo virtual en desarrollo con Rust, wgpu y WGSL. Arte conceptual en primera persona: una mano se acerca a un cubo suspendido sobre un cañón.">
+  </picture>
+</p>
+
 <picture>
   <source media="(max-width: 600px)" srcset="./assets/actividad-movil.svg">
   <img src="./assets/actividad.svg" width="100%" alt="Calendario anual de contribuciones de Haluz en GitHub, con una celda por día">
