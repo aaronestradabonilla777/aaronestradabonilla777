@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 412 342" role="img" aria-labelledby="title desc">
-<title id="title">756 contribuciones en 2026</title>
+<title id="title">763 contribuciones en 2026</title>
 <desc id="desc">Actividad pública del 1 de enero al 22 de nov. Cada celda representa un día.</desc>
 <style>@media (prefers-reduced-motion: no-preference) {.sweep { animation: scan 7s linear infinite }.active-day { animation: highlight 9s ease-in-out infinite; animation-delay:var(--phase) }@keyframes highlight { 0%,18%,100% { stroke-opacity:0 } 8% { stroke-opacity:.85 } }@keyframes scan { to { stroke-dashoffset:-100 } } }</style>
 <rect x=".5" y=".5" width="411" height="341" rx="3" fill="#08161e" stroke="#315561"/>
@@ -8,7 +8,7 @@
 <path class="sweep" d="M18 48H394" pathLength="100" stroke="#6ce0dc" stroke-width="2" stroke-dasharray="7 93"/>
 <g font-family="Segoe UI,Arial,sans-serif">
 <text x="18" y="36" fill="#e7f9fa" font-weight="700" font-size="22">Actividad · 2026</text>
-<text x="395" y="35" text-anchor="end" fill="#8bdedc" font-size="15">756 contribuciones</text></g>
+<text x="395" y="35" text-anchor="end" fill="#8bdedc" font-size="15">763 contribuciones</text></g>
 <g font-family="Consolas,monospace" font-size="11" fill="#afd0d5">
 <text x="16" y="94">Lu</text>
 <text x="16" y="118">Mi</text>
@@ -351,8 +351,8 @@
 <rect x="283" y="243" width="9" height="9" rx="2" fill="#193341"><title>2026-11-18 · 0</title></rect>
 <rect x="283" y="255" width="9" height="9" rx="2" fill="#168b99" class="active-day" stroke="#baffef" stroke-opacity="0" style="--phase:-6.00s"><title>2026-11-19 · 10</title></rect>
 <rect x="283" y="267" width="9" height="9" rx="2" fill="#185b6c" class="active-day" stroke="#baffef" stroke-opacity="0" style="--phase:-5.95s"><title>2026-11-20 · 6</title></rect>
-<rect x="283" y="279" width="9" height="9" rx="2" fill="#193341"><title>2026-11-21 · 0</title></rect>
-<rect x="295" y="207" width="9" height="9" rx="2" fill="#193341"><title>2026-11-22 · 0</title></rect>
+<rect x="283" y="279" width="9" height="9" rx="2" fill="#185b6c" class="active-day" stroke="#baffef" stroke-opacity="0" style="--phase:-5.90s"><title>2026-11-21 · 5</title></rect>
+<rect x="295" y="207" width="9" height="9" rx="2" fill="#185b6c" class="active-day" stroke="#baffef" stroke-opacity="0" style="--phase:-6.06s"><title>2026-11-22 · 2</title></rect>
 <rect id="today" x="294" y="206" width="11" height="11" rx="2.5" fill="none" stroke="#ffca70" stroke-width="1.5"><title>Hoy · 2026-11-22</title></rect>
 <circle cx="299" cy="223" r="1.4" fill="#37505c"/>
 <circle cx="299" cy="235" r="1.4" fill="#37505c"/>
