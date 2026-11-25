@@ -1,32 +1,86 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="384" height="273" viewBox="0 0 384 273" role="img" aria-labelledby="title desc">
   <title id="title">Detección de fraude</title>
-  <desc id="desc">Motor en Rust y Tokio con el modelo de AWS Lambda. Un monitor señala una anomalía en un flujo de eventos.</desc>
+  <desc id="desc">Motor asíncrono en Rust y Tokio con el modelo de AWS Lambda. Un radar en vivo detecta una anomalía en el flujo de eventos.</desc>
   <defs>
-    <radialGradient id="glow" cx=".65" cy=".55" r=".75">
-      <stop stop-color="#452a31"/><stop offset="1" stop-color="#0b1821"/>
+    <linearGradient id="bg" x1="0" y1="0" x2=".9" y2="1">
+      <stop stop-color="#060c16"/><stop offset=".6" stop-color="#131625"/><stop offset="1" stop-color="#26111c"/>
+    </linearGradient>
+    <radialGradient id="alert-glow" cx=".62" cy=".35" r=".55">
+      <stop stop-color="#ff3b6b" stop-opacity=".35"/><stop offset=".5" stop-color="#8b2042" stop-opacity=".14"/><stop offset="1" stop-color="#0b1821" stop-opacity="0"/>
     </radialGradient>
+    <linearGradient id="sweep-beam" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#00f5e9" stop-opacity="0"/><stop offset=".75" stop-color="#00f5e9" stop-opacity=".18"/><stop offset="1" stop-color="#8cfcf4" stop-opacity=".75"/>
+    </linearGradient>
     <pattern id="grid" width="18" height="18" patternUnits="userSpaceOnUse">
-      <path d="M18 0H0v18" fill="none" stroke="#9c5e50" stroke-width=".7" opacity=".6"/>
+      <path d="M18 0H0v18" fill="none" stroke="#723a4b" stroke-width=".7" opacity=".48"/>
     </pattern>
+    <filter id="glow-red" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="2.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <style>
+      @media (prefers-reduced-motion: no-preference) {
+        .radar-sweep { animation:sweep-x 4.8s linear infinite; }
+        @keyframes sweep-x { 0% { transform:translateX(-48px); opacity:0; } 8% { opacity:1; } 90% { opacity:1; } 100% { transform:translateX(352px); opacity:0; } }
+        .stream { animation:flow 2.8s linear infinite; }
+        @keyframes flow { to { stroke-dashoffset:-84; } }
+        .ping-a { animation:ping-out 2.4s ease-out infinite; transform-origin:238px 27px; }
+        .ping-b { animation:ping-out 2.4s ease-out 1.2s infinite; transform-origin:238px 27px; }
+        @keyframes ping-out { 0% { transform:scale(.4); opacity:.95; } 100% { transform:scale(2.8); opacity:0; } }
+        .reticle { animation:rot 8s linear infinite; transform-origin:238px 27px; }
+        @keyframes rot { to { transform:rotate(360deg); } }
+        .alert-flash { animation:flash 1.4s steps(2,end) infinite; }
+        @keyframes flash { 0%,45% { opacity:1; } 50%,95% { opacity:.45; } }
+        .arrow-go { animation:nudge 2.4s ease-in-out infinite; }
+        @keyframes nudge { 0%,65%,100% { transform:translate(0,0); } 35% { transform:translate(3px,-3px); } }
+      }
+    </style>
   </defs>
-  <rect x=".5" y=".5" width="383" height="272" rx="5" fill="#08161e" stroke="#315561"/>
-  <path d="M1 6q0-5 5-5h372q5 0 5 5v125H1z" fill="url(#glow)"/>
-  <path d="M1 6h382v125H1z" fill="url(#grid)"/>
+  <rect x=".5" y=".5" width="383" height="272" rx="6" fill="url(#bg)" stroke="#315561"/>
+  <path d="M6 12 Q6 6 12 6 H372 Q378 6 378 12 V130 H6 Z" fill="url(#alert-glow)" stroke="#39283c"/>
+  <path d="M6 6h372v124H6z" fill="url(#grid)"/>
+
+  <!-- Animated radar sweep beam -->
+  <g clip-path="inset(6px)">
+    <rect class="radar-sweep" x="14" y="6" width="44" height="124" fill="url(#sweep-beam)"/>
+  </g>
+
   <g fill="none">
-    <path d="M18 97h49l12-8 12 7h21l12-17 13 23 16-17h32l15-30 17 52 19-22h74l11-8 19 8h25" stroke="#996457" stroke-dasharray="3 4"/>
-    <path d="M18 82h29l11-7 10 7h32l11-15 13 28 17-21 11 8h33l17-22 11 14 25-47 17 72 13-22 11 5h26l10-8 11 8h37" stroke="#ff727d" stroke-width="3" stroke-linejoin="round"/>
-    <path d="M238 10v106m-39-89h81" stroke="#ffbc9e" stroke-dasharray="2 4"/>
-    <circle cx="238" cy="27" r="10" stroke="#ffe6cd"/>
-    <circle cx="238" cy="27" r="4" fill="#ffe3c6" stroke="#341815"/>
-    <path d="M19 22v-6h12m334 91v8h-12" stroke="#ca8874" stroke-width="2"/>
+    <!-- Secondary baseline telemetry -->
+    <path d="M18 97h49l12-8 12 7h21l12-17 13 23 16-17h32l15-30 17 52 19-22h74l11-8 19 8h25" stroke="#458d9c" stroke-width="1.4" opacity=".65"/>
+    <path class="stream" d="M18 97h49l12-8 12 7h21l12-17 13 23 16-17h32l15-30 17 52 19-22h74l11-8 19 8h25" stroke="#00f5e9" stroke-width="1.6" stroke-dasharray="14 70" opacity=".85"/>
+
+    <!-- Primary anomaly waveform -->
+    <path d="M18 82h29l11-7 10 7h32l11-15 13 28 17-21 11 8h33l17-22 11 14 25-47 17 72 13-22 11 5h26l10-8 11 8h37" stroke="#ff456e" stroke-width="2.8" stroke-linejoin="round" filter="url(#glow-red)"/>
+    <path class="stream" d="M18 82h29l11-7 10 7h32l11-15 13 28 17-21 11 8h33l17-22 11 14 25-47 17 72 13-22 11 5h26l10-8 11 8h37" stroke="#ffe1b0" stroke-width="2.4" stroke-dasharray="12 72" stroke-linejoin="round"/>
+
+    <!-- Target-lock reticle & concentric ping rings on anomaly spike -->
+    <path d="M238 10v108m-42-91h84" stroke="#ff9d8a" stroke-dasharray="2 4" opacity=".55"/>
+    <circle class="ping-a" cx="238" cy="27" r="10" stroke="#ff456e" stroke-width="1.6"/>
+    <circle class="ping-b" cx="238" cy="27" r="10" stroke="#ffd84d" stroke-width="1.2"/>
+    <g class="reticle" stroke="#ffd84d" stroke-width="1.4">
+      <circle cx="238" cy="27" r="13" stroke-dasharray="6 5"/>
+    </g>
+    <circle cx="238" cy="27" r="4.5" fill="#fff0cc" stroke="#ff3562" stroke-width="2" filter="url(#glow-red)"/>
+    <path d="M18 22v-7h12m334 99v8h-12" stroke="#00f5e9" stroke-width="1.8" opacity=".75"/>
   </g>
-  <path d="M0 132h384" stroke="#315561"/>
+
+  <text x="20" y="24" font-family="Consolas,monospace" font-size="8" font-weight="700" fill="#7be8ec" letter-spacing="1">TOKIO // EVENT STREAM</text>
+  <g class="alert-flash" transform="translate(262 15)">
+    <rect width="102" height="16" rx="2" fill="#3a101d" stroke="#ff456e" stroke-width="1"/>
+    <text x="7" y="11" font-family="Consolas,monospace" font-size="7.5" font-weight="700" fill="#ffb8c9" letter-spacing=".8">ANOMALY 99.8%</text>
+  </g>
+
+  <path d="M0 134h384" stroke="#244e5d"/>
+  <path d="M18 134h120" stroke="#ff456e" stroke-width="2"/>
   <g font-family="Segoe UI,Arial,sans-serif">
-    <text x="18" y="167" fill="#e7f9fa" font-size="27" font-weight="700">Detección de fraude</text>
-    <text x="19" y="194" fill="#ccdfe2" font-size="16">Motor asíncrono que analiza eventos</text>
-    <text x="19" y="215" fill="#ccdfe2" font-size="16">con el modelo de AWS Lambda.</text>
+    <text x="18" y="167" fill="#ebfcff" font-size="25" font-weight="700">Detección de fraude</text>
+    <text x="19" y="194" fill="#c3dfe3" font-size="15.5">Motor asíncrono que analiza eventos</text>
+    <text x="19" y="215" fill="#c3dfe3" font-size="15.5">con el modelo de AWS Lambda.</text>
   </g>
-  <path d="M19 231h346" stroke="#315561"/>
-  <text x="19" y="256" font-family="Consolas,monospace" font-size="14" fill="#ff969c">Rust · Tokio</text>
-  <path d="m350 255 12-12m-10 0h10v10" fill="none" stroke="#ff969c" stroke-width="2"/>
+  <path d="M19 232h346" stroke="#224a59"/>
+  <circle cx="23" cy="252" r="3" fill="#ff456e" class="alert-flash" filter="url(#glow-red)"/>
+  <text x="33" y="256" font-family="Consolas,monospace" font-size="13.5" fill="#ff98a4">Rust · Tokio · AWS Lambda</text>
+  <g transform="translate(349 256) scale(.66)" filter="url(#glow-red)">
+    <path class="arrow-go" d="M0 0l20-20m-14 1 14-1v14" fill="none" stroke="#ff98a4" stroke-width="3.2" stroke-linecap="round"/>
+  </g>
 </svg>

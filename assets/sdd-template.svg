@@ -1,104 +1,128 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="384" height="186" viewBox="0 0 384 186" role="img" aria-labelledby="title desc">
   <title id="title">sdd-template</title>
-  <desc id="desc">Tres agentes reciben una especificación. Cada uno devuelve una pieza y juntos completan el archivo.</desc>
+  <desc id="desc">Tres agentes reciben una especificación holográfica, procesan subtareas en paralelo y ensamblan el contrato verificado.</desc>
   <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2=".9" y2="1">
+      <stop stop-color="#050b14"/><stop offset=".55" stop-color="#0a1624"/><stop offset="1" stop-color="#141326"/>
+    </linearGradient>
+    <radialGradient id="core-glow" cx=".34" cy=".48" r=".6">
+      <stop stop-color="#00f5e9" stop-opacity=".22"/><stop offset=".5" stop-color="#ff2f7a" stop-opacity=".1"/><stop offset="1" stop-color="#060d18" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="copper-hud" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#101c2d"/><stop offset=".5" stop-color="#192338"/><stop offset="1" stop-color="#29172a"/>
+    </linearGradient>
+    <pattern id="hex-grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M12 0v24M0 12h24" stroke="#184256" stroke-width=".6" opacity=".45"/>
+      <circle cx="12" cy="12" r="1" fill="#00f5e9" opacity=".32"/>
+    </pattern>
+    <filter id="neon" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="2.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <path id="bus-u" pathLength="100" d="M158 66h34l28-35h32"/>
+    <path id="bus-m" pathLength="100" d="M158 66h94"/>
+    <path id="bus-l" pathLength="100" d="M158 66h34l28 35h32"/>
+    <g id="glyph-arch"><path d="m-4-4 5 4-5 4" fill="none" stroke="#ffd84d" stroke-width="2" stroke-linecap="round"/></g>
+    <g id="glyph-code"><path d="M-4-4h8v8h-8z" fill="none" stroke="#ff5c93" stroke-width="1.8"/></g>
+    <g id="glyph-test"><path d="m-4 0 3 3 5-6" fill="none" stroke="#62ffcb" stroke-width="2" stroke-linecap="round"/></g>
+    <g id="ack-pill" transform="translate(36 0)">
+      <rect x="252" y="-8" width="28" height="16" rx="3" fill="#0d3538" stroke="#68ffcf" stroke-width="1.2"/>
+      <path d="m261-1 4 4 7-7" fill="none" stroke="#9effe0" stroke-width="2" stroke-linecap="round"/>
+    </g>
     <style>
+      .hud-lbl { font-family:Consolas,'Courier New',monospace; font-size:7px; font-weight:700; letter-spacing:1px; }
       @media (prefers-reduced-motion: no-preference) {
-        .request, .reply, .ack, .piece, .seal, .assembled { animation-duration:10s; animation-delay:var(--delay, 0s); animation-iteration-count:infinite; animation-timing-function:linear; animation-fill-mode:backwards }
-        .piece { animation-name:assemble }
-        .seal { animation-name:sealed }
-        .assembled { animation-name:clear-file }
-        @keyframes assemble { 0%,43% { opacity:0; transform:translateX(17px) } 51%,100% { opacity:1; transform:translateX(0) } }
-        @keyframes sealed { 0%,61% { opacity:0 } 63%,100% { opacity:1 } }
-        @keyframes clear-file { 0%,36%,100% { opacity:0 } 42%,97% { opacity:1 } }
-        .request { animation-name:dispatch }
-        .reply { animation-name:confirm }
-        .return-light { animation: copper-return 10s linear var(--delay) infinite }
-        @keyframes copper-return { 0%,30%,58%,100% { opacity:0 } 37%,49% { opacity:.85 } }
-        .ack { animation-name:received }
-        @keyframes dispatch { 0% { opacity:0; stroke-dashoffset:8 } 4% { opacity:1 } 22% { opacity:1; stroke-dashoffset:-96 } 23%,100% { opacity:0; stroke-dashoffset:-100 } }
-        @keyframes received { 0%,21%,55%,100% { opacity:0 } 25%,49% { opacity:1 } }
-        @keyframes confirm { 0%,30% { opacity:0; stroke-dashoffset:-100 } 32% { opacity:1 } 49% { opacity:1; stroke-dashoffset:0 } 51%,100% { opacity:0; stroke-dashoffset:8 } }
+        .frame-scan { animation:perim 8s linear infinite; }
+        @keyframes perim { to { stroke-dashoffset:-100; } }
+        .req, .rep, .ack, .shard, .seal, .node-ring { animation-duration:7.2s; animation-delay:var(--d,0s); animation-iteration-count:infinite; animation-timing-function:linear; }
+        .req { animation-name:send; }
+        .rep { animation-name:back; }
+        .ack { animation-name:ping; }
+        .shard { animation-name:dock; }
+        .seal { animation-name:verified; }
+        .node-ring { transform-origin:center; animation:spin 9s linear infinite; }
+        .hub-pulse { animation:hub 3.2s ease-in-out infinite alternate; }
+        .led { animation:blink 1.6s ease-in-out var(--d,0s) infinite alternate; }
+        .arrow-go { animation:nudge 2.4s ease-in-out infinite; }
+        @keyframes send { 0% { opacity:0; stroke-dashoffset:10; } 5% { opacity:1; } 26% { opacity:1; stroke-dashoffset:-95; } 28%,100% { opacity:0; stroke-dashoffset:-100; } }
+        @keyframes back { 0%,34% { opacity:0; stroke-dashoffset:-100; } 37% { opacity:1; } 58% { opacity:1; stroke-dashoffset:0; } 61%,100% { opacity:0; stroke-dashoffset:10; } }
+        @keyframes ping { 0%,24%,64%,100% { opacity:0; } 28%,56% { opacity:1; } }
+        @keyframes dock { 0%,50% { opacity:0; transform:translateX(16px); } 60%,95% { opacity:1; transform:translateX(0); } 100% { opacity:0; } }
+        @keyframes verified { 0%,65% { opacity:0; transform:scale(.75); } 70%,94% { opacity:1; transform:scale(1); } 100% { opacity:0; } }
+        @keyframes spin { to { transform:rotate(360deg); } }
+        @keyframes hub { from { opacity:.35; } to { opacity:.95; } }
+        @keyframes blink { from { opacity:.3; } to { opacity:1; } }
+        @keyframes nudge { 0%,65%,100% { transform:translate(0,0); } 35% { transform:translate(3px,-3px); } }
       }
     </style>
-    <linearGradient id="copper" x1=".08" y1="0" x2=".88" y2="1">
-      <stop stop-color="#422c30"/><stop offset=".25" stop-color="#855447"/><stop offset=".47" stop-color="#583a36"/><stop offset=".72" stop-color="#64463d"/><stop offset="1" stop-color="#283b3e"/>
-    </linearGradient>
-    <pattern id="brush" width="47" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(-12)">
-      <path d="M2 1h29m4 0h6M18 5h16" stroke="#f4c3a1" stroke-opacity=".13" stroke-width=".75"/>
-      <path d="M-1 3h15m20 4h13" stroke="#2b262e" stroke-opacity=".25"/>
-    </pattern>
-    <g id="rivet"><circle r="3.8" fill="#382d30" stroke="#ac8470"/><path d="m-1.8 1.3 3.6-2.6" stroke="#cfaa88"/></g>
-    <g id="board-tracks"><use href="#upper"/><use href="#middle"/><use href="#lower"/></g>
-    <g id="agent" fill="#211e2a" stroke="#ffbc97" stroke-width="1.8">
-      <path d="M-14-9h24l4 4V9h-28z"/>
-    </g>
-    <path id="prompt" d="m-3-3 4 3-4 3" fill="none" stroke="#ffc68d"/>
-    <path id="block" d="M-3-3h6v6h-6z" fill="none" stroke="#e8afe3"/>
-    <path id="tick" d="m-3 0 2 2 5-5" fill="none" stroke="#97f1d7"/>
-    <path id="upper" pathLength="100" d="M167 66h29l26-35h28"/>
-    <path id="middle" pathLength="100" d="M167 66h83"/>
-    <path id="lower" pathLength="100" d="M167 66h29l26 35h28"/>
-    <g id="check" transform="translate(34 0)">
-      <rect x="252" y="-8" width="25" height="16" rx="2" fill="#285352" stroke="#b5ffe0"/>
-      <path d="m259-1 4 4 7-7" fill="none" stroke="#b5ffe0" stroke-width="2"/>
-    </g>
   </defs>
-  <rect x=".5" y=".5" width="383" height="185" rx="5" fill="#08161e" stroke="#315561"/>
-  <path d="M6 21 21 6h342l15 14v92l-14 13H21L6 113z" fill="url(#copper)" stroke="#c3977c" stroke-width="1.4"/>
-  <path d="M9 22 22 9h340l13 12v89l-13 12H23L9 111z" fill="url(#brush)" stroke="#533e39"/>
-  <g stroke="#c39072" opacity=".55" fill="none">
-    <path d="M28 37h28l16-15h67m-111 21h31l17-16h14m218 87h28l19-18v-9m-42 32h26l21-20"/>
-    <circle cx="141" cy="22" r="2"/><circle cx="92" cy="27" r="2"/>
-  </g>
-  <use href="#rivet" x="20" y="20"/><use href="#rivet" x="364" y="20"/><use href="#rivet" x="20" y="112"/><use href="#rivet" x="364" y="112"/>
+
+  <rect x=".5" y=".5" width="383" height="185" rx="6" fill="url(#bg)" stroke="#1e4959"/>
+  <path d="M8 18 L20 6 H364 L376 18 V116 L364 128 H20 L8 116 Z" fill="url(#copper-hud)" stroke="#2c6375" stroke-width="1.2"/>
+  <path d="M8 18 L20 6 H364 L376 18 V116 L364 128 H20 L8 116 Z" fill="url(#hex-grid)" opacity=".7"/>
+  <ellipse cx="130" cy="66" rx="145" ry="62" fill="url(#core-glow)"/>
+  <path class="frame-scan" d="M8 18 L20 6 H364 L376 18 V116 L364 128 H20 L8 116 Z" pathLength="100" fill="none" stroke="#00f5e9" stroke-width="1.6" stroke-dasharray="14 86" filter="url(#neon)" opacity=".8"/>
+
+  <!-- Chamfered corner accent ticks -->
+  <path d="M18 16 H48 M336 16 H366 M18 118 H56 M328 118 H366" stroke="#ff9d5c" stroke-width="1.4" opacity=".6"/>
+  <text x="20" y="25" fill="#7be8ec" class="hud-lbl">SDD // ORCHESTRATOR v4</text>
+
+  <!-- Circuit tracks -->
   <g fill="none" stroke-linejoin="round">
-    <use href="#board-tracks" stroke="#372629" stroke-width="6"/>
-    <use href="#board-tracks" stroke="#c99575" stroke-width="2.4"/>
-    <g stroke="#98e4c6" stroke-width="3.4" opacity=".7">
-      <use class="return-light" href="#upper" style="--delay:0s" opacity="0"/>
-      <use class="return-light" href="#middle" style="--delay:.5s" opacity="0"/>
-      <use class="return-light" href="#lower" style="--delay:1s" opacity="0"/>
-    </g>
-    <circle cx="196" cy="66" r="4" fill="#ffcf9b"/>
+    <path d="M158 66h34l28-35h32M158 66h94M158 66h34l28 35h32" stroke="#0c1b29" stroke-width="6"/>
+    <path d="M158 66h34l28-35h32M158 66h94M158 66h34l28 35h32" stroke="#316f7d" stroke-width="2"/>
+    <circle cx="192" cy="66" r="4.5" fill="#ff9e64" filter="url(#neon)" class="hub-pulse"/>
   </g>
-  <use href="#agent" x="265" y="31"/><use href="#agent" x="265" y="66"/><use href="#agent" x="265" y="101"/>
-  <g stroke-width="2.3" stroke-linejoin="round">
-    <use href="#prompt" transform="translate(265 31) scale(1.55)"/>
-    <use href="#block" transform="translate(265 66) scale(1.55)"/>
-    <use href="#tick" transform="translate(265 101) scale(1.55)"/>
-  </g>
-  <g fill="none" stroke-width="3">
-    <g style="--delay:0s">
-      <use class="request" href="#upper" opacity="0" stroke="#fff1c7" stroke-dasharray="7 105"/>
-      <use class="reply" href="#upper" opacity="0" stroke="#91efd4" stroke-dasharray="7 105"/>
-      <use class="ack" href="#check" y="31" opacity="0"/>
-    </g>
-    <g style="--delay:.5s">
-      <use class="request" href="#middle" opacity="0" stroke="#fff1c7" stroke-dasharray="7 105"/>
-      <use class="reply" href="#middle" opacity="0" stroke="#91efd4" stroke-dasharray="7 105"/>
-      <use class="ack" href="#check" y="66" opacity="0"/>
-    </g>
-    <g style="--delay:1s">
-      <use class="request" href="#lower" opacity="0" stroke="#fff1c7" stroke-dasharray="7 105"/>
-      <use class="reply" href="#lower" opacity="0" stroke="#91efd4" stroke-dasharray="7 105"/>
-      <use class="ack" href="#check" y="101" opacity="0"/>
+
+  <!-- Spec Hologram Core -->
+  <g transform="translate(88 30)">
+    <path d="M0 6 L6 0 H52 L66 14 V72 H0 Z" fill="#0d1d2d" stroke="#00f5e9" stroke-width="1.6"/>
+    <path d="M52 0 V14 H66" fill="none" stroke="#ffd84d" stroke-width="1.4"/>
+    <text x="8" y="13" fill="#ffd84d" class="hud-lbl">SPEC.MD</text>
+    <path d="M8 22 H46 M8 27 H36" stroke="#2f6b7b" stroke-width="1.3" stroke-dasharray="3 2"/>
+    <g class="shard" style="--d:0s"><use href="#glyph-arch" x="14" y="39"/><path d="M24 39 H54" stroke="#ffd84d" stroke-width="2.2" stroke-linecap="round"/></g>
+    <g class="shard" style="--d:.35s"><use href="#glyph-code" x="14" y="50"/><path d="M24 50 H48" stroke="#ff5c93" stroke-width="2.2" stroke-linecap="round"/></g>
+    <g class="shard" style="--d:.7s"><use href="#glyph-test" x="14" y="61"/><path d="M24 61 H54" stroke="#62ffcb" stroke-width="2.2" stroke-linecap="round"/></g>
+    <g class="seal" transform="translate(62 66)" filter="url(#neon)">
+      <circle r="10" fill="#0d3b36" stroke="#68ffcf" stroke-width="1.6"/>
+      <path d="m-4 0 3 3 5-6" fill="none" stroke="#b9ffea" stroke-width="2" stroke-linecap="round"/>
     </g>
   </g>
-  <path d="M97 36h48l16 16v56H97z" fill="#302532" stroke="#ad727c"/>
-  <path d="M104 28h48l16 16v56h-64z" fill="#432d3b" stroke="#ffd3ad" stroke-width="2"/>
-  <path d="M152 29v15h15m-51 12h36m-36 12h28m-28 12h32" fill="none" stroke="#987986" stroke-dasharray="2 3"/>
-  <g class="assembled">
-    <g fill="none" stroke-width="2.4">
-      <g class="piece" style="--delay:0s"><use href="#prompt" x="117" y="56"/><path d="M123 56h24" stroke="#ffc68d"/></g>
-      <g class="piece" style="--delay:.5s"><use href="#block" x="117" y="68"/><path d="M123 68h18" stroke="#e8afe3"/></g>
-      <g class="piece" style="--delay:1s"><use href="#tick" x="117" y="80"/><path d="M123 80h24" stroke="#97f1d7"/></g>
-    </g>
-    <g class="seal"><circle cx="161" cy="97" r="10" fill="#173d39" stroke="#a7f4cd"/><path d="m156 97 3 3 6-7" fill="none" stroke="#c3ffe2" stroke-width="2"/></g>
+
+  <!-- 3 Agent Pods -->
+  <g transform="translate(268 31)">
+    <rect x="-18" y="-11" width="36" height="22" rx="3" fill="#0e1e2e" stroke="#ffd84d" stroke-width="1.4"/>
+    <circle cx="-12" cy="-5" r="2" fill="#ffd84d" class="led" style="--d:0s"/>
+    <use href="#glyph-arch" transform="scale(1.15)"/>
+    <text x="18" y="-5" fill="#ffe68a" class="hud-lbl" opacity=".78">A1</text>
   </g>
-  <path d="M0 132h384" stroke="#315561"/>
+  <g transform="translate(268 66)">
+    <rect x="-18" y="-11" width="36" height="22" rx="3" fill="#0e1e2e" stroke="#ff5c93" stroke-width="1.4"/>
+    <circle cx="-12" cy="-5" r="2" fill="#ff5c93" class="led" style="--d:.4s"/>
+    <use href="#glyph-code" transform="scale(1.15)"/>
+    <text x="18" y="-5" fill="#ff9cbd" class="hud-lbl" opacity=".78">A2</text>
+  </g>
+  <g transform="translate(268 101)">
+    <rect x="-18" y="-11" width="36" height="22" rx="3" fill="#0e1e2e" stroke="#62ffcb" stroke-width="1.4"/>
+    <circle cx="-12" cy="-5" r="2" fill="#62ffcb" class="led" style="--d:.8s"/>
+    <use href="#glyph-test" transform="scale(1.15)"/>
+    <text x="18" y="-5" fill="#9effe0" class="hud-lbl" opacity=".78">A3</text>
+  </g>
+
+  <!-- Traveling Packets -->
+  <g fill="none" stroke-width="3" stroke-linecap="round" filter="url(#neon)">
+    <g style="--d:0s"><use class="req" href="#bus-u" opacity="0" stroke="#ffd84d" stroke-dasharray="10 100"/><use class="rep" href="#bus-u" opacity="0" stroke="#62ffcb" stroke-dasharray="10 100"/><use class="ack" href="#ack-pill" y="31" opacity="0"/></g>
+    <g style="--d:.35s"><use class="req" href="#bus-m" opacity="0" stroke="#ff5c93" stroke-dasharray="10 100"/><use class="rep" href="#bus-m" opacity="0" stroke="#62ffcb" stroke-dasharray="10 100"/><use class="ack" href="#ack-pill" y="66" opacity="0"/></g>
+    <g style="--d:.7s"><use class="req" href="#bus-l" opacity="0" stroke="#00f5e9" stroke-dasharray="10 100"/><use class="rep" href="#bus-l" opacity="0" stroke="#62ffcb" stroke-dasharray="10 100"/><use class="ack" href="#ack-pill" y="101" opacity="0"/></g>
+  </g>
+
+  <!-- Card Footer -->
+  <path d="M0 133 H384" stroke="#214d5c"/>
+  <path d="M18 133 H110" stroke="#00f5e9" stroke-width="2"/>
   <g font-family="Segoe UI,Arial,sans-serif">
-    <text x="18" y="167" fill="#e7f9fa" font-size="27" font-weight="700">sdd-template</text>
+    <text x="18" y="160" fill="#ebfcff" font-size="23" font-weight="700">sdd-template</text>
+    <text x="19" y="176" fill="#7ec9cf" font-family="Consolas,monospace" font-size="10" letter-spacing="1.2">SPEC-DRIVEN · MULTI-AGENT</text>
   </g>
-  <g transform="translate(348 167) scale(.72)"><path d="M0 0l22-22m-16 1 16-1v16" fill="none" stroke="#ffba9e" stroke-width="3.7"/></g>
+  <g transform="translate(348 168) scale(.76)" filter="url(#neon)">
+    <path class="arrow-go" d="M0 0l22-22m-16 1 16-1v16" fill="none" stroke="#ffaa70" stroke-width="3.6" stroke-linecap="round"/>
+  </g>
 </svg>

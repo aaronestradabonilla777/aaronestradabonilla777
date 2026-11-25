@@ -3,6 +3,10 @@
     <source media="(max-width: 600px)" srcset="./assets/night-city-movil.svg">
     <img src="./assets/night-city.svg" width="100%" alt="HALUZ · Rust y React · Desarrollo full stack en México. El emblema Samurai ilumina Night City.">
   </picture>
+  <picture>
+    <source media="(max-width: 600px)" srcset="./assets/night-city-crew-movil.svg">
+    <img src="./assets/night-city-crew.svg" width="100%" alt="Estilo anime Studio Trigger: V, Jackie Welles y Johnny Silverhand en el bar Afterlife; David Martínez, Lucy y Rebecca en el taller de los Edgerunners.">
+  </picture>
 </p>
 
 <p align="center">

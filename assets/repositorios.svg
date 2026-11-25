@@ -1,25 +1,40 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="132" height="51" viewBox="0 -5 132 51" role="img" aria-labelledby="title">
   <title id="title">Ver todos los repositorios de Haluz</title>
   <defs>
+    <linearGradient id="btn-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#07131e"/><stop offset="1" stop-color="#132234"/>
+    </linearGradient>
+    <filter id="glow-btn" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="1.6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
     <g id="repo" stroke-width="1.4">
       <rect width="16" height="23" rx="2" fill="currentColor"/>
       <path d="M4 1v19m-2 0h13M8 2h5v8l-2.5-2L8 10z" fill="none"/>
     </g>
+    <style>
+      @media (prefers-reduced-motion: no-preference) {
+        .laser-edge { animation:trace 4.2s linear infinite; }
+        @keyframes trace { to { stroke-dashoffset:-100; } }
+        .arrow { animation:advance 2.4s ease-in-out infinite; }
+        @keyframes advance { 0%,68%,100% { transform:translate(0,0); } 35% { transform:translate(3.5px,-3.5px); } }
+        .card-a { animation:lev 3.2s ease-in-out infinite alternate; }
+        .card-b { animation:lev 3.2s ease-in-out .6s infinite alternate; }
+        @keyframes lev { from { transform:translateY(0); } to { transform:translateY(-2.4px); } }
+      }
+    </style>
   </defs>
-  <style>
-    @media (prefers-reduced-motion: no-preference) {
-      .arrow { animation: advance 3s ease-in-out infinite }
-      @keyframes advance { 0%, 70%, 100% { transform:translate(0,0) } 40% { transform:translate(3px,-3px) } }
-    }
-  </style>
-  <path d="M1 10 10 1h121v35l-9 9H1z" fill="#081820" stroke="#43838a"/>
-  <path d="M2 11 12 2h22m66 42h20l10-10" fill="none" stroke="#83f4e8" stroke-width="2"/>
+  <path d="M1 10 10 1h121v35l-9 9H1z" fill="url(#btn-bg)" stroke="#2e6f7d"/>
+  <path class="laser-edge" d="M1 10 10 1h121v35l-9 9H1z" pathLength="100" fill="none" stroke="#00f5e9" stroke-width="1.8" stroke-dasharray="16 84" filter="url(#glow-btn)"/>
+  <path d="M2 11 12 2h22m66 42h20l10-10" fill="none" stroke="#ffd84d" stroke-width="2"/>
   <g fill="none" stroke="#aaf7ed" stroke-width="2" stroke-linejoin="round">
-    <path d="M16 17h13l4 4h28v16H16z" fill="#16393e"/>
-    <use href="#repo" transform="translate(17 11) rotate(-12)" color="#594353" stroke="#ffbf96"/>
-    <use href="#repo" transform="translate(31 5)" color="#344356" stroke="#bad5ea"/>
-    <use href="#repo" transform="translate(46 9) rotate(9)" color="#275154"/>
-    <path d="M16 36l5-13h14l3 2h25l-6 12H16z" fill="#195058"/>
-    <g transform="translate(82 32) scale(.88)" stroke-linejoin="miter"><path class="arrow" d="M0 0l22-22m-16 1 16-1v16" stroke="#ffbd80" stroke-width="3.7"/></g>
+    <path d="M15 17h13l4 4h28v16H15z" fill="#112f38"/>
+    <g class="card-a"><use href="#repo" transform="translate(17 11) rotate(-12)" color="#512c46" stroke="#ff7aa8"/></g>
+    <g class="card-b"><use href="#repo" transform="translate(31 5)" color="#223e54" stroke="#8ff7ff"/></g>
+    <g class="card-a"><use href="#repo" transform="translate(46 9) rotate(9)" color="#1a4e4d" stroke="#ffd84d"/></g>
+    <path d="M15 36l5-13h14l3 2h25l-6 12H15z" fill="#164b56"/>
+    <text x="69" y="13" fill="#8df7ef" stroke="none" font-family="Consolas,monospace" font-size="7" font-weight="700" letter-spacing=".9">REPOS</text>
+    <g transform="translate(86 35) scale(.86)" stroke-linejoin="miter" filter="url(#glow-btn)">
+      <path class="arrow" d="M0 0l20-20m-14 1 14-1v14" stroke="#ffd84d" stroke-width="3.6" stroke-linecap="round"/>
+    </g>
   </g>
 </svg>

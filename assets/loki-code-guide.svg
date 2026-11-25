@@ -1,84 +1,101 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="384" height="186" viewBox="0 0 384 186" role="img" aria-labelledby="title desc">
   <title id="title">Loki Code Guide</title>
-  <desc id="desc">Una prueba de Rust espera 5 al sumar 2 y 2. El libro señala el error, pasa la página y corrige el valor esperado a 4. Tutor local con Ollama.</desc>
+  <desc id="desc">Tutor de programación con IA local y Ollama. El grimorio holográfico detecta assert_eq!(2+2, 5), pasa la página y corrige el resultado a 4.</desc>
   <defs>
+    <radialGradient id="glow" cx=".5" cy=".78" r=".72">
+      <stop stop-color="#175c68"/><stop offset=".55" stop-color="#0b2836"/><stop offset="1" stop-color="#050b14"/>
+    </radialGradient>
+    <pattern id="dots" width="12" height="12" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r=".85" fill="#00f5e9" opacity=".28"/>
+    </pattern>
+    <linearGradient id="page-edge" x2=".7" y2="1"><stop stop-color="#a7f2ee"/><stop offset=".45" stop-color="#387788"/><stop offset="1" stop-color="#7be0e3"/></linearGradient>
+    <linearGradient id="hologram" x2="0" y2="1"><stop stop-color="#00f5e9" stop-opacity=".04"/><stop offset=".68" stop-color="#3bffda" stop-opacity=".28"/><stop offset="1" stop-color="#d6fff5" stop-opacity=".75"/></linearGradient>
+    <filter id="neon-loki" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="2.1" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
     <style>
       @media (prefers-reduced-motion: no-preference) {
-        .error, .solution, .clue, .leaf, .ink { animation-duration:6.6s; animation-delay:-1s; animation-iteration-count:infinite }
-        .error { animation-name:mistake }
-        .solution { animation-name:solved }
-        .clue { animation-name:underline }
-        .projection { animation:projection 6.6s ease-in-out -1s infinite }
-        @keyframes projection { 0%,31%,100% { opacity:.50 } 42% { opacity:.95 } 62%,97% { opacity:.65 } }
-        .leaf { animation-name:turn }
-        .ink { animation-name:turn-ink }
-        @keyframes mistake { 0%,31%,100% { opacity:1 } 36%,99% { opacity:0 } }
-        @keyframes solved { 0%,39%,99%,100% { opacity:0 } 48%,97% { opacity:1 } }
-        @keyframes underline { 0%,17%,65%,100% { stroke-dashoffset:100; opacity:0 } 27%,51% { stroke-dashoffset:0; opacity:1 } }
+        .scan-border { animation:loki-scan 7.5s linear infinite; }
+        @keyframes loki-scan { to { stroke-dashoffset:-100; } }
+        .error, .solution, .clue, .leaf, .ink { animation-duration:6.6s; animation-delay:-1s; animation-iteration-count:infinite; }
+        .error { animation-name:mistake; }
+        .solution { animation-name:solved; }
+        .clue { animation-name:underline; }
+        .projection { animation:projection 6.6s ease-in-out -1s infinite; }
+        @keyframes projection { 0%,31%,100% { opacity:.45; } 42% { opacity:.96; } 62%,97% { opacity:.68; } }
+        .leaf { animation-name:turn; }
+        .ink { animation-name:turn-ink; }
+        .holo-orb { animation:orb-float 3.6s ease-in-out var(--d,0s) infinite alternate; }
+        .arrow-go { animation:nudge 2.4s ease-in-out infinite; }
+        @keyframes orb-float { from { transform:translateY(3px); opacity:.35; } to { transform:translateY(-6px); opacity:.95; } }
+        @keyframes nudge { 0%,65%,100% { transform:translate(0,0); } 35% { transform:translate(3px,-3px); } }
+        @keyframes mistake { 0%,31%,100% { opacity:1; } 36%,99% { opacity:0; } }
+        @keyframes solved { 0%,39%,99%,100% { opacity:0; } 48%,97% { opacity:1; } }
+        @keyframes underline { 0%,17%,65%,100% { stroke-dashoffset:100; opacity:0; } 27%,51% { stroke-dashoffset:0; opacity:1; } }
         @keyframes turn {
-          0%, 18%, 100% { d:path("M193 57 Q222 30 248 30 Q276 30 304 49 L241 83 Q213 80 193 112 Z"); fill:#82b2bf }
-          29% { d:path("M193 57 Q211 24 235 12 Q252 10 266 18 L224 69 Q207 65 193 112 Z"); fill:#d6f5ed }
-          40% { d:path("M193 57 Q185 24 170 14 Q150 12 147 22 L164 75 Q182 75 193 112 Z"); fill:#9ec9d2 }
-          50%, 97% { d:path("M193 57 Q171 40 144 39 Q109 52 77 73 L141 97 Q169 92 193 112 Z"); fill:#daeff1 }
-          0%, 62%, 100% { opacity:0 } 12%, 54% { opacity:1 }
+          0%, 18%, 100% { d:path("M193 57 Q222 30 248 30 Q276 30 304 49 L241 83 Q213 80 193 112 Z"); fill:#62aebb; }
+          29% { d:path("M193 57 Q211 24 235 12 Q252 10 266 18 L224 69 Q207 65 193 112 Z"); fill:#c8fff2; }
+          40% { d:path("M193 57 Q185 24 170 14 Q150 12 147 22 L164 75 Q182 75 193 112 Z"); fill:#8cd8de; }
+          50%, 97% { d:path("M193 57 Q171 40 144 39 Q109 52 77 73 L141 97 Q169 92 193 112 Z"); fill:#d6f8fa; }
+          0%, 62%, 100% { opacity:0; } 12%, 54% { opacity:1; }
         }
         @keyframes turn-ink {
-          0%, 18%, 100% { d:path("M205 65 Q231 39 251 40 M207 72 Q227 52 244 49") }
-          29% { d:path("M200 60 Q218 28 243 22 M201 66 Q216 39 232 33") }
-          40% { d:path("M189 56 Q176 27 158 24 M187 64 Q177 40 165 36") }
-          50%, 97% { d:path("M182 60 Q159 45 130 58 M180 68 Q157 55 139 62") }
-          0%, 62%, 100% { opacity:0 } 12%, 54% { opacity:1 }
+          0%, 18%, 100% { d:path("M205 65 Q231 39 251 40 M207 72 Q227 52 244 49"); }
+          29% { d:path("M200 60 Q218 28 243 22 M201 66 Q216 39 232 33"); }
+          40% { d:path("M189 56 Q176 27 158 24 M187 64 Q177 40 165 36"); }
+          50%, 97% { d:path("M182 60 Q159 45 130 58 M180 68 Q157 55 139 62"); }
+          0%, 62%, 100% { opacity:0; } 12%, 54% { opacity:1; }
         }
       }
     </style>
-    <radialGradient id="glow" cx=".52" cy=".76" r=".7">
-      <stop stop-color="#215a67"/><stop offset="1" stop-color="#08161e"/>
-    </radialGradient>
-    <pattern id="dots" width="9" height="9" patternUnits="userSpaceOnUse">
-      <circle cx="1" cy="1" r=".8" fill="#a5dcdf" opacity=".32"/>
-    </pattern>
-    <linearGradient id="page-edge" x2=".7" y2="1"><stop stop-color="#a7c8cb"/><stop offset=".45" stop-color="#4d7889"/><stop offset=".55" stop-color="#304f63"/><stop offset="1" stop-color="#88bbc1"/></linearGradient>
-    <linearGradient id="hologram" x2="0" y2="1"><stop stop-color="#83fce6" stop-opacity=".06"/><stop offset=".75" stop-color="#8cfbe6" stop-opacity=".28"/><stop offset="1" stop-color="#ccffed" stop-opacity=".7"/></linearGradient>
   </defs>
-  <rect x=".5" y=".5" width="383" height="185" rx="5" fill="#08161e" stroke="#315561"/>
-  <path d="M1 6q0-5 5-5h372q5 0 5 5v125H1z" fill="url(#glow)"/>
-  <path d="M1 6h382v125H1z" fill="url(#dots)"/>
-  <!-- Layered pages and a projected code prompt. -->
-  <g stroke-linejoin="round">
-    <path d="m58 86 90-31 45 19 58-23 75 30-132 46z" fill="#141019" stroke="#63939e"/>
-    <path d="m67 80 78-33 48 19 60-24 63 32-123 47z" fill="#173b49" stroke="#79b2bf"/>
-    <path d="m77 73 65 22q28-1 51 15 21-22 48-27l63-34v12l-62 31q-25 4-49 27-24-14-52-15L77 82z" fill="url(#page-edge)" stroke="#426475"/>
-    <g stroke="#d7e7d9" stroke-width=".9" fill="none" opacity=".76">
-      <path d="m80 77 61 21q28 0 48 15m10-2q19-19 41-24l60-31"/>
-      <path d="m84 81 56 20q27 0 47 14m16-3q17-16 38-22l58-29"/>
+  <rect x=".5" y=".5" width="383" height="185" rx="6" fill="#050b14" stroke="#1e4959"/>
+  <path d="M6 12 Q6 6 12 6 H372 Q378 6 378 12 V128 H6 Z" fill="url(#glow)" stroke="#245d6d"/>
+  <path d="M6 6h372v122H6z" fill="url(#dots)"/>
+  <path class="scan-border" d="M6 12 Q6 6 12 6 H372 Q378 6 378 12 V128 H6 Z" pathLength="100" fill="none" stroke="#62ffcb" stroke-width="1.5" stroke-dasharray="14 86" filter="url(#neon-loki)" opacity=".85"/>
+
+  <text x="16" y="21" font-family="Consolas,monospace" font-size="7" font-weight="700" letter-spacing="1.1" fill="#7be8ec">OLLAMA // LOCAL TUTOR</text>
+
+  <!-- Holographic Cyber-Grimoire -->
+  <g stroke-linejoin="round" transform="translate(0 6)">
+    <path d="m58 86 90-31 45 19 58-23 75 30-132 46z" fill="#0e1422" stroke="#00f5e9" stroke-opacity=".6"/>
+    <path d="m67 80 78-33 48 19 60-24 63 32-123 47z" fill="#133444" stroke="#6ce8e6"/>
+    <path d="m77 73 65 22q28-1 51 15 21-22 48-27l63-34v12l-62 31q-25 4-49 27-24-14-52-15L77 82z" fill="url(#page-edge)" stroke="#2e586a"/>
+    <path d="m77 73 67-34q25 0 49 18v55q-28-21-52-15z" fill="#d4f3f6" stroke="#f0ffff"/>
+    <path d="m193 57 55-27q26-2 56 19l-63 34q-26-3-48 29z" fill="#467c8c" stroke="#9cf8ff"/>
+    <g fill="none" stroke="#2c5968" stroke-width="1.8">
+      <path d="m102 72 38-19q19-1 37 11m-64 13 27-13q19-1 37 11"/>
+      <path d="m207 62 37-18q16-1 29 5m-64 21 36-18"/>
     </g>
-    <path d="m187 111 6 2 6-5v10l-6 5-6-3z" fill="#264354" stroke="#83b6b5"/>
-    <path d="m77 73 67-34q25 0 49 18v55q-28-21-52-15z" fill="#d4edf0" stroke="#eefafa"/>
-    <path d="m193 57 55-27q26-2 56 19l-63 34q-26-3-48 29z" fill="#60909d" stroke="#cbf8fa"/>
-    <g fill="none" stroke="#3c6471" stroke-width="2">
-      <path d="m102 72 38-19q19-1 37 11m-64 13 27-13q19-1 37 11m-51 7 15-7q16 0 31 8"/>
-      <path d="m207 62 37-18q16-1 29 5m-64 21 36-18m-35 25 20-10"/>
-    </g>
-    <path class="leaf" d="M193 57 Q222 30 248 30 Q276 30 304 49 L241 83 Q213 80 193 112 Z" fill="#83b3bf" stroke="#e0fff8" opacity="0"/>
-    <path class="ink" d="M205 65 Q231 39 251 40 M207 72 Q227 52 244 49" fill="none" stroke="#426775" stroke-width="1.6" opacity="0"/>
-    <g class="projection" opacity=".60">
+    <path class="leaf" d="M193 57 Q222 30 248 30 Q276 30 304 49 L241 83 Q213 80 193 112 Z" fill="#6ab5c4" stroke="#e0fff8" opacity="0"/>
+    <path class="ink" d="M205 65 Q231 39 251 40 M207 72 Q227 52 244 49" fill="none" stroke="#2d5b68" stroke-width="1.6" opacity="0"/>
+    <g class="projection" opacity=".65">
       <path d="m139 39 113-6-58 46z" fill="url(#hologram)"/>
-      <path d="m149 40 44 38 48-44m-49 6 1 38" stroke="#b4f9ea" stroke-width=".85" fill="none" stroke-dasharray="5 4"/>
+      <path d="m149 40 44 38 48-44m-49 6 1 38" stroke="#8fffea" stroke-width=".9" fill="none" stroke-dasharray="5 4"/>
     </g>
-    <path d="m187 79 6-3 7-4" stroke="#a1f7e4" stroke-width="2.2" fill="none"/>
-    <path class="clue" d="m110 80 31-14q16 0 30 7" fill="none" stroke="#efaa68" stroke-width="3" pathLength="100" stroke-dasharray="100" opacity="0"/>
+    <g fill="#8fffea" filter="url(#neon-loki)">
+      <circle class="holo-orb" style="--d:0s" cx="152" cy="54" r="1.8"/>
+      <circle class="holo-orb" style="--d:1.1s" cx="235" cy="52" r="1.6"/>
+      <circle class="holo-orb" style="--d:2.1s" cx="192" cy="36" r="2"/>
+    </g>
+    <path class="clue" d="m110 80 31-14q16 0 30 7" fill="none" stroke="#ffd84d" stroke-width="3" pathLength="100" stroke-dasharray="100" opacity="0" filter="url(#neon-loki)"/>
     <g id="terminal" transform="translate(118 9) skewY(-3)" font-family="Consolas,monospace" font-size="13" font-weight="bold">
-      <path d="M0 5 5 0h144v32H0z" fill="#102735" stroke="#8fd9d4" stroke-width="1.5"/>
-      <path d="M6 6h13" stroke="#69a1a3" stroke-width="2"/>
-      <text x="6" y="24" textLength="103" lengthAdjust="spacingAndGlyphs" fill="#e4fcf3">assert_eq!(2+2,</text>
-      <text x="119" y="24" fill="#e4fcf3">)</text>
-      <g class="error" opacity="0" fill="#ffab9d"><text x="110" y="24">5</text><path d="m133 15 8 8m0-8-8 8" fill="none" stroke="#ffab9d" stroke-width="2"/></g>
-      <g class="solution" fill="#9df3c8"><text x="110" y="24">4</text><path d="m132 19 3 4 7-9" fill="none" stroke="#9df3c8" stroke-width="2"/></g>
+      <path d="M0 5 5 0h144v32H0z" fill="#081b28" stroke="#00f5e9" stroke-width="1.5"/>
+      <path d="M6 6h18" stroke="#ffd84d" stroke-width="2"/>
+      <text x="6" y="24" textLength="103" lengthAdjust="spacingAndGlyphs" fill="#e6ffff">assert_eq!(2+2,</text>
+      <text x="119" y="24" fill="#e6ffff">)</text>
+      <g class="error" opacity="0" fill="#ff5c93"><text x="110" y="24">5</text><path d="m133 15 8 8m0-8-8 8" fill="none" stroke="#ff5c93" stroke-width="2.2"/></g>
+      <g class="solution" fill="#68ffcf"><text x="110" y="24">4</text><path d="m132 19 3 4 7-9" fill="none" stroke="#68ffcf" stroke-width="2.2"/></g>
     </g>
   </g>
-  <path d="M0 132h384" stroke="#315561"/>
+
+  <path d="M0 133 H384" stroke="#214d5c"/>
+  <path d="M18 133 H118" stroke="#62ffcb" stroke-width="2"/>
   <g font-family="Segoe UI,Arial,sans-serif">
-    <text x="18" y="167" fill="#e7f9fa" font-size="27" font-weight="700">Loki Code Guide</text>
+    <text x="18" y="160" fill="#ebfcff" font-size="23" font-weight="700">Loki Code Guide</text>
+    <text x="19" y="176" fill="#7ec9cf" font-family="Consolas,monospace" font-size="10" letter-spacing="1.2">RUST · OLLAMA · TUTOR LOCAL</text>
   </g>
-  <g transform="translate(348 167) scale(.72)"><path d="M0 0l22-22m-16 1 16-1v16" fill="none" stroke="#94dfdc" stroke-width="3.7"/></g>
+  <g transform="translate(348 168) scale(.76)" filter="url(#neon-loki)">
+    <path class="arrow-go" d="M0 0l22-22m-16 1 16-1v16" fill="none" stroke="#68ffcf" stroke-width="3.6" stroke-linecap="round"/>
+  </g>
 </svg>

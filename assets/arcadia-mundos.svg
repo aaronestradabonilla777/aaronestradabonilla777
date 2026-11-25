@@ -1,41 +1,73 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="680" height="462" viewBox="0 0 680 462" role="img" aria-labelledby="title desc">
   <title id="title">Arcadia · Tránsito entre mundos</title>
-  <desc id="desc">Las dos escenas de Urano. Una ruta luminosa conecta sus portales.</desc>
+  <desc id="desc">Las dos escenas de Urano conectadas por portales energéticos animados entre Mundo 01 y Mundo 02.</desc>
   <defs>
-    <linearGradient id="air" x2=".86" y2="1"><stop stop-color="#142434"/><stop offset=".5" stop-color="#262941"/><stop offset="1" stop-color="#433144"/></linearGradient>
-    <linearGradient id="ocean" x2=".15" y2="1"><stop stop-color="#527c86"/><stop offset="1" stop-color="#2a435a"/></linearGradient>
-    <linearGradient id="magenta" x2=".22" y2="1"><stop stop-color="#936a82"/><stop offset="1" stop-color="#4e4262"/></linearGradient>
-    <linearGradient id="membrane" x2="0" y2="1"><stop stop-color="#c5ffed" stop-opacity=".91"/><stop offset="1" stop-color="#c5ffed" stop-opacity=".22"/></linearGradient>
-    <radialGradient id="halo"><stop stop-color="#7ce9d5" stop-opacity=".21"/><stop offset="1" stop-color="#7ce9d5" stop-opacity="0"/></radialGradient>
-    <style>@media(prefers-reduced-motion:no-preference){.packet{animation:travel 5s linear infinite}.pulse{animation:breathe 3.4s ease-in-out infinite alternate}}@keyframes travel{to{stroke-dashoffset:-111}}@keyframes breathe{to{opacity:.35}}</style>
+    <linearGradient id="air" x2=".86" y2="1"><stop stop-color="#0d192a"/><stop offset=".5" stop-color="#1e223d"/><stop offset="1" stop-color="#3b263d"/></linearGradient>
+    <linearGradient id="ocean" x2=".15" y2="1"><stop stop-color="#4e808e"/><stop offset="1" stop-color="#223a52"/></linearGradient>
+    <linearGradient id="magenta" x2=".22" y2="1"><stop stop-color="#9b6688"/><stop offset="1" stop-color="#44375c"/></linearGradient>
+    <linearGradient id="membrane" x2="0" y2="1"><stop stop-color="#d2fff2" stop-opacity=".95"/><stop offset="1" stop-color="#00f5e9" stop-opacity=".28"/></linearGradient>
+    <radialGradient id="halo"><stop stop-color="#7ce9d5" stop-opacity=".28"/><stop offset="1" stop-color="#7ce9d5" stop-opacity="0"/></radialGradient>
+    <radialGradient id="halo-m"><stop stop-color="#ff78be" stop-opacity=".25"/><stop offset="1" stop-color="#ff78be" stop-opacity="0"/></radialGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="2.4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <style>
+      @media(prefers-reduced-motion:no-preference){
+        .packet{animation:travel 4.2s linear infinite}
+        .packet-rev{animation:travel-rev 5.4s linear -1.5s infinite}
+        .pulse{animation:breathe 3.2s ease-in-out infinite alternate}
+        .levitate{animation:floaty 4s ease-in-out infinite alternate}
+        .portal-shimmer{animation:portal 2.4s ease-in-out var(--d,0s) infinite alternate}
+        .crystal{animation:bob 3s ease-in-out infinite alternate}
+        @keyframes travel{to{stroke-dashoffset:-111}}
+        @keyframes travel-rev{to{stroke-dashoffset:111}}
+        @keyframes breathe{from{opacity:.25;transform:scale(.96)}to{opacity:.78;transform:scale(1.04)}}
+        @keyframes floaty{from{transform:translateY(0)}to{transform:translateY(-6px)}}
+        @keyframes portal{from{opacity:.42}to{opacity:.95}}
+        @keyframes bob{from{transform:translateY(2px)}to{transform:translateY(-5px)}}
+      }
+    </style>
   </defs>
-  <rect width="680" height="462" rx="8" fill="url(#air)"/>
-  <g fill="none" stroke="#a2b9c5" opacity=".14"><path d="M0 308 389 86l291 152M0 319 389 97l291 152M67 462l417-240 196 103M46 462l438-251 196 103"/></g>
+  <rect width="680" height="462" rx="8" fill="url(#air)" stroke="#294e60"/>
+  <g fill="none" stroke="#a2d5dc" opacity=".16"><path d="M0 308 389 86l291 152M0 319 389 97l291 152M67 462l417-240 196 103M46 462l438-251 196 103"/></g>
   <ellipse class="pulse" cx="210" cy="144" rx="187" ry="129" fill="url(#halo)"/>
+  <ellipse class="pulse" cx="485" cy="312" rx="170" ry="118" fill="url(#halo-m)"/>
+
+  <!-- Mundo 01 -->
   <g transform="translate(200 175)">
-      <path d="M-176.2 33 37.4 83.9 37.4 71.6 -176.2 20.8z" fill="#314658"/><path d="M37.4 83.9 176.2 -8.5 176.2 -20.8 37.4 71.6z" fill="#283647"/><path d="M-37.4 -71.6 176.2 -20.8 37.4 71.6 -176.2 20.8z" fill="url(#ocean)"/>
-      <path d="M-19.6 -67.4 -158.4 25M-48.9 -63.9 164.7 -13.1 M-1.8 -63.1 -140.6 29.3M-60.5 -56.2 153.1 -5.4 M16 -58.9 -122.8 33.5M-72.1 -48.5 141.5 2.3 M33.8 -54.7 -105 37.7M-83.7 -40.8 129.9 10 M51.6 -50.4 -87.2 42M-95.2 -33.1 118.4 17.7 M69.4 -46.2 -69.4 46.2M-106.8 -25.4 106.8 25.4 M87.2 -42 -51.6 50.4M-118.4 -17.7 95.2 33.1 M105 -37.7 -33.8 54.7M-129.9 -10 83.7 40.8 M122.8 -33.5 -16 58.9M-141.5 -2.3 72.1 48.5 M140.6 -29.3 1.8 63.1M-153.1 5.4 60.5 56.2 M158.4 -25 19.6 67.4M-164.6 13.1 49 63.9" fill="none" stroke="#b0ced1" opacity=".22" stroke-width=".65"/>
-      <path d="M20.2 -25.5 23.8 -24.7 23.8 -73.7 20.2 -74.5z" fill="#9367c9"/><path d="M23.8 -24.7 26.1 -26.2 26.1 -75.2 23.8 -73.7z" fill="#655397"/><path d="M22.5 -76 26.1 -75.2 23.8 -73.7 20.2 -74.5z" fill="#dbafff"/>
-      <path d="M43.3 -20 46.9 -19.2 46.9 -68.2 43.3 -69z" fill="#9367c9"/><path d="M46.9 -19.2 49.2 -20.7 49.2 -69.7 46.9 -68.2z" fill="#655397"/><path d="M45.7 -70.5 49.2 -69.7 46.9 -68.2 43.3 -69z" fill="#dbafff"/>
-      <path d="M24.9 -25.4 44.5 -20.8 44.5 -69.8 24.9 -74.4z" fill="url(#membrane)"/>
-      <path d="M20.2 -74.5 46.9 -68.2 46.9 -75.2 20.2 -81.5z" fill="#dda668"/><path d="M46.9 -68.2 49.2 -69.7 49.2 -76.7 46.9 -75.2z" fill="#9b695b"/><path d="M22.5 -83 49.2 -76.7 46.9 -75.2 20.2 -81.5z" fill="#ffe6a8"/>
-      <path d="M30 -2.3 42.5 0.7 42.5 -48.3 30 -51.3z" fill="#dda668"/><path d="M42.5 0.7 50.6 -4.7 50.6 -53.7 42.5 -48.3z" fill="#9b695b"/><path d="M38.1 -56.7 50.6 -53.7 42.5 -48.3 30 -51.3z" fill="#ffe6a8"/>
+    <path d="M-176.2 33 37.4 83.9 37.4 71.6 -176.2 20.8z" fill="#314658"/><path d="M37.4 83.9 176.2 -8.5 176.2 -20.8 37.4 71.6z" fill="#283647"/><path d="M-37.4 -71.6 176.2 -20.8 37.4 71.6 -176.2 20.8z" fill="url(#ocean)"/>
+    <path d="M-19.6 -67.4 -158.4 25M-48.9 -63.9 164.7 -13.1 M-1.8 -63.1 -140.6 29.3M-60.5 -56.2 153.1 -5.4 M16 -58.9 -122.8 33.5M-72.1 -48.5 141.5 2.3 M33.8 -54.7 -105 37.7M-83.7 -40.8 129.9 10 M51.6 -50.4 -87.2 42M-95.2 -33.1 118.4 17.7 M69.4 -46.2 -69.4 46.2M-106.8 -25.4 106.8 25.4 M87.2 -42 -51.6 50.4M-118.4 -17.7 95.2 33.1 M105 -37.7 -33.8 54.7M-129.9 -10 83.7 40.8 M122.8 -33.5 -16 58.9M-141.5 -2.3 72.1 48.5 M140.6 -29.3 1.8 63.1M-153.1 5.4 60.5 56.2 M158.4 -25 19.6 67.4M-164.6 13.1 49 63.9" fill="none" stroke="#b0ced1" opacity=".24" stroke-width=".65"/>
+    <path d="M20.2 -25.5 23.8 -24.7 23.8 -73.7 20.2 -74.5z" fill="#9367c9"/><path d="M23.8 -24.7 26.1 -26.2 26.1 -75.2 23.8 -73.7z" fill="#655397"/><path d="M22.5 -76 26.1 -75.2 23.8 -73.7 20.2 -74.5z" fill="#dbafff"/>
+    <path d="M43.3 -20 46.9 -19.2 46.9 -68.2 43.3 -69z" fill="#9367c9"/><path d="M46.9 -19.2 49.2 -20.7 49.2 -69.7 46.9 -68.2z" fill="#655397"/><path d="M45.7 -70.5 49.2 -69.7 46.9 -68.2 43.3 -69z" fill="#dbafff"/>
+    <path class="portal-shimmer" style="--d:0s" d="M24.9 -25.4 44.5 -20.8 44.5 -69.8 24.9 -74.4z" fill="url(#membrane)" filter="url(#glow)"/>
+    <path d="M20.2 -74.5 46.9 -68.2 46.9 -75.2 20.2 -81.5z" fill="#dda668"/><path d="M46.9 -68.2 49.2 -69.7 49.2 -76.7 46.9 -75.2z" fill="#9b695b"/><path d="M22.5 -83 49.2 -76.7 46.9 -75.2 20.2 -81.5z" fill="#ffe6a8"/>
+    <path d="M30 -2.3 42.5 0.7 42.5 -48.3 30 -51.3z" fill="#dda668"/><path d="M42.5 0.7 50.6 -4.7 50.6 -53.7 42.5 -48.3z" fill="#9b695b"/><path d="M38.1 -56.7 50.6 -53.7 42.5 -48.3 30 -51.3z" fill="#ffe6a8"/>
+    <g class="crystal" filter="url(#glow)">
       <path d="M-15.3 -50.2 -21.5 -32.4 -19.4 -28.2z" fill="#b1fff2"/><path d="M-15.3 -13.4 -19.4 -28.2 -21.5 -32.4z" fill="#278695"/><path d="M-15.3 -13.4 -9.1 -29.4 -19.4 -28.2z" fill="#268caf"/><path d="M-15.3 -50.2 -19.4 -28.2 -9.1 -29.4z" fill="#5fe0e5"/>
-      <path d="M-11.7 1.4 2.5 4.8 2.5 -26.7 -11.7 -30.1z" fill="#59b5db"/><path d="M2.5 4.8 11.7 -1.4 11.7 -32.9 2.5 -26.7z" fill="#4178a8"/><path d="M-2.5 -36.3 11.7 -32.9 2.5 -26.7 -11.7 -30.1z" fill="#a5e3fc"/>
+    </g>
+    <path d="M-11.7 1.4 2.5 4.8 2.5 -26.7 -11.7 -30.1z" fill="#59b5db"/><path d="M2.5 4.8 11.7 -1.4 11.7 -32.9 2.5 -26.7z" fill="#4178a8"/><path d="M-2.5 -36.3 11.7 -32.9 2.5 -26.7 -11.7 -30.1z" fill="#a5e3fc"/>
   </g>
+
+  <!-- Mundo 02 -->
   <g transform="translate(470 337)">
-      <path d="M-176.2 33 37.4 83.9 37.4 71.6 -176.2 20.8z" fill="#47364f"/><path d="M37.4 83.9 176.2 -8.5 176.2 -20.8 37.4 71.6z" fill="#342c46"/><path d="M-37.4 -71.6 176.2 -20.8 37.4 71.6 -176.2 20.8z" fill="url(#magenta)"/>
-      <path d="M-19.6 -67.4 -158.4 25M-48.9 -63.9 164.7 -13.1 M-1.8 -63.1 -140.6 29.3M-60.5 -56.2 153.1 -5.4 M16 -58.9 -122.8 33.5M-72.1 -48.5 141.5 2.3 M33.8 -54.7 -105 37.7M-83.7 -40.8 129.9 10 M51.6 -50.4 -87.2 42M-95.2 -33.1 118.4 17.7 M69.4 -46.2 -69.4 46.2M-106.8 -25.4 106.8 25.4 M87.2 -42 -51.6 50.4M-118.4 -17.7 95.2 33.1 M105 -37.7 -33.8 54.7M-129.9 -10 83.7 40.8 M122.8 -33.5 -16 58.9M-141.5 -2.3 72.1 48.5 M140.6 -29.3 1.8 63.1M-153.1 5.4 60.5 56.2 M158.4 -25 19.6 67.4M-164.6 13.1 49 63.9" fill="none" stroke="#b0ced1" opacity=".22" stroke-width=".65"/>
-      <path d="M20.2 -25.5 23.8 -24.7 23.8 -73.7 20.2 -74.5z" fill="#39b9c6"/><path d="M23.8 -24.7 26.1 -26.2 26.1 -75.2 23.8 -73.7z" fill="#25899b"/><path d="M22.5 -76 26.1 -75.2 23.8 -73.7 20.2 -74.5z" fill="#a6fff1"/>
-      <path d="M43.3 -20 46.9 -19.2 46.9 -68.2 43.3 -69z" fill="#39b9c6"/><path d="M46.9 -19.2 49.2 -20.7 49.2 -69.7 46.9 -68.2z" fill="#25899b"/><path d="M45.7 -70.5 49.2 -69.7 46.9 -68.2 43.3 -69z" fill="#a6fff1"/>
-      <path d="M24.9 -25.4 44.5 -20.8 44.5 -69.8 24.9 -74.4z" fill="url(#membrane)"/>
-      <path d="M20.2 -74.5 46.9 -68.2 46.9 -75.2 20.2 -81.5z" fill="#dda668"/><path d="M46.9 -68.2 49.2 -69.7 49.2 -76.7 46.9 -75.2z" fill="#9b695b"/><path d="M22.5 -83 49.2 -76.7 46.9 -75.2 20.2 -81.5z" fill="#ffe6a8"/>
-      <path d="M-25.7 -11.9 -13.2 -8.9 -13.2 -64.9 -25.7 -67.9z" fill="#55ba98"/><path d="M-13.2 -8.9 -5.1 -14.3 -5.1 -70.3 -13.2 -64.9z" fill="#32817b"/><path d="M-17.6 -73.2 -5.1 -70.3 -13.2 -64.9 -25.7 -67.9z" fill="#a6f6ce"/>
-      <path d="M25.9 0.4 38.4 3.4 38.4 -52.6 25.9 -55.6z" fill="#dd69a3"/><path d="M38.4 3.4 46.5 -2 46.5 -58 38.4 -52.6z" fill="#93496f"/><path d="M34 -61 46.5 -58 38.4 -52.6 25.9 -55.6z" fill="#ffc0df"/>
+    <path d="M-176.2 33 37.4 83.9 37.4 71.6 -176.2 20.8z" fill="#47364f"/><path d="M37.4 83.9 176.2 -8.5 176.2 -20.8 37.4 71.6z" fill="#342c46"/><path d="M-37.4 -71.6 176.2 -20.8 37.4 71.6 -176.2 20.8z" fill="url(#magenta)"/>
+    <path d="M-19.6 -67.4 -158.4 25M-48.9 -63.9 164.7 -13.1 M-1.8 -63.1 -140.6 29.3M-60.5 -56.2 153.1 -5.4 M16 -58.9 -122.8 33.5M-72.1 -48.5 141.5 2.3 M33.8 -54.7 -105 37.7M-83.7 -40.8 129.9 10 M51.6 -50.4 -87.2 42M-95.2 -33.1 118.4 17.7 M69.4 -46.2 -69.4 46.2M-106.8 -25.4 106.8 25.4 M87.2 -42 -51.6 50.4M-118.4 -17.7 95.2 33.1 M105 -37.7 -33.8 54.7M-129.9 -10 83.7 40.8 M122.8 -33.5 -16 58.9M-141.5 -2.3 72.1 48.5 M140.6 -29.3 1.8 63.1M-153.1 5.4 60.5 56.2 M158.4 -25 19.6 67.4M-164.6 13.1 49 63.9" fill="none" stroke="#b0ced1" opacity=".24" stroke-width=".65"/>
+    <path d="M20.2 -25.5 23.8 -24.7 23.8 -73.7 20.2 -74.5z" fill="#39b9c6"/><path d="M23.8 -24.7 26.1 -26.2 26.1 -75.2 23.8 -73.7z" fill="#25899b"/><path d="M22.5 -76 26.1 -75.2 23.8 -73.7 20.2 -74.5z" fill="#a6fff1"/>
+    <path d="M43.3 -20 46.9 -19.2 46.9 -68.2 43.3 -69z" fill="#39b9c6"/><path d="M46.9 -19.2 49.2 -20.7 49.2 -69.7 46.9 -68.2z" fill="#25899b"/><path d="M45.7 -70.5 49.2 -69.7 46.9 -68.2 43.3 -69z" fill="#a6fff1"/>
+    <path class="portal-shimmer" style="--d:-1.2s" d="M24.9 -25.4 44.5 -20.8 44.5 -69.8 24.9 -74.4z" fill="url(#membrane)" filter="url(#glow)"/>
+    <path d="M20.2 -74.5 46.9 -68.2 46.9 -75.2 20.2 -81.5z" fill="#dda668"/><path d="M46.9 -68.2 49.2 -69.7 49.2 -76.7 46.9 -75.2z" fill="#9b695b"/><path d="M22.5 -83 49.2 -76.7 46.9 -75.2 20.2 -81.5z" fill="#ffe6a8"/>
+    <path d="M-25.7 -11.9 -13.2 -8.9 -13.2 -64.9 -25.7 -67.9z" fill="#55ba98"/><path d="M-13.2 -8.9 -5.1 -14.3 -5.1 -70.3 -13.2 -64.9z" fill="#32817b"/><path d="M-17.6 -73.2 -5.1 -70.3 -13.2 -64.9 -25.7 -67.9z" fill="#a6f6ce"/>
+    <path d="M25.9 0.4 38.4 3.4 38.4 -52.6 25.9 -55.6z" fill="#dd69a3"/><path d="M38.4 3.4 46.5 -2 46.5 -58 38.4 -52.6z" fill="#93496f"/><path d="M34 -61 46.5 -58 38.4 -52.6 25.9 -55.6z" fill="#ffc0df"/>
+    <g class="levitate">
       <path d="M-33.9 9.7 -5.4 16.5 -5.4 1.6 -33.9 -5.2z" fill="#dda668"/><path d="M-5.4 16.5 8.5 7.2 8.5 -7.6 -5.4 1.6z" fill="#9b695b"/><path d="M-20 -14.4 8.5 -7.6 -5.4 1.6 -33.9 -5.2z" fill="#ffe6a8"/>
+    </g>
   </g>
-  <path d="M235 104q85-52 142-12 45 31 32 85-17 65 31 77 38 11 65 14" fill="none" stroke="#a0d4d0" opacity=".5" stroke-width="1.5" stroke-dasharray="2 5"/>
-  <path class="packet" d="M235 104q85-52 142-12 45 31 32 85-17 65 31 77 38 11 65 14" fill="none" stroke="#bafff0" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="8 103"/>
+
+  <!-- Bidirectional warp conduits -->
+  <path d="M235 104q85-52 142-12 45 31 32 85-17 65 31 77 38 11 65 14" fill="none" stroke="#85cbc6" opacity=".45" stroke-width="1.6" stroke-dasharray="2 5"/>
+  <path class="packet" pathLength="100" d="M235 104q85-52 142-12 45 31 32 85-17 65 31 77 38 11 65 14" fill="none" stroke="#8cfcf4" stroke-width="2.8" stroke-linecap="round" stroke-dasharray="10 101" filter="url(#glow)"/>
+  <path class="packet-rev" pathLength="100" d="M235 104q85-52 142-12 45 31 32 85-17 65 31 77 38 11 65 14" fill="none" stroke="#ff78be" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="8 103" filter="url(#glow)"/>
+
   <g font-family="Bahnschrift,Arial,sans-serif" font-weight="700" fill="#ffefd9"><text x="28" y="49" font-size="30">Mundo 01</text><text x="645" y="435" text-anchor="end" font-size="30">Mundo 02</text></g>
-  <g font-family="Consolas,monospace" font-size="16" fill="#c0d7d8"><text x="30" y="73">Monolitos y cristal</text><text x="644" y="457" text-anchor="end">Torres y plataforma</text></g>
+  <g font-family="Consolas,monospace" font-size="15" fill="#9be7e5"><text x="30" y="73">Monolitos y cristal</text><text x="644" y="457" text-anchor="end">Torres y plataforma</text></g>
 </svg>
