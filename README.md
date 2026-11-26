@@ -3,47 +3,21 @@
     <source media="(max-width: 600px)" srcset="./assets/night-city-movil.svg">
     <img src="./assets/night-city.svg" width="100%" alt="HALUZ · Rust y React · Desarrollo full stack en México. El emblema Samurai ilumina Night City.">
   </picture>
-  <picture>
-    <source media="(max-width: 600px)" srcset="./assets/night-city-crew-movil.svg">
-    <img src="./assets/night-city-crew.svg" width="100%" alt="Estilo anime Studio Trigger: V, Jackie Welles y Johnny Silverhand en el bar Afterlife; David Martínez, Lucy y Rebecca en el taller de los Edgerunners.">
-  </picture>
 </p>
 
 <p align="center">
-  <a href="https://github.com/aaronestradabonilla777/sdd-template"><img src="./assets/sdd-template.svg" width="384" alt="Abrir sdd-template. Plantilla para coordinar agentes de IA mediante especificaciones."></a>
-  <a href="https://github.com/aaronestradabonilla777/Loki-code-guide"><picture><source media="(max-width: 600px)" srcset="./assets/loki-code-guide-movil.svg"><img src="./assets/loki-code-guide.svg" width="384" alt="Abrir Loki Code Guide. Tutor de programación con IA local y Ollama."></picture></a>
-  <br>
-  <a href="https://github.com/aaronestradabonilla777?tab=repositories" title="Ver todos mis repositorios"><img src="./assets/repositorios.svg" width="132" alt="Ver todos mis repositorios"></a>
-</p>
-
-<p align="center">
-  <a href="./atlantis/README.md">
+  <a href="./scripts/ascii_glow.py" title="Ver generador ASCII en Python (NumPy + Pillow)">
     <picture>
-      <source media="(max-width: 600px)" srcset="./assets/atlantis-movil.svg">
-      <img src="./assets/atlantis.svg" width="960" alt="Ver el recorrido del prototipo Atlantis OS. Bajo la ciudad, el ojo despierta.">
+      <source media="(prefers-reduced-motion: reduce)" srcset="./assets/haluz-ascii-static.webp">
+      <img src="./assets/haluz-ascii.webp" width="100%" alt="Night City distópica en arte ASCII animado con Python: transición cinematográfica entre V, David Martínez y Johnny Silverhand con eco Sandevistan, glitch Relic y lluvia neón.">
     </picture>
-  </a>
-</p>
-
-<p align="center">
-  <a href="./arcadia/README.md">
-    <picture>
-      <source media="(max-width: 600px)" srcset="./assets/arcadia-movil.svg">
-      <img src="./assets/arcadia.svg" width="960" alt="Ver el adelanto de Arcadia. Dos mundos unidos por un portal en Urano, el motor 3D de Haluz. Presentación próximamente.">
-    </picture>
-  </a>
+  </a><br>
+  <a href="https://github.com/aaronestradabonilla777/sdd-template" title="Abrir sdd-template"><img src="./assets/ascii-sdd.webp" width="49.5%" alt="sdd-template en arte ASCII animado: motor de agentes coordinados por especificación."></a><a href="https://github.com/aaronestradabonilla777/Loki-code-guide" title="Abrir Loki Code Guide"><img src="./assets/ascii-loki.webp" width="49.5%" alt="Loki Code Guide en arte ASCII animado: tutor local con IA y Ollama en Rust."></a><br>
+  <a href="./atlantis/README.md" title="Explorar Atlantis OS"><img src="./assets/ascii-atlantis.webp" width="49.5%" alt="Atlantis OS en arte ASCII animado: el ojo dorado despierta sobre el templo sumergido."></a><a href="./arcadia/README.md" title="Explorar Arcadia · Urano 3D"><img src="./assets/ascii-arcadia.webp" width="49.5%" alt="Arcadia en arte ASCII animado: cubo 3D giratorio de Urano en Rust frente al portal."></a><br>
+  <a href="https://github.com/aaronestradabonilla777?tab=repositories" title="Ver todos los repositorios"><img src="./assets/ascii-repos.webp" width="49.5%" alt="Ver todos los repositorios de Haluz en arte ASCII animado."></a><a href="https://www.linkedin.com/in/aaron-bonilla-13014a219/" title="Contactar en LinkedIn"><img src="./assets/ascii-linkedin.webp" width="49.5%" alt="Contactar a Haluz en LinkedIn sobre la bahía cyberpunk en arte ASCII animado."></a>
 </p>
 
 <picture>
   <source media="(max-width: 600px)" srcset="./assets/actividad-movil.svg">
   <img src="./assets/actividad.svg" width="100%" alt="Calendario anual de contribuciones de Haluz en GitHub, con una celda por día">
 </picture>
-
-<p>
-  <a href="https://www.linkedin.com/in/aaron-bonilla-13014a219/">
-    <picture>
-      <source media="(max-width: 600px)" srcset="./assets/contacto-movil.svg">
-      <img src="./assets/contacto.svg" width="100%" alt="Contactar a Haluz en LinkedIn">
-    </picture>
-  </a>
-</p>
