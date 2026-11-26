@@ -13,8 +13,25 @@
     </picture>
   </a><br>
   <a href="https://github.com/aaronestradabonilla777/sdd-template" title="Abrir sdd-template"><img src="./assets/ascii-sdd.webp" width="49.5%" alt="sdd-template en arte ASCII animado: motor de agentes coordinados por especificación."></a><a href="https://github.com/aaronestradabonilla777/Loki-code-guide" title="Abrir Loki Code Guide"><img src="./assets/ascii-loki.webp" width="49.5%" alt="Loki Code Guide en arte ASCII animado: tutor local con IA y Ollama en Rust."></a><br>
-  <a href="./atlantis/README.md" title="Explorar Atlantis OS"><img src="./assets/ascii-atlantis.webp" width="49.5%" alt="Atlantis OS en arte ASCII animado: el ojo dorado despierta sobre el templo sumergido."></a><a href="./arcadia/README.md" title="Explorar Arcadia · Urano 3D"><img src="./assets/ascii-arcadia.webp" width="49.5%" alt="Arcadia en arte ASCII animado: cubo 3D giratorio de Urano en Rust frente al portal."></a><br>
   <a href="https://github.com/aaronestradabonilla777?tab=repositories" title="Ver todos los repositorios"><img src="./assets/ascii-repos.webp" width="49.5%" alt="Ver todos los repositorios de Haluz en arte ASCII animado."></a><a href="https://www.linkedin.com/in/aaron-bonilla-13014a219/" title="Contactar en LinkedIn"><img src="./assets/ascii-linkedin.webp" width="49.5%" alt="Contactar a Haluz en LinkedIn sobre la bahía cyberpunk en arte ASCII animado."></a>
+</p>
+
+<p align="center">
+  <a href="./atlantis/README.md">
+    <picture>
+      <source media="(max-width: 600px)" srcset="./assets/atlantis-movil.svg">
+      <img src="./assets/atlantis.svg" width="100%" alt="Ver el recorrido del prototipo Atlantis OS. Bajo la ciudad, el ojo despierta.">
+    </picture>
+  </a>
+</p>
+
+<p align="center">
+  <a href="./arcadia/README.md">
+    <picture>
+      <source media="(max-width: 600px)" srcset="./assets/arcadia-movil.svg">
+      <img src="./assets/arcadia.svg" width="100%" alt="Ver el adelanto de Arcadia. Dos mundos unidos por un portal en Urano, el motor 3D de Haluz. Presentación próximamente.">
+    </picture>
+  </a>
 </p>
 
 <picture>

@@ -1,15 +1,13 @@
 """Procedural Cyberpunk Netrunner ASCII Dashboard Generator (NumPy + Pillow).
 
-Generates the full suite of seamlessly looping animated WebP modules for the
-GitHub profile README directly from the repository's existing anime SVG assets:
+Generates the seamlessly looping animated WebP modules for the GitHub profile
+README directly from the repository's existing anime SVG assets and 3D shaders:
   1. assets/haluz-ascii.webp         (960x270, 108f @ 12fps = 9s V->David->Johnny transition)
   2. assets/haluz-ascii-static.webp  (960x270 static fallback)
-  3. assets/ascii-sdd.webp           (480x200, 72f @ 12fps = 6s SDD orchestrator)
-  4. assets/ascii-loki.webp          (480x200, 72f @ 12fps = 6s Loki grimoire + Rust terminal)
-  5. assets/ascii-atlantis.webp      (480x220, 72f @ 12fps = 6s Atlantis eye & ruins ASCII)
-  6. assets/ascii-arcadia.webp       (480x220, 72f @ 12fps = 6s Arcadia portal & 3D cube ASCII)
-  7. assets/ascii-repos.webp         (480x150, 60f @ 12fps = 5s 3D vault + repo telemetry)
-  8. assets/ascii-linkedin.webp      (480x150, 72f @ 12fps = 6s Harbour skyline + LinkedIn + rail)
+  3. assets/ascii-sdd.webp           (480x200, 72f @ 12fps = 6s 3D gyro core + SDD orchestrator)
+  4. assets/ascii-loki.webp          (480x200, 72f @ 12fps = 6s 3D trefoil neural core + Cyber-IDE)
+  5. assets/ascii-repos.webp         (480x150, 60f @ 12fps = 5s 3D torus + repo matrix console)
+  6. assets/ascii-linkedin.webp      (480x150, 72f @ 12fps = 6s Harbour skyline + LinkedIn + rail)
 """
 
 import argparse
@@ -458,16 +456,345 @@ def gen_hero_sequence(fonts: dict) -> tuple[list[Image.Image], list[Image.Image]
     return frames, diag
 
 
-def gen_sdd_tile(fonts: dict) -> Image.Image:
-    """480x200 tile: Spec-driven Multi-Agent ASCII Orchestrator."""
-    W, H, N = 480, 200, 72
-    backdrop = build_hud_backdrop(W, H, header_y=21, footer_y=172, accent=(0, 245, 233))
-    frames = []
-    bus_ys = (54, 96, 138)
-    agent_names = ("A1//ARCH", "A2//CODE", "A3//TEST")
-    agent_cols = ((255, 216, 77), (255, 65, 145), (98, 255, 203))
-    spin_chars = "|/-\\"
+SHADE_RAMP = " .,-~:;=!*#$@"
+_LIGHT_DIR = np.array([-0.45, -0.65, 0.72], dtype=np.float32)
+_LIGHT_DIR = _LIGHT_DIR / np.linalg.norm(_LIGHT_DIR)
 
+
+def build_ambient_city_layer(
+    w: int,
+    h: int,
+    r_top: int,
+    r_bot: int,
+    font,
+    nc_idx: int,
+    crop_box: tuple[int, int, int, int],
+    tint_rgb: tuple[float, float, float],
+    underlay_strength: float = 0.26,
+    gain_scale: float = 0.42,
+) -> tuple[Image.Image, np.ndarray, np.ndarray]:
+    """Create dense tinted cyberpunk skyline ASCII backdrop from Night City artwork."""
+    src = extract_webp_images(ASSETS_DIR / "night-city.svg")[nc_idx]
+    sw, sh = src.size
+    x0 = max(0, min(sw - 1, crop_box[0]))
+    y0 = max(0, min(sh - 1, crop_box[1]))
+    x1 = max(x0 + 1, min(sw, crop_box[2]))
+    y1 = max(y0 + 1, min(sh, crop_box[3]))
+
+    patch = src.crop((x0, y0, x1, y1)).resize((w, h), Image.Resampling.LANCZOS)
+    arr = np.asarray(patch, dtype=np.float32) * np.array(tint_rgb, dtype=np.float32)[None, None, :]
+    tinted = Image.fromarray(np.clip(arr, 0, 255).astype(np.uint8), mode="RGB")
+
+    cols, rows = w // 4, h // 6
+    rgb_g, lum_g, edg_g = quantize_ascii_grid(tinted, cols, rows, gamma=0.74, edge_weight=0.52)
+    base_fg, base_gl = render_static_ascii_cache(
+        w, h, cols, rows, 4, 6, r_top, r_bot, rgb_g, lum_g, edg_g, font, min_lum=0.09, gain_scale=gain_scale
+    )
+    return tinted, base_fg, base_gl
+
+
+def draw_perspective_grid(
+    fd: ImageDraw.ImageDraw,
+    gd: ImageDraw.ImageDraw,
+    w: int,
+    h: int,
+    y_horizon: int,
+    y_bottom: int,
+    phase: float,
+    line_col: tuple[int, int, int],
+    glow_col: tuple[int, int, int],
+) -> None:
+    """Draw a 3D receding cyberpunk floor grid clipped cleanly inside [6, w-6]."""
+    vx, vy = w * 0.5, y_horizon - 28.0
+    span_y = max(1.0, float(y_bottom - y_horizon))
+
+    # Subtle horizon beam
+    fd.line([(8, y_horizon), (w - 8, y_horizon)], fill=glow_col, width=1)
+    gd.line([(8, y_horizon), (w - 8, y_horizon)], fill=glow_col, width=1)
+
+    # 9 radiating perspective rays clipped cleanly against floor bounds
+    for ri in range(-4, 5):
+        xb = vx + ri * (w * 0.16)
+        slope_x = xb - vx
+        denom_y = float(y_bottom - vy)
+        xh = vx + slope_x * ((y_horizon - vy) / denom_y)
+        pts_y = [y_horizon, y_bottom]
+        pts_x = [xh, xb]
+        # Clip left/right edges at x=6 and x=w-6
+        t0, t1 = 0.0, 1.0
+        dx_ray = pts_x[1] - pts_x[0]
+        if abs(dx_ray) > 1e-4:
+            if pts_x[0] < 6.0:
+                t0 = max(t0, (6.0 - pts_x[0]) / dx_ray)
+            elif pts_x[0] > w - 6.0:
+                t0 = max(t0, ((w - 6.0) - pts_x[0]) / dx_ray)
+            if pts_x[1] < 6.0:
+                t1 = min(t1, (6.0 - pts_x[0]) / dx_ray)
+            elif pts_x[1] > w - 6.0:
+                t1 = min(t1, ((w - 6.0) - pts_x[0]) / dx_ray)
+        if t1 > t0:
+            sx = int(round(pts_x[0] + dx_ray * t0))
+            sy = int(round(pts_y[0] + span_y * t0))
+            ex = int(round(pts_x[0] + dx_ray * t1))
+            ey = int(round(pts_y[0] + span_y * t1))
+            fd.line([(sx, sy), (ex, ey)], fill=line_col, width=1)
+
+    # 6 horizontal scrolling depth lines
+    for i in range(6):
+        u = ((i + phase) / 6.0) ** 1.85
+        ly = int(round(y_horizon + u * span_y))
+        if y_horizon <= ly <= y_bottom:
+            fd.line([(8, ly), (w - 8, ly)], fill=line_col, width=1)
+
+
+def draw_cyber_panel(
+    fd: ImageDraw.ImageDraw,
+    gd: ImageDraw.ImageDraw,
+    box: tuple[int, int, int, int],
+    border_col: tuple[int, int, int],
+    accent_col: tuple[int, int, int],
+    fill_col: tuple[int, int, int] = (6, 15, 26),
+    chamfer: int = 6,
+) -> None:
+    """Draw a chamfered dark-glass HUD panel with neon corner bracket highlights."""
+    x0, y0, x1, y1 = box
+    c = max(2, min(chamfer, (x1 - x0) // 4, (y1 - y0) // 4))
+    poly = [
+        (x0 + c, y0), (x1 - c, y0), (x1, y0 + c),
+        (x1, y1 - c), (x1 - c, y1), (x0 + c, y1),
+        (x0, y1 - c), (x0, y0 + c),
+    ]
+    fd.polygon(poly, fill=fill_col, outline=border_col)
+
+    bracket = max(8, c + 6)
+    tl = [(x0, y0 + bracket), (x0, y0 + c), (x0 + c, y0), (x0 + bracket, y0)]
+    br = [(x1 - bracket, y1), (x1 - c, y1), (x1, y1 - c), (x1, y1 - bracket)]
+    fd.line(tl, fill=accent_col, width=2)
+    fd.line(br, fill=accent_col, width=2)
+    gd.line(tl, fill=accent_col, width=2)
+    gd.line(br, fill=accent_col, width=2)
+
+
+def _sample_torus(R: float, r: float, nu: int, nv: int) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+    """Sample points, unit normals, and parameter phase u/(2pi) on a 3D torus."""
+    u = np.linspace(0.0, 2.0 * math.pi, nu, endpoint=False, dtype=np.float32)
+    v = np.linspace(0.0, 2.0 * math.pi, nv, endpoint=False, dtype=np.float32)
+    uu, vv = np.meshgrid(u, v, indexing="ij")
+    cu, su = np.cos(uu), np.sin(uu)
+    cv, sv = np.cos(vv), np.sin(vv)
+    ring = R + r * cv
+    pts = np.stack([ring * cu, ring * su, r * sv], axis=-1).reshape(-1, 3)
+    nrm = np.stack([cv * cu, cv * su, sv], axis=-1).reshape(-1, 3)
+    phase = (uu / (2.0 * math.pi)).reshape(-1)
+    return pts, nrm, phase
+
+
+def _sample_sphere(r: float, nu: int, nv: int) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+    """Sample points, unit normals, and normalized angle on a 3D sphere."""
+    u = np.linspace(0.0, 2.0 * math.pi, nu, endpoint=False, dtype=np.float32)
+    v = np.linspace(-0.48 * math.pi, 0.48 * math.pi, nv, dtype=np.float32)
+    uu, vv = np.meshgrid(u, v, indexing="ij")
+    cv, sv = np.cos(vv), np.sin(vv)
+    cu, su = np.cos(uu), np.sin(uu)
+    nx, ny, nz = cv * cu, cv * su, sv
+    nrm = np.stack([nx, ny, nz], axis=-1).reshape(-1, 3)
+    pts = nrm * r
+    phase = (uu / (2.0 * math.pi)).reshape(-1)
+    return pts, nrm, phase
+
+
+def _sample_trefoil(scale_c: float = 0.34, r_tube: float = 0.20, nu: int = 128, nv: int = 24) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+    """Sample a 3D tubular trefoil neural knot using Frenet/Bishop frames."""
+    u = np.linspace(0.0, 2.0 * math.pi, nu, endpoint=False, dtype=np.float32)
+    cx = (np.sin(u) + 2.0 * np.sin(2.0 * u)) * scale_c
+    cy = (np.cos(u) - 2.0 * np.cos(2.0 * u)) * scale_c
+    cz = (-np.sin(3.0 * u)) * scale_c
+    tx = (np.cos(u) + 4.0 * np.cos(2.0 * u)) * scale_c
+    ty = (-np.sin(u) + 4.0 * np.sin(2.0 * u)) * scale_c
+    tz = (-3.0 * np.cos(3.0 * u)) * scale_c
+
+    T = np.stack([tx, ty, tz], axis=-1)
+    T = T / np.maximum(1e-5, np.linalg.norm(T, axis=1, keepdims=True))
+    up = np.array([0.0, 0.0, 1.0], dtype=np.float32)[None, :]
+    B = np.cross(T, up)
+    B_norm = np.linalg.norm(B, axis=1, keepdims=True)
+    # Guard nearly vertical tangent
+    alt = np.array([1.0, 0.0, 0.0], dtype=np.float32)[None, :]
+    B = np.where(B_norm < 1e-3, np.cross(T, alt), B)
+    B = B / np.maximum(1e-5, np.linalg.norm(B, axis=1, keepdims=True))
+    N = np.cross(B, T)
+
+    v = np.linspace(0.0, 2.0 * math.pi, nv, endpoint=False, dtype=np.float32)
+    cv = np.cos(v)[None, :, None]
+    sv = np.sin(v)[None, :, None]
+    nrm = N[:, None, :] * cv + B[:, None, :] * sv
+    ctr = np.stack([cx, cy, cz], axis=-1)[:, None, :]
+    pts = ctr + r_tube * nrm
+    phase = np.broadcast_to((u / (2.0 * math.pi))[:, None], (nu, nv)).reshape(-1)
+    return pts.reshape(-1, 3), nrm.reshape(-1, 3), phase
+
+
+def _build_rot_matrix(ax: float, ay: float, az: float) -> np.ndarray:
+    cx, sx = math.cos(ax), math.sin(ax)
+    cy, sy = math.cos(ay), math.sin(ay)
+    cz, sz = math.cos(az), math.sin(az)
+    rx = np.array([[1.0, 0.0, 0.0], [0.0, cx, -sx], [0.0, sx, cx]], dtype=np.float32)
+    ry = np.array([[cy, 0.0, sy], [0.0, 1.0, 0.0], [-sy, 0.0, cy]], dtype=np.float32)
+    rz = np.array([[cz, -sz, 0.0], [sz, cz, 0.0], [0.0, 0.0, 1.0]], dtype=np.float32)
+    return rz @ ry @ rx
+
+
+_SCULPTURE_CACHE: dict[str, tuple[np.ndarray, np.ndarray, np.ndarray]] = {}
+
+
+def _get_sculpture_mesh(shape: str) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+    if shape not in _SCULPTURE_CACHE:
+        if shape == "gyro":
+            p1, n1, ph1 = _sample_torus(1.08, 0.22, 92, 24)
+            # Second ring perpendicular (rotated 90 deg around X)
+            p2 = np.stack([p1[:, 0], -p1[:, 2], p1[:, 1]], axis=-1)
+            n2 = np.stack([n1[:, 0], -n1[:, 2], n1[:, 1]], axis=-1)
+            p3, n3, ph3 = _sample_sphere(0.40, 40, 22)
+            pts = np.concatenate([p1, p2, p3], axis=0)
+            nrm = np.concatenate([n1, n2, n3], axis=0)
+            ph = np.concatenate([ph1, (ph1 + 0.33) % 1.0, (ph3 + 0.66) % 1.0], axis=0)
+            _SCULPTURE_CACHE[shape] = (pts, nrm, ph)
+        elif shape == "trefoil":
+            _SCULPTURE_CACHE[shape] = _sample_trefoil(scale_c=0.34, r_tube=0.20, nu=128, nv=24)
+        else:
+            _SCULPTURE_CACHE[shape] = _sample_torus(0.95, 0.44, 108, 38)
+    return _SCULPTURE_CACHE[shape]
+
+
+def render_3d_ascii_sculpture(
+    fd: ImageDraw.ImageDraw,
+    gd: ImageDraw.ImageDraw,
+    cx: float,
+    cy: float,
+    scale: float,
+    dx: int,
+    dy: int,
+    shape: str,
+    ang_x: float,
+    ang_y: float,
+    ang_z: float,
+    palette: tuple[tuple[int, int, int], tuple[int, int, int], tuple[int, int, int]],
+    font,
+) -> None:
+    """Vectorized NumPy 3D Z-buffered parametric ASCII surface renderer with bloom highlights."""
+    pts, nrm, phase = _get_sculpture_mesh(shape)
+    rot = _build_rot_matrix(ang_x, ang_y, ang_z)
+    p_rot = pts @ rot.T
+    n_rot = nrm @ rot.T
+
+    # Camera looks along +Z toward origin from z = +3.6
+    inv_z = 1.0 / (3.6 - p_rot[:, 2])
+    cols = np.rint((cx + p_rot[:, 0] * scale * inv_z) / dx).astype(np.int32)
+    rows = np.rint((cy + p_rot[:, 1] * scale * inv_z) / dy).astype(np.int32)
+
+    # Lambertian diffuse + Phong specular term with readable rim floor
+    ndotl = np.clip(n_rot @ _LIGHT_DIR, 0.0, 1.0)
+    spec = np.power(np.clip(n_rot[:, 2] * 0.55 + ndotl * 0.45, 0.0, 1.0), 6.0)
+    lum = np.clip(0.26 + 0.64 * ndotl + 0.30 * spec, 0.0, 1.0)
+
+    # Keep only frontmost sample per cell using a compact lexsort Z-buffer
+    z_vals = p_rot[:, 2]
+    order = np.argsort(z_vals)  # back-to-front so later writes win cleanly
+    c0 = np.array(palette[0], dtype=np.float32)
+    c1 = np.array(palette[1], dtype=np.float32)
+    c2 = np.array(palette[2], dtype=np.float32)
+
+    cells: dict[tuple[int, int], tuple[float, float]] = {}
+    for idx in order:
+        col = int(cols[idx])
+        row = int(rows[idx])
+        if col < 2 or row < 3:
+            continue
+        cells[(col, row)] = (float(lum[idx]), float(phase[idx]))
+
+    ramp_max = len(SHADE_RAMP) - 1
+    for (col, row), (lv, phv) in cells.items():
+        ch = SHADE_RAMP[max(1, min(ramp_max, int(lv * ramp_max)))]
+        blend = 0.5 + 0.5 * math.sin(2.0 * math.pi * phv + ang_y)
+        mid_col = c0 * (1.0 - blend) + c1 * blend
+        final_col = mid_col * (0.42 + 0.58 * lv) + c2 * max(0.0, (lv - 0.58) * 1.45)
+        rgb = (
+            min(255, max(0, int(final_col[0]))),
+            min(255, max(0, int(final_col[1]))),
+            min(255, max(0, int(final_col[2]))),
+        )
+        px, py = col * dx, row * dy
+        fd.text((px, py), ch, fill=rgb, font=font)
+        if lv > 0.32:
+            gd.text((px, py), ch, fill=rgb, font=font)
+
+
+def draw_bezier_energy_arc(
+    fd: ImageDraw.ImageDraw,
+    gd: ImageDraw.ImageDraw,
+    p0: tuple[float, float],
+    p1: tuple[float, float],
+    p2: tuple[float, float],
+    phase: float,
+    col_track: tuple[int, int, int],
+    col_pkt: tuple[int, int, int],
+    col_ack: tuple[int, int, int],
+    font,
+) -> None:
+    """Draw a curved Bezier conduit with bidirectional animated energy pulses."""
+    for i in range(21):
+        u = i / 20.0
+        om = 1.0 - u
+        x = om * om * p0[0] + 2.0 * om * u * p1[0] + u * u * p2[0]
+        y = om * om * p0[1] + 2.0 * om * u * p1[1] + u * u * p2[1]
+        fd.text((int(x), int(y)), "." if i % 2 == 0 else "·", fill=col_track, font=font)
+
+    if phase < 0.48:
+        u_head = phase / 0.48
+        glyphs, pcol, dir_sign = ("@", "#", "*"), col_pkt, -1.0
+    elif phase < 0.94:
+        u_head = 1.0 - (phase - 0.48) / 0.46
+        glyphs, pcol, dir_sign = ("<", "@", "#"), col_ack, 1.0
+    else:
+        return
+
+    for k, ch in enumerate(glyphs):
+        u = max(0.0, min(1.0, u_head + dir_sign * k * 0.045))
+        om = 1.0 - u
+        x = om * om * p0[0] + 2.0 * om * u * p1[0] + u * u * p2[0]
+        y = om * om * p0[1] + 2.0 * om * u * p1[1] + u * u * p2[1]
+        c_draw = pcol if k == 0 else (max(40, int(pcol[0] * 0.78)), max(40, int(pcol[1] * 0.78)), max(40, int(pcol[2] * 0.78)))
+        fd.text((int(x) - 2, int(y) - 3), ch, fill=c_draw, font=font)
+        gd.text((int(x) - 2, int(y) - 3), ch, fill=c_draw, font=font)
+
+
+def gen_sdd_tile(fonts: dict) -> tuple[Image.Image, list[Image.Image]]:
+    """480x200 tile: 3D Gyro Spec Core + curved conduits + 3 dark-glass Agent Cards."""
+    W, H, N = 480, 200, 72
+    amb_img, base_fg, base_gl = build_ambient_city_layer(
+        W, H, 4, 29, fonts["tiny"], nc_idx=1, crop_box=(0, 20, 1280, 550),
+        tint_rgb=(0.45, 0.90, 1.10), underlay_strength=0.26, gain_scale=0.38,
+    )
+    backdrop = build_hud_backdrop(
+        W, H, header_y=21, footer_y=173, accent=(0, 245, 233),
+        underlay_img=amb_img, underlay_strength=0.25,
+    )
+
+    rng = np.random.default_rng(202)
+    sp_x = rng.uniform(12, W - 18, 28)
+    sp_y = rng.uniform(26, 168, 28)
+    sp_p = rng.uniform(0.0, 1.0, 28)
+    sp_ch = rng.choice(["*", "+", "·", "0", "1"], size=28)
+    sp_cols = ((0, 245, 233), (255, 216, 77), (255, 65, 145))
+
+    agents = (
+        ("A1 // ARCH", (255, 216, 77), "PLAN", "SCHEMA", (252, 48), (195, 52), 0.00),
+        ("A2 // CODE", (255, 65, 145), "BUILD", "RUST/TS", (252, 95), (195, 92), 0.16),
+        ("A3 // TEST", (98, 255, 203), "PASS", "VERIFY", (252, 142), (195, 132), 0.32),
+    )
+    card_ys = (29, 76, 123)
+
+    frames = []
     for f in range(N):
         t = f / N
         tau = 2.0 * math.pi * t
@@ -475,69 +802,92 @@ def gen_sdd_tile(fonts: dict) -> Image.Image:
         gl = Image.new("RGB", (W, H), (0, 0, 0))
         fd, gd = ImageDraw.Draw(fg), ImageDraw.Draw(gl)
 
-        # Header & Footer
-        fd.ellipse([12, 7, 18, 13], fill=(0, 245, 233))
+        # Perspective receding cyber-floor & drifting cyber-sparks
+        draw_perspective_grid(fd, gd, W, H, 126, 171, (t * 2.0) % 1.0, (14, 52, 68), (0, 130, 142))
+        for k in range(len(sp_x)):
+            px = int((sp_x[k] + 10.0 * math.sin(tau + k)) % (W - 20)) + 8
+            py = int(26 + ((sp_y[k] - 26 - 38.0 * ((t + sp_p[k]) % 1.0)) % 140))
+            if px > 246 and 28 <= py <= 165:
+                continue
+            scol = sp_cols[k % 3]
+            fd.text((px, py), str(sp_ch[k]), fill=scol, font=fonts["tiny"])
+            if k % 2 == 0:
+                gd.text((px, py), str(sp_ch[k]), fill=scol, font=fonts["tiny"])
+
+        # Left Hero: 3D Rotating ASCII Gyro Spec Core + Pill
+        render_3d_ascii_sculpture(
+            fd, gd, 88.0, 88.0, 112.0, 4, 6, "gyro",
+            tau, tau * 2.0, 0.35, ((24, 140, 185), (0, 245, 233), (255, 224, 110)), fonts["tiny"],
+        )
+        draw_cyber_panel(fd, gd, (28, 148, 148, 166), (26, 92, 114), (0, 245, 233), fill_col=(5, 16, 28), chamfer=4)
+        fd.text((40, 152), "SPEC.MD // CORE", fill=(215, 255, 250), font=fonts["hud"])
+        gd.text((40, 152), "SPEC.MD // CORE", fill=(0, 245, 233), font=fonts["hud"])
+
+        # Bezier Energy Arcs + Sleek Frosted Agent Cards
+        for idx, ((aname, acol, act_tag, micro, p2, p1, stag), cy0) in enumerate(zip(agents, card_ys)):
+            phase = (t + stag) % 1.0
+            draw_bezier_energy_arc(
+                fd, gd, (142.0, 88.0), p1, p2, phase,
+                (26, 76, 96), acol, (98, 255, 203), fonts["tiny"],
+            )
+
+            cy1 = cy0 + 39
+            draw_cyber_panel(fd, gd, (254, cy0, 468, cy1), (28, 82, 104), acol, fill_col=(6, 15, 26), chamfer=5)
+            led_on = 0.5 + 0.5 * math.sin(tau * 3.0 + idx * 1.9)
+            lcol = (int(acol[0] * (0.45 + 0.55 * led_on)), int(acol[1] * (0.45 + 0.55 * led_on)), int(acol[2] * (0.45 + 0.55 * led_on)))
+            fd.ellipse([264, cy0 + 10, 270, cy0 + 16], fill=lcol)
+            gd.ellipse([264, cy0 + 10, 270, cy0 + 16], fill=lcol)
+            fd.text((276, cy0 + 7), aname, fill=(235, 252, 255), font=fonts["hud"])
+
+            verified_burst = phase >= 0.62 and phase <= 0.92
+            badge_txt = "[ OK  ]" if verified_burst else f"[{act_tag:<4}]"
+            badge_col = (110, 255, 212) if verified_burst else acol
+            fd.text((414, cy0 + 7), badge_txt, fill=badge_col, font=fonts["hud"])
+            gd.text((414, cy0 + 7), badge_txt, fill=badge_col, font=fonts["hud"])
+
+            # Animated 12-char wave progress bar
+            filled = 3 + int(9 * (0.5 + 0.5 * math.sin(tau * 2.0 - idx * 1.1)))
+            bar = "#" * filled + "." * (12 - filled)
+            fd.text((264, cy0 + 23), bar, fill=acol, font=fonts["small"])
+            if filled >= 9:
+                gd.text((264, cy0 + 23), bar, fill=acol, font=fonts["small"])
+            status_lbl = "SYNC OK" if verified_burst else micro
+            fd.text((346, cy0 + 22), status_lbl, fill=(140, 218, 228) if not verified_burst else (120, 255, 212), font=fonts["hud"])
+
+        # Header & Footer Chrome
+        h_led = 0.45 + 0.55 * (0.5 + 0.5 * math.sin(tau * 4.0))
+        fd.ellipse([12, 7, 18, 13], fill=(0, int(245 * h_led), int(233 * h_led)))
+        gd.ellipse([12, 7, 18, 13], fill=(0, int(245 * h_led), int(233 * h_led)))
         fd.text((24, 5), "SDD-TEMPLATE // SPEC ENGINE", fill=(164, 248, 244), font=fonts["hud"])
         fd.text((W - 88, 5), "[REPO ->]", fill=(255, 216, 77), font=fonts["hud"])
-        fd.text((14, 179), "> Agentes coordinados por especificacion en vivo", fill=(175, 236, 240), font=fonts["hud"])
+        fd.text((14, 179), "> Orquestacion multi-agente guiada por especificacion", fill=(175, 236, 240), font=fonts["hud"])
 
-        # Central SPEC.MD ASCII Core Box
-        fd.text((20, 44), "+---------+", fill=(0, 245, 233), font=fonts["small"])
-        fd.text((20, 56), "| SPEC.MD |", fill=(255, 216, 77), font=fonts["small"])
-        fd.text((20, 68), "+---------+", fill=(0, 245, 233), font=fonts["small"])
-        gd.text((20, 56), "| SPEC.MD |", fill=(255, 216, 77), font=fonts["small"])
-
-        # Spec progress fill lines
-        prog_lines = min(3, int((t * 1.4) % 1.0 * 4))
-        for li, lbl in enumerate(("## ARCH ", "## IMPL ", "## VERIF")):
-            c_ok = (98, 255, 203) if li < prog_lines else (42, 95, 110)
-            fd.text((24, 86 + li * 16), f"|{lbl}|", fill=c_ok, font=fonts["small"])
-            if li < prog_lines:
-                gd.text((24, 86 + li * 16), f"|{lbl}|", fill=c_ok, font=fonts["small"])
-        fd.text((20, 134), "+---------+", fill=(0, 245, 233), font=fonts["small"])
-
-        # 3 Agent Pods + Traveling ASCII Packets along branched circuit buses
-        for idx, (by, aname, acol) in enumerate(zip(bus_ys, agent_names, agent_cols)):
-            # Bus track
-            fd.text((120, by), "=====================>", fill=(28, 78, 96), font=fonts["small"])
-            # Agent pod (15 chars wide so left/right pipes align)
-            fd.text((322, by - 10), "+-------------+", fill=acol, font=fonts["small"])
-            sp = spin_chars[(f // 2 + idx) % 4]
-            fd.text((322, by), f"| [{sp}] {aname}|", fill=(235, 255, 255), font=fonts["small"])
-            fd.text((322, by + 10), "+-------------+", fill=acol, font=fonts["small"])
-            gd.text((322, by), f"| [{sp}] {aname}|", fill=acol, font=fonts["small"])
-
-            # Forward packet (req) & Return verification packet (rep)
-            phase = (t + idx * 0.14) % 1.0
-            if phase < 0.45:
-                kx = int(124 + (phase / 0.45) * 170)
-                fd.text((kx, by), "***>", fill=acol, font=fonts["small"])
-                gd.text((kx, by), "***>", fill=acol, font=fonts["small"])
-            elif phase < 0.90:
-                kx = int(294 - ((phase - 0.45) / 0.45) * 170)
-                fd.text((kx, by), "<###", fill=(98, 255, 203), font=fonts["small"])
-                gd.text((kx, by), "<###", fill=(98, 255, 203), font=fonts["small"])
-
-        # Sealed status burst pulse
-        if math.sin(tau) > 0.2:
-            fd.text((326, 154), "[ VERIFIED OK ]", fill=(110, 255, 210), font=fonts["hud"])
-            gd.text((326, 154), "[ VERIFIED OK ]", fill=(98, 255, 203), font=fonts["hud"])
-
-        frames.append(compose_bloom(backdrop, fg, gl))
+        frames.append(compose_bloom(backdrop, fg, gl, base_fg=base_fg, base_glow=base_gl))
 
     save_animated_webp(frames, ASSETS_DIR / "ascii-sdd.webp", FPS_MS, max_bytes=900_000)
-    return frames[18]
+    return frames[48], [frames[6], frames[30], frames[54]]
 
 
-def gen_loki_tile(fonts: dict) -> Image.Image:
-    """480x200 tile: Loki Code Guide cyber-grimoire & live Rust terminal fix."""
+def gen_loki_tile(fonts: dict) -> tuple[Image.Image, list[Image.Image]]:
+    """480x200 tile: 3D Neural Trefoil Core + Matrix Rain + Live Cyber-IDE Rust Patch."""
     W, H, N = 480, 200, 72
-    backdrop = build_hud_backdrop(W, H, header_y=21, footer_y=172, accent=(98, 255, 203))
-    frames = []
-    rng = np.random.default_rng(101)
-    orb_x = rng.uniform(55, 215, 22)
-    orb_p = rng.uniform(0, 1, 22)
+    amb_img, base_fg, base_gl = build_ambient_city_layer(
+        W, H, 4, 29, fonts["tiny"], nc_idx=2, crop_box=(0, 30, 1280, 560),
+        tint_rgb=(0.35, 1.05, 0.90), underlay_strength=0.25, gain_scale=0.36,
+    )
+    backdrop = build_hud_backdrop(
+        W, H, header_y=21, footer_y=173, accent=(98, 255, 203),
+        underlay_img=amb_img, underlay_strength=0.24,
+    )
 
+    rng = np.random.default_rng(404)
+    m_cols = rng.integers(14, 196, 24)
+    m_r0 = rng.uniform(24, 165, 24)
+    m_spd = rng.choice([70.0, 105.0], size=24)
+    orb_x = rng.uniform(46, 152, 18)
+    orb_p = rng.uniform(0.0, 1.0, 18)
+
+    frames = []
     for f in range(N):
         t = f / N
         tau = 2.0 * math.pi * t
@@ -545,221 +895,140 @@ def gen_loki_tile(fonts: dict) -> Image.Image:
         gl = Image.new("RGB", (W, H), (0, 0, 0))
         fd, gd = ImageDraw.Draw(fg), ImageDraw.Draw(gl)
 
-        fd.ellipse([12, 7, 18, 13], fill=(98, 255, 203))
+        # Left Matrix Rain (x=12..196)
+        for k in range(len(m_cols)):
+            mx = int(m_cols[k])
+            head_y = 24.0 + ((m_r0[k] - 24.0 + m_spd[k] * t) % 140.0)
+            for seg in range(4):
+                sy = int(24 + ((head_y - 24 - seg * 7) % 140))
+                ch = RAIN_CHARS[(k + seg + f // 2) % len(RAIN_CHARS)]
+                col_m = (165, 255, 224) if seg == 0 else (20, int(140 * (1 - seg / 4.2)), int(125 * (1 - seg / 4.2)))
+                fd.text((mx, sy), ch, fill=col_m, font=fonts["tiny"])
+                if seg == 0:
+                    gd.text((mx, sy), ch, fill=(98, 255, 203), font=fonts["tiny"])
+
+        # Glowing Holo-Emitter Rings + Rising Motes under Left Core
+        fd.arc([40, 136, 156, 156], 0, 360, fill=(22, 115, 118), width=1)
+        fd.arc([62, 140, 134, 152], 0, 360, fill=(98, 255, 203), width=1)
+        gd.arc([62, 140, 134, 152], 0, 360, fill=(0, 245, 233), width=1)
+        for k in range(len(orb_x)):
+            prog = (t + orb_p[k]) % 1.0
+            ox = int(orb_x[k] + 4.0 * math.sin(tau * 2.0 + k))
+            oy = int(144 - prog * 96)
+            fd.text((ox, oy), "*" if k % 2 == 0 else "+", fill=(98, 255, 203), font=fonts["tiny"])
+            if prog > 0.25:
+                gd.text((ox, oy), "*", fill=(0, 245, 233), font=fonts["tiny"])
+
+        # Left Hero: 3D Trefoil Neural Core + Pill
+        bob = 3.0 * math.sin(tau * 2.0)
+        render_3d_ascii_sculpture(
+            fd, gd, 98.0, 84.0 + bob, 116.0, 4, 6, "trefoil",
+            tau * 0.5 + 0.4, tau, 0.25, ((18, 165, 135), (0, 245, 233), (255, 224, 110)), fonts["tiny"],
+        )
+        draw_cyber_panel(fd, gd, (22, 150, 176, 167), (26, 98, 102), (98, 255, 203), fill_col=(5, 16, 26), chamfer=4)
+        fd.text((34, 154), "OLLAMA // NEURAL CORE", fill=(185, 255, 236), font=fonts["hud"])
+        gd.text((34, 154), "OLLAMA // NEURAL CORE", fill=(98, 255, 203), font=fonts["hud"])
+
+        # Curved Synapse Beam into IDE left edge (with golden surge during patch phase)
+        if t < 0.36:
+            beam_col, beam_spd = (0, 245, 233), 1.4
+        elif t < 0.58:
+            beam_col, beam_spd = (255, 216, 77), 3.0
+        else:
+            beam_col, beam_spd = (98, 255, 203), 1.6
+        draw_bezier_energy_arc(
+            fd, gd, (142.0, 88.0), (174.0, 68.0), (205.0, 88.0),
+            (t * beam_spd) % 1.0, (42, 132, 142), beam_col, (98, 255, 203), fonts["tiny"],
+        )
+
+        # Right Cyber-IDE Panel (x0=206..468, y0=30..164)
+        ide_accent = (255, 78, 130) if t < 0.36 else ((255, 216, 77) if t < 0.58 else (98, 255, 203))
+        draw_cyber_panel(fd, gd, (206, 30, 468, 164), (30, 92, 106), ide_accent, fill_col=(6, 15, 26), chamfer=6)
+
+        # Mini IDE title bar + LEDs
+        fd.ellipse([216, 39, 222, 45], fill=(255, 65, 145))
+        fd.ellipse([226, 39, 232, 45], fill=(255, 216, 77))
+        fd.ellipse([236, 39, 242, 45], fill=(98, 255, 203))
+        fd.text((250, 37), "cargo test · loki.rs", fill=(154, 228, 236), font=fonts["hud"])
+        fd.line([(212, 51), (462, 51)], fill=(22, 66, 82), width=1)
+
+        fd.text((218, 57), "$ cargo test --quiet", fill=(150, 235, 248), font=fonts["hud"])
+        fd.text((218, 73), "fn add() -> i32 { 2 + 2 }", fill=(215, 245, 255), font=fonts["hud"])
+
+        if t < 0.36:
+            # Phase 1: Failing test
+            fd.text((218, 90), "assert_eq!(add(), 5);", fill=(255, 78, 130), font=fonts["hud"])
+            gd.text((218, 90), "assert_eq!(add(), 5);", fill=(255, 65, 118), font=fonts["hud"])
+            if (f // 4) % 2 == 0:
+                fd.line([(326, 103), (344, 103)], fill=(255, 65, 118), width=2)
+            fd.rectangle([218, 110, 454, 130], fill=(44, 14, 28), outline=(255, 65, 118))
+            fd.text((226, 114), "[FAIL] expected 5, got 4", fill=(255, 142, 174), font=fonts["hud"])
+            gd.text((226, 114), "[FAIL] expected 5, got 4", fill=(255, 65, 118), font=fonts["hud"])
+            fd.text((218, 139), "> loki: analizando AST...", fill=(154, 218, 226), font=fonts["hud"])
+        elif t < 0.58:
+            # Phase 2: Golden Ollama AI patch
+            fd.text((218, 90), "assert_eq!(add(), 4);", fill=(255, 224, 95), font=fonts["hud"])
+            gd.text((218, 90), "assert_eq!(add(), 4);", fill=(255, 216, 77), font=fonts["hud"])
+            for sx, sy in ((334, 83), (348, 91), (330, 99)):
+                fd.text((sx, sy), "*", fill=(255, 232, 130), font=fonts["tiny"])
+                gd.text((sx, sy), "*", fill=(255, 216, 77), font=fonts["tiny"])
+            fd.rectangle([218, 110, 454, 130], fill=(42, 32, 12), outline=(255, 216, 77))
+            fd.text((226, 114), "[OLLAMA] patch -> 4", fill=(255, 234, 140), font=fonts["hud"])
+            gd.text((226, 114), "[OLLAMA] patch -> 4", fill=(255, 216, 77), font=fonts["hud"])
+            prog_n = max(2, min(12, int(((t - 0.36) / 0.22) * 12) + 1))
+            fd.text((218, 139), f"[{'#' * prog_n}{'.' * (12 - prog_n)}] AI FIX", fill=(255, 224, 110), font=fonts["hud"])
+        else:
+            # Phase 3: Verified Pass
+            fd.text((218, 90), "assert_eq!(add(), 4);", fill=(120, 255, 212), font=fonts["hud"])
+            gd.text((218, 90), "assert_eq!(add(), 4);", fill=(98, 255, 203), font=fonts["hud"])
+            fd.rectangle([218, 110, 454, 130], fill=(10, 40, 36), outline=(98, 255, 203))
+            fd.text((226, 114), "[PASS] 1 passed · 0.01s", fill=(160, 255, 224), font=fonts["hud"])
+            gd.text((226, 114), "[PASS] 1 passed · 0.01s", fill=(98, 255, 203), font=fonts["hud"])
+            fd.text((218, 139), "> OK · verificado en local", fill=(142, 255, 218), font=fonts["hud"])
+            for sp_i in range(3):
+                sx = 398 + sp_i * 18
+                sy = 144 - int(((t - 0.58) * 32 + sp_i * 5) % 14)
+                fd.text((sx, sy), "+", fill=(142, 255, 218), font=fonts["tiny"])
+                gd.text((sx, sy), "+", fill=(98, 255, 203), font=fonts["tiny"])
+
+        h_led = 0.45 + 0.55 * (0.5 + 0.5 * math.sin(tau * 4.0))
+        fd.ellipse([12, 7, 18, 13], fill=(int(98 * h_led), int(255 * h_led), int(203 * h_led)))
+        gd.ellipse([12, 7, 18, 13], fill=(int(98 * h_led), int(255 * h_led), int(203 * h_led)))
         fd.text((24, 5), "LOKI CODE GUIDE // OLLAMA", fill=(164, 248, 244), font=fonts["hud"])
         fd.text((W - 88, 5), "[REPO ->]", fill=(98, 255, 203), font=fonts["hud"])
         fd.text((14, 179), "> Tutor local en Rust e IA que corrige pruebas", fill=(175, 236, 240), font=fonts["hud"])
 
-        # Open Illuminated ASCII Cyber-Grimoire (bottom-left x=26..210, y=104..166)
-        wave_y = int(round(math.sin(tau * 3.0) * 2.0))
-        fd.text((34, 114 + wave_y), "  .-----..-----.  ", fill=(120, 248, 240), font=fonts["small"])
-        fd.text((34, 124 + wave_y), " / ~~~~ || ~~~~ \\ ", fill=(0, 245, 233), font=fonts["small"])
-        fd.text((34, 134 + wave_y), "|  CODE || OLLAMA|", fill=(205, 255, 248), font=fonts["small"])
-        fd.text((34, 144 + wave_y), " \\_____/\\_____/ ", fill=(72, 185, 198), font=fonts["small"])
-        gd.text((34, 124 + wave_y), " / ~~~~ || ~~~~ \\ ", fill=(0, 245, 233), font=fonts["small"])
-
-        # Rising holo-projection particles streaming from book up to terminal bottom edge
-        for k in range(len(orb_x)):
-            prog = (t + orb_p[k]) % 1.0
-            px = int(orb_x[k] * (1 - prog) + (212 + (orb_x[k] - 130) * 0.25) * prog)
-            py = int(112 - prog * 52)
-            if py >= 104 or px < 210:
-                fd.text((px, py), "*" if k % 2 == 0 else "·", fill=(98, 255, 203), font=fonts["small"])
-                if prog > 0.35:
-                    gd.text((px, py), "*", fill=(0, 245, 233), font=fonts["small"])
-
-        # Holographic Terminal Window (top-right x=215..458, y=34..122)
-        fd.text((216, 34), "+-------------------------+", fill=(0, 245, 233), font=fonts["small"])
-        fd.text((216, 46), "| $ cargo test            |", fill=(175, 240, 248), font=fonts["small"])
-        if t < 0.38:
-            # Failing 2+2 == 5 phase
-            fd.text((216, 62), "| assert_eq!(2+2, 5);     |", fill=(255, 92, 138), font=fonts["small"])
-            fd.text((216, 78), "| [FAIL] expected 5       |", fill=(255, 65, 118), font=fonts["small"])
-            gd.text((216, 78), "| [FAIL] expected 5       |", fill=(255, 65, 118), font=fonts["small"])
-        elif t < 0.56:
-            # Ollama AI golden reasoning wave
-            dots = "." * (1 + (f // 3) % 4)
-            fd.text((216, 62), f"| > loki: fixing line{dots:<4}|", fill=(255, 216, 77), font=fonts["small"])
-            fd.text((216, 78), "| [OLLAMA] 2 + 2 == 4     |", fill=(255, 216, 77), font=fonts["small"])
-            gd.text((216, 78), "| [OLLAMA] 2 + 2 == 4     |", fill=(255, 216, 77), font=fonts["small"])
-        else:
-            # Fixed passing green glow
-            fd.text((216, 62), "| assert_eq!(2+2, 4);     |", fill=(120, 255, 212), font=fonts["small"])
-            fd.text((216, 78), "| [PASS] ok in 0.01s  [v] |", fill=(98, 255, 203), font=fonts["small"])
-            gd.text((216, 78), "| [PASS] ok in 0.01s  [v] |", fill=(98, 255, 203), font=fonts["small"])
-        fd.text((216, 94), "+-------------------------+", fill=(0, 245, 233), font=fonts["small"])
-
-        frames.append(compose_bloom(backdrop, fg, gl))
+        frames.append(compose_bloom(backdrop, fg, gl, base_fg=base_fg, base_glow=base_gl))
 
     save_animated_webp(frames, ASSETS_DIR / "ascii-loki.webp", FPS_MS, max_bytes=900_000)
-    return frames[48]
+    return frames[48], [frames[12], frames[34], frames[56]]
 
 
-def gen_atlantis_tile(fonts: dict) -> Image.Image:
-    """480x220 tile: Sunken anime Atlantis temple + awakening Golden Eye in glowing ASCII."""
-    W, H, N = 480, 220, 72
-    DX, DY = 4, 6
-    COLS, ROWS = W // DX, H // DY  # 120 x 36
-    R_TOP, R_BOT = 4, 32
-
-    src = extract_webp_images(ASSETS_DIR / "atlantis.svg")[0]  # 1280x445
-    crop = src.crop((470, 0, 1255, 445)).resize((W, H), Image.Resampling.LANCZOS)
-    rgb_g, lum_g, edg_g = quantize_ascii_grid(crop, COLS, ROWS, gamma=0.68, edge_weight=0.58)
-    base_fg, base_gl = render_static_ascii_cache(
-        W, H, COLS, ROWS, DX, DY, R_TOP, R_BOT, rgb_g, lum_g, edg_g, fonts["tiny"], min_lum=0.05
-    )
-    backdrop = build_hud_backdrop(W, H, header_y=21, footer_y=192, accent=(255, 216, 77), underlay_img=crop, underlay_strength=0.22)
-
-    rng = np.random.default_rng(303)
-    b_x = rng.uniform(18, W - 20, 34)
-    b_y = rng.uniform(32, 186, 34)
-    b_spd = rng.integers(1, 3, 34)
-    b_ch = rng.choice(["o", "·", "*", "+"], size=34)
-
-    frames = []
-    for f in range(N):
-        t = f / N
-        tau = 2.0 * math.pi * t
-        fg = Image.new("RGB", (W, H), (0, 0, 0))
-        gl = Image.new("RGB", (W, H), (0, 0, 0))
-        fd, gd = ImageDraw.Draw(fg), ImageDraw.Draw(gl)
-
-        # Gentle bioluminescent plankton rising
-        for k in range(len(b_x)):
-            px = int(b_x[k] + 5.0 * math.sin(tau + k))
-            py = int(28 + ((b_y[k] - 28 - b_spd[k] * 158 * t) % 158))
-            col_b = (155, 255, 238) if k % 3 != 0 else (255, 224, 145)
-            fd.text((px, py), str(b_ch[k]), fill=col_b, font=fonts["tiny"])
-            gd.text((px, py), str(b_ch[k]), fill=col_b, font=fonts["tiny"])
-
-        # Cyan obelisk & stair rune pulse
-        pulse_y = int(186 - ((t * 1.5) % 1.0) * 60)
-        fd.text((104, pulse_y), "##", fill=(168, 255, 245), font=fonts["small"])
-        gd.text((104, pulse_y), "##", fill=(0, 245, 233), font=fonts["small"])
-
-        # Awakening Golden ASCII Eye in temple pediment (cx=308, cy=56)
-        open_amp = 0.5 + 0.5 * math.sin(tau - math.pi / 2)
-        if open_amp < 0.25:
-            eye_rows = ["---===---"]
-        elif open_amp < 0.65:
-            eye_rows = [".--(*)--."]
-        else:
-            eye_rows = ["  .===.  ", "=( <@> )=", "  '==='  "]
-        for ri, er in enumerate(eye_rows):
-            ey = 52 + (ri - len(eye_rows) // 2) * 9
-            fd.text((284, ey), er, fill=(255, 226, 130), font=fonts["small"])
-            gd.text((284, ey), er, fill=(255, 210, 88), font=fonts["small"])
-
-        fd.ellipse([12, 7, 18, 13], fill=(255, 216, 77))
-        fd.text((24, 5), "ATLANTIS OS // TEMPLO SUMERGIDO", fill=(255, 228, 148), font=fonts["hud"])
-        fd.text((W - 96, 5), "[VER 3D ->]", fill=(155, 255, 238), font=fonts["hud"])
-        fd.text((14, 199), "> Bajo la ciudad, el ojo dorado despierta", fill=(175, 236, 240), font=fonts["hud"])
-
-        frames.append(compose_bloom(backdrop, fg, gl, base_fg=base_fg, base_glow=base_gl))
-
-    save_animated_webp(frames, ASSETS_DIR / "ascii-atlantis.webp", FPS_MS, max_bytes=950_000)
-    return frames[36]
-
-
-def gen_arcadia_tile(fonts: dict) -> Image.Image:
-    """480x220 tile: Arcadia portal vista + reaching hand + live rotating 3D ASCII Cube."""
-    W, H, N = 480, 220, 72
-    DX, DY = 4, 6
-    COLS, ROWS = W // DX, H // DY
-    R_TOP, R_BOT = 4, 32
-
-    src = extract_webp_images(ASSETS_DIR / "arcadia.svg")[0]  # 1280x603 base
-    crop = src.crop((430, 15, 1278, 595)).resize((W, H), Image.Resampling.LANCZOS)
-    rgb_g, lum_g, edg_g = quantize_ascii_grid(crop, COLS, ROWS, gamma=0.70, edge_weight=0.58)
-    base_fg, base_gl = render_static_ascii_cache(
-        W, H, COLS, ROWS, DX, DY, R_TOP, R_BOT, rgb_g, lum_g, edg_g, fonts["tiny"], min_lum=0.05
-    )
-    backdrop = build_hud_backdrop(W, H, header_y=21, footer_y=192, accent=(255, 185, 120), underlay_img=crop, underlay_strength=0.22)
-
-    # Unit cube vertices & edges for crisp 3D rotating ASCII wireframe cube
-    verts = np.array([
-        [-1, -1, -1], [1, -1, -1], [1, 1, -1], [-1, 1, -1],
-        [-1, -1, 1], [1, -1, 1], [1, 1, 1], [-1, 1, 1],
-    ], dtype=np.float32)
-    edges_idx = (
-        (0, 1), (1, 2), (2, 3), (3, 0),
-        (4, 5), (5, 6), (6, 7), (7, 4),
-        (0, 4), (1, 5), (2, 6), (3, 7),
-    )
-
-    frames = []
-    for f in range(N):
-        t = f / N
-        tau = 2.0 * math.pi * t
-        fg = Image.new("RGB", (W, H), (0, 0, 0))
-        gl = Image.new("RGB", (W, H), (0, 0, 0))
-        fd, gd = ImageDraw.Draw(fg), ImageDraw.Draw(gl)
-
-        # Orbiting portal ASCII sparkles
-        for pk in range(10):
-            ang = tau + pk * (2 * math.pi / 10)
-            px = int(226 + 52 * math.cos(ang))
-            py = int(66 + 44 * math.sin(ang))
-            if 24 <= py <= 185:
-                fd.text((px, py), "*", fill=(255, 218, 150), font=fonts["tiny"])
-                gd.text((px, py), "*", fill=(255, 218, 150), font=fonts["tiny"])
-
-        # 3D Rotating ASCII Urano Cube levitating above calibration pad (cx=238, cy=108)
-        ang_y, ang_x = tau, tau * 0.5 + 0.45
-        ry = np.array([[math.cos(ang_y), 0, math.sin(ang_y)], [0, 1, 0], [-math.sin(ang_y), 0, math.cos(ang_y)]], dtype=np.float32)
-        rx = np.array([[1, 0, 0], [0, math.cos(ang_x), -math.sin(ang_x)], [0, math.sin(ang_x), math.cos(ang_x)]], dtype=np.float32)
-        rot_v = verts @ ry.T @ rx.T
-        proj = []
-        cy_float = 104 + 4.0 * math.sin(tau * 2.0)
-        for vx, vy, vz in rot_v:
-            sc = 1.0 / (4.2 - vz)
-            proj.append((238.0 + vx * 92.0 * sc, cy_float + vy * 92.0 * sc))
-
-        for i0, i1 in edges_idx:
-            x0, y0 = proj[i0]
-            x1, y1 = proj[i1]
-            steps = 11
-            for s in range(steps + 1):
-                u = s / steps
-                sx = int(round((x0 + (x1 - x0) * u) / DX) * DX)
-                sy = int(round((y0 + (y1 - y0) * u) / DY) * DY)
-                ch = "@" if s in (0, steps) else "#"
-                col_c = (158, 255, 242) if s in (0, steps) else (255, 216, 130)
-                fd.text((sx, sy), ch, fill=col_c, font=fonts["tiny"])
-                gd.text((sx, sy), ch, fill=col_c, font=fonts["tiny"])
-
-        # Fingertip cyan calibration arc toward cube
-        arc_x = int(265 + 48 * (0.5 + 0.5 * math.sin(tau * 2.0)))
-        fd.text((arc_x, 114), "~~+", fill=(0, 245, 233), font=fonts["small"])
-        gd.text((arc_x, 114), "~~+", fill=(0, 245, 233), font=fonts["small"])
-
-        fd.ellipse([12, 7, 18, 13], fill=(255, 195, 128))
-        fd.text((24, 5), "ARCADIA // URANO MOTOR 3D EN RUST", fill=(255, 224, 175), font=fonts["hud"])
-        fd.text((W - 108, 5), "[MUNDOS ->]", fill=(158, 255, 242), font=fonts["hud"])
-        fd.text((14, 199), "> Portales wgpu / WGSL sincronizados a 60 Hz", fill=(175, 236, 240), font=fonts["hud"])
-
-        frames.append(compose_bloom(backdrop, fg, gl, base_fg=base_fg, base_glow=base_gl))
-
-    save_animated_webp(frames, ASSETS_DIR / "ascii-arcadia.webp", FPS_MS, max_bytes=950_000)
-    return frames[12]
-
-
-def gen_repos_tile(fonts: dict) -> Image.Image:
-    """480x150 tile: 3D spinning ASCII octahedron vault + scrolling repository matrix."""
+def gen_repos_tile(fonts: dict) -> tuple[Image.Image, list[Image.Image]]:
+    """480x150 tile: 3D Illuminated ASCII Torus + Animated Repository Matrix Console."""
     W, H, N = 480, 150, 60
-    backdrop = build_hud_backdrop(W, H, header_y=21, footer_y=None, accent=(255, 216, 77))
-    verts = np.array([[1, 0, 0], [-1, 0, 0], [0, 1, 0], [0, -1, 0], [0, 0, 1], [0, 0, -1]], dtype=np.float32)
-    edges = (
-        (0, 2), (2, 1), (1, 3), (3, 0),
-        (4, 0), (4, 1), (4, 2), (4, 3),
-        (5, 0), (5, 1), (5, 2), (5, 3),
+    amb_img, base_fg, base_gl = build_ambient_city_layer(
+        W, H, 4, 24, fonts["tiny"], nc_idx=0, crop_box=(0, 60, 1280, 460),
+        tint_rgb=(0.95, 0.72, 0.85), underlay_strength=0.24, gain_scale=0.38,
     )
-    rows_txt = (
-        "> /haluz/sdd-template      [AI SPEC]",
-        "> /haluz/Loki-code-guide   [OLLAMA ]",
-        "> /haluz/atlantis-os       [GIS 3D ]",
-        "> /haluz/arcadia-urano     [RUST   ]",
-        "> /haluz/fraud-detection   [TOKIO  ]",
+    backdrop = build_hud_backdrop(
+        W, H, header_y=21, footer_y=None, accent=(255, 216, 77),
+        underlay_img=amb_img, underlay_strength=0.22,
+    )
+
+    rng = np.random.default_rng(505)
+    sp_x = rng.uniform(10, 148, 22)
+    sp_y = rng.uniform(26, 142, 22)
+    sp_p = rng.uniform(0.0, 1.0, 22)
+    sp_ch = rng.choice(["+", "*", "·", "0", "1"], size=22)
+    sp_cols = ((255, 216, 77), (0, 245, 233), (255, 65, 145))
+
+    rows_meta = (
+        ("sdd-template", "[AI SPEC]", (255, 216, 77)),
+        ("Loki-code-guide", "[OLLAMA ]", (98, 255, 203)),
+        ("atlantis-os", "[GIS 3D ]", (0, 245, 233)),
+        ("arcadia-urano", "[RUST 3D]", (255, 192, 110)),
+        ("fraud-detection", "[TOKIO  ]", (255, 65, 145)),
     )
 
     frames = []
@@ -770,41 +1039,63 @@ def gen_repos_tile(fonts: dict) -> Image.Image:
         gl = Image.new("RGB", (W, H), (0, 0, 0))
         fd, gd = ImageDraw.Draw(fg), ImageDraw.Draw(gl)
 
-        fd.ellipse([12, 7, 18, 13], fill=(255, 216, 77))
+        # Warm cyber perspective floor grid + floating ASCII dust
+        draw_perspective_grid(fd, gd, W, H, 102, 146, (t * 2.0) % 1.0, (54, 42, 58), (165, 128, 52))
+        for k in range(len(sp_x)):
+            px = int(sp_x[k] + 5.0 * math.sin(tau + k))
+            py = int(26 + ((sp_y[k] - 26 - 30.0 * ((t + sp_p[k]) % 1.0)) % 116))
+            scol = sp_cols[k % 3]
+            fd.text((px, py), str(sp_ch[k]), fill=scol, font=fonts["tiny"])
+            if k % 2 == 0:
+                gd.text((px, py), str(sp_ch[k]), fill=scol, font=fonts["tiny"])
+
+        # Left Hero: 3D Shaded ASCII Torus + Orbiting Stars
+        render_3d_ascii_sculpture(
+            fd, gd, 78.0, 83.0, 102.0, 4, 6, "torus",
+            0.72 + 0.42 * math.sin(tau), tau, 0.28, ((255, 65, 145), (0, 245, 233), (255, 224, 110)), fonts["tiny"],
+        )
+        for pk in range(6):
+            ang = tau * 2.0 + pk * (2.0 * math.pi / 6.0)
+            ox = int(78 + 46 * math.cos(ang))
+            oy = int(83 + 42 * math.sin(ang))
+            if 26 <= oy <= 140:
+                pcol = sp_cols[pk % 3]
+                pch = "*" if pk % 2 == 0 else "+"
+                fd.text((ox, oy), pch, fill=pcol, font=fonts["tiny"])
+                gd.text((ox, oy), pch, fill=pcol, font=fonts["tiny"])
+
+        # Right Frosted Dark-Glass Repository Matrix Console
+        draw_cyber_panel(fd, gd, (154, 28, 468, 142), (32, 92, 114), (255, 216, 77), fill_col=(6, 15, 26), chamfer=6)
+
+        active_idx = (f // 12) % len(rows_meta)
+        for ri, (rname, rtag, tcol) in enumerate(rows_meta):
+            ry = 35 + ri * 18
+            if ri == active_idx:
+                fd.rectangle([160, ry - 2, 462, ry + 13], fill=(14, 50, 68), outline=(0, 215, 220))
+                fd.rectangle([160, ry - 2, 163, ry + 13], fill=(0, 245, 233))
+                gd.rectangle([160, ry - 2, 163, ry + 13], fill=(0, 245, 233))
+                fd.text((170, ry), f"> {rname}", fill=(225, 255, 252), font=fonts["hud"])
+                fd.text((314, ry), ":: LIVE", fill=(0, 245, 233), font=fonts["hud"])
+                fd.text((392, ry), rtag, fill=tcol, font=fonts["hud"])
+                gd.text((170, ry), f"> {rname}", fill=(0, 245, 233), font=fonts["hud"])
+                gd.text((392, ry), rtag, fill=tcol, font=fonts["hud"])
+            else:
+                fd.text((170, ry), f"  {rname}", fill=(128, 194, 212), font=fonts["hud"])
+                fd.text((392, ry), rtag, fill=(84, 140, 160), font=fonts["hud"])
+
+        fd.text((170, 125), ">> EXPLORAR TODOS LOS REPOS ->", fill=(255, 222, 110), font=fonts["hud"])
+        gd.text((170, 125), ">> EXPLORAR TODOS LOS REPOS ->", fill=(255, 200, 72), font=fonts["hud"])
+
+        h_led = 0.45 + 0.55 * (0.5 + 0.5 * math.sin(tau * 4.0))
+        fd.ellipse([12, 7, 18, 13], fill=(int(255 * h_led), int(216 * h_led), int(77 * h_led)))
+        gd.ellipse([12, 7, 18, 13], fill=(int(255 * h_led), int(216 * h_led), int(77 * h_led)))
         fd.text((24, 5), "REPOSITORIOS // HALUZ", fill=(255, 224, 135), font=fonts["hud"])
         fd.text((W - 88, 5), "[TODOS ->]", fill=(0, 245, 233), font=fonts["hud"])
 
-        # 3D wireframe octahedron on left (cx=84, cy=84)
-        ry = np.array([[math.cos(tau), 0, math.sin(tau)], [0, 1, 0], [-math.sin(tau), 0, math.cos(tau)]], dtype=np.float32)
-        rot = verts @ ry.T
-        pts = [(84 + vx * 36, 84 + (vy * 0.9 - vz * 0.28) * 34) for vx, vy, vz in rot]
-        for i0, i1 in edges:
-            x0, y0 = pts[i0]
-            x1, y1 = pts[i1]
-            for s in range(9):
-                u = s / 8.0
-                px = int(round((x0 + (x1 - x0) * u) / 5) * 5)
-                py = int(round((y0 + (y1 - y0) * u) / 7) * 7)
-                ch = "@" if s in (0, 8) else "*"
-                col_o = (0, 245, 233) if s in (0, 8) else (255, 216, 77)
-                fd.text((px, py), ch, fill=col_o, font=fonts["small"])
-                gd.text((px, py), ch, fill=col_o, font=fonts["small"])
-
-        # Active scrolling highlight row on right directory tree
-        active_idx = (f // 12) % len(rows_txt)
-        for ri, rtxt in enumerate(rows_txt):
-            ry_px = 36 + ri * 18
-            if ri == active_idx:
-                fd.text((168, ry_px), rtxt, fill=(140, 255, 244), font=fonts["hud"])
-                gd.text((168, ry_px), rtxt, fill=(0, 245, 233), font=fonts["hud"])
-            else:
-                fd.text((168, ry_px), rtxt, fill=(75, 148, 168), font=fonts["hud"])
-
-        fd.text((168, 128), "[ VER TODOS LOS REPOSITORIOS -> ]", fill=(255, 216, 77), font=fonts["hud"])
-        frames.append(compose_bloom(backdrop, fg, gl))
+        frames.append(compose_bloom(backdrop, fg, gl, base_fg=base_fg, base_glow=base_gl))
 
     save_animated_webp(frames, ASSETS_DIR / "ascii-repos.webp", FPS_MS, max_bytes=800_000)
-    return frames[10]
+    return frames[10], [frames[4], frames[24], frames[48]]
 
 
 def gen_linkedin_tile(fonts: dict) -> Image.Image:
@@ -855,8 +1146,9 @@ def gen_linkedin_tile(fonts: dict) -> Image.Image:
     return frames[24]
 
 
-def generate_all(preview_dir: Path | None = None) -> None:
+def generate_all(preview_dir: Path | None = None, only: set[str] | None = None) -> None:
     ASSETS_DIR.mkdir(parents=True, exist_ok=True)
+    targets = only or {"hero", "sdd", "loki", "repos", "linkedin"}
     fonts = {
         "tiny": load_mono_font(7),
         "small": load_mono_font(8),
@@ -864,36 +1156,45 @@ def generate_all(preview_dir: Path | None = None) -> None:
         "title": load_mono_font(18),
     }
 
-    _, hero_diag = gen_hero_sequence(fonts)
-    t_sdd = gen_sdd_tile(fonts)
-    t_loki = gen_loki_tile(fonts)
-    t_atl = gen_atlantis_tile(fonts)
-    t_arc = gen_arcadia_tile(fonts)
-    t_rep = gen_repos_tile(fonts)
-    t_lnk = gen_linkedin_tile(fonts)
+    hero_diag = None
+    if "hero" in targets:
+        _, hero_diag = gen_hero_sequence(fonts)
+    sdd_diag = gen_sdd_tile(fonts)[1] if "sdd" in targets else None
+    loki_diag = gen_loki_tile(fonts)[1] if "loki" in targets else None
+    rep_diag = gen_repos_tile(fonts)[1] if "repos" in targets else None
+    if "linkedin" in targets:
+        gen_linkedin_tile(fonts)
 
     if preview_dir is not None:
         preview_dir.mkdir(parents=True, exist_ok=True)
-        # 1. Hero 2x3 transition contact sheet
-        sh = Image.new("RGB", (960 * 2, 270 * 3), (3, 7, 17))
-        for i, im in enumerate(hero_diag[:6]):
-            sh.paste(im, ((i % 2) * 960, (i // 2) * 270))
-        sh.save(preview_dir / "preview_dash_hero.png")
+        if hero_diag is not None:
+            sh = Image.new("RGB", (960 * 2, 270 * 3), (3, 7, 17))
+            for i, im in enumerate(hero_diag[:6]):
+                sh.paste(im, ((i % 2) * 960, (i // 2) * 270))
+            sh.save(preview_dir / "preview_dash_hero.png")
+            print(f"Saved preview_dash_hero.png in {preview_dir}")
 
-        # 2. All 6 interactive tiles stitched in seamless 2-column dashboard layout
-        st = Image.new("RGB", (964, 200 + 220 + 150 + 8), (3, 7, 17))
-        st.paste(t_sdd, (0, 0))
-        st.paste(t_loki, (484, 0))
-        st.paste(t_atl, (0, 204))
-        st.paste(t_arc, (484, 204))
-        st.paste(t_rep, (0, 428))
-        st.paste(t_lnk, (484, 428))
-        st.save(preview_dir / "preview_dash_tiles.png")
-        print(f"Saved preview_dash_hero.png and preview_dash_tiles.png in {preview_dir}")
+        if sdd_diag and loki_diag and rep_diag:
+            st = Image.new("RGB", (480 * 3 + 16, 200 + 200 + 150 + 16), (3, 7, 17))
+            for ci, im in enumerate(sdd_diag[:3]):
+                st.paste(im, (ci * 484, 0))
+            for ci, im in enumerate(loki_diag[:3]):
+                st.paste(im, (ci * 484, 204))
+            for ci, im in enumerate(rep_diag[:3]):
+                st.paste(im, (ci * 484, 408))
+            st.save(preview_dir / "preview_3tiles_v2.png")
+            print(f"Saved preview_3tiles_v2.png in {preview_dir}")
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Generate the Night City Interactive ASCII Dashboard WebPs.")
     parser.add_argument("--preview-dir", type=Path, default=None, help="Optional folder for diagnostic PNG sheets.")
+    parser.add_argument(
+        "--only",
+        type=str,
+        default="hero,sdd,loki,repos,linkedin",
+        help="Comma-separated subset from {hero,sdd,loki,repos,linkedin}.",
+    )
     args = parser.parse_args()
-    generate_all(args.preview_dir)
+    only_set = {tok.strip().lower() for tok in args.only.split(",") if tok.strip()}
+    generate_all(args.preview_dir, only=only_set)
