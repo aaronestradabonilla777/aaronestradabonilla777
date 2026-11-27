@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 412 342" role="img" aria-labelledby="title desc">
 <title id="title">770 contribuciones en 2026</title>
-<desc id="desc">Actividad pública del 1 de enero al 26 de nov. Cada celda representa un día.</desc>
+<desc id="desc">Actividad pública del 1 de enero al 27 de nov. Cada celda representa un día.</desc>
 <defs><linearGradient id="act-bg" x1="0" y1="0" x2=".95" y2="1"><stop stop-color="#050b14"/><stop offset=".55" stop-color="#0a1826"/><stop offset="1" stop-color="#0e1b2c"/></linearGradient><linearGradient id="radar-grad" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#00f5e9" stop-opacity="0"/><stop offset=".6" stop-color="#00f5e9" stop-opacity=".11"/><stop offset="1" stop-color="#9effef" stop-opacity=".35"/></linearGradient><pattern id="act-grid" width="16" height="16" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r=".7" fill="#3ab8c9" opacity=".2"/></pattern><clipPath id="grid-clip"><rect x="40" y="68" width="358" height="250" rx="3"/></clipPath><style>@media (prefers-reduced-motion: no-preference) {.sweep { animation: scan 5.5s linear infinite }.border-trace { animation: scan 9s linear infinite }.active-day { animation: highlight 7.5s ease-in-out infinite; animation-delay:var(--phase) }.radar-bar { animation: radar-move 8.5s linear infinite }.today-pulse { animation: today-glow 2.4s ease-in-out infinite alternate; transform-box: fill-box; transform-origin: center }.status-led { animation: led-blink 1.8s ease-in-out infinite alternate }@keyframes highlight { 0%,24%,100% { stroke-opacity:0 } 9% { stroke-opacity:.92 } }@keyframes scan { to { stroke-dashoffset:-100 } }@keyframes radar-move { 0% { transform:translateX(0px); opacity:0 } 8% { opacity:1 } 90% { opacity:1 } 100% { transform:translateX(360px); opacity:0 } }@keyframes today-glow { from { stroke-opacity:.55; stroke:#ffca70 } to { stroke-opacity:1; stroke:#00f5e9 } }@keyframes led-blink { from { opacity:.35 } to { opacity:1 } } }</style></defs>
 <rect x=".5" y=".5" width="411" height="341" rx="5" fill="url(#act-bg)" stroke="#1e4959"/>
 <rect x="1" y="1" width="410" height="340" rx="4" fill="url(#act-grid)"/>
@@ -361,8 +361,8 @@
 <rect x="295" y="231" width="9" height="9" rx="2" fill="#122737"><title>2026-11-24 · 0</title></rect>
 <rect x="295" y="243" width="9" height="9" rx="2" fill="#14596d" class="active-day" stroke="#baffef" stroke-opacity="0" style="--phase:-5.91s"><title>2026-11-25 · 3</title></rect>
 <rect x="295" y="255" width="9" height="9" rx="2" fill="#122737"><title>2026-11-26 · 0</title></rect>
-<rect id="today" class="today-pulse" x="294" y="254" width="11" height="11" rx="2.5" fill="none" stroke="#ffca70" stroke-width="1.8"><title>Hoy · 2026-11-26</title></rect>
-<circle cx="299" cy="271" r="1.4" fill="#37505c"/>
+<rect x="295" y="267" width="9" height="9" rx="2" fill="#122737"><title>2026-11-27 · 0</title></rect>
+<rect id="today" class="today-pulse" x="294" y="266" width="11" height="11" rx="2.5" fill="none" stroke="#ffca70" stroke-width="1.8"><title>Hoy · 2026-11-27</title></rect>
 <circle cx="299" cy="283" r="1.4" fill="#37505c"/>
 <circle cx="311" cy="211" r="1.4" fill="#37505c"/>
 <circle cx="311" cy="223" r="1.4" fill="#37505c"/>
@@ -400,7 +400,7 @@
 <circle cx="359" cy="259" r="1.4" fill="#37505c"/>
 <g clip-path="url(#grid-clip)"><rect class="radar-bar" x="12" y="68" width="28" height="250" fill="url(#radar-grad)"/></g>
 <rect x="18" y="317" width="10" height="10" rx="2.5" fill="none" stroke="#ffca70" stroke-width="1.5"/>
-<text x="35" y="326">Al 26 nov 2026</text>
+<text x="35" y="326">Al 27 nov 2026</text>
 <text x="270" y="326">Menos</text>
 <rect x="310" y="318" width="9" height="9" rx="2" fill="#122737"/>
 <rect x="322" y="318" width="9" height="9" rx="2" fill="#14596d"/>
